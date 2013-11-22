@@ -1,0 +1,95 @@
+<?php	
+if(!session_id()){ session_start(); }
+require('../../libs/fpdf.php');	
+class PDF extends FPDF{
+        function Header(){
+            global $Titulo, $Fecha;		
+            $w = $this->GetStringWidth($Titulo) + 6;			//Calculamos ancho y posici�n del t�tulo.		
+            $this->SetFont('Arial','',12);					//Arial 10
+            $this->SetX((210-$w)/2);
+            $this->Cell($w,15,$Titulo,0,1,'C',false);		//Título
+            $this->Ln(1);									//Salto de l�nea			
+            $this->CabeceraTabla($Fecha);
+        }		
+        function CabeceraTabla($Fecha){
+            global $Cabecera, $CabeceraW;			
+            $this->SetFillColor(255, 255, 255);
+            $this->SetTextColor(0);
+            $this->SetLineWidth(.3);
+            $this->SetFont('Arial', 'B', 7);			
+            $this->Cell(170, 5, "Consulta de la Fecha : ".$Fecha, 0, 1, 'L', 1);
+            $this->SetFont('Arial', 'B', 6);
+            for($i=0; $i<count($Cabecera); $i++)
+                $this->Cell($CabeceraW[$i], 7, $Cabecera[$i], 1, 0, 'C', 1);			
+            $this->Ln();
+            $this->Cell(0, .01, "", 0, 1, 'C', true);
+        }				
+        function Detalle(){
+            global $Conn, $CabeceraW, $Fecha, $IdComprobante, $TipoPago;			
+            $SQL = "SELECT facturacion.facturacion_fecha, comprobante.abreviatura, facturacion.comprobante_serie, facturacion.comprobante_numero, facturacion.dni_ruc, facturacion.nombres, forma_pago.descripcion, CASE WHEN facturacion.estado=0 THEN 'PENDIENTE' WHEN facturacion.estado=1 THEN 'CANCELADO' WHEN facturacion.estado=2 THEN 'ANULADO' ELSE '' END, CASE WHEN facturacion.igv_afecto=0 then 'NO AFECTO' WHEN facturacion.igv_afecto=1 THEN 'AFECTO' ELSE '' END, facturacion.total FROM facturacion INNER JOIN comprobante ON (facturacion.idcomprobante = comprobante.idcomprobante) INNER JOIN forma_pago ON (facturacion.idforma_pago = forma_pago.idforma_pago) 
+
+
+WHERE facturacion.idforma_pago<>5 and facturacion.facturacion_fecha = '$Fecha' AND facturacion.idnotaria='".$_SESSION['notaria']."' ";
+            if ($IdComprobante!=''){$SQL = $SQL." AND facturacion.idcomprobante = '$IdComprobante' ";}
+            if ($TipoPago!=''){$SQL = $SQL." AND facturacion.idforma_pago = '$TipoPago' ";}				
+            $Consulta = $Conn->Query($SQL);			
+            $fill=false;
+            $Total = 0;
+            $TotalA = 0;
+            $TotalC = 0;			
+            while ($row=$Conn->FetchArray($Consulta)){
+                    $this->SetFillColor(255, 255, 255);
+                    if ($row[7]=='ANULADO'){$this->SetFillColor(200, 255, 255);}
+                    $this->SetTextColor(0);
+                    $this->SetFont('Arial', '', 6);				
+                    $this->Cell($CabeceraW[0], 4, $Conn->DecFecha($row[0]), 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[1], 4, $row[1], 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[2], 4, $row[2], 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[3], 4, $row[3], 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[4], 4, $row[4], 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[5], 4, $row[5], 0, 0, 'L', 1);
+                    $this->Cell($CabeceraW[6], 4, $row[6], 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[7], 4, $row[7], 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[8], 4, $row[8], 0, 0, 'C', 1);
+                    $this->Cell($CabeceraW[9], 4, number_format($row[9], 2), 0, 1, 'R', 1);
+                    if ($row[7]=='CANCELADO' && $row[6]!='CREDITO') {$Total = $Total + $row[9];}
+                    if ($row[7]=='ANULADO' && $row[6]!='CREDITO') {$TotalA = $TotalA + $row[9];}
+                    if ($row[6]=='CREDITO') {$TotalC = $TotalC + $row[9];}
+                    $this->Cell(0, .01, "", 1, 1, 'C', true);
+            }			
+            $this->SetFont('Arial', 'B', 8);
+            $this->Cell(175, 5, "Total Comprobante : ", 0, 0, 'R', false);
+            $this->Cell(15, 5, number_format($Total,2), 0, 1, 'R', false);
+            $this->Cell(175, 5, "Total Anulado : ", 0, 0, 'R', false);
+            $this->Cell(15, 5, number_format($TotalA, 2), 0, 1, 'R', false);
+            $this->Cell(175, 5, "Total Credito : ", 0, 0, 'R', false);
+            $this->Cell(15, 5, number_format($TotalC, 2), 0, 1, 'R', false);
+            $this->Ln(2);			
+        }		
+    function Footer(){
+        $this->SetY(-20);
+        $this->SetFont('Arial','I',8);
+        $this->SetTextColor(0);
+        $this->Ln(2);
+        $this->Cell(0,10,'Pag. '.$this->PageNo().'/{nb}',0,0,'C');
+    }		
+    function PrintChapter(){	
+        $this->AddPage();
+        $this->Detalle();
+    }
+}	
+include("../../config.php");
+$Fecha 		= (isset($_GET["Fecha"]))?$_GET["Fecha"]:"";
+$Opcion		= (isset($_GET["Opcion"]))?$_GET["Opcion"]:"";
+$IdComprobante	= (isset($_GET["IdComprobante"]))?$_GET["IdComprobante"]:"";
+$TipoPago	= (isset($_GET["TipoPago"]))?$_GET["TipoPago"]:"";
+$pdf		= new PDF();
+$Cabecera	= array('FECHA', 'COMP', 'SERIE', 'NUMERO', 'RUC/DNI', 'CLIENTE', 'PAGO', 'ESTADO', 'I.G.V.', 'TOTAL');
+$CabeceraW	= array(12, 10, 10, 12, 15, 70, 15, 15, 15, 17);
+$Titulo		= "Consulta de Caja";
+$pdf->SetTitle($Titulo);
+$pdf->SetMargins(10,10,10);
+$pdf->AliasNbPages();
+$pdf->PrintChapter($IdMovimiento, $Tipo);
+$pdf->Output();	
+?>
