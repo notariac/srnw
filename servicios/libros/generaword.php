@@ -1,4 +1,5 @@
 <?php
+	session_start();
     $IdLibro = $_POST["IdLibro"];	
     echo "<meta http-equiv='content-type' content='text/html; charset=UTF-8' />";	
     function leef($fichero){
@@ -32,8 +33,8 @@
         $row 		= $Conn->FetchArray($Consulta);
         $NroLibro		= $row[13];
         $Anio			= $row[10];
-        $Destino = "archivos/$NroLibro-$Anio.rtf"; 
-        $Plantilla 	= "plantilla.rtf";
+        $Destino = "archivos/".$_SESSION['notaria']."/$NroLibro-$Anio.rtf"; 
+        $Plantilla 	= "plantilla".$_SESSION['notaria'].".rtf";
         $txtplantilla	= leef($Plantilla);
         $matriz			= explode("sectd", $txtplantilla);
         $cabecera		= $matriz[0]."sectd";

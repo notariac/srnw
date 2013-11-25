@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include('func.php');
 include("num2letraK.php");    
 //include('../../libs/num2letra.php');
@@ -274,13 +275,13 @@ function Generartf($IdKardex)
         $ConsultaUN 	= $Conn->Query($SQL);
         $rowUN 		= $Conn->FetchArray($ConsultaUN);
         $DepartamentoN	= $rowUN[0];		
-        $Destino = "archivos/".$Kardex.".rtf";		
-        $Plantilla 	= "plantillas/plantilla-".$IdServicio.".rtf";
+        $Destino = "archivos/".$_SESSION['notaria']."/".$Kardex.".rtf";		
+        $Plantilla 	= "plantillas/".$_SESSION['notaria']."/plantilla-".$IdServicio.".rtf";
 
         if(!file_exists($Plantilla))
           $Plantilla = "plantillas/plantilla-0.rtf";
 
-        $minuta = "minutas/".$minuta;        
+        $minuta = "minutas/".$_SESSION['notaria']."/".$minuta;        
 
         $txtminuta = leef($minuta);
         $matrizm	= explode("sectd", $txtminuta);
@@ -337,7 +338,7 @@ function Generartf($IdKardex)
         $despues = str_replace("#FECHA_RETORNO#", validValur($fecha_retorno), $despues);
         $despues = str_replace("#RUTA#", validValur($ruta), $despues);
         
-        $part = participantes($data);
+        $part = participantes($data,$IdServicio);
         $despues = str_replace("#PARTICIPANTES#", $part, $despues);       
         $otor = verOtorgantes($data);
         $despues = str_replace("#OTORGANTES#", $otor, $despues);
@@ -356,7 +357,7 @@ function Generartf($IdKardex)
           $despues = str_replace("#CUERPOVEHI#", $cuerpoVehiculo, $despues);          
 
         //Participantes para autorizaciones de viajes 
-          $txt = participantes_v($data,$idservicio);
+          $txt = participantes_v($data,$IdServicio);
           $despues = str_replace("#PARTICIPANTES_V#", $txt, $despues);   
 
         //Datos del menor, para autorizaciones de viajes

@@ -65,6 +65,19 @@ function values($v)
              );
 
 
+function verifLev($idservicio)
+{
+   $flag = false;
+   $idservicio = (int)$idservicio;
+   $serv = array(20,53,295,327);
+   foreach ($serv as $value) 
+   {
+      if($value==$idservicio)
+        $flag = true;
+   }
+   return $flag;
+}
+
 /*
   Funcion: participantes
   Parametros: @p1
@@ -72,15 +85,24 @@ function values($v)
     Resumen: Muestra los datos completos de todos los participantes que intervienen dentro
              del proceso, incluye datos de conyuges y representantes.
 */
-function participantes($participantes)
+
+function participantes($participantes,$idservicio)
 {
     $html = '';
     $c = 0;
     $last_tipo = 0;
+
     foreach($participantes as $k => $v)
     {
         if($v['idrepresentado']==0)
-        {          
+        {
+          $f = true;
+          if($v['tipo']==2 && verifLev($idservicio)==true)          
+          {        
+            $f = false;
+          }
+          if($f)
+          {
             if($last_tipo != $v['tipo'])        
               {
                 $last_tipo = $v['tipo'];
@@ -129,6 +151,7 @@ function participantes($participantes)
 
             }
             $c += 1;
+          }
         }
     }
     return $html;
@@ -371,7 +394,7 @@ function verOtorgantes($participantes)
           else
             $html .= utf8_decode(DOÑA)." ";            
           $c +=1;
-    		  $html .= "{\\qj\\b\\fs22 ".trim($v['participante'])."}"; 
+    		  $html .= "{\\qj\\b\\fs22 ".validValur($v['participante'])."}"; 
     		  $repre = verRepresentante($v['idparticipante'],$participantes);
           $html .= $repre;
        }        
@@ -402,7 +425,7 @@ function verFavorecidos($participantes)
                 else
                   $html .= utf8_decode(DOÑA)." ";
                $c +=1;      
-    		   $html .= "{\\qj\\b\\fs22 ".trim($v['participante'])."}";   
+    		   $html .= "{\\qj\\b\\fs22 ".validValur($v['participante'])."}";   
            $repre = verRepresentante($v['idparticipante'],$participantes);
            $html .= $repre;        
         }        
@@ -434,7 +457,7 @@ function verIntervinientes($participantes)
                $html .= "DON ";
             else
               $html .= utf8_decode(DOÑA)." ";
-            $html .= "{\\qj\\b\\fs22 ".$v['participante']."}";
+            $html .= "{\\qj\\b\\fs22 ".validValur($v['participante'])."}";
            $c +=1;    
         }        
       }      
@@ -480,7 +503,7 @@ function getConyuge($p,$idc)
     foreach ($p as $key => $value) {
       if($value['idparticipante']==$idc)
       {
-          $conyuge = "{\\b ".$value['participante']."}";
+          $conyuge = "{\\b ".validValur($value['participante'])."}";
       }
     }
     return $conyuge;
@@ -507,6 +530,6 @@ function validValur($v)
     if(trim($v)=="")
      return "<<Campo-sin-valor>>";
     else
-     return trim($v);
+     return trim(utf8_decode($v));
 }
 ?>

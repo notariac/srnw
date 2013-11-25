@@ -10,7 +10,7 @@ $sql = "SELECT
         documento.descripcion as documento, 
         kardex_participantes.idparticipante, 
         cliente.dni_ruc, 
-        cliente.nombres, 
+        cliente.nombres||' '||coalesce(cliente.ape_paterno,'')||' '||coalesce(cliente.ap_materno,'') as nombres, 
         kardex_participantes.idparticipacion, 
         participacion.descripcion as participacion,
         kardex_participantes.porcentage,
@@ -50,7 +50,7 @@ while($row = $Conn->FetchArray($Consulta2))
 	{
 		$s = "SELECT cliente.idcliente,
 					 cliente.dni_ruc, 
-        			 cliente.nombres,
+        			 cliente.nombres||' '||coalesce(cliente.ape_paterno,'')||' '||coalesce(cliente.ap_materno,'') as nombres, 
         			 documento.descripcion as documento
         	 from cliente 
         	 	  INNER JOIN documento ON cliente.iddocumento = documento.iddocumento 

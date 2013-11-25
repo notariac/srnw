@@ -169,6 +169,19 @@ function addParticipantei()
     $("#TipoParticipacion_i").focus();
   }
 }
+function verficarJuridico(idcliente)
+{
+    
+    $.get('getrepresentantes.php','Id='+idcliente,function(r)
+    {
+        $.each(r,function(i,j)
+        {
+            participantes.nuevo(j.idparticipante,j.participante,j.documento,j.nrodocumento,j.idparticipacion,j.participacion,j.tipo, j.idrepresentado, j.conyuge,j.porcentage,j.partida,j.idzona,j.zona);
+        });
+        participantes.listar()        ;
+    },'json');
+    
+}
 function addParticipante()
 {
   bval = true;
@@ -220,7 +233,9 @@ function addParticipante()
                           participantes.nuevo(p1,p2,p3,p4,p5,p6,p7,p8,p9,p,'','','');
                    }            
                 participantes.listar();
+                verficarJuridico($("#IdParticipante").val());
                 clearFrmOtorgante();
+                
             }
       }
   }
@@ -473,7 +488,7 @@ $(document).ready(function(){
                     .appendTo( ul );
             };
 
-        $("#tabs,#pdt_notario").tabs();
+        $("#tabs,#pdt_notario").tabs({selected:0});
         $("#tabs-participantes").tabs({
            selected:0,
            select: function( event, ui ) {

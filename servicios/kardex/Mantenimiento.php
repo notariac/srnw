@@ -136,7 +136,7 @@ $(function() {
                 },
                 'swf'      : 'uploadify.swf',
                 'uploader' : 'uploadify.php',
-                'buttonText': 'Documento',                
+                'buttonText': 'Escritura',                
                 onUploadSuccess : function(file, data, response) {
                         if(response)
                         {
@@ -147,6 +147,42 @@ $(function() {
                                 $("#archivo").val(r[1]);
                                 $("#VerImagennn").attr("href","archivos/"+r[1]);
                                 $("#VerImagennn").css("display","inline");
+                            }
+                            else 
+                            {
+                                alert(r[1]+' '+data);
+                            }                            
+                        }
+                        else 
+                        {
+                            alert("Ha ocurrido un error al intentar subir el archivo "+file.name);
+                        }
+                        
+                    },
+                onUploadError : function(file, errorCode, errorMsg, errorString) {
+                        alert('El archivo ' + file.name + ' no pudo ser subido: ' + errorString);
+                    }
+        });
+        
+        $('#file_uploadm').uploadify({
+                'formData' : {
+                        'timestamp' : '<?php echo $timestamp;?>',
+                        'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
+                        'correlativo': 'K001232'
+                },
+                'swf'      : 'uploadify.swf',
+                'uploader' : 'uploadifym.php',
+                'buttonText': 'Minuta',                
+                onUploadSuccess : function(file, data, response) {
+                        if(response)
+                        {
+                            r = data.split("###");
+                            if(r[0]==1)
+                            {
+                                alert('El archivo fue subido correctamente');
+                                $("#archivom").val(r[1]);
+                                $("#VerImagennnm").attr("href","archivos/"+r[1]);
+                                $("#VerImagennnm").css("display","inline");
                             }
                             else 
                             {
@@ -259,6 +295,9 @@ $(function() {
             <?php
             if ((substr($row[3],0,1)=='A' && substr($row[3],0,2)!='AP') || (substr($row[3],0,1)=='E'))        
                 echo '<li><a href="#tabs-3" onclick="$(\'#Ruta\').focus();">Datos de Viaje</a></li>';
+            
+            if ((substr($row[3],0,1)=='V'))
+                echo '<li><a href="#tabs-3">Datos de Vehiculo</a></li>';
           
             if (substr($row[3],0,1)=='P')    
                 echo  '<li><a href="#tabs-3">Datos de Poder</a></li>';
@@ -281,12 +320,10 @@ $(function() {
                 <label class="TituloMant labels">Fecha Escritura : </label>
                 <input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="3form1_escritura_fecha" id="EscrituraFecha" value="<?php echo $FechaEscritura;?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'NroMinuta');"/>
                 <label class="TituloMant labels">N&ordm; Minuta :</label>
-                <input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="0form1_minuta" id="Placa" value="<?php echo $row[6];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FecFirmaE');"/>
+                <input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="0form1_minuta"  value="<?php echo $row[6];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FecFirmaE');"/>
                 <br/>
                 <label class="TituloMant labels">Fecha Minuta :</label>
-                <input type="text"  align="right" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="3form1_minuta_fecha" id="Minuta_Fecha" value="<?php echo $FechaMinuta;?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FormaPago');"/>
-                <label class="TituloMant labels">Placa :</label>
-                <input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="0form1_placa" id="Placa" value="<?php echo $row[7];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FecFirmaE');"/>
+                <input type="text"  align="right" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="3form1_minuta_fecha" id="Minuta_Fecha" value="<?php echo $FechaMinuta;?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FormaPago');"/>                
                 <label class="TituloMant labels">Fec. Firma Esc.: </label>
                 <input type="text"  align="right" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="3form1_fecfirmae" id="FecFirmaE" value="<?php echo $FecFirmaE;?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FormaPago');"/>
                 <div style="border-top:1px dotted #CCC; margin-top:10px; padding-top:10px;">
@@ -299,24 +336,45 @@ $(function() {
                 <input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="0form1_fojafin" id="FojaFin" value="<?php echo $row[9];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'SerieInicio');"/>
                 <label class="TituloMant labels">Serie Final :</label>
                 <input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="0form1_seriefin" id="SerieFin" value="<?php echo $row[11];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'SerieFin');"/>
-                </div>
-                <div style="border-top:1px dotted #CCC; margin-top:10px; padding-top:10px;">
                 <label class="TituloMant labels">Estado :</label>
                 <input type="checkbox" name="Firmado2" id="Firmado2" <?php if ($Firmado==1) echo "checked='checked'"; ?> onclick="CambiaFirmado();" /><input type="hidden" name="0form1_firmado" id="Firmado" value="<?php echo $Firmado;?>" /> Firmado
                 <br/>
-                <label class="TituloMant labels">Archivo :</label>
-                <div style="display:inline-block; width:300px;">
-                <div id="queue" style="display:inline-block"></div>
-                <input id="file_upload" name="file_upload" type="file" multiple="true">
-                <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />
-                <?php 
-                    if($row['archivo']!="")                    
-                        $d = "inline";                    
-                    else                     
-                        $d = "none";                    
-                ?>
-                <a target="_blank" href="archivos/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Archivo</a>
                 </div>
+                <div style="border-top:1px dotted #CCC; margin-top:10px; padding-top:10px;">                
+                    <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width:150px; border:1px solid #dadada;" align="center">
+                                <div style="display:inline-block; ">
+                                <div id="queue" style="display:inline-block"></div>
+                                <input id="file_uploadm" name="file_uploadm" type="file" multiple="true">
+                                <input type="hidden" name="0form1_archivom" id="archivom" value="<?php echo $row['archivom'] ?>" />
+                                <?php 
+                                    if($row['archivom']!="")                    
+                                        $d = "inline";                    
+                                    else                     
+                                        $d = "none";                    
+                                ?>                                
+                                </div>                               
+                            </td>
+                            <td style="border:1px solid #dadada; border-left:0"><a target="_blank" href="minutas/<?php echo $row['archivom'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Minuta</a></td>
+                            <td style="width:150px;border:1px solid #dadada;border-left:0" align="center">
+                                <div style="display:inline-block; ">
+                                <div id="queue" style="display:inline-block"></div>
+                                <input id="file_upload" name="file_upload" type="file" multiple="true">
+                                <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />
+                                <?php 
+                                    if($row['archivo']!="")                    
+                                        $d = "inline";                    
+                                    else                     
+                                        $d = "none";                    
+                                ?>                                
+                                </div>
+                            </td>
+                            <td style="border:1px solid #dadada;border-left:0">
+                                <a target="_blank" href="archivos/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Escritura</a>
+                            </td>
+                        </tr>
+                    </table>                
                 </div>
             </div>
             <div id="tabs-2">                
@@ -510,9 +568,48 @@ $(function() {
             <td>&nbsp;</td>
           </tr>
         </table>
-    </div>
+    </div>        
 <?php
 	}
+        
+	if ((substr($row[3],0,1)=='V')){
+        ?>        
+        <div id="tabs-3">
+            <div>
+                <label class="TituloMant labels">Placa :</label>
+                <input type="text"  align="left" name="0form1_placa" id="Placa" value="<?php echo $row['placa'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+                <label class="TituloMant labels">Clase :</label>
+                <input type="text"  align="left" name="0form1_clasev" id="Clasev" value="<?php echo $row['clasev'];?>" <?php echo $Enabled;?>  class="inputtext" style="font-size:12px; width:130px; text-transform:uppercase;" />
+                <label class="TituloMant labels" style="width:100px">Marca :</label>
+                <input type="text"  align="left" name="0form1_marcav" id="Marcav" value="<?php echo $row['marcav'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;"  />
+                <br/>
+                <label class="TituloMant labels">Año Fabric. :</label>
+                <input type="text"  align="left" name="0form1_aniofabv" id="Aniofabv" value="<?php echo $row['aniofabv'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+                <label class="TituloMant labels">Modelo :</label>
+                <input type="text"  align="left" name="0form1_modelov" id="Modelov" value="<?php echo $row['modelov'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+                <label class="TituloMant labels">Color :</label>
+                <input type="text"  align="left" name="0form1_colorv" id="Colorv" value="<?php echo $row['colorv'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+                <br/>
+                <label class="TituloMant labels">Motor. :</label>
+                <input type="text"  align="left" name="0form1_motorv" id="Motorv" value="<?php echo $row['motorv'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:130px; text-transform:uppercase;" />
+                <label class="TituloMant labels" style="width:100px">Cilindros :</label>
+                <input type="text"  align="left" name="0form1_cilindrosv" id="Cilindros" value="<?php echo $row['cilindrosv'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+                <label class="TituloMant labels">Serie Nro :</label>
+                <input type="text"  align="left" name="0form1_seriev" id="Seriev" value="<?php echo $row['seriev'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:130px; text-transform:uppercase;" />
+                <br/>
+                <label class="TituloMant labels">Ruedas. :</label>
+                <input type="text"  align="left" name="0form1_ruedasv" id="Ruedasv" value="<?php echo $row['ruedasv'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+                <label class="TituloMant labels">Combustible :</label>
+                <input type="text"  align="left" name="0form1_combustiblev" id="Combustiblev" value="<?php echo $row['combustiblev'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+                <label class="TituloMant labels">Carroceria :</label>
+                <input type="text"  align="left" name="0form1_carroceriav" id="Carroceriav" value="<?php echo $row['carroceriav'];?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:130px; text-transform:uppercase;" />
+                <br/>
+                <label class="TituloMant labels">Fecha Incripcion :</label>
+                <input type="text"  align="left" name="3form1_fechaincripcionv" id="Fechainscripcionv" value="<?php if($row['fechaincripcionv']!=""){ echo $Conn->DecFecha($row['fechaincripcionv']);} else { echo date('d/m/Y'); }?>" <?php echo $Enabled;?> class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" />
+            </div>
+        </div>
+        <?php }
+        
 	if (substr($row[3],0,1)=='P'){
 ?>
             <div id="tabs-3">
@@ -558,6 +655,7 @@ $(function() {
                   </tr>
                 </table>
             </div>
+            
 <?php
 	}
         
