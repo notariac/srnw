@@ -199,6 +199,7 @@ function Guardar(Op){
     if (Validar())
     {
         var p = json_encode(participantes);
+        p = p.replace("&","%26");
         $.ajax({
             url:'guardar.php?Op=' + Op,
             type:'POST',

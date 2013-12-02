@@ -181,7 +181,6 @@ function datos_menor($participantes)
      }
      return $html;
 }
-
 /*
   Funcion: participantes_v
   Parametros: @p1, @p2        
