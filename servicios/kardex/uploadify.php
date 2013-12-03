@@ -6,9 +6,8 @@ if (!empty($_FILES))
     $tempFile = $_FILES['Filedata']['tmp_name'];                          // 1
     $fileparts = pathinfo($_FILES['Filedata']['name']);
     $ext = $fileparts['extension'];
-
-    //$targetPath = 'doc/';  
-    $targetPath = 'archivos/';  
+ 
+    $targetPath = 'archivos/'.$_SESSION['notaria'].'/';
     $filetypes = array("pdf","doc","odt","docx","rtf");
     $flag = false;
     foreach($filetypes as $typ)
@@ -20,8 +19,8 @@ if (!empty($_FILES))
     }    
     if($flag)
     {
-        $targetFile =  str_replace('//','/',$targetPath).str_replace(' ','_',$_FILES['Filedata']['name']);
-        $name = str_replace(' ','_',$_FILES['Filedata']['name']);
+        $targetFile =  str_replace('//','/',$targetPath).str_replace(' ','_',$_POST['correlativo'].'.'.$ext);
+        $name = $_POST['correlativo'].".".$ext;
         if( move_uploaded_file($tempFile,$targetFile))
         {	
             echo "1###".$name;
@@ -34,7 +33,7 @@ if (!empty($_FILES))
     }
     else 
     {
-    	echo "0###Extension no apcetada";
+    	echo "0###Extension no apcetada, debe ser (doc, odt, docx, rtf, pdf)";
     }    
          
 }

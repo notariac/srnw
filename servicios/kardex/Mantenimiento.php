@@ -132,7 +132,7 @@ $(function() {
                 'formData' : {
                         'timestamp' : '<?php echo $timestamp;?>',
                         'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
-                        'correlativo': 'K001232'
+                        'correlativo': '<?php echo $row["correlativo"] ?>'
                 },
                 'swf'      : 'uploadify.swf',
                 'uploader' : 'uploadify.php',
@@ -145,12 +145,13 @@ $(function() {
                             {
                                 alert('El archivo fue subido correctamente');
                                 $("#archivo").val(r[1]);
-                                $("#VerImagennn").attr("href","archivos/"+r[1]);
+                                $("#VerImagennn").attr("href","archivos/<?php echo $_SESSION['notaria']; ?>/"+r[1]);
+                                $("#VerImagennn_label").css("display","none");
                                 $("#VerImagennn").css("display","inline");
                             }
                             else 
                             {
-                                alert(r[1]+' '+data);
+                                alert(r[1]);
                             }                            
                         }
                         else 
@@ -159,7 +160,8 @@ $(function() {
                         }
                         
                     },
-                onUploadError : function(file, errorCode, errorMsg, errorString) {
+                onUploadError : function(file, errorCode, errorMsg, errorString) 
+                    {
                         alert('El archivo ' + file.name + ' no pudo ser subido: ' + errorString);
                     }
         });
@@ -168,7 +170,7 @@ $(function() {
                 'formData' : {
                         'timestamp' : '<?php echo $timestamp;?>',
                         'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
-                        'correlativo': 'K001232'
+                        'correlativo': '<?php echo $row["correlativo"] ?>'
                 },
                 'swf'      : 'uploadify.swf',
                 'uploader' : 'uploadifym.php',
@@ -181,12 +183,13 @@ $(function() {
                             {
                                 alert('El archivo fue subido correctamente');
                                 $("#archivom").val(r[1]);
-                                $("#VerImagennnm").attr("href","archivos/"+r[1]);
+                                $("#VerImagennnm").attr("href","minutas/<?php echo $_SESSION['notaria']; ?>/"+r[1]);
+                                $("#VerImagennnm_label").css("display","none");
                                 $("#VerImagennnm").css("display","inline");
                             }
                             else 
                             {
-                                alert(r[1]+' '+data);
+                                alert(r[1]);
                             }                            
                         }
                         else 
@@ -348,15 +351,24 @@ $(function() {
                                 <div id="queue" style="display:inline-block"></div>
                                 <input id="file_uploadm" name="file_uploadm" type="file" multiple="true">
                                 <input type="hidden" name="0form1_archivom" id="archivom" value="<?php echo $row['archivom'] ?>" />
-                                <?php 
-                                    if($row['archivom']!="")                    
-                                        $d = "inline";                    
-                                    else                     
-                                        $d = "none";                    
+                                <?php
+                                    if($row['archivom']!="")
+                                    {
+                                        $d = "inline";
+                                        $d1 = "none";
+                                    }                                        
+                                    else
+                                    {
+                                        $d = "none";
+                                        $d1 = "inline";
+                                    }                                        
                                 ?>                                
                                 </div>                               
                             </td>
-                            <td style="border:1px solid #dadada; border-left:0"><a target="_blank" href="minutas/<?php echo $row['archivom'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Minuta</a></td>
+                            <td style="border:1px solid #dadada; border-left:0">
+                                <p id="VerImagennnm_label" style="display:<?php echo $d1; ?>">La minuta debe ser formato: <b>rtf</b></p>
+                                <a target="_blank" href="minutas/<?php echo $row['archivom'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Minuta</a>
+                            </td>
                             <td style="width:150px;border:1px solid #dadada;border-left:0" align="center">
                                 <div style="display:inline-block; ">
                                 <div id="queue" style="display:inline-block"></div>
@@ -364,13 +376,20 @@ $(function() {
                                 <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />
                                 <?php 
                                     if($row['archivo']!="")                    
-                                        $d = "inline";                    
-                                    else                     
-                                        $d = "none";                    
+                                     {
+                                        $d = "inline";
+                                        $d1 = "none";
+                                    }                                        
+                                    else
+                                    {
+                                        $d = "none";
+                                        $d1 = "inline";
+                                    }                       
                                 ?>                                
                                 </div>
                             </td>
                             <td style="border:1px solid #dadada;border-left:0">
+                                <p id="VerImagennn_label" style="display:<?php echo $d1; ?>">La escritura pueder ser de formato: <b>doc, docx, rtf, pdf</b></p>
                                 <a target="_blank" href="archivos/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Escritura</a>
                             </td>
                         </tr>
@@ -388,9 +407,9 @@ $(function() {
                         <div id="box-contenido">   
                         <label class="TituloMant" id="text_tipo">Otorgante: </label>                  
                         <input type="hidden" id="IdParticipante" />
-                        <input type="text" class="inputtext" style="width:100px; text-transform:uppercase; font-size:12px" name="DocParticipante" id="DocParticipante" value="" onkeypress="CambiarFoco(event, 'Participante');"/>
+                        <input type="text" class="inputtext" style="width:100px; text-transform:uppercase; font-size:12px" name="DocParticipante" id="DocParticipante" value="" onkeypress="CambiarFoco(event, 'Participante');" placeholder="DNI / RUC"/>
                         <input type="hidden" id="Documento" name="Documento" />
-                        <input type="text" class="inputtext" style="width:280px; text-transform:uppercase; font-size:12px" name="Participante" id="Participante" value="" onkeypress="CambiarFoco(event, 'Cantidad');"/>&nbsp;
+                        <input type="text" class="inputtext" style="width:280px; text-transform:uppercase; font-size:12px" name="Participante" id="Participante" value="" onkeypress="CambiarFoco(event, 'Cantidad');" placeholder="Nombres / Razon Social" />&nbsp;
                         <img src="../../imagenes/adduser.png" width="20" style="cursor:pointer;" onclick="NuevoParticipante('');" title="Agregar nuevo cliente"/>                                                                        
                         <span style="background:#FFFDC5; padding:2px 2px; border:1px dotted #666">
                             <label class="TituloMant" for="conyuge">Conyuge</label>
@@ -548,7 +567,7 @@ $(function() {
             <td><input type="text"  align="left" class="inputtext" style="font-size:12px; width:350px; text-transform:uppercase;" name="0form1_motivo" id="Motivo" value="<?php echo $row[24];?>" <?php echo $Enabled;?> /></td>
           </tr>
           <tr>
-            <td class="TituloMant">V&iacute;a :</td>
+           <td class="TituloMant">V&iacute;a :</td>
             <td><select name="0form1_via" id="Via">
               <option value="AEREA" <?php if ($row[25]=='AEREA') { echo "selected='selected'";}?>>AEREA</option>
               <option value="TERRESTRE" <?php if ($row[25]=='TERRESTRE') { echo "selected='selected'";}?>>TERRESTRE</option>
