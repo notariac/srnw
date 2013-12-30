@@ -1,7 +1,8 @@
 <?php 
     include('../config.php');
     include('func.php');
-    include('../libs/num2letra.php');
+    //include('../libs/num2letra.php');
+    include("num2letraK.php");  
 
     $dia = str_pad(date('d'),2,'0',0);
     $mes = str_pad(date('m'),2,'0',0);
@@ -33,6 +34,15 @@
                where k.idkardex = ".$Id;
       $q = $Conn->Query($sql);
       $r = $Conn->FetchArray($q);
+
+      $Escritura  = CantidadEnLetra($r['escritura']);
+      $EscrituraFecha = $Conn->DecFecha($r['escritura_fecha']);
+      $DiaL           = CantidadEnLetra((int)substr($r['escritura_fecha'], 8, 2));
+      $MesL           = $meses[(int)substr($r['escritura_fecha'], 5, 2)-1];
+      $AnioL          = CantidadEnLetra((int)substr($r['escritura_fecha'], 0, 4));     
+      $IdServicio     = $r['idservicio'];
+
+
       $flag = false;
       $finalizado = $r['finalizado'];
       $msg = "";
@@ -73,32 +83,55 @@
         $plantilla = stripSlash($plantilla);
       }
 
-    $s = "SELECT  c.nombres||' '||coalesce(c.ape_paterno,'')||' '||coalesce(c.ap_materno,'') as nombres,
-                  p.descripcion,
-                  c.dni_ruc,
-                  doc.descripcion as documento,
-                  c.direccion,
-                  c.fecha_nac,
-                  case c.idubigeo when '000000' then 'Distrito' else distrito.descripcion end as distrito,
-                  case c.idubigeo when '000000' then 'Provincia' else  provincia.descripcion end as provincia,
-                  case c.idubigeo when '000000' then 'Departamento' else departamento.descripcion end as departamento
-                FROM kardex_participantes  as kp 
-                  inner join cliente as c on c.idcliente = kp.idparticipante 
-                  inner join participacion as p on p.idparticipacion = kp.idparticipacion 
-                  inner join documento as doc on doc.iddocumento = c.iddocumento
-                  inner join ubigeo as distrito on distrito.idubigeo = c.idubigeo
-                  inner join ubigeo as provincia on provincia.idubigeo = substr(c.idubigeo,1,4)||'00'
-                  inner join ubigeo as departamento on departamento.idubigeo = substr(c.idubigeo,1,2)||'0000'
-          where kp.idkardex = ".$Id;    
+    $s = "SELECT 
+                kardex_participantes.idkardex, 
+                documento.descripcion as documento, 
+                kardex_participantes.idparticipante, 
+                cliente.dni_ruc, 
+                cliente.nombres||' '||coalesce(cliente.ape_paterno,' ')||' '||coalesce(cliente.ap_materno,' ') as nombres, 
+                kardex_participantes.idparticipacion, 
+                participacion.descripcion as participacion,
+                kardex_participantes.porcentage,
+                coalesce(kardex_participantes.idrepresentado,0) as idrepresentado, 
+                kardex_participantes.tipo,
+                kardex_participantes.conyuge,
+                kardex_participantes.porcentage,
+                kardex_participantes.partida,
+                kardex_participantes.idzona,
+                zr.zona as zona,
+                cliente.direccion,
+                cliente.fecha_nac,
+                case cliente.idubigeo when '000000' then 'Distrito' else distrito.descripcion end as distrito,
+                case cliente.idubigeo when '000000' then 'Provincia' else  provincia.descripcion end as provincia,
+                case cliente.idubigeo when '000000' then 'Departamento' else departamento.descripcion end as departamento,
+                ec.descripcion as estado_civil,
+                cliente.sexo,
+                cliente.nacionalidad,
+                cliente.pais,                
+                case cliente.idprofesion when 999 then cliente.otra_profesion else pro.descripcion end as ocupacion,
+                cliente.idcliente_tipo
+                FROM cliente INNER JOIN kardex_participantes ON (cliente.idcliente = kardex_participantes.idparticipante) 
+                INNER JOIN participacion ON (kardex_participantes.idparticipacion = participacion.idparticipacion) 
+                INNER JOIN documento ON (cliente.iddocumento = documento.iddocumento) 
+                inner join ubigeo as distrito on distrito.idubigeo = cliente.idubigeo
+                inner join ubigeo as provincia on provincia.idubigeo = substr(cliente.idubigeo,1,4)||'00'
+                inner join ubigeo as departamento on departamento.idubigeo = substr(cliente.idubigeo,1,2)||'0000'
+                inner join estado_civil as ec on ec.idestado_civil = cliente.idestado_civil
+                inner join ro.profesion as pro on pro.idprofesion = cliente.idprofesion
+                left outer join ro.zona_registral as zr on zr.idzona = kardex_participantes.idzona 
+                where kardex_participantes.idkardex = ".$Id." order by tipo";     
     
     $qp = $Conn->Query($s);    
     $par = array();
     $participacion = "";
     $cont = 1;    
     $lastp = "";
+
+    $data = array();
+
     while($p = $Conn->FetchArray($qp))
     {                
-          $pp = strtolower(trim(str_replace(" ","", $p[1])));
+          $pp = strtolower(trim(str_replace(" ","", $p['participacion'])));
           if($pp==$participacion)
           {
               $cont = $cont+1;            
@@ -106,20 +139,107 @@
           }
           $pp = $pp.$cont;        
           $par[] = array(
-                          'nombres'=>fupper(strtolower($p[0])),   //Nombre 
+                          'nombres'=>$p['nombres'],   //Nombre 
                           'participacion'=>$pp,                   //Participacion
-                          'd'.$pp=>$p[2],                         //Nro de Documento
-			                    'td'.$pp=>$p[3],                        //Tipo de Documento
-			                    'dir'.$pp=>$p[4],                       //Direccion
-			                    'edad'.$pp=>calcular_edad($p[5]),       //Edad
-                          'fecha_nac'.$pp=>$p[5],                 //Fecha de Nacimiento
+                          'd'.$pp=>$p['dni_ruc'],                         //Nro de Documento
+                          'td'.$pp=>$p['documento'],                        //Tipo de Documento
+                          'dir'.$pp=>$p['direccion'],                       //Direccion
+                          'edad'.$pp=>calcular_edad($p['fecha_nac']),       //Edad
+                          'fecha_nac'.$pp=>$p['fecha_nac'],                 //Fecha de Nacimiento
                           'distrito'.$pp=>$p['distrito'],
                           'provincia'.$pp=>$p['provincia'],
-                          'departamento'.$pp=>$p['departamento']
+                          'departamento'.$pp=>$p['departamento'],
+                          'estado_civil'.$pp=>$p['estado_civil']
                          );
+          $data[] = array('idparticipante'=>$p['idparticipante'],
+                          'participante'=>$p['nombres'],
+                          'documento'=>$p['documento'],
+                          'nrodocumento'=>$p['dni_ruc'],
+                          'idparticipacion'=>$p['idparticipacion'],
+                          'participacion'=>$p['participacion'],
+                          'tipo'=> $p['tipo'],
+                          'idrepresentado'=>$p['idrepresentado'],
+                          'conyuge'=>values($p['conyuge']),
+                          'porcentage'=>$p['porcentage'],
+                          'partida'=>$p['partida'],
+                          'idzona'=>$p['idzona'],
+                          'zona'=>$p['zona'],
+                          'distrito'=>$p['distrito'],
+                          'provincia'=>$p['provincia'],
+                          'departamento'=>$p['departamento'],
+                          'estado_civil'=>$p['estado_civil'],
+                          'dir'=>$p['direccion'],                       //Direccion
+                          'edad'=>calcular_edad($p['fecha_nac']),       //Edad
+                          'fecha_nac'=>$p['fecha_nac'],
+                          'sexo'=>$p['sexo'],
+                          'nacionalidad'=>$p['nacionalidad'],
+                          'pais'=>$p['pais'],
+                          'ocupacion'=>$p['ocupacion'],
+                          'idcliente_tipo'=>$p['idcliente_tipo'],
+                          'es_conyuge'=>0,
+                          'fecha_nac'=>$p['fecha_nac']
+          );
+            if($p['conyuge']!="")
+            {
+              $s = "SELECT cliente.idcliente,
+                           cliente.dni_ruc, 
+                           cliente.nombres||' '||coalesce(cliente.ape_paterno,' ')||' '||coalesce(cliente.ap_materno,' ') as nombres, 
+                           documento.descripcion as documento,
+                           cliente.direccion,
+                           cliente.fecha_nac,
+                           case cliente.idubigeo when '000000' then 'Distrito' else distrito.descripcion end as distrito,
+                           case cliente.idubigeo when '000000' then 'Provincia' else  provincia.descripcion end as provincia,
+                           case cliente.idubigeo when '000000' then 'Departamento' else departamento.descripcion end as departamento,
+                           'CASADA' as estado_civil,
+                           cliente.sexo,
+                           cliente.nacionalidad,
+                           cliente.pais,
+                           case cliente.idprofesion when 999 then cliente.otra_profesion else pro.descripcion end as ocupacion
+                     from cliente 
+                        INNER JOIN documento ON cliente.iddocumento = documento.iddocumento 
+                        inner join ubigeo as distrito on distrito.idubigeo = cliente.idubigeo
+                        inner join ubigeo as provincia on provincia.idubigeo = substr(cliente.idubigeo,1,4)||'00'
+                        inner join ubigeo as departamento on departamento.idubigeo = substr(cliente.idubigeo,1,2)||'0000'
+                        inner join estado_civil as ec on ec.idestado_civil = cliente.idestado_civil
+                        inner join ro.profesion as pro on pro.idprofesion = cliente.idprofesion
+                     where idcliente = ".$p['conyuge'];
+                  $q = $Conn->Query($s);
+                  while($rrr = $Conn->FetchArray($q))
+                  {
+                    $data[] = array('idparticipante'=>$rrr['idcliente'],
+                        'participante'=>$rrr['nombres'],
+                        'documento'=>$rrr['documento'],
+                        'nrodocumento'=>$p['dni_ruc'],
+                        'idparticipacion'=>$p['idparticipacion'],
+                        'participacion'=>$p['participacion'],
+                        'tipo'=> $p['tipo'],
+                        'idrepresentado'=>'NULL',
+                        'conyuge'=>'NULL',
+                        'porcentage'=>$p['porcentage'],
+                        'partida'=>'',
+                        'idzona'=>'',
+                        'zona'=>'',
+                        'distrito'=>$rrr['distrito'],
+                        'provincia'=>$rrr['provincia'],
+                        'departamento'=>$rrr['departamento'],
+                        'estado_civil'=>$rrr['estado_civil'],
+                        'dir'=>$rrr['direccion'],                       //Direccion
+                        'edad'=>calcular_edad($rrr['fecha_nac']),       //Edad
+                        'fecha_nac'=>$rrr['fecha_nac'],
+                        'sexo'=>$rrr['sexo'],
+                        'nacionalidad'=>$p['nacionalidad'],
+                        'pais'=>$p['pais'],
+                        'ocupacion'=>$rrr['ocupacion'],
+                        'idcliente_tipo'=>1,
+                        'es_conyuge'=>1,
+                        'fecha_nac'=>$p['fecha_nac']
+                        );
+                  }
+            }
+          
       }
     }
-    //print_r($par);
+    
     function seachp($name,$par)
     {
         $flag = false;
@@ -276,6 +396,56 @@ tinymce.init({
              $plantilla = str_replace("%mes%", $mes, $plantilla);
              $plantilla = str_replace("%anio%", $anio, $plantilla);
 
+             
+             $plantilla = str_replace("%dial%", validValur(trim($DiaL)), $plantilla);
+             $plantilla = str_replace("%mesl%", validValur(trim($MesL)), $plantilla);
+             $plantilla = str_replace("%aniol%", validValur(trim($AnioL)), $plantilla);
+             $plantilla = str_replace("%diam%", validValur(trim($DiaM)), $plantilla);
+             $plantilla = str_replace("%mesm%", validValur(trim($MesM)), $plantilla);
+             $plantilla = str_replace("%aniom%", validValur(trim($AnioM)), $plantilla);
+
+             $plantilla = str_replace("%fojai%", validValur($FojaI), $plantilla);
+             $plantilla = str_replace("%fojaf%", validValur($FojaF), $plantilla);
+             $plantilla = str_replace("%seriei%", validValur($SerieI), $plantilla);
+             $plantilla = str_replace("%serief%", validValur($SerieF), $plantilla);  
+             $plantilla = str_replace("%desc_bien%", validValur($descripcion), $plantilla);
+             $monto_letra = CantidadEnLetraP($monto);
+             $plantilla = str_replace("%monto_letra%", $monto_letra, $plantilla);
+             $plantilla = str_replace("%monto%", number_format($monto,2), $plantilla);
+
+             $part =  participantes($data,$IdServicio);
+             $plantilla = str_replace("%participantes%", $part,$plantilla);
+             $part =  verOtorgantes($data);
+             $plantilla = str_replace("%otorgantes%", $part,$plantilla);
+             $part =  verFavorecidos($data);
+             $plantilla = str_replace("%favorecidos%", $part,$plantilla);
+             $part =  verIntervinientes($data);
+             $plantilla = str_replace("%intervinientes%", $part,$plantilla);
+             $part =  participantes_firma($data);
+             $plantilla = str_replace("%participantes_firma%", $part,$plantilla);
+
+
+              //********************
+              //**Casos especiales**
+              //********************
+              //Para plantillas vehiculares
+                $plantilla = str_replace("%cuerpovehiculo%", $cuerpoVehiculo, $plantilla);          
+
+              //Participantes para autorizaciones de viajes 
+                $txt = participantes_v($data,$IdServicio);
+                $plantilla = str_replace("%participantes_v%", $txt, $plantilla);   
+
+              //Datos del menor, para autorizaciones de viajes
+                $txt = datos_menor($data);
+                $plantilla = str_replace("%datos_menor%", $txt, $plantilla); 
+
+              //
+              $part_firma = participantes_firma_v($data);
+              $plantilla = str_replace("%participantes_firma_v%", $part_firma, $plantilla);  
+
+
+
+
              //Fecha de Salida (Viaje) 
              $f = explode("-",$r['fecha_salida']);
              $fechas = $f[2]." de ".$meses[(int)$f[1]-1]." del ".$f[0];
@@ -285,26 +455,26 @@ tinymce.init({
 
 	           $plantilla = str_replace("%fecha_salida%",$fechas,$plantilla);
              $plantilla = str_replace("%fecha_retorno%",$fechar,$plantilla);
-
+            // print_r($par);
              foreach ($par as $key => $value) 
              {   
-	        $participacion = $value['participacion'];
+	              $participacion = $value['participacion'];
                 if($value['participacion']=="madre1"||$value['participacion']=="tutor1")
-                {
+                {                          
                    $bval = seachp("padre1",$par);
                    if(!$bval)                   
-                      $participacion = "padre1";                      			                      		   
-		   //die($participacion);
+                      $participacion = "padre1";                                                               
                 }
                 $plantilla = str_replace("%".$participacion."%", fupper(utf8_decode($value['nombres'])), $plantilla);
-                $plantilla = str_replace("%d".$participacion."%", $value['d'.$value['participacion']], $plantilla);		  
- 		$plantilla = str_replace("%td".$participacion."%", fupper($value['td'.$value['participacion']]), $plantilla);
+                $plantilla = str_replace("%d".$participacion."%", fupper($value['d'.$value['participacion']]), $plantilla);     
+                $plantilla = str_replace("%td".$participacion."%", fupper($value['td'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%dir".$participacion."%", fupper(utf8_decode($value['dir'.$value['participacion']])), $plantilla);                   
                 $plantilla = str_replace("%edad_text".$participacion."%", fupper(num2letra($value['edad'.$value['participacion']])), $plantilla);
-                $plantilla = str_replace("%edad".$participacion."%", $value['edad'.$value['participacion']], $plantilla);
+                $plantilla = str_replace("%edad".$participacion."%", fupper($value['edad'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%distrito".$participacion."%", fupper($value['distrito'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%provincia".$participacion."%", fupper($value['provincia'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%departamento".$participacion."%", fupper($value['departamento'.$value['participacion']]), $plantilla);
+                $plantilla = str_replace("%estado_civil".$participacion."%", fupper($value['estado_civil'.$value['participacion']]), $plantilla);
               }
          }
          echo $plantilla;
