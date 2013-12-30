@@ -206,7 +206,7 @@ $('#existe').click(function()
             }).data( "autocomplete" )._renderItem = function( ul, item ) {                
                 return $( "<li></li>" )
                     .data( "item.autocomplete", item )
-                    .append( "<a style='font-size:11px'>"+ item.descripcion+" - <b>"+item.precio+"</b></a>")
+                    .append( "<a style='font-size:11px'>("+item.abreviatura+") "+ item.descripcion+" - <b>"+item.precio+"</b></a>")
                     .appendTo( ul );
             };
 

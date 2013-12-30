@@ -279,6 +279,7 @@ function Imprimir(Id){
     Imprimir2('imprimir.php?IdKardex=' + Id);
 }	
 function Imprimir2(Url){
+    
     var ventana=window.open(Url,'Generacion', 'width=600, height=350, resizable=yes, scrollbars=yes');ventana.focus();
 }
 </script>

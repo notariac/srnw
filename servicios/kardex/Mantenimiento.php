@@ -367,7 +367,7 @@ $(function() {
                             </td>
                             <td style="border:1px solid #dadada; border-left:0">
                                 <p id="VerImagennnm_label" style="display:<?php echo $d1; ?>">La minuta debe ser formato: <b>rtf</b></p>
-                                <a target="_blank" href="minutas/<?php echo $row['archivom'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Minuta</a>
+                                <a target="_blank" href="minutas/<?php echo $_SESSION['notaria'] ?>/<?php echo $row['archivom'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Minuta</a>
                             </td>
                             <td style="width:150px;border:1px solid #dadada;border-left:0" align="center">
                                 <div style="display:inline-block; ">
@@ -390,7 +390,7 @@ $(function() {
                             </td>
                             <td style="border:1px solid #dadada;border-left:0">
                                 <p id="VerImagennn_label" style="display:<?php echo $d1; ?>">La escritura pueder ser de formato: <b>doc, docx, rtf, pdf</b></p>
-                                <a target="_blank" href="archivos/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Escritura</a>
+                                <a target="_blank" href="archivos/<?php echo $_SESSION['notaria']; ?>/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Escritura</a>
                             </td>
                         </tr>
                     </table>                

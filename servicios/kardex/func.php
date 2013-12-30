@@ -103,14 +103,20 @@ function participantes($participantes,$idservicio)
           }
           if($f)
           {
+
+            
             if($last_tipo != $v['tipo'])        
-              {
-                $last_tipo = $v['tipo'];
-                $c = 0;
-              }
+            {
+              $last_tipo = $v['tipo'];
+              $c = 0;
+            }
 
             if($v['tipo']==2 && $c==0)
-              $html .= "DE OTRA PARTE ";
+            {                
+
+                $html .= "DE OTRA PARTE ";
+            }
+              
 
             if($v['sexo']=="M")
                $html .= "DON {\\qj\\b\\fs22 ";
@@ -124,7 +130,7 @@ function participantes($participantes,$idservicio)
               //Si es Natural
                 $html .= ", QUIEN MANIFIESTA SER DE NACIONALIDAD ";
                 $html .= "{\\b ".genero("PERUANO",$v['sexo']).", }";
-                $html .= utf8_decode(OCUPACIÓN)." {\\b".validValur($v['ocupacion'])." }, ";
+                $html .= utf8_decode(OCUPACIÓN)." {\\b ".validValur($v['ocupacion'])." }, ";
                 //Obtenemos si tiene algun representante
                 $repre = getRepresentante($v['idparticipante'],$participantes);
                 $html .= $repre;
@@ -133,23 +139,58 @@ function participantes($participantes,$idservicio)
                 if((int)$v['conyuge']>0)
                   $html .= "CON ".getConyuge($participantes,$v['conyuge']);
 
-                $html .= ", CON DOMICILIO EN ".utf8_decode(validValur($v['dir'])).", ";
-                $html .= "DISTRITO DE ".utf8_decode(validValur($v['distrito'])).", ";
-                $html .= "PROVINCIA DE ".utf8_decode(validValur($v['provincia'])).", ";
-                $html .= "DEPARTAMENTO DE ".utf8_decode(validValur($v['departamento'])).". \\par ";
+                $html .= ", CON DOMICILIO EN ".validValur($v['dir']).", ";
+                $html .= "DISTRITO DE ".validValur($v['distrito']).", ";
+                $html .= "PROVINCIA DE ".validValur($v['provincia']).", ";
+                $html .= "DEPARTAMENTO DE ".validValur($v['departamento']);
 
             }
             else
             {
               //Si es juridica
-              $html .= ", CON DOMICILIO EN ".utf8_decode(validValur($v['dir'])).", ";
-              $html .= "DISTRITO DE ".utf8_decode(validValur($v['distrito'])).", ";
-              $html .= "PROVINCIA DE ".utf8_decode(validValur($v['provincia'])).", ";
-              $html .= "DEPARTAMENTO DE ".utf8_decode(validValur($v['departamento'])).", ";
+              $html .= ", CON DOMICILIO EN ".validValur($v['dir']).", ";
+              $html .= "DISTRITO DE ".validValur($v['distrito']).", ";
+              $html .= "PROVINCIA DE ".validValur($v['provincia']).", ";
+              $html .= "DEPARTAMENTO DE ".validValur($v['departamento']).", ";
               $repre = getRepresentante($v['idparticipante'],$participantes);
               $html .= $repre;
-
             }
+            if($idservicio==96)
+            {
+                if($v['tipo']==1)
+                {
+                   $numero_participantes = nOtorgantes($participantes);
+                   if($numero_participantes>1)                   
+                     { $denominacion = '"LOS VENDEDORES"'; }
+                   else
+                     {
+                        if($v['sexo']=="M")
+                            $denominacion = '"EL VENDEDOR"';
+                        else
+                            $denominacion = '"LA VENDEDORA"';
+                     }                                        
+                }
+                if($v['tipo']==2)
+                {
+                   $numero_participantes = nAfavor($participantes);
+                   if($numero_participantes>1)                   
+                     { $denominacion = '"LOS COMPRADORES"'; }
+                   else
+                     {
+                        if($v['sexo']=="M")
+                            $denominacion = '"EL COMPRADOR"';
+                        else
+                            $denominacion = '"LA COMPRADORA"';
+                     }                                        
+                }
+
+                $len = strlen($denominacion);
+                $len -= 2;
+
+                if(($c+1)==$numero_participantes)
+                    $html .= '{\\b\\par A QUIEN SE DENOMINARA '.$denominacion.'}============= \\par ';
+            }
+
             $c += 1;
           }
         }
@@ -472,16 +513,16 @@ function verIntervinientes($participantes)
 function cuerpoVehiculo($v)
 {
     $html = "";    
-    $html .= "{\\qj\\fs22 PLACA DE RODAJE ".utf8_decode(N°)." ".$v[12].".- ";
-    $html .= "CLASE: ".$v[0].".- ";
-    $html .= utf8_decode(AÑO).": ".$v[2].".- ";
-    $html .= "MARCA: ".$v[1].".- ";
-    $html .= "SERIE ".utf8_decode(N°).": ".$v[7].".- ";
-    $html .= "MOTOR ".utf8_decode(N°).": ".$v[5].".- ";
-    $html .= "MODELO: ".$v[3].".- ";
-    $html .= "CARROCERIA: ".$v[11].".- ";
-    $html .= "COLOR: ".$v[4].".- ";
-    $html .= utf8_decode(N°)." RUEDAS: ".$v[8].". }\\par";    
+    $html .= "{\\qj\\fs22 PLACA DE RODAJE ".utf8_decode(N°).": \b ".$v[12].".} \\par";
+    $html .= "{\\qj\\fs22 CLASE: \b ".$v[0].".} \\par";
+    $html .= "{\\qj\\fs22 ".utf8_decode(AÑO).": \b ".$v[2].".} \\par ";
+    $html .= "{\\qj\\fs22 MARCA: \b ".$v[1].". } \\par";
+    $html .= "{\\qj\\fs22 SERIE ".utf8_decode(N°).": \b ".$v[7].".} \\par";
+    $html .= "{\\qj\\fs22 MOTOR ".utf8_decode(N°).": \b ".$v[5].".} \\par";
+    $html .= "{\\qj\\fs22 MODELO: \b ".$v[3].".} \\par ";
+    $html .= "{\\qj\\fs22 CARROCERIA: \b ".$v[11].".} \\par";
+    $html .= "{\\qj\\fs22 COLOR: \b ".$v[4].".} \\par ";
+    $html .= "{\\qj\\fs22 ".utf8_decode(N°)." RUEDAS: \b ".$v[8].". } \\par";    
     return $html;    
 }
 
@@ -530,5 +571,14 @@ function validValur($v)
      return "<<Campo-sin-valor>>";
     else
      return trim(utf8_decode($v));
+}
+
+function fill_lines($text,$n,$n_max)
+{
+    $str = "";
+    for($i=0;$i<=$n;$i++)
+    {
+      $str .= "=";
+    }
 }
 ?>

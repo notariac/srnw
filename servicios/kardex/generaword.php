@@ -21,7 +21,6 @@ function Completar($Str, $Agr)
     }
     return $Str;
 }	
-
 function Generartf($IdKardex)
 {	
         include("../../config.php");        
@@ -274,8 +273,9 @@ function Generartf($IdKardex)
         $SQL            = "SELECT descripcion FROM ubigeo WHERE idubigeo LIKE '".substr($UbigeoN,0,2)."0000'";
         $ConsultaUN 	= $Conn->Query($SQL);
         $rowUN 		= $Conn->FetchArray($ConsultaUN);
-        $DepartamentoN	= $rowUN[0];		
-        $Destino = "archivos/".$_SESSION['notaria']."/".$Kardex.".rtf";		
+        $DepartamentoN	= $rowUN[0];
+
+        $Destino = "archivos/".$_SESSION['notaria']."/".$Kardex.".doc";		
         $Plantilla 	= "plantillas/".$_SESSION['notaria']."/plantilla-".$IdServicio.".rtf";
 
         if(!file_exists($Plantilla))
@@ -387,6 +387,7 @@ function Generartf($IdKardex)
         $saltopag="\par \page \par";
         fputs($punt, $saltopag);		
         fputs($punt, "}");
+        chmod($Destino, 0777);     
         fclose($punt);		
         return $Destino;
 }
@@ -406,9 +407,9 @@ function Generartf($IdKardex)
   </tr>
   <tr>
     <td>
-<?php
-$salida = Generartf($IdKardex);
-?>
+  <?php
+    $salida = Generartf($IdKardex);    
+  ?>
     <input type="hidden" name="RutaArchivo" id="RutaArchivo" value="<?php echo $salida;?>"/></td>
   </tr>
 </table>
