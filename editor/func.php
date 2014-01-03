@@ -540,7 +540,7 @@ function nAfavor($p)
 function validValur($v)
 {
     if(trim($v)=="")
-     return "<<Campo-sin-valor>>";
+     return "[Campo-sin-valor]";
     else
      return trim(fupper(utf8_decode($v)));
 }
