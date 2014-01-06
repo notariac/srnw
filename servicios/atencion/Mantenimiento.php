@@ -285,7 +285,7 @@ $('#existe').click(function()
   function AgregaD(evt){
     var keyPressed = (evt.which) ? evt.which : event.keyCode
     if (keyPressed==13){
-      AgregaServicio();
+      AgregaServicio(); 
       event.returnValue = false;
     }
   }
