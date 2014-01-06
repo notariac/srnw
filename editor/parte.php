@@ -17,9 +17,16 @@
     {
         if($r['digital']!="")
         {
+
+            $r['digital'] = str_replace('“', '"', $r['digital']);
+            $r['digital'] = str_replace('”', '"', $r['digital']);
+            $r['digital'] = str_replace('–', '-', $r['digital']);
+
+            $r['digital'] = str_replace('?', '"', $r['digital']);
+
             $plantilla = stripSlash(html_entity_decode($r['digital']));       
             $plantilla = str_replace('"Times New Roman"',"'Times New Roman'",$plantilla);
-	       $plantilla = utf8_decode($plantilla);
+	        $plantilla = utf8_decode($plantilla);
         }
         else 
         {
