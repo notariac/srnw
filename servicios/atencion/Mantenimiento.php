@@ -77,7 +77,7 @@ $ArrayP = array(NULL);
     $('.img-quit').live('click',function(){
          $(this).parent().parent().remove();         
          NumerarC();
-    })
+    });
     $("#newCliente").click(function()
     {
         $("#dnewCliente").load('../../parametros/cliente/MantenimientoA.php',function(){            

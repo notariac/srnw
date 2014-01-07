@@ -118,31 +118,36 @@ if (!$Consulta)
     $consultaDELETE=$Conn->Query($SQLDELETEBIEN);
     $ContBienes = $_POST["ConBienes"];
     for ($i=1; $i<=$ContBienes; $i++){			
-        if (isset($_POST["0formB".$i."_idkardex"])){	
-            $nPost = array();
-            $FormN = "formB".$i;
-            foreach ($_POST as $key => $value) {
-                if(stripos($key, $FormN.'_')){
-                    $nPost[$key]=$value;
-                    if ($key=='0formB'.$i.'_idkardex'){
-                        $nPost[$key] = $_POST['1form1_idkardex'];
+        if (isset($_POST["0formB".$i."_idkardex"]))
+            {	
+                $nPost = array();
+                $FormN = "formB".$i;
+                foreach ($_POST as $key => $value) 
+                {
+                    if(stripos($key, $FormN.'_'))
+                    {
+                        $nPost[$key]=$value;
+                        if ($key=='0formB'.$i.'_idkardex')
+                        {
+                            $nPost[$key] = $_POST['1form1_idkardex'];
+                        }
                     }
                 }
-            }
-            $mantem    = new dbMantimiento($Conn->GetConexion());
-            //echo "<pre>";
-            //print_r($nPost);
-            //echo "</pre>";
-            $Sql2      = $mantem->__dbMantenimiento($nPost, $FormN, "kardex_bien", 0);	//Se genera la sentencia SQL de acuerdo a la operación
-            $Consulta2 = $Conn->Query($Sql2);
-            if(!$Consulta2){
-                $Conn->TerminarTransaccion("ROLLBACK");
-                $Res=2;
-                $Mensaje ="Error al intentar ".$Accion[$Op]." los Datos del Bien .<br/>Detalle de Error:".$Sql2;
-                $i=$ContBienes;
-            }
+                $mantem    = new dbMantimiento($Conn->GetConexion());
+                //echo "<pre>";
+                //print_r($nPost);
+                //echo "</pre>";
+                $Sql2      = $mantem->__dbMantenimiento($nPost, $FormN, "kardex_bien", 0);	//Se genera la sentencia SQL de acuerdo a la operación
+                $Consulta2 = $Conn->Query($Sql2);
+                if(!$Consulta2)
+                {
+                    $Conn->TerminarTransaccion("ROLLBACK");
+                    $Res=2;
+                    $Mensaje ="Error al intentar ".$Accion[$Op]." los Datos del Bien .<br/>Detalle de Error:".$Sql2;
+                    $i=$ContBienes;
+                }
             
-        }
+            }
     }
     if ($_POST['0form1_firmado']==1){
         $mantem = new dbMantimiento($Conn->GetConexion());

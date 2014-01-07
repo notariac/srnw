@@ -975,28 +975,41 @@ $(function() {
                             </fieldset>
                         </fieldset>
                     </div>
+                    <style type="text/css">
+                        .tr-head td { background: #333; color: #FFF; text-align: center; font-weight: bold; text-shadow: 1px 2px 1px #000;}
+                        .tr-body td { background: #FAFAFA; color: #333; text-shadow: .5px 1px .5px #fafafa;}
+                    </style>
                         <fieldset class="ui-widget-content ui-corner-all">
                             <legend class="ui-widget-header ui-corner-all">Listado de Bienes Asociados a la Operacion</legend>
-                            <div style="float: right;width: 90px;">
-                                <button id="nuevoBien">Nuevo</button>
-                                <button id="updateBien">Modificar</button>
-                                <button id="deleteBien">Eliminar</button>
+                            <div style="border-bottom:1px dotted #666;">
+                                <div style="float:right;">
+                                    <button id="nuevoBien">Nuevo</button>
+                                    <!-- 
+                                        <button id="updateBien">Modificar</button>
+                                        <button id="deleteBien">Eliminar</button> 
+                                    -->
+                                </div>
+                                <div style="clear:both"></div>
                             </div>
-                            <div  style="width: 620px;overflow: scroll;height: 200px;float: left;">
-                                    <table id="TablaBienes" width="600"  cellspacing="1"   class="TablaData">
-                                    <tr class="ui-widget-header ui-corner-all">
-                                                <td title="Cabecera" width="80" height="20">Tipo Bien</td>
-                                                <td title="Cabecera" width="80">Bienes</td>
-                                                <td title="Cabecera">Registro</th>
-                                                <td title="Cabecera" width="150">N°Serie/Placa/Motor</td>
-                                                <td title="Cabecera" width="150">N°Serie</td>
-                                                <td title="Cabecera" width="150">Origen</td>
-                                                <td title="Cabecera" width="150">Ubicaci&oacute;n Geogr&aacute;fica</td>
-                                                <td title="Cabecera" width="150">Reg. Bien</td>
-                                                <td title="Cabecera" width="150">Nro Partida</td>
-                                                <td title="Cabecera" width="150">Zona</td>
-                                            </tr>  
-                            <?php
+                            <div  style="width: 100%; overflow: hidden;height: 200px;float: left; margin-top:3px;">
+                                <table id="TablaBienes" width="100%"  cellspacing="1"   class="TablaData">
+                                    <thead>
+                                        <tr class="ui-corner-all tr-head">
+                                            <td title="Tipo Bien" width="80" height="20">Tipo Bien</td>
+                                            <td title="Bienes" width="80">Bienes</td>
+                                            <td title="Registro">Registro</th>
+                                            <td title="N°Serie/Placa/Motor" width="150">N°Serie /Placa/Motor</td>
+                                            <td title="N°Serie" width="150">N°Serie</td>
+                                            <td title="Origen" width="150">Origen</td>
+                                            <td title="Ubicaci&oacute;n Geogr&aacute;fica" width="150">Ubicaci&oacute;n Geogr&aacute;fica</td>
+                                            <td title="Reg. Bien" width="150">Reg. Bien</td>
+                                            <td title="Nro Partida" width="150">Nro Partida</td>
+                                            <td title="Zona" width="150">Zona</td>
+                                            <td align="center" title="Quitar Item">[X]</td>
+                                        </tr>  
+                                    </thead>
+                                    <tbody>
+                                    <?php
                                     $NumRegs = 0;
                                     $SQL2 = "SELECT 
                                                   public.kardex_bien.*,
@@ -1012,7 +1025,8 @@ $(function() {
                                     $Sql2 = "SELECT";        
                                     $Consulta2 = $Conn->Query($SQL2);			
                                     $htmlTDS="";
-                                    while($row2 = $Conn->FetchArray($Consulta2)){
+                                    while($row2 = $Conn->FetchArray($Consulta2))
+                                    {
                                             $NumRegs = $NumRegs + 1;				
                                             $tipo_bien=$row2['tipo_bien'];
                                             $tipo_bien_nombre=($tipo_bien=='B')?'BIENES':'Acciones&nbsp;Y&nbsp;Derechos';
@@ -1085,11 +1099,12 @@ $(function() {
                                             $htmlTDS.="<td>".$celda8."</td>";
                                             $htmlTDS.="<td>".$celda9."</td>";
                                             $htmlTDS.="<td>".$celda10."</td>";
+                                            $htmlTDS.="<td><img class='img-quit' src='../../imagenes/iconos/eliminar.png' width='16' height='16' style='cursor:pointer'></td>";
                                             $htmlTDS.="</tr>";
                                 
                                 }
-                                 echo $htmlTDS."</table>";
-                           
+                                
+                                echo $htmlTDS."</tbody></table>";                           
                                 echo "<script> var nDestb = $NumRegs; var nDestCb = $NumRegs; </script>";
                                 ?>
                                 <input type="hidden" name="ConBienes" id="ConBienes" value="<?php echo $NumRegs;?>"/>
@@ -1098,7 +1113,7 @@ $(function() {
                     </div>
                 </div>
             </div>
-        <?php       
+            <?php       
                 }
             } 
         ?>
