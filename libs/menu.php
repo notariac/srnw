@@ -14,7 +14,7 @@
 	$conectar2 	= pg_connect("host=$Servidor2 port=$Puerto2 password=$Password2 user=$Usuario2 dbname=$Base2");
 	if (pg_ErrorMessage($conectar2)) { echo "<p><b>Ocurrio un error conectando a la base de datos: .</b></p>"; exit; }
 	$Sesion = isset($_GET["sesion"])?$_GET["sesion"]:0;
-	if($Sesion==1){$_SESSION["Activo"]=0;$Activo=0;}else{$Activo=$_SESSION["Activo"];}	
+	if($Sesion==1){$_SESSION["Activo"]=0;$Activo=0;}else{$Activo=$_SESSION["Activo"];}
 	$d="";
 ?>
 <script>

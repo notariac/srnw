@@ -62,15 +62,15 @@
 
           $r['digital'] = str_replace('?', '"', $r['digital']);
           
-          $plantilla = stripSlash(html_entity_decode($r['digital']));	
+          $plantilla = stripSlash(html_entity_decode($r['digital']));
           $plantilla = str_replace('"Times New Roman"',"'Times New Roman'",$plantilla);
           $plantilla = str_replace('"times new roman"',"'Times New Roman'",$plantilla);
-  	      $plantilla = utf8_decode($plantilla);        
+  	      $plantilla = utf8_decode($plantilla);
       }
       if($plantilla=="")
       {
-         //Plantilla Limpia
-         $plantilla = '<div id="contenedor" style="background:#dadada;">
+        //Plantilla Limpia
+        $plantilla = '<div id="contenedor" style="background:#dadada;">
                         <div id="box-contenedor" style="width:793px; margin:0 auto; padding:20px 0 50px 0; ">                        
                         <div class="page" style="margin-bottom: 10px;
                                                  box-shadow: 10px 10px 8px #888888;
