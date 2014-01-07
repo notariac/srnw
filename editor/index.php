@@ -56,6 +56,12 @@
       }
       else
       {
+          $r['digital'] = str_replace('“', '"', $r['digital']);
+          $r['digital'] = str_replace('”', '"', $r['digital']);
+          $r['digital'] = str_replace('–', '-', $r['digital']);
+
+          $r['digital'] = str_replace('?', '"', $r['digital']);
+          
           $plantilla = stripSlash(html_entity_decode($r['digital']));	
           $plantilla = str_replace('"Times New Roman"',"'Times New Roman'",$plantilla);
           $plantilla = str_replace('"times new roman"',"'Times New Roman'",$plantilla);
