@@ -69,24 +69,24 @@
       }
       if($plantilla=="")
       {
-        //Plantilla Limpia
-        $plantilla = '<div id="contenedor" style="background:#dadada;">
-                        <div id="box-contenedor" style="width:793px; margin:0 auto; padding:20px 0 50px 0; ">                        
-                        <div class="page" style="margin-bottom: 10px;
-                                                 box-shadow: 10px 10px 8px #888888;
-                                                 width:548px; 
-                                                 min-height: 855px;
-                                                 padding:6px 45px 6px 196px; 
-                                                 background:#FFFFFF;
-                                                 font-size: 14pt;
-                                                 font-family:\"Times New Roman\",arial,Times,serif;">
-                          <div class="write-page" >
-                            <div>&nbsp;</div>
-                          </div>
-                        </div>                          
-                      </div>     
-                    </div>';
-        $plantilla = stripSlash($plantilla);
+          //Plantilla Limpia
+          $plantilla = '<div id="contenedor" style="background:#dadada;">
+                          <div id="box-contenedor" style="width:793px; margin:0 auto; padding:20px 0 50px 0; ">                        
+                          <div class="page" style="margin-bottom: 10px;
+                                                   box-shadow: 10px 10px 8px #888888;
+                                                   width:548px; 
+                                                   min-height: 855px;
+                                                   padding:6px 45px 6px 196px; 
+                                                   background:#FFFFFF;
+                                                   font-size: 14pt;
+                                                   font-family:\"Times New Roman\",arial,Times,serif;">
+                            <div class="write-page" >
+                              <div>&nbsp;</div>
+                            </div>
+                          </div>                          
+                        </div>     
+                      </div>';
+          $plantilla = stripSlash($plantilla);
       }
 
     $s = "SELECT 
