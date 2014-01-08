@@ -215,7 +215,7 @@ function addParticipante()
                    p9 = $("#IdParticipante_c").val();
                    p  = $("#Porcentage").val();
                    if(typeof(p)!="undefined")
-                    {if(flag) p = parseFloat(p)/2;}
+                    { if(flag) p = parseFloat(p)/2; }
                    else { p='';}
 
                    participantes.nuevo(p1,p2,p3,p4,p5,p6,p7,p8,p9,p,'','','');
@@ -297,6 +297,9 @@ $(document).ready(function(){
     $(this).parent().parent().remove();
     nDestx = nDestx - 1;
   });
+  $('.img-quit').live('click',function(){
+         $(this).parent().parent().remove();                  
+    });
   $("#TipoParticipacion").change(function(){
     verifPorcentaje();
     $("#Porcentage").focus();
@@ -958,96 +961,102 @@ function validarFrmBienes()
         Mensaje("Aun no Se ha Seleccionado un Tipo de Bien <br/> Por favor Seleccione Uno","","",function(){
             
         });
-    }else{
+    }
+    else
+    {
         var bval=true;
         bval=bval&&$("#idbien").combo();
-        if(bval){
+        if(bval)
+        {
             AgregarBien();
         }
     }
 }
+function AgregarBien()
+{
+    var tipo_bien=$(".tipo_bien:checked").val();
+    var tipo_bien_nombre=(tipo_bien=='B')?'BIENES':'Acciones&nbsp;Y&nbsp;Derechos';
+    var idbien=$("#idbien").val();
+    var partida = $("#nropartida").val();
+    var idzona = $("#idzona").val();
+    var idbien_nombre = $("#idbien option:selected").html();
+    var tipo_codigoplacas = $(".tipo_codigoplacas:checked").val();
+    var tipo_codigoplacas_nombre = "";
+    var codigosplacas_permitidos = new Array(1,7,9);
+    if(in_array(idbien,codigosplacas_permitidos))
+    {
+        switch(parseInt(tipo_codigoplacas))
+        {
+            case 1:tipo_codigoplacas_nombre="Nº de placa";break;
+            case 2:tipo_codigoplacas_nombre="Nº de serie";break;
+            case 3:tipo_codigoplacas_nombre="Nº de motor";break;
+            default:alert("Ningna de las Opciones Validas:"+tipo_codigoplacas);break;
+        }
+    }            
+    var numero_codigoplacas=$("#numero_codigoplacas").val();
+    var numserie=$("#numserie").val();
+    var descotro=$("#descotro").val();
+    var origen=$(".origen:checked").val();
+    var origen_nombre="";
+    if(origen!=undefined)
+    {
+        origen_nombre=(origen==1)?'NACIONAL':'EXTRANGERO';
+    }
+    else
+    {
+        origen=0;
+    }
+    var ubigeo=$("#ubigeo").val();
+    var ubigeo_nombre="";
+    if(ubigeo!=undefined||ubigeo!=null||ubigeo!="")
+    {
+        if($("#IdDistrito2 option:selected").html()!="SELECCIONE UN DISTRITO")
+        {
+            ubigeo_nombre=$("#IdDistrito2 option:selected").html();
+        }
+    }                
+    var idpais=$("#idpais").val();
+    var idpais_nombre=$("#idpais option:selected").val();
+    var fecha_construccion=$("#fecha_construccion").val();
+    var quitar = '<img class="img-quit" src="../../imagenes/iconos/eliminar.png" width="16" height="16" style="cursor:pointer">';
+    if(fecha_construccion.length<10)fecha_construccion="01/01/1900";            
+    nDestb = nDestb+ 1;
+    nDestCb = nDestCb + 1;
 
-function AgregarBien(){
-            var tipo_bien=$(".tipo_bien:checked").val();
-            var tipo_bien_nombre=(tipo_bien=='B')?'BIENES':'Acciones&nbsp;Y&nbsp;Derechos';
-            var idbien=$("#idbien").val();
-            var partida = $("#nropartida").val();
-            var idzona = $("#idzona").val();
-            var idbien_nombre=$("#idbien option:selected").html();
-            var tipo_codigoplacas=$(".tipo_codigoplacas:checked").val();
-            var tipo_codigoplacas_nombre="";
-            var codigosplacas_permitidos=new Array(1,7,9);
-            if(in_array(idbien,codigosplacas_permitidos))
-            {
-                switch(parseInt(tipo_codigoplacas)){
-                    case 1:tipo_codigoplacas_nombre="Nº de placa";break;
-                    case 2:tipo_codigoplacas_nombre="Nº de serie";break;
-                    case 3:tipo_codigoplacas_nombre="Nº de motor";break;
-                    default:alert("Ningna de las Opciones Validas:"+tipo_codigoplacas);break;
-                }
-            }            
-            var numero_codigoplacas=$("#numero_codigoplacas").val();
-            var numserie=$("#numserie").val();
-            var descotro=$("#descotro").val();
-            var origen=$(".origen:checked").val();
-            var origen_nombre="";
-            if(origen!=undefined){
-                origen_nombre=(origen==1)?'NACIONAL':'EXTRANGERO';
-            }else{
-                origen=0;
-            }
-            var ubigeo=$("#ubigeo").val();
-            var ubigeo_nombre="";
-            if(ubigeo!=undefined||ubigeo!=null||ubigeo!=""){
-                if($("#IdDistrito2 option:selected").html()!="SELECCIONE UN DISTRITO"){
-                    ubigeo_nombre=$("#IdDistrito2 option:selected").html();
-                }
-            }                
-            var idpais=$("#idpais").val();
-            var idpais_nombre=$("#idpais option:selected").val();
-            var fecha_construccion=$("#fecha_construccion").val();
-            if(fecha_construccion.length<10)fecha_construccion="01/01/1900";            
-            nDestb = nDestb+ 1;
-            nDestCb = nDestCb + 1;
+    var $miTabla = $('#TablaBienes tbody');
 
-            var miTabla = document.getElementById('TablaBienes').insertRow(nDestb);
-            var celda1	= miTabla.insertCell(0);
-            var celda2	= miTabla.insertCell(1);
-            var celda3	= miTabla.insertCell(2);
-            var celda4	= miTabla.insertCell(3);
-            var celda5	= miTabla.insertCell(4);		
-            var celda6	= miTabla.insertCell(5);		
-            var celda7	= miTabla.insertCell(6);		
-            var celda8	= miTabla.insertCell(7);
-            var celda9  = miTabla.insertCell(8);
-            var celda10  = miTabla.insertCell(9);
-            var variables_hidden = "";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idkardex' value='"+idKardex+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idbien' value='"+idbien+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_tipo_bien' value='"+tipo_bien+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_tipo_codigoplacas' value='"+tipo_codigoplacas+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_numero_codigoplacas' value='"+numero_codigoplacas+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_numserie' value='"+numserie+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_descotro' value='"+descotro+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_origen' value='"+origen+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_ubigeo' value='"+ubigeo+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idpais' value='"+idpais+"' />";
-            variables_hidden+="<input type='hidden' name='3formB"+nDestCb+"_fecha_construccion' value='"+fecha_construccion+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_nropartida' value='"+partida+"' />";
-            variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idzona' value='"+idzona+"' />";
+    var variables_hidden = "";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idkardex' value='"+idKardex+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idbien' value='"+idbien+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_tipo_bien' value='"+tipo_bien+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_tipo_codigoplacas' value='"+tipo_codigoplacas+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_numero_codigoplacas' value='"+numero_codigoplacas+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_numserie' value='"+numserie+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_descotro' value='"+descotro+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_origen' value='"+origen+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_ubigeo' value='"+ubigeo+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idpais' value='"+idpais+"' />";
+    variables_hidden+="<input type='hidden' name='3formB"+nDestCb+"_fecha_construccion' value='"+fecha_construccion+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_nropartida' value='"+partida+"' />";
+    variables_hidden+="<input type='hidden' name='0formB"+nDestCb+"_idzona' value='"+idzona+"' />";
 
-            celda1.innerHTML = tipo_bien_nombre+" "+variables_hidden;
-            celda2.innerHTML = idbien_nombre;
-            celda3.innerHTML = tipo_codigoplacas_nombre;
-            celda4.innerHTML = numero_codigoplacas;
-            celda5.innerHTML = numserie;
-            celda6.innerHTML = origen_nombre;
-            celda7.innerHTML = ubigeo_nombre;
-            celda8.innerHTML = descotro;
-            celda9.innerHTML = partida;
-            celda10.innerHTML = idzona;
+    
+    html = "<tr class='tr-body'>";
+    html += "<td>"+tipo_bien_nombre+" "+variables_hidden+"</td>";
+    html += "<td>"+idbien_nombre+"</td>";
+    html += "<td>"+tipo_codigoplacas_nombre+"</td>";
+    html += "<td>"+numero_codigoplacas+"</td>";
+    html += "<td>"+numserie+"</td>";
+    html += "<td>"+origen_nombre+"</td>";
+    html += "<td>"+ubigeo_nombre+"</td>";
+    html += "<td>"+descotro+"</td>";
+    html += "<td>"+partida+"</td>";
+    html += "<td>"+idzona+"</td>";
+    html += "<td>"+quitar+"</td>";
+    html += "</tr>";
 
-            $('#ConBienes').val(nDestCb);	
-            $("#formBienes").dialog("close");
+    $miTabla.append(html);
 
+    $('#ConBienes').val(nDestCb);	
+    $("#formBienes").dialog("close");
 }
