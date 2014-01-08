@@ -1164,16 +1164,14 @@ $(function() {
             </td>
     </tr>
         <tr>
-             <td>
-                <label for="IdDistrito">Distrito</label>
+            <td>
+               <label for="IdDistrito">Distrito</label>
             </td>
             <td>
             <div id="DivDistrito">
                 <select name="IdDistrito2" id="IdDistrito2"></select>
             </div>			
             </td>
-      </tr>
-      
-    </table> 
-
+        </tr>
+    </table>
 <div id="dnewCliente"></div>
