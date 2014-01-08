@@ -193,20 +193,20 @@ function participantes($participantes,$idservicio)
 */
 function datos_menor($participantes)
 {
-     $html = '';     
+     $html = genero("hijo",$v['sexo']);     
      foreach($participantes as $k => $v)
      {
        if($v['tipo']==2)
        {
-         if($c>0) $html .= " Y ";        
+         if($c>0) $html .= " y ";        
          $c +=1;
-         $html .= "<b>".validValur(trim($v['participante']))."</b>";
+         $html .= " <b>".validValur(trim($v['participante']))."</b>";
          $html .= " identificado con ".validValur($v['documento'])."  ".utf8_decode(N°)." <b>".validValur($v['nrodocumento'])."</b>";
-         $html .= " con <b>".calcular_edad($v['fecha_nac'])." ".utf8_decode(años)."} de edad.";
+         $html .= " con <b>".calcular_edad($v['fecha_nac'])." ".utf8_decode(años)."</b> de edad";
          
        }
      }
-     return $html;
+     return $html.".";
 }
 
 
@@ -220,7 +220,7 @@ function datos_menor($participantes)
 */
 function participantes_v($participantes,$ids)
 {
-     $html = '';
+     $html = 'Por el presente documento, yo ';
      $c = 0;
      $flag = false;
      foreach($participantes as $k => $v)
@@ -233,9 +233,9 @@ function participantes_v($participantes,$ids)
          else
             $html .= utf8_decode(Doña)." ";            
          $c +=1;
-         $html .= "<b>".trim($v['participante'])."</b>"; 
+         $html .= "<b>".validValur($v['participante'])."</b>"; 
          $html .= " de nacionalidad ";
-         $html .= "<b>".genero("PERUANO",$v['sexo']).", </b>";
+         $html .= "<b>".genero("Peruano",$v['sexo']).", </b>";
          $html .= "identificado con ".validValur($v['documento'])."  ".utf8_decode(N°)." <b>".validValur($v['nrodocumento'])."</b>";
          if($ids==97)
          {
@@ -249,7 +249,7 @@ function participantes_v($participantes,$ids)
               $html .= ", con domicilio en ".utf8_decode(validValur($v['dir'])).", ";
               $html .= "distrito de ".utf8_decode(validValur($v['distrito'])).", ";
               $html .= "provincia de ".utf8_decode(validValur($v['provincia'])).", ";
-              $html .= "departamento de ".utf8_decode(validValur($v['departamento']))." ";
+              $html .= "departamento de ".utf8_decode(validValur($v['departamento']))."";
             }
          }
          else
@@ -257,7 +257,7 @@ function participantes_v($participantes,$ids)
              $html .= ", con domicilio en ".utf8_decode(validValur($v['dir'])).", ";
               $html .= "distrito de ".utf8_decode(validValur($v['distrito'])).", ";
               $html .= "provincia de ".utf8_decode(validValur($v['provincia'])).", ";
-              $html .= "departamento de ".utf8_decode(validValur($v['departamento']))." ";
+              $html .= "departamento de ".utf8_decode(validValur($v['departamento']))."";
          }
          $html .= $repre;
        }
