@@ -1144,24 +1144,24 @@ $(function() {
 <div id="listaUbigeo">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-            <td>
-                <label for="IdDepartamento">Departamento</label>
-            </td>
-            <td>
-            <div id="DivDepartamento">
-                <select name="IdDepartamento2" id="IdDepartamento2"></select>
-            </div>			
-            </td>
+        <td>
+            <label for="IdDepartamento">Departamento</label>
+        </td>
+        <td>
+        <div id="DivDepartamento">
+            <select name="IdDepartamento2" id="IdDepartamento2"></select>
+        </div>			
+        </td>
     </tr>
     <tr>
-            <td>
-                <label for="IdProvincia">Provincia</label>
-            </td>
-            <td>
-            <div id="DivProvincia">
-                <select name="IdProvincia2" id="IdProvincia2"></select>
-            </div>			
-            </td>
+        <td>
+            <label for="IdProvincia">Provincia</label>
+        </td>
+        <td>
+        <div id="DivProvincia">
+            <select name="IdProvincia2" id="IdProvincia2"></select>
+        </div>			
+        </td>
     </tr>
         <tr>
             <td>
