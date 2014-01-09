@@ -14,8 +14,7 @@
 
     $sql = "UPDATE kardex set digital = '".addSlash($_POST['cont'])."' WHERE idkardex = ".$Id;            
 
-    echo $sql;
     $q = $Conn->Query($sql);
     if($q){ echo "1";}      
-	else {echo "Error: ".pg_last_error();}
+	  else {echo "Error: ".pg_last_error();}
 ?>

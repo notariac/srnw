@@ -40,6 +40,11 @@
       $DiaL           = CantidadEnLetra((int)substr($r['escritura_fecha'], 8, 2));
       $MesL           = $meses[(int)substr($r['escritura_fecha'], 5, 2)-1];
       $AnioL          = CantidadEnLetra((int)substr($r['escritura_fecha'], 0, 4));     
+
+      $DiaM = substr($r['escritura_fecha'], 8, 2);
+      $MesM = substr($r['escritura_fecha'], 5, 2);
+      $AnioM = substr($r['escritura_fecha'], 0, 4);
+
       $IdServicio     = $r['idservicio'];
 
 

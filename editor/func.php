@@ -26,13 +26,14 @@ function values($v)
        foreach($t as $v)
        {
          $tam = strlen($v);
-         if($tam>1)
+         if($tam>2)
          {
            $t1 = substr($v,0,1);
            $t2 = substr($v,1,$tam);
            $cad .= strtoupper($t1).strtolower($t2)." ";
          }
-         else {
+         else 
+         {
           $cad .= strtolower($v)." ";
          }
          
@@ -208,8 +209,6 @@ function datos_menor($participantes)
      }
      return $html.".";
 }
-
-
 /*
   Funcion: participantes_v
   Parametros: @p1, @p2        
@@ -227,7 +226,7 @@ function participantes_v($participantes,$ids)
      {
        if($v['tipo']==1&&$v['es_conyuge']==0)
        {
-         if($c>0) $html .= "y ";
+         if($c>0) $html .= " y ";
          if($v['sexo']=="M")                   
             $html .= "Don ";
          else
