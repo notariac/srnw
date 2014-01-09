@@ -475,7 +475,7 @@ tinymce.init({
                 $plantilla = str_replace("%d".$participacion."%", fupper($value['d'.$value['participacion']]), $plantilla);     
                 $plantilla = str_replace("%td".$participacion."%", fupper($value['td'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%dir".$participacion."%", fupper(utf8_decode($value['dir'.$value['participacion']])), $plantilla);                   
-                $plantilla = str_replace("%edad_text".$participacion."%", fupper(num2letra($value['edad'.$value['participacion']])), $plantilla);
+                $plantilla = str_replace("%edad_text".$participacion."%", fupper(CantidadEnLetra($value['edad'.$value['participacion']])), $plantilla);
                 $plantilla = str_replace("%edad".$participacion."%", fupper($value['edad'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%distrito".$participacion."%", fupper($value['distrito'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%provincia".$participacion."%", fupper($value['provincia'.$value['participacion']]), $plantilla);

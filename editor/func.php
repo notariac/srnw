@@ -202,7 +202,7 @@ function datos_menor($participantes)
          $c +=1;
          $html .= " <b>".validValur(trim($v['participante']))."</b>";
          $html .= " identificado con ".validValur($v['documento'])."  ".utf8_decode(N°)." <b>".validValur($v['nrodocumento'])."</b>";
-         $html .= " con <b>".calcular_edad($v['fecha_nac'])." ".utf8_decode(años)."</b> de edad";
+         $html .= " con <b>".calcular_edad($v['fecha_nac'])." (".validValur(CantidadEnLetra(calcular_edad($v['fecha_nac']))).") ".utf8_decode(años)."</b> de edad";
          
        }
      }
@@ -246,7 +246,7 @@ function participantes_v($participantes,$ids)
             }
             else
             {
-              $html .= ", con domicilio en ".utf8_decode(validValur($v['dir'])).", ";
+              $html .= ", con domicilio en el inmueble ubicado en ".utf8_decode(validValur($v['dir'])).", ";
               $html .= "distrito de ".utf8_decode(validValur($v['distrito'])).", ";
               $html .= "provincia de ".utf8_decode(validValur($v['provincia'])).", ";
               $html .= "departamento de ".utf8_decode(validValur($v['departamento']))."";
@@ -254,7 +254,7 @@ function participantes_v($participantes,$ids)
          }
          else
          {
-             $html .= ", con domicilio en ".utf8_decode(validValur($v['dir'])).", ";
+             $html .= ", con domicilio en el inmueble ubicado en ".utf8_decode(validValur($v['dir'])).", ";
               $html .= "distrito de ".utf8_decode(validValur($v['distrito'])).", ";
               $html .= "provincia de ".utf8_decode(validValur($v['provincia'])).", ";
               $html .= "departamento de ".utf8_decode(validValur($v['departamento']))."";
