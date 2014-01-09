@@ -394,9 +394,9 @@ tinymce.init({
              $plantilla = str_replace("%kardex%", $r['correlativo'], $plantilla);
              $plantilla = str_replace("%escritura%", $r['escritura'], $plantilla);
              $plantilla = str_replace("%minuta%", $r['minuta'], $plantilla);
-             $plantilla = str_replace("%ruta%", $r['ruta'], $plantilla);
-             $plantilla = str_replace("%via%", fupper($r['via']), $plantilla);
-             $plantilla = str_replace("%motivo%", fupper($r['motivo']), $plantilla);
+             $plantilla = str_replace("%ruta%", validValur($r['ruta']), $plantilla);
+             $plantilla = str_replace("%via%", validValur($r['via']), $plantilla);
+             $plantilla = str_replace("%motivo%", validValur($r['motivo']), $plantilla);
              $plantilla = str_replace("%dia%", $dia, $plantilla);
              $plantilla = str_replace("%name_mes%", $meses[(int)$mes-1], $plantilla);
              $plantilla = str_replace("%mes%", $mes, $plantilla);
