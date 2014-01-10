@@ -115,12 +115,12 @@ function participantes($participantes,$idservicio)
               $html .= utf8_decode(Doña)." ";
 
             $html .= "<b>".validValur($v['participante'])."</b>, ";
-            $html .= "identificado con ".validValur($v['documento'])."  ".utf8_decode(N°)." <b> ".validValur($v['nrodocumento'])."</b>";
+            $html .= "identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b> ".validValur($v['nrodocumento'])."</b>";
             if($v['idcliente_tipo']==1)
             {
               //Si es Natural
                 $html .= ", quien manifiesta ser de nacionalidad ";
-                $html .= "<b> ".genero("Peruano",$v['sexo']).", </b>";
+                $html .= "<b> Peruana, </b>";
                 $html .= utf8_decode(ocupación)." <b>".validValur($v['ocupacion'])."</b>, ";
                 //Obtenemos si tiene algun representante
                 $repre = getRepresentante($v['idparticipante'],$participantes);
@@ -207,6 +207,7 @@ function datos_menor($participantes)
      }
      return $html.".";
 }
+
 /*
   Funcion: participantes_v
   Parametros: @p1, @p2        
@@ -388,7 +389,7 @@ function getRepresentante($idp,$participantes)
         else
           $html .= utf8_decode(Doña)." ";
         $html .= "<b>".trim($v['participante'])."</b>";
-        $html .= " identificado con ".validValur($v['documento'])."  ".utf8_decode(N°)." <b>".validValur($v['nrodocumento'])."</b>";
+        $html .= " identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
         $html .= ", quien manifiesta ser de nacionalidad ";
         $html .= "<b> ".genero("Peruano",$v['sexo']).", </b>";
         $html .= utf8_decode(ocupación)." <b>".validValur($v['ocupacion'])."</b>, ";
