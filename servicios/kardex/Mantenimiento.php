@@ -1,18 +1,18 @@
-<?php	
+<?php   
 if(!session_id()){ session_start(); }
     include('../../config.php');
-    include('../../config_seguridad.php');	
+    include('../../config_seguridad.php');  
     include_once '../../libs/funciones.php';
     $Op                 = $_POST["Op"];
-    $Id                 = isset($_POST["Id"])?$_POST["Id"]:'';	
+    $Id                 = isset($_POST["Id"])?$_POST["Id"]:'';  
     $Enabled            = "";
     $Enabled2           = "";
-    $Guardar            = "";	
-    $Usuario            = $_SESSION["Usuario"];	
+    $Guardar            = "";   
+    $Usuario            = $_SESSION["Usuario"]; 
     $Fecha              = date('d/m/Y');
     $FechaP             = date('d/m/Y');
-    $FechaEscritura	    = date('d/m/Y');
-    $FechaMinuta	    = date('d/m/Y');
+    $FechaEscritura     = date('d/m/Y');
+    $FechaMinuta        = date('d/m/Y');
     $Plazoi             = date('d/m/Y');
     $Plazof             = date('d/m/Y');
     $FecFirmaE          = date('d/m/Y');
@@ -23,8 +23,8 @@ if(!session_id()){ session_start(); }
     if($Op==2 || $Op==4)
     {
         $Enabled = "readonly";
-    }	
-    $Enabled2 = "readonly";	
+    }   
+    $Enabled2 = "readonly"; 
     if($Id!='')
     {
         $Select = "SELECT kardex.*, kardex_tipo.abreviatura, asigna_pdt.idacto_juridico 
@@ -33,7 +33,7 @@ if(!session_id()){ session_start(); }
                 LEFT OUTER JOIN asigna_pdt ON (asigna_pdt.idservicio = servicio.idservicio) 
                 WHERE kardex.idkardex='$Id' AND kardex.idnotaria = '".$_SESSION['notaria']."'";        
         $Consulta       = $Conn->Query($Select);
-        $row = $Conn->FetchArray($Consulta);	
+        $row = $Conn->FetchArray($Consulta);    
 
         $s = "SELECT idkardex from kardex where correlativo = '".$row['correlativo']."' AND idnotaria = '".$_SESSION['notaria']."'
                  ORDER by idkardex asc limit 1";
@@ -52,17 +52,17 @@ if(!session_id()){ session_start(); }
         }
         $descripcion = $row['descripcion'];
         $Usuario        = $_SESSION["Usuario"];
-        $Fecha		= $Conn->DecFecha($row[2]);		
-        $NumEscritura 	= $row[5];
+        $Fecha      = $Conn->DecFecha($row[2]);     
+        $NumEscritura   = $row[5];
         $NumMinuta      = $row[6];
-        $Abre		= $row[26];
+        $Abre       = $row[26];
         $abreviatura = $row['abreviatura'];
 
         if ($row[5]=='' || $row[15]==0)
         {
             $SqlCo = "SELECT COUNT(kardex.correlativo) FROM servicio INNER JOIN kardex ON (servicio.idservicio = kardex.idservicio) INNER JOIN kardex_tipo ON (servicio.idkardex_tipo = kardex_tipo.idkardex_tipo) WHERE kardex_tipo.abreviatura = '$Abre' AND kardex.idnotaria='".$_SESSION['notaria']."'";
             $ConsultaCo = $Conn->Query($SqlCo);
-            $rowCo 	= $Conn->FetchArray($ConsultaCo);
+            $rowCo  = $Conn->FetchArray($ConsultaCo);
             $NumEscritura   = (int)substr($row[3], strlen($Abre), 7);
             if ($rowCo[0]!=''){
                 $NumEscritura = $rowCo[0];
@@ -82,7 +82,7 @@ if(!session_id()){ session_start(); }
         if ($row[21]!=''){
             $FechaMinuta = $Conn->DecFecha($row[21]);
         }
-        $Firmado	= $row[13];
+        $Firmado    = $row[13];
         if ($row[15]==1){
             $Estado = "<label style='color:#003366'>GENERADO</label>";
         }
@@ -101,7 +101,7 @@ if(!session_id()){ session_start(); }
         if ($row[29]!=''){
             $FecFirmaE = $Conn->DecFecha($row[29]);
         }
-        $Anio = $row[18];		
+        $Anio = $row[18];       
         $Sql = "SELECT nombres FROM usuario WHERE idusuario='".$row[16]."'";
         $ConsultaS  = $ConnS->Query($Sql);
         $rowS = $ConnS->FetchArray($ConsultaS);
@@ -114,12 +114,12 @@ if(!session_id()){ session_start(); }
     }else die("No existe");
 ?>
 <script type="text/javascript">
-	var CantidadSgt     = 'Precio';
+    var CantidadSgt     = 'Precio';
     var formatoMinDate  = '-<?php echo date("Y")-1968;?>y';
     var idKardex        = '<?php echo $Id;?>';
-	var id_user         =  <?php echo $_SESSION["id_user"];?>;
-	var FechaP          =  <?php echo $FechaP;?>;
-	var Op              =  <?php echo $Op;?>;	
+    var id_user         =  <?php echo $_SESSION["id_user"];?>;
+    var FechaP          =  <?php echo $FechaP;?>;
+    var Op              =  <?php echo $Op;?>;   
 </script>
 <script type="text/javascript" src="../../js/functions.js"></script>
 <script src="jquery.uploadify.min.js" type="text/javascript"></script>
@@ -225,7 +225,7 @@ $(function() {
                 <td>&nbsp;</td>
                 <td align="right"><?php echo $Estado;?></td>
             </tr>
-        </table>	
+        </table>    
     </td>
   </tr>
   <tr>
@@ -316,6 +316,7 @@ $(function() {
             }
             ?>
             <li><a href="#tabs-5">Descripcion del Bien</a></li>
+            <li><a href="#tabs-gd" style="">Generar Escritura</a></li>
         </ul>
             <div id="tabs-1">
                 <label class="TituloMant labels">N&ordm; Escritura :</label>
@@ -344,9 +345,11 @@ $(function() {
                 <br/>
                 </div>
                 <div style="border-top:1px dotted #CCC; margin-top:10px; padding-top:10px;">                
-                    <table border="0" width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td style="width:150px; border:1px solid #dadada;" align="center">
+                <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                     <td style="width:300px; border:1px solid #dadada;"> <b>Si se tiene el documento de la minuta elaborada: <br/></b>
+                     (La minuta debe ser formato: <b>rtf</b>) </td>
+                     <td style="border:1px solid #dadada;" align="left">
                                 <div style="display:inline-block; ">
                                 <div id="queue" style="display:inline-block"></div>
                                 <input id="file_uploadm" name="file_uploadm" type="file" multiple="true">
@@ -366,35 +369,12 @@ $(function() {
                                 </div>                               
                             </td>
                             <td style="border:1px solid #dadada; border-left:0">
-                                <p id="VerImagennnm_label" style="display:<?php echo $d1; ?>">La minuta debe ser formato: <b>rtf</b></p>
+                                <p id="VerImagennnm_label" style="display:<?php echo $d1; ?>"></p>
                                 <a target="_blank" href="minutas/<?php echo $_SESSION['notaria'] ?>/<?php echo $row['archivom'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Minuta</a>
                             </td>
-                            <td style="width:150px;border:1px solid #dadada;border-left:0" align="center">
-                                <div style="display:inline-block; ">
-                                <div id="queue" style="display:inline-block"></div>
-                                <input id="file_upload" name="file_upload" type="file" multiple="true">
-                                <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />
-                                <?php 
-                                    if($row['archivo']!="")                    
-                                     {
-                                        $d = "inline";
-                                        $d1 = "none";
-                                    }                                        
-                                    else
-                                    {
-                                        $d = "none";
-                                        $d1 = "inline";
-                                    }                       
-                                ?>                                
-                                </div>
-                            </td>
-                            <td style="border:1px solid #dadada;border-left:0">
-                                <p id="VerImagennn_label" style="display:<?php echo $d1; ?>">La escritura pueder ser de formato: <b>doc, docx, rtf, pdf</b></p>
-                                <a target="_blank" href="archivos/<?php echo $_SESSION['notaria']; ?>/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Escritura</a>
-                            </td>
-                        </tr>
-                    </table>                
-                </div>
+                       </tr>
+                    </table>
+                    </div>
             </div>
             <div id="tabs-2">                
                 <div id="tabs-participantes">
@@ -550,7 +530,7 @@ $(function() {
                 </div>
         </div>
 <?php
-	if ((substr($row[3],0,1)=='A' && substr($row[3],0,2)!='AP') || (substr($row[3],0,1)=='E')){
+    if ((substr($row[3],0,1)=='A' && substr($row[3],0,2)!='AP') || (substr($row[3],0,1)=='E')){
 ?>
    <div id="tabs-3">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -589,9 +569,9 @@ $(function() {
         </table>
     </div>        
 <?php
-	}
+    }
         
-	if ((substr($row[3],0,1)=='V')){
+    if ((substr($row[3],0,1)=='V')){
         ?>        
         <div id="tabs-3">
             <div>
@@ -629,7 +609,7 @@ $(function() {
         </div>
         <?php }
         
-	if (substr($row[3],0,1)=='P'){
+    if (substr($row[3],0,1)=='P'){
 ?>
             <div id="tabs-3">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -644,8 +624,8 @@ $(function() {
                 </table>
             </div>
 <?php
-	}
-	if (substr($row[3],0,2)=='AP'){
+    }
+    if (substr($row[3],0,2)=='AP'){
 ?>
             <div id="tabs-3">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -676,7 +656,7 @@ $(function() {
             </div>
             
 <?php
-	}
+    }
         
         if(substr($row[3], 0, 1)=='N' || substr($row[3], 0, 1)=='K' || substr($row[3], 0, 1)=='V'){
             
@@ -1023,11 +1003,11 @@ $(function() {
                                                   LEFT OUTER JOIN public.ubigeo ON (public.ubigeo.idubigeo = public.kardex_bien.ubigeo)
                                                 WHERE public.kardex_bien.idkardex = $Id";
                                     $Sql2 = "SELECT";        
-                                    $Consulta2 = $Conn->Query($SQL2);			
+                                    $Consulta2 = $Conn->Query($SQL2);           
                                     $htmlTDS="";
                                     while($row2 = $Conn->FetchArray($Consulta2))
                                     {
-                                            $NumRegs = $NumRegs + 1;				
+                                            $NumRegs = $NumRegs + 1;                
                                             $tipo_bien=$row2['tipo_bien'];
                                             $tipo_bien_nombre=($tipo_bien=='B')?'BIENES':'Acciones&nbsp;Y&nbsp;Derechos';
                                             $idbien=$row2['idbien'];
@@ -1062,8 +1042,8 @@ $(function() {
                                             }                
                                             $idpais=$row2['idpais'];
                                             $idpais_nombre=$row2['pais'];
-                                            $fecha_construccion=($row2['fecha_construccion']!="")?reformatFecha($row2['fecha_construccion']):'';		
-                                            $variables_hidden="";	
+                                            $fecha_construccion=($row2['fecha_construccion']!="")?reformatFecha($row2['fecha_construccion']):'';        
+                                            $variables_hidden="";   
                                             $variables_hidden.="<input type='hidden' name='0formB".$NumRegs."_idkardex' value='".$Id."' />";
                                             $variables_hidden.="<input type='hidden' name='0formB".$NumRegs."_idbien' value='".$idbien."' />";
                                             $variables_hidden.="<input type='hidden' name='0formB".$NumRegs."_tipo_bien' value='".$tipo_bien."' />";
@@ -1121,6 +1101,37 @@ $(function() {
             <p>Ingrese la descripcion del bien materia de la operacion.</p>
             <textarea rows="5" cols="114" name="0form1_descripcion" id="descripcion_bien"><?php echo $descripcion; ?></textarea>
         </div>
+        <div id="tabs-gd">
+           <div style="border-top:1px dotted #CCC; margin-top:10px; padding-top:10px;">                
+                <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>       
+                        <td style="width:150px;border:1px solid #dadada;border-left:0" align="center">
+                            <div style="display:inline-block; ">
+                            <div id="queue" style="display:inline-block"></div>
+                            <input id="file_upload" name="file_upload" type="file" multiple="true">
+                            <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />
+                            <?php 
+                                if($row['archivo']!="")                    
+                                 {
+                                    $d = "inline";
+                                    $d1 = "none";
+                                }                                        
+                                else
+                                {
+                                    $d = "none";
+                                    $d1 = "inline";
+                                }                       
+                            ?>                                
+                            </div>
+                        </td>
+                        <td style="border:1px solid #dadada;border-left:0">
+                            <p id="VerImagennn_label" style="display:<?php echo $d1; ?>">La escritura pueder ser de formato: <b>doc, docx, rtf, pdf</b></p>
+                            <a target="_blank" href="archivos/<?php echo $_SESSION['notaria']; ?>/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Escritura</a>
+                        </td>
+                    </tr>
+                </table>                       
+           </div>
+        </div>
         </div>
         <div class="ui-widget-content ui-widget-header ui-corner-all" style="margin-top:10px; padding:5px 0; text-align:right;">
             <a target="_blank" style="margin-right:10px;" href="../../editor/index.php?idkardex=<?php echo $idkardex; ?>" id="<?php echo $row['idkardex'] ?>">Documento</a>            
@@ -1150,7 +1161,7 @@ $(function() {
         <td>
         <div id="DivDepartamento">
             <select name="IdDepartamento2" id="IdDepartamento2"></select>
-        </div>			
+        </div>          
         </td>
     </tr>
     <tr>
@@ -1160,7 +1171,7 @@ $(function() {
         <td>
         <div id="DivProvincia">
             <select name="IdProvincia2" id="IdProvincia2"></select>
-        </div>			
+        </div>          
         </td>
     </tr>
         <tr>
@@ -1170,7 +1181,7 @@ $(function() {
             <td>
             <div id="DivDistrito">
                 <select name="IdDistrito2" id="IdDistrito2"></select>
-            </div>			
+            </div>          
             </td>
         </tr>
     </table>
