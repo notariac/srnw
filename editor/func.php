@@ -481,7 +481,7 @@ function verIntervinientes($participantes)
         if($v['tipo']==3&&$v['idrepresentado']>0)      
         {
             if($c>0) 
-        $html .= " Y ";
+        $html .= " y ";
       else 
         $html .= "con intervencion de ";
             if($v['sexo']=="M")                   
