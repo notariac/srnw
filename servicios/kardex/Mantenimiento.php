@@ -356,7 +356,7 @@ $(function() {
                                     {
                                         $d = "inline";
                                         $d1 = "none";
-                                    }                                        
+                                    }
                                     else
                                     {
                                         $d = "none";

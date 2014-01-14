@@ -200,9 +200,9 @@ function datos_menor($participantes)
        {
          if($c>0) $html .= " y ";        
          $c +=1;
-         $html .= " <b>".validValur(trim($v['participante']))."</b>";
+         $html .= " <b>".validValur(trim($v['participante']))."</b>";         
+         $html .= " con <b>".calcular_edad($v['fecha_nac'])." (".validValur(CantidadEnLetra(calcular_edad($v['fecha_nac']))).") ".utf8_decode(años)."</b> de edad, ";         
          $html .= " identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
-         $html .= " con <b>".calcular_edad($v['fecha_nac'])." (".validValur(CantidadEnLetra(calcular_edad($v['fecha_nac'])))."), ".utf8_decode(años)."</b> de edad";         
        }
      }
      return $html.".";
@@ -233,7 +233,7 @@ function participantes_v($participantes,$ids)
          $c +=1;
          $html .= "<b>".validValur($v['participante'])."</b>"; 
          $html .= " de nacionalidad ";
-         $html .= "<b> Peruana, </b>";
+         $html .= "<b> peruana, </b>";
          $html .= "identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
          if($ids==97)
          {
