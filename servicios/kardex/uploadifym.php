@@ -1,12 +1,12 @@
 <?php
-
+include('../../config.php');
 session_start();
 if (!empty($_FILES)) 
 {
     $tempFile = $_FILES['Filedata']['tmp_name'];            
     $fileparts = pathinfo($_FILES['Filedata']['name']);
     $ext = $fileparts['extension'];
-    
+    $anio = $_SESSION['Anio'];
     //$targetPath = 'doc/';  
     $targetPath = 'minutas/'.$_SESSION['notaria'].'/';
     $filetypes = array("rtf");
@@ -20,10 +20,13 @@ if (!empty($_FILES))
     }    
     if($flag)
     {
-        $targetFile =  str_replace('//','/',$targetPath).str_replace(' ','_',"Minuta-".$_POST['correlativo'].".rtf");
-        $name = "Minuta-".$_POST['correlativo'].".rtf";
+        $targetFile =  str_replace('//','/',$targetPath).str_replace(' ','_',"Minuta-".$_POST['correlativo']."-".$anio.".rtf");
+        $name = "Minuta-".$_POST['correlativo']."-".$anio.".rtf";
         if( move_uploaded_file($tempFile,$targetFile))
         {	
+            $sql = "update kardex set archivom = '".$name."' where correlativo = '".$_POST['correlativo']."' and anio = '".$anio."'";
+            $Consulta = $Conn->Query($sql);
+
             echo "1###".$name;            
             chmod($targetFile, 0777);           
             

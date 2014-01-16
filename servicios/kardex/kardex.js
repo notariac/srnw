@@ -292,7 +292,37 @@ function loadParticipacion(t)
         $("#TipoParticipacion").empty().append(data);
    })
 }
-$(document).ready(function(){
+$(document).ready(function()
+{
+
+  $("#upload_minuta").click(function(){      
+      $("#box-form-minuta").dialog('open');
+  });
+  $("#gen_escritura").click(function(){
+    
+  });
+  $("#upload_escritura").click(function(){
+    $("#box-form-escritura").dialog('open');
+  });
+  $("#open_escritura").click(function(){
+
+  });
+
+  $("#box-form-minuta").dialog({
+        autoOpen: false,        
+        resizable:false,
+        title: "Subir Minuta",
+        width: 300
+  });
+
+  $("#box-form-escritura").dialog({
+      autoOpen: false,
+      resizable: false,
+      title: "Subir la Escritura",
+      width: 300
+  });
+
+
   $('.quit').live('click',function(){
     $(this).parent().parent().remove();
     nDestx = nDestx - 1;

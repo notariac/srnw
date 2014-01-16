@@ -1,7 +1,6 @@
 <?php 
     include('../config.php');
     include('func.php');
-    //include('../libs/num2letra.php');
     include("num2letraK.php");  
 
     $dia = str_pad(date('d'),2,'0',0);

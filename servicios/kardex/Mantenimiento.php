@@ -34,7 +34,8 @@ if(!session_id()){ session_start(); }
                 WHERE kardex.idkardex='$Id' AND kardex.idnotaria = '".$_SESSION['notaria']."'";        
         $Consulta       = $Conn->Query($Select);
         $row = $Conn->FetchArray($Consulta);    
-
+        $archivom = $row['archivom'];
+        $archivo = $row['archivo'];
         $s = "SELECT idkardex from kardex where correlativo = '".$row['correlativo']."' AND idnotaria = '".$_SESSION['notaria']."'
                  ORDER by idkardex asc limit 1";
        
@@ -48,7 +49,7 @@ if(!session_id()){ session_start(); }
                             LEFT OUTER JOIN asigna_pdt ON (asigna_pdt.idservicio = servicio.idservicio) 
                             WHERE kardex.idkardex='".$row[0]."' AND kardex.idnotaria='".$_SESSION['notaria']."'";            
             $Consulta  = $Conn->Query($Select);
-            $row  = $Conn->FetchArray($Consulta); 
+            $row  = $Conn->FetchArray($Consulta);             
         }
         $descripcion = $row['descripcion'];
         $Usuario        = $_SESSION["Usuario"];
@@ -343,38 +344,11 @@ $(function() {
                 <label class="TituloMant labels">Estado :</label>
                 <input type="checkbox" name="Firmado2" id="Firmado2" <?php if ($Firmado==1) echo "checked='checked'"; ?> onclick="CambiaFirmado();" /><input type="hidden" name="0form1_firmado" id="Firmado" value="<?php echo $Firmado;?>" /> Firmado
                 <br/>
-                </div>
-                <div style="border-top:1px dotted #CCC; margin-top:10px; padding-top:10px;">                
-                <table border="0" width="100%" cellpadding="0" cellspacing="0">
-                    <tr>
-                     <td style="width:300px; border:1px solid #dadada;"> <b>Si se tiene el documento de la minuta elaborada: <br/></b>
-                     (La minuta debe ser formato: <b>rtf</b>) </td>
-                     <td style="border:1px solid #dadada;" align="left">
-                                <div style="display:inline-block; ">
-                                <div id="queue" style="display:inline-block"></div>
-                                <input id="file_uploadm" name="file_uploadm" type="file" multiple="true">
-                                <input type="hidden" name="0form1_archivom" id="archivom" value="<?php echo $row['archivom'] ?>" />
-                                <?php
-                                    if($row['archivom']!="")
-                                    {
-                                        $d = "inline";
-                                        $d1 = "none";
-                                    }                                        
-                                    else
-                                    {
-                                        $d = "none";
-                                        $d1 = "inline";
-                                    }                                        
-                                ?>                                
-                                </div>                               
-                            </td>
-                            <td style="border:1px solid #dadada; border-left:0">
-                                <p id="VerImagennnm_label" style="display:<?php echo $d1; ?>"></p>
-                                <a target="_blank" href="minutas/<?php echo $_SESSION['notaria'] ?>/<?php echo $row['archivom'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Minuta</a>
-                            </td>
-                       </tr>
-                    </table>
-                    </div>
+                </div>       
+
+                
+
+
             </div>
             <div id="tabs-2">                
                 <div id="tabs-participantes">
@@ -1101,36 +1075,56 @@ $(function() {
             <p>Ingrese la descripcion del bien materia de la operacion.</p>
             <textarea rows="5" cols="114" name="0form1_descripcion" id="descripcion_bien"><?php echo $descripcion; ?></textarea>
         </div>
+        <style type="text/css">
+            div.box-item { width:187px; float:left; margin-left:10px; height:80px; }
+            div.box-item div { margin-top:30px; text-align:center}
+        </style>
         <div id="tabs-gd">
-           <div style="border-top:1px dotted #CCC; margin-top:10px; padding-top:10px;">                
-                <table border="0" width="100%" cellpadding="0" cellspacing="0">
-                    <tr>       
-                        <td style="width:150px;border:1px solid #dadada;border-left:0" align="center">
-                            <div style="display:inline-block; ">
-                            <div id="queue" style="display:inline-block"></div>
-                            <input id="file_upload" name="file_upload" type="file" multiple="true">
-                            <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />
-                            <?php 
-                                if($row['archivo']!="")                    
-                                 {
-                                    $d = "inline";
-                                    $d1 = "none";
-                                }                                        
-                                else
-                                {
-                                    $d = "none";
-                                    $d1 = "inline";
-                                }                       
-                            ?>                                
-                            </div>
-                        </td>
-                        <td style="border:1px solid #dadada;border-left:0">
-                            <p id="VerImagennn_label" style="display:<?php echo $d1; ?>">La escritura pueder ser de formato: <b>doc, docx, rtf, pdf</b></p>
-                            <a target="_blank" href="archivos/<?php echo $_SESSION['notaria']; ?>/<?php echo $row['archivo'] ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px;" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="20" />Abrir Escritura</a>
-                        </td>
-                    </tr>
-                </table>                       
-           </div>
+           <div style="padding:5px">
+                <div class="ui-corner-all box-item" style="background: #63B5D1; border:1px solid #559CB3">
+                    <div>
+                        <a id="upload_minuta" href="#" style="font-size:15px; color:#FFF; text-shadow:1px 1px 1px #333">Subir Minuta</a>
+                        <br/>
+                        <?php                            
+                        if($archivom!="")
+                        {
+                            $d = "inline";                            
+                        }
+                        else
+                        {
+                            $d = "none";                            
+                        }
+                        ?>                        
+                        <br/>
+                        <a target="_blank" href="minutas/<?php echo $_SESSION['notaria'] ?>/<?php echo $archivom;?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px; color:#000000 !important;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="12" />(Abrir Minuta)</a>
+                    </div>
+                </div>
+                <div class="ui-corner-all box-item" style="background: #69AA4B;border:1px solid #568A3E">
+                    <div>
+                        <a id="gen_escritura" href="#" style="font-size:15px; color:#FFF; text-shadow:1px 1px 1px #333">Generar Escritura</a>
+                        <br/>
+                    <?php 
+                        if($archivo!="")
+                            $d = "inline";
+                        else
+                            $d = "none";
+                    ?>
+                    <br/>
+                    <a target="_blank" href="archivos/<?php echo $_SESSION['notaria']; ?>/<?php echo $archivo; ?>" style="display:<?php echo $d; ?>;cursor:pointer; font-size: 11px; color:#000000 !important" id="VerImagennn"><img src="../../imagenes/iconos/word2.png" width="12" />Abrir Escritura</a>                
+                    </div>
+                </div>
+                <div class="ui-corner-all box-item" style="background: #E6E4B9; border:1px solid #D1CE97">
+                    <div>
+                        <a id="upload_escritura" href="#" style="font-size:15px; color:#000; text-shadow:1px 2px 1px #D1CE97">Subir Escritura</a>
+                    </div>
+                </div>
+                <div class="ui-corner-all box-item" style="background: #DADADA; border:1px solid #CCC">
+                    <div>
+                        <a id="open_escritura" href="#" style="font-size:15px; color:#000; text-shadow:1px 2px 1px #CCC">Abrir Escritura</a>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+           </div>           
         </div>
         </div>
         <div class="ui-widget-content ui-widget-header ui-corner-all" style="margin-top:10px; padding:5px 0; text-align:right;">
@@ -1186,3 +1180,20 @@ $(function() {
         </tr>
     </table>
 <div id="dnewCliente"></div>
+<div id="box-form-minuta">
+    <p style="text-align : justify;">Si se tiene el documento de la minuta hecha, usted puede cargarla desde esta ventana. 
+                                    Al generar la escritura esta será incluida en la misma. El formato debe ser en <b>.RTF</b></p>        
+    <div style="padding:5px 0 0 80px;">
+        <div id="queue" style="display:inline-block"></div>
+        <input id="file_uploadm" name="file_uploadm" type="file" multiple="true">
+        <input type="hidden" name="0form1_archivom" id="archivom" value="<?php echo $row['archivom'] ?>" />            
+    </div>        
+</div>
+<div id="box-form-escritura">
+    <p style="text-align : justify;">El formato del archivo puede ser: <b>DOC, DOCXs, PDF, RTF</b></p>        
+    <div style="padding:5px 0 0 80px;">                            
+        <div id="queue" style="display:inline-block"></div>
+        <input id="file_upload" name="file_upload" type="file" multiple="true">
+        <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />        
+    </div> 
+</div>
