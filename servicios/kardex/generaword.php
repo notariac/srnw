@@ -5,7 +5,8 @@ include("num2letraK.php");
 //include('../../libs/num2letra.php');
 $IdKardex = $_POST["IdKardex"];
 echo "<meta http-equiv='content-type' content='text/html; charset=iso-8859-1' />";	
-function leef($fichero){
+function leef($fichero)
+{
     $texto = file($fichero);
     $tamleef = sizeof($texto);
     for($n=0; $n<$tamleef; $n++){
@@ -16,13 +17,14 @@ function leef($fichero){
 function Completar($Str, $Agr)
 {
     $tamanio = strlen($Str) +  $Agr;
-    for ($i=1; $i<80 - $tamanio; $i++){
+    for ($i=1; $i<80 - $tamanio; $i++)
+    {
             $Str = $Str.".";
     }
     return $Str;
-}	
+}
 function Generartf($IdKardex)
-{	
+{
         include("../../config.php");        
         $mes            = array("01"=>"ENERO", "02"=>"FEBRERO", "03"=>"MARZO", "04"=>"ABRIL", "05"=>"MAYO", "06"=>"JUNIO", "07"=>"JULIO", "08"=>"AGOSTO", "09"=>"SETIEMBRE", "10"=>"OCTUBRE", "11"=>"NOVIEMBRE", "12"=>"DICIEMBRE");	
         $SQL            = "SELECT   kardex.correlativo, 

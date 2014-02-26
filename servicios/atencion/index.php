@@ -75,6 +75,7 @@ $(document).ready(function()
             height: 500,            
             buttons: {
                 "Agregar": function() {
+                    alert("OK");
                     Op = 0;
                     if(confirm("Desea confirmar la operacion?"))
                     {
