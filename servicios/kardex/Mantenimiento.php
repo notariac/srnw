@@ -707,30 +707,18 @@ $(function() {
                         <li><a href="#bienes">Bienes</a></li>
                      </ul>
                     <div id="acto_juridico">
-                        <fieldset style="text-align: center;">
-                            <label for="idacto_juridico">Acto Juridico</label>
+                        <fieldset class="ui-widget-content ui-corner-all">
+                            <label for="idacto_juridico">Acto Juridico: </label>
                            <select name="idacto_juridico" id="idacto_juridico">
                                <option></option>
                                <?php 
                                echo opt_combo($sqlaj, null, $Conn);
                                ?>
                            </select>
+                        <span id="box_precio_operacion"></span>
+                        <span style="font-size:8px;display:none" id="box-msg-save">(GUARDANDO)</span>
                         </fieldset>
-                        <table width="100%" border="0">                  
-                                <tr>
-                                    <td><label for="idmoneda_aj">Moneda</label></td>
-                                    <td>
-                                          <select name="0form1_idmoneda" id="idmoneda_aj">
-                                                <?php 
-                                                echo opt_combo("select * from moneda", $row['idmoneda'], $Conn);
-                                                ?>
-                                          </select>
-                                      </td>
-                                      <td>Precio Operaci&oacute;n :</td>
-                                      <td>
-                                          <input type="text" align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="0form1_monto" id="PrecioOperacion" value="<?php if(isset($row[26])){ echo $row[26]; }else{ echo "0.00"; }?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FormaPago'); return permite(event, 'num');"/>
-                                      </td>
-                                </tr>
+                        <table width="100%" border="0">                                                  
                                 <?php
                                     if($row['idacto_juridico']==4 || $row['idacto_juridico']==10){
                                 ?>

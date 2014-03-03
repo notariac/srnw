@@ -37,7 +37,7 @@ function Generartf($IdKardex)
                                     kardex.seriefin, 
                                     kardex.escritura_fecha, 
                                     kardex.minuta_fecha, 
-                                    kardex.idservicio, 
+                                    kardex.idservicio,
                                     kardex.ruta, 
                                     kardex.hijo,
                                     kardex.descripcion,

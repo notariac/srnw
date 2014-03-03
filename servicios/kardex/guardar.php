@@ -1,6 +1,5 @@
 <?php
 if(!session_id()){session_start();}
-///die($_POST['participantes']);
 include('../../config.php');
 include("../../libs/clasemantem.php");
 //die;
@@ -90,7 +89,8 @@ if (!$Consulta)
                 }
            }
 
-    if ($Op!=4){
+    if ($Op!=4)
+    {
         $SQLDelete = "DELETE FROM detalle_forma_pago WHERE idkardex='".$_POST['1form1_idkardex']."' ";
         $result = $Conn->Query($SQLDelete);
         if (!$result) {die("Error in SQL query: ");}

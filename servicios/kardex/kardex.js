@@ -445,9 +445,14 @@ $(document).ready(function(){
           function formatResultD(row){
                 return row[0];
           }	
-          $("#idacto_juridico").change(function(){
+          $("#idacto_juridico").change(function()
+          {
              verificarEstadoCampos($(this).val()); 
+             getPrecioOperacion($(this).val());
           });
+          $("#PrecioOperacion").live('change',function(){
+             savePrecioOperacion($(this).val());
+          })
           $("#idbien").change(function(){
                 verificarEstadoCampoBienes($(this).val());
           });
@@ -867,6 +872,32 @@ function ocultarTR(){
                 $("#ListaMenu4").css("display", "inline");
             }            
         }
+function getPrecioOperacion(idaj)
+{
+  if(idaj!="")
+  {
+    var idk = $("#iddkardex").val();
+    $.get('precio_operacion.php','idaj='+idaj+'&idk='+idk,function(data){
+        $("#box_precio_operacion").empty().append(data);
+        $("#PrecioOperacion").focus();
+    })  
+  }
+  else
+  {
+    $("#box_precio_operacion").empty();
+  }
+    
+}
+function savePrecioOperacion(monto)
+{
+  var idk  = $("#iddkardex").val(),
+      idaj = $("#idacto_juridico").val(),
+      idm  = $("#idmoneda_aj").val();
+      $("#box-msg-save").show("slow");
+  $.post('save_precio_operacion.php','idaj='+idaj+'&idk='+idk+'&m='+monto+'&idm='+idm,function(data){
+      $("#box-msg-save").fadeOut();
+  })   
+}
 var verificarEstadoCampos=function(id){
     var plazos=new Array(2,6,10);
     var mediospago=new Array(4,10);

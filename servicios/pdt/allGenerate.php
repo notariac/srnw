@@ -4,7 +4,7 @@ if(!session_id()){session_start();}
 include('../../config.php');
 include_once '../../libs/funciones.php';
 //Fichero Generico de Generacion de Data Integral para el Pdt
-$sql="SELECT kardex.idkardex,
+$sql="SELECT distinct kardex.idkardex,
             kardex.fecha,
             kardex.correlativo,
             kardex.idservicio,
@@ -15,20 +15,20 @@ $sql="SELECT kardex.idkardex,
             kardex.firmadofecha,
             kardex.escritura_fecha,
             kardex.minuta_fecha,
-            kardex.monto,
+            kaj.monto,
             kardex.plazoinicial,
             kardex.plazofinal,
             kardex.fecfirmae,
             kardex.exmedpago,
             kardex.idmoneda,
-            kardex_tipo.abreviatura, asigna_pdt.idacto_juridico as actojuridico
-            FROM servicio 
-            INNER JOIN kardex  ON (servicio.idservicio = kardex.idservicio) 
-            INNER JOIN kardex_tipo ON (servicio.idkardex_tipo = kardex_tipo.idkardex_tipo) 
-            INNER JOIN asigna_pdt ON (asigna_pdt.idservicio = servicio.idservicio) 
-            WHERE EXTRACT('YEAR' FROM kardex.fecfirmae)='{$_REQUEST['anio']}'
-            AND kardex.idkardex IN (SELECT kp.idkardex FROM kardex_bien kp WHERE kp.idkardex=kardex.idkardex)
-            AND kardex.idkardex IN (SELECT kp.idkardex FROM kardex_participantes kp WHERE kp.idkardex=kardex.idkardex)
+            kardex_tipo.abreviatura, 
+            kaj.idacto_juridico as actojuridico
+        FROM servicio 
+        INNER JOIN kardex  ON (servicio.idservicio = kardex.idservicio) 
+        INNER JOIN kardex_tipo ON (servicio.idkardex_tipo = kardex_tipo.idkardex_tipo) 
+        INNER JOIN kardex_aj as kaj on kaj.idkardex = kardex.idkardex
+        WHERE kardex.idkardex IN (SELECT kp.idkardex FROM kardex_bien kp WHERE kp.idkardex=kardex.idkardex)
+        AND kardex.idkardex IN (SELECT kp.idkardex FROM kardex_participantes kp WHERE kp.idkardex=kardex.idkardex)
             --AND kardex.correlativo = 'K041914' ";
 
 $query=$Conn->Execute($sql);
