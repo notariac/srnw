@@ -109,7 +109,6 @@ if (!$Consulta)
             }
             $mantem    = new dbMantimiento($Conn->GetConexion());
             $Sql2      = $mantem->__dbMantenimiento($nPost, $FormN, "detalle_forma_pago", 0);	//Se genera la sentencia SQL de acuerdo a la operación
-            //echo $Sql2."<br/>";
             $Consulta2 = $Conn->Query($Sql2);
         }
     }

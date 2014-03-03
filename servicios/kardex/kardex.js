@@ -452,7 +452,11 @@ $(document).ready(function(){
           });
           $("#PrecioOperacion").live('change',function(){
              savePrecioOperacion($(this).val());
-          })
+          });
+          $("#idmoneda_aj").live('change',function(){
+             var price = $("#PrecioOperacion").val();
+             savePrecioOperacion(price);
+          });
           $("#idbien").change(function(){
                 verificarEstadoCampoBienes($(this).val());
           });
