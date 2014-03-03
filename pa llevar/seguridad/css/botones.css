@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+
+.btnConsultar{
+	 background:url(../images/BtnConsultar.png);
+	 background-color:#FFF;
+	 border:1px;
+	 border-style:solid;
+	 border-bottom-style:solid;
+	 cursor:pointer;
+	  width:140px;
+     height:58px;
+}
+.btnNuevo{
+	 background:url(../images/BtnNuevo.png);
+	 background-color:#FFF;
+	 border:1px;
+	 border-style:solid;
+	 border-bottom-style:solid;
+	 cursor:pointer;
+	  width:140px;
+     height:58px;
+}
+.btnCerrar{
+	 background:url(../images/BtnCerrar.png);
+	 background-color:#FFF;
+	 border:1px;
+	 border-style:solid;
+	 border-bottom-style:solid;
+	 cursor:pointer;
+	  width:140px;
+     height:58px;
+}
+.btnLogin{
+	 font-size:10px;
+     font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	 background:#999900;
+	 /*background:#FFFFBF;*/
+	 border:1px;
+	 border-style:solid;
+	 border-bottom-style:solid;
+	 cursor:pointer;
+     width:100px;
+     height:25px;
+}
+
+.btngenerar{
+	 background:url(../images/btn/btn_generar.jpg)
+	 background-color:#FFF;
+	 border:0px;
+	 border-style:solid;
+	 border-bottom-style:solid;
+	 cursor:pointer;
+	 width:90px;
+     height:25px;
+}
+
+.Login{
+	background:url(../imagesnew/login.jpg);
+	 background-repeat:no-repeat;
+	border:0px;
+	border-style:solid;
+	/*border-bottom-style:solid;*/
+	cursor:pointer;
+     	width:90px;
+     	height:28px;
+}

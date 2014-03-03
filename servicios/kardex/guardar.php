@@ -2,7 +2,7 @@
 if(!session_id()){session_start();}
 include('../../config.php');
 include("../../libs/clasemantem.php");
-//die;
+
 $Op = $_GET["Op"];
 $participantes = json_decode($_POST['participantes']);
 
@@ -21,7 +21,6 @@ function search_conyuge($idp)
     return $p;
 }
 
-//die;
 $mantem = new dbMantimiento($Conn->GetConexion());
 $Sql = $mantem->__dbMantenimiento($_POST, "form1", "kardex", $Op);	//Se genera la sentencia SQL de acuerdo a la operación	
 $NroKardex = $_POST['0form1_correlativo'];	
@@ -134,9 +133,6 @@ if (!$Consulta)
                     }
                 }
                 $mantem    = new dbMantimiento($Conn->GetConexion());
-                //echo "<pre>";
-                //print_r($nPost);
-                //echo "</pre>";
                 $Sql2      = $mantem->__dbMantenimiento($nPost, $FormN, "kardex_bien", 0);	//Se genera la sentencia SQL de acuerdo a la operación
                 $Consulta2 = $Conn->Query($Sql2);
                 if(!$Consulta2)

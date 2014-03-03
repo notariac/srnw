@@ -1,0 +1,128 @@
+/* CSS Document */
+body{margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;}
+
+/*Estilos Inputs*/
+.inputtext {
+	padding-left:5;
+	padding-right:5;
+	border-color:#084B8A;
+	border-width:1px;
+	border-style:solid;
+	color:#000;
+	background-color:#A9D0F5;
+}
+.select {
+	padding-left:5;
+	border-color:#084B8A;
+	border-width:1px;
+	border-style:solid;
+	color:#000;
+	background-color:#A9D0F5;
+}
+
+.Titulo {
+	height:25px;
+	font-weight:bold;
+        font-size: 14px;
+	text-align:center;
+	vertical-align:middle;
+	text-transform:uppercase;
+	color: #FFF;
+        background-color: #084B8A;
+        background-image:url(../images/titulo_index.png);
+	background-repeat:repeat
+}
+.Pie {
+	height:30px;
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+	text-transform:uppercase;
+	color: #fff;
+        background-color: #084B8A;
+	background-image:url(../images/titulo_index.png);
+	background-repeat:repeat
+}
+
+.MantTitulo
+{
+    height: 20px;
+    font-size: 12px;
+    font-weight:bold;
+    color:#000;
+/*    background-color:#BDBDBD;*/
+    text-align:right;
+    vertical-align: top;
+    padding-right: 5px;
+}
+.MantItem
+{
+	background-color:#FFF;
+	text-align:left;
+	padding-left:5px;
+	font-size:14px;
+}
+
+.MantPie
+{
+	color:#FFF;
+	background-color:#066;
+	border-width:2px;
+	border:#066;
+	text-align:justify;
+	vertical-align:top;
+	font-size:12px;
+	padding-left:5px;
+	padding-right:5px;
+	height:50px;
+}
+
+#ListaMenu thead {
+	height:25px;
+	font-size: 12px;
+	color: #fff;
+	background-color:#084B8A;
+	background-image:url(../images/titulo_index.png);
+	background-repeat:repeat-x
+}
+
+#ListaMenu tbody {
+	font-size: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	cursor:pointer;
+}
+
+.ListaMenutfoot {
+	height:25px;
+	font-size: 14px;
+	color: #FFFFFF;
+	background-color:#084B8A;
+	background-image:url(../imagenes/titulo_index.jpg);
+	background-repeat:repeat-x
+}
+
+div.growlUI { 
+	background: url(../imagenes/ok.png) no-repeat 15px 15px;
+	padding-top:0px; 
+	margin-top:0px; 
+	background-color:#F90; 
+	border-style:outset;
+	border-width:3px;
+}
+div.growlUI h1, div.growlUI h2 { color: white; padding: 0px 0px 0px 75px; text-align: left }
+div.growlUI h1 { font-size: 20px;  font:bold }
+div.growlUI h2 { font-size: 16px; }
+
+
+div.growlUI2 { 
+	background: url(../imagenes/error.png) no-repeat 15px 15px;
+	padding-top:0px;
+	margin-top:0px;
+	background-color:#F00; 
+	border-style:outset;
+	border-width:3px
+}
+div.growlUI2 h1, div.growlUI h2 { color: white; padding: 0px 0px 0px 75px; text-align: left }
+div.growlUI2 h1 { font-size: 20px;  font:bold }
+div.growlUI2 h2 { font-size: 16px; }

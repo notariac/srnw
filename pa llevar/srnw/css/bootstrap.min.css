@@ -1,0 +1,12 @@
+form .clearfix.success>label,form .clearfix.success .help-block,form .clearfix.success .help-inline{color:#468847;}
+form .clearfix.success input,form .clearfix.success textarea{color:#468847;border-color:#57a957;}form .clearfix.success input:focus,form .clearfix.success textarea:focus{border-color:#458845;-webkit-box-shadow:0 0 6px #9acc9a;-moz-box-shadow:0 0 6px #9acc9a;box-shadow:0 0 6px #9acc9a;}
+form .clearfix.success .input-prepend .add-on,form .clearfix.success .input-append .add-on{color:#468847;background-color:#bcddbc;border-color:#468847;}
+.btn.success,
+.alert-message.success,.btn.success:hover,.alert-message.success:hover,.btn.info,.alert-message.info,.btn.info:hover,.alert-message.info:hover{color:#ffffff;}
+.btn.success,.alert-message.success{background-color:#57a957;background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#62c462), to(#57a957));background-image:-moz-linear-gradient(top, #62c462, #57a957);background-image:-ms-linear-gradient(top, #62c462, #57a957);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #62c462), color-stop(100%, #57a957));background-image:-webkit-linear-gradient(top, #62c462, #57a957);background-image:-o-linear-gradient(top, #62c462, #57a957);background-image:linear-gradient(top, #62c462, #57a957);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462', endColorstr='#57a957', GradientType=0);text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);border-color:#57a957 #57a957 #3d773d;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);}
+.alert-message.danger p a,.alert-message.error p a,.alert-message.success p a,.alert-message.info p a{color:#ffffff;}
+.alert-message.block-message.error,.alert-message.block-message.success,.alert-message.block-message.info{color:#404040;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
+.alert-message.block-message.success{background-color:#d1eed1;border-color:#bfe7bf;}
+.alert-message.block-message.danger p a,.alert-message.block-message.error p a,.alert-message.block-message.success p a,.alert-message.block-message.info p a{color:#404040;}
+
+.label.success{background-color:#46a546;}
