@@ -484,8 +484,7 @@ $(document).ready(function()
 
           $( "#DocParticipante" ).autocomplete({
                 minLength: 0,
-                source: '../../libs/autocompletar/clienteD.php',
-                
+                source: '../../libs/autocompletar/clienteD.php',                
                 select: function( event, ui ) 
                 {
                      $("#Participante").val(ui.item.nombres);
