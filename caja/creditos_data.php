@@ -42,23 +42,26 @@ $sql = "SELECT  f.idfacturacion,
                 f.comprobante_serie||'-'||f.comprobante_numero as comprobante_num,
                 f.dni_ruc,
                 f.nombres,
-                case f.idmoneda when 1 then '€' 
-                     when 2 then '$'
-                     when 3 then 'S/.'
-                else '-' end as moneda,
-                f.tipo_cambio,
-                f.total as importe_to,
+                s.descripcion||' <b>-'||fd.correlativo||'</b> ' as servicio,
+                fd.monto*fd.cantidad as importe_to_d,                
                 coalesce(t1.total_p,0) as importe_pa,
                 f.total-(coalesce(t1.total_p,0)) as importe_pe,
+                f.total as importe_to,
                 case f.estado_credito when 0 then 'PENDIENTE' else 'CANCELADO' end as estado,
                 f.observaciones,
-                DATE_PART('day', now() - f.facturacion_fecha) as dt
-              from facturacion as f left outer join 
-          (select sum(monto) as total_p,
-              idfacturacion
-            from facturacion_pagos
-           group by idfacturacion ) as t1 on t1.idfacturacion = f.idfacturacion 
-              where f.idforma_pago = 10 ";
+                DATE_PART('day', now() - f.facturacion_fecha) as dt,
+                fd.item,
+                t2.n
+              from facturacion as f 
+                inner join facturacion_detalle as fd on fd.idfacturacion = f.idfacturacion
+                inner join servicio as s on s.idservicio = fd.idservicio
+                inner join (select count(*) as n,idfacturacion  from facturacion_detalle group by idfacturacion) as t2 on t2.idfacturacion = f.idfacturacion
+                left outer join 
+                        (SELECT sum(monto) as total_p,
+                            idfacturacion
+                          from facturacion_pagos
+                         group by idfacturacion ) as t1 on t1.idfacturacion = f.idfacturacion 
+                            where f.idforma_pago = 10 and f.estado <> 2 ";
  
  //$where .= "  and k.anio = '".$_GET['anio']."' and kds.idsituacion = 2";
 
@@ -129,12 +132,15 @@ $sql = "SELECT  f.idfacturacion,
     break;
  }
 
- $sql = $sql.$where." order by f.facturacion_fecha desc limit 200";
+ $sql = $sql.$where." order by f.idfacturacion desc limit 200";
  //echo $sql;
  $Consulta = $Conn->Query($sql);
 
  $cont = 0;
  $bg = "#FFFFFF";
+ $last_id = "";
+ $last_n = 0;
+ $cont = 0;
  while($row = $Conn->FetchArray($Consulta))
  {
     $c +=1;  
@@ -150,6 +156,16 @@ $sql = "SELECT  f.idfacturacion,
           $bg = "#97EFFB";
         }
       }
+
+    if($last_id!=$row['idfacturacion'])
+    {
+       $last_id = $row['idfacturacion'];
+       $cont = 0;
+    }
+    else
+    {
+       $cont += 1;
+    }
   ?>
   <tr <?php if($bg!="") echo 'style="background:'.$bg.'"'; ?>>
     <td align="center"><?php echo str_pad($c,3,'0',0); ?></td>
@@ -159,12 +175,16 @@ $sql = "SELECT  f.idfacturacion,
     <td align="center"><?php echo $row['comprobante_num'] ?></td>
     <td align="center"><?php echo $row['dni_ruc'] ?></td>
     <td align="left"><?php echo $row['nombres']; ?> <span style="font-size:8px; ">(<?php echo strtoupper($row['observaciones']); ?>)</span></td>    
-    <td align="right"><?php echo "".number_format($row['importe_to'],2); ?></td>    
-    <td align="right"><b><?php echo number_format($row['importe_pa'],2); ?></b></td>    
-    <td align="right"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pe'],2); ?></span></td>    
-    <td align="center"><?php echo $row['estado'] ?></td>    
-    <td align="center"><?php if($row['estado']=="PENDIENTE") echo priority($row['dt']) ?></td>    
-    <td align="center" bgcolor="#FFFFFF"><a href="#" class="myButton btn-pay" id="<?php echo $row['idfacturacion'] ?>">P&aacute;gos</a></td>  
+    <td align="left"><?php echo $row['servicio']; ?></td>    
+    <td align="right"><?php echo "".number_format($row['importe_to_d'],2); ?></td>    
+    <?php if($cont==0) { ?>
+    <td align="right"  rowspan="<?php echo $row['n'] ?>" ><?php echo "".number_format($row['importe_to'],2); ?></td>    
+    <td align="right"  rowspan="<?php echo $row['n'] ?>"><b><?php echo number_format($row['importe_pa'],2); ?></b></td>    
+    <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pe'],2); ?></span></td>        
+    <td align="center" rowspan="<?php echo $row['n'] ?>" ><span style="font-size:9px"><?php echo $row['estado'] ?></span></td>    
+    <td align="center" rowspan="<?php echo $row['n'] ?>" ><?php if($row['estado']=="PENDIENTE") echo priority($row['dt']) ?></td>    
+    <td align="center" rowspan="<?php echo $row['n'] ?>" bgcolor="#FFFFFF"><a href="#" class="myButton btn-pay" id="<?php echo $row['idfacturacion']; ?>">P&aacute;gos</a></td>  
+    <?php } ?>
   </tr>
   <?php
  }

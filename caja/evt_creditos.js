@@ -21,8 +21,11 @@ $(document).ready(function()
   });
 
   $('.btn-pay').live('click',function(){
-    var id = $(this).attr("Id");    
-     $.get('frm_creditos_pay.php','idfacturacion='+id,function(data){
+    var param = $(this).attr("Id");  
+      param = param.split("-")  ;
+      id = param[0];
+      item = param[1];
+     $.get('frm_creditos_pay.php','idfacturacion='+id+'&item='+item,function(data){
         $("#box-frm-pay").empty().append(data);
         $("#box-frm-pay").dialog('open');
         getListPay();

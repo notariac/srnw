@@ -85,7 +85,7 @@ if(!session_id()){ session_start(); }
 </div>
 <div id="load" style="text-align:center; display:none">Buscando...</div>
 <div class="contain">
-   <table id="tabla" class="ui-widget-content">
+   <table id="tabla" class="ui-widget-content" width="100%">
     <thead class="ui-widget-header">
         <tr class="ui-widget-header">
           <th rowspan="2" scope="col" >&nbsp;</th>
@@ -93,12 +93,14 @@ if(!session_id()){ session_start(); }
           <th rowspan="2" style="width:70px" scope="col"><p class="title-head">FECHA EMISION</p></th>
           <th rowspan="2" style="width:70px" scope="col"><p class="title-head">FECHA CANCELACION</p></th>
           <th rowspan="2" style="width:100px"><p class="title-head">N&deg; FACTURA LECO</p></th>          
-          <th rowspan="2" style="width:100px" ><p class="title-head">RUC CLIENTE</p></th>
+          <th rowspan="2"  ><p class="title-head">RUC CLIENTE</p></th>
           <th rowspan="2" style=""><p class="title-head">RAZON SOCIAL (CLIENTE)</p></th>                    
-          <th rowspan="2" style="width:70px"><p class="title-head">IMPORTE TOTAL S/.</p></th>      
-          <th rowspan="2" style="width:70px"><p class="title-head">IMPORTE PAGADO S/.</p></th>      
-          <th rowspan="2" style="width:70px"><p class="title-head">IMPORTE PENDIENTE S/.</p></th>      
-          <th rowspan="2" style="width:100px"><p class="title-head">ESTADO</p></th>  
+          <th rowspan="2" style=""><p class="title-head">SERVICIO</p></th>                    
+          <th rowspan="2" style="width:70px"><p class="title-head">MONTO S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">TOTAL FACT. S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PAGADO S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PENDIE. S/.</p></th>
+          <th rowspan="2" style="width:50px"><p class="title-head">ESTADO</p></th>
           <th rowspan="2" style="width:20px" ><p class="title-head">&nbsp;</p></th>      
           <th rowspan="2" style="width:30px" scope="col" >&nbsp;</th>
         </tr>

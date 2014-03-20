@@ -7,22 +7,21 @@ $sql = "SELECT  f.idfacturacion,
 				f.nombres,
 				f.dni_ruc,
 				f.comprobante_serie||'-'||f.comprobante_numero as nrofac,
-				f.total,
+				f.total as total,
 				f.facturacion_fecha,
 				case f.idmoneda when 1 then '€' 
                      when 2 then '$'
                      when 3 then 'S/.'
                 else '-' end as moneda,
-                sum(coalesce(fp.monto,0)) as totalp
-		from facturacion as f left outer join facturacion_pagos as fp on fp.idfacturacion = f.idfacturacion
-		where f.idfacturacion = ".$_GET['idfacturacion']."
-		group by f.idfacturacion,
-				f.nombres,
-				f.dni_ruc,
-				f.comprobante_serie||'-'||f.comprobante_numero,
-				f.total,
-				f.facturacion_fecha,
-				f.idmoneda";
+                f.total-(coalesce(t1.total_p,0)) as totalp
+		from facturacion as f inner join facturacion_detalle as fd on fd.idfacturacion = f.idfacturacion
+				left outer join 
+                        (select sum(monto) as total_p,
+                            idfacturacion
+                          from facturacion_pagos
+                         group by idfacturacion ) as t1 on t1.idfacturacion = fd.idfacturacion 
+		where fd.idfacturacion = ".$_GET['idfacturacion'];
+
 $Consulta = $Conn->Query($sql);
 $r = $Conn->FetchArray($Consulta);
 ?>
@@ -64,10 +63,10 @@ $r = $Conn->FetchArray($Consulta);
 				<tr>
 					<td align="center"><?php echo $rd[0]; ?></td>
 					<td align="left"><?php echo $rd[1]; ?></td>
-					<td align="left"><?php echo $rd[2]; ?></td>
+					<td align="center"><?php echo $rd[2]; ?></td>
 					<td align="center"><?php echo $rd[3]; ?></td>
-					<td align="right"><?php echo number_format($rd[4],2); ?></td>
-					<td align="right"><?php echo number_format($rd[3]*$rd[4],2) ?></td>
+					<td align="center"><?php echo number_format($rd[4],2); ?></td>
+					<td align="center"><?php echo number_format($rd[3]*$rd[4],2) ?></td>
 					<td>&nbsp;</td>
 				</tr>
 				<?php
@@ -97,7 +96,7 @@ $r = $Conn->FetchArray($Consulta);
 	<label class="labels" style="width:50px;">Fecha: </label>
 	<input type="text" name="fecha_pago" id="fecha_pago" value="<?php echo date('d/m/Y') ?>" class="ui-widget-content ui-corner-all text" style="width:75px;text-align:center" />	
 	<label class="labels" style="width:50px;">Monto: </label>
-	S/. <input type="text" name="monto" id="monto" value="<?php echo number_format($r['total']-$r['totalp'],2) ?>" class="ui-widget-content ui-corner-all text" style="width:80px;text-align:right" />
+	S/. <input type="text" name="monto" id="monto" value="<?php echo number_format($r['totalp'],2) ?>" class="ui-widget-content ui-corner-all text" style="width:80px;text-align:right" />
 	<br/>
 	<div id="box-datos1" style="display:none">
 		<label class="labels" id="label-doc" style="width:100px;">Nro Cheque: </label>
@@ -106,7 +105,7 @@ $r = $Conn->FetchArray($Consulta);
 		<select name="identidad_financiera" id="identidad_financiera" style="width:200px;" class="text">
 			<option value="">-Seleccione-</option>
 		<?php 
-			$sql = "SELECT identidad_financiera, descripcion from pdt.entidadfinanciera order by identidad_financiera";
+			$sql = "SELECT identidad_financiera, descripcion from pdt.entidadfinanciera order by descripcion";
 			$Consulta = $Conn->Query($sql);
 			while($row = $Conn->FetchArray($Consulta))
 			{
@@ -139,6 +138,7 @@ $r = $Conn->FetchArray($Consulta);
           			<th>Fecha</th>
           			<th>Forma Pago</th>
           			<th>Monto</th>
+          			<td>Obsv.</td>
           			<th style="width:50px">Anular</th>
         		</tr>
     		</thead>
