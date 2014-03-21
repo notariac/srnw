@@ -104,16 +104,16 @@ $r = $Conn->FetchArray($Consulta);
 		<label class="labels" style="width:70px;">Ent.Finan: </label>
 		<select name="identidad_financiera" id="identidad_financiera" style="width:200px;" class="text">
 			<option value="">-Seleccione-</option>
-		<?php 
-			$sql = "SELECT identidad_financiera, descripcion from pdt.entidadfinanciera order by descripcion";
-			$Consulta = $Conn->Query($sql);
-			while($row = $Conn->FetchArray($Consulta))
-			{
-				?>
-				<option value="<?php echo $row[0] ?>"><?php echo $row[1] ?></option>
-				<?php
-			}
-		?>
+			<?php 
+				$sql = "SELECT identidad_financiera, descripcion from pdt.entidadfinanciera order by descripcion";
+				$Consulta = $Conn->Query($sql);
+				while($row = $Conn->FetchArray($Consulta))
+				{
+					?>
+					<option value="<?php echo $row[0] ?>"><?php echo $row[1] ?></option>
+					<?php
+				}
+			?>
 		</select>
 	</div>
 	<table border="0" cellspacing="0" cellpadding="0">

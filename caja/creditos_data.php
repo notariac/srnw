@@ -42,7 +42,7 @@ $sql = "SELECT  f.idfacturacion,
                 f.comprobante_serie||'-'||f.comprobante_numero as comprobante_num,
                 f.dni_ruc,
                 f.nombres,
-                s.descripcion||' <b>-'||fd.correlativo||'</b> ' as servicio,
+                s.descripcion||' - <b>'||fd.correlativo||'</b> ' as servicio,
                 fd.monto*fd.cantidad as importe_to_d,                
                 coalesce(t1.total_p,0) as importe_pa,
                 f.total-(coalesce(t1.total_p,0)) as importe_pe,
@@ -61,7 +61,7 @@ $sql = "SELECT  f.idfacturacion,
                             idfacturacion
                           from facturacion_pagos
                          group by idfacturacion ) as t1 on t1.idfacturacion = f.idfacturacion 
-                            where f.idforma_pago = 10 and f.estado <> 2 ";
+                            where f.idforma_pago = 10 and f.estado <> 2 and Extract(year from f.facturacion_fecha)>2010";
  
  //$where .= "  and k.anio = '".$_GET['anio']."' and kds.idsituacion = 2";
 
@@ -69,7 +69,7 @@ $sql = "SELECT  f.idfacturacion,
  if(isset($_GET['q']))    
  {
     $campo = "";
-    switch ($_GET['q']) {
+    switch ($_GET['criterio']) {
       case 1:$campo = "f.nombres";break;
       case 2:$campo = "f.dni_ruc";break;
       case 3:$campo = "f.comprobante_serie||'-'||f.comprobante_numero";break;
@@ -220,4 +220,5 @@ $sql = "SELECT  f.idfacturacion,
       $html = '<div style="width:10px; height:10px; background:'.$color.'">&nbsp;</div>';
       return $html;
   }
+
 ?>

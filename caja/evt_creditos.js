@@ -29,6 +29,11 @@ $(document).ready(function()
         $("#box-frm-pay").empty().append(data);
         $("#box-frm-pay").dialog('open');
         getListPay();
+        $("#fecha_pago").datepicker({
+          dateFormat: 'dd/mm/yy',
+          changeMonth: true,
+          changeYear: true
+        });
      })
   });
 
