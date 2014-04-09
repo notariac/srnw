@@ -20,6 +20,22 @@ $(document).ready(function()
     }
   });
 
+  $("#box-frm-dr").dialog({
+    title: 'Derechos Registrales',
+    modal:false,
+    width:300,
+    resizable:false,
+    autoOpen:false,
+    buttons: {
+      'Cerrar':function(){
+        $(this).dialog('close');
+      },
+      'Grabar': function(){
+        saveDR();
+      }
+    }
+  });
+
   $('.btn-pay').live('click',function(){
     var param = $(this).attr("Id");  
       param = param.split("-")  ;
@@ -37,6 +53,9 @@ $(document).ready(function()
      })
   });
 
+  $('#btn-dr').live('click',function(){
+      $("#box-frm-dr").dialog('open');
+  })
  
   $("#idforma_pago").live('change',function(){
      var i = $(this).val();
@@ -64,8 +83,12 @@ $(document).ready(function()
   {
       loadGrid();
   });
+  $("#export").click(function()
+  {
+      exportar();
+  });
 
-    $("#print").click(function(){
+  $("#print").click(function(){
     var v = $("#criterio").val(),
         str = v+"="+$("#"+v).val();       
         tt = $("#tipo_time").val(),
@@ -109,7 +132,7 @@ function tooglebox(v)
       var id = $("#box").find('span:eq('+i+')').attr("id");
       if(id==visible) { $("#box").find('span:eq('+i+')').show("slow"); $("#"+v).focus(); }
         else { $("#box").find('span:eq('+i+')').hide(); }
-   })
+   });
 }
 
 function toogleTime(v)
@@ -152,9 +175,12 @@ function validar()
     var monto = parseFloat($("#monto").val());
     if(monto<=0)
     {
-       alert("El monto debe ser mayor que cero (0).");
-       $("#monto").focus();
-       bval = false;
+       if(!confirm("Estas seguro de registrar un pago por 0.00 S/. y para Tramites Registrales "+$("#monto_tr").val()))
+       {
+          $("#monto").focus();
+          bval = false;
+       }       
+       
     }
     if(bval)
     {
@@ -175,6 +201,7 @@ function getListPay()
       $("#tabla-pay tbody").empty().append(data);
   });
 }
+
 function loadGrid()
 {
   var v = $("#criterio").val(),
@@ -189,7 +216,8 @@ function loadGrid()
       case 3: str_t = "&fechai="+$("#fechai").val()+"&fechaf="+$("#fechaf").val(); break;
       default: break;
     }
-    str = str+str_t+"&tt="+tt;
+    var estado = $("#estado").val();
+    str = str+str_t+"&tt="+tt+"&estado="+estado;
     $("#load").show('fade');
     $.get('creditos_data.php',str,function(data)
     {
@@ -197,3 +225,42 @@ function loadGrid()
       $("#tabla tbody").empty().append(data);
     })
 }
+
+function exportar()
+{
+  var v = $("#criterio").val(),
+        str = "criterio="+v+"&q="+$("#q").val(),       
+        tt = $("#tipo_time").val(),
+        str_t = "";
+
+    switch(parseInt(tt))
+    {
+      case 1: str_t = "&anio="+$("#anio").val(); break;
+      case 2: str_t = "&mesi="+$("#mesi").val()+"&anioi="+$("#anioi").val()+"&mesf="+$("#mesf").val()+"&aniof="+$("#aniof").val();break;
+      case 3: str_t = "&fechai="+$("#fechai").val()+"&fechaf="+$("#fechaf").val(); break;
+      default: break;
+    }
+    var estado = $("#estado").val();
+    str = str+str_t+"&tt="+tt+"&estado="+estado;
+    popup('creditos_data_excel.php?'+str,500,500);
+}
+function saveDR()
+{
+    var str = $("#frm-dr").serialize();
+    var idf = $("#idfacturacion").val();
+
+    $.post('creditos_process.php',str+'&idf='+idf+'&oper=3',function(data){
+         $.get('frm_creditos_pay.php','idfacturacion='+idf,function(data){
+              $("#box-frm-pay").empty().append(data);
+              $("#box-frm-pay").dialog('open');
+              getListPay();
+              $("#fecha_pago").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+              });
+           });
+         $("#box-frm-dr").dialog('close');
+    })
+}
+function popup(url,width,height){cuteLittleWindow = window.open(url,"littleWindow","location=no,width="+width+",height="+height+",top=80,left=300,scrollbars=yes"); }

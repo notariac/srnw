@@ -25,10 +25,11 @@ switch ($oper)
 		 	$cont = 0;		 
 		 	$row = $Conn->FetchArray($Consulta);
 		 	$monto = $row['importe_pe'];
-
+		 	
 		 	$msg = "";
 		 	$error = 0;
 		 	$_POST['monto'] = str_replace(",", "", $_POST['monto']);
+		 	$_POST['monto_tr'] = str_replace(",", "", $_POST['monto_tr']);
 		 	if($monto>=$_POST['monto'])
 		 	{
 		 		if($_POST['identidad_financiera']=="")
@@ -37,9 +38,9 @@ switch ($oper)
 		 		$monto_restante = $monto-$_POST['monto'];
 		 			
 		 		$sql = "INSERT INTO facturacion_pagos(idfacturacion, fecha_pago, idforma_pago, 
-						            nrodocumento, identidad_financiera, monto, observacion)
+						            nrodocumento, identidad_financiera, monto, observacion, monto_tr)
 						    VALUES (".$_POST['idfacturacion'].", '".$Conn->CodFecha($_POST['fecha_pago'])."', ".$_POST['idforma_pago'].", 
-						            '".$_POST['nrodocumento']."', ".$_POST['identidad_financiera'].", ".$_POST['monto'].", '".$_POST['observacion']."');";				
+						            '".$_POST['nrodocumento']."', ".$_POST['identidad_financiera'].", ".$_POST['monto'].", '".$_POST['observacion']."',".$_POST['monto_tr'].");";				
 				
 				$Conn->Query($sql);
 
@@ -69,6 +70,12 @@ switch ($oper)
 			$html = getListPay($_POST['idfacturacion'],$Conn);
 			echo $html;
 			break;
+	case 3: 
+			$fecha = date('Y-m-d');
+			$sql = "INSERT INTO facturacion_dr(idfacturacion,descripcion,fecha,cantidad,monto) 
+					VALUES (".$_POST['idf'].",'DERECHOS REGISTRALES','".$fecha."',".$_POST['cant_dr'].",".$_POST['monto_dr'].")";
+			$Conn->Query($sql);					
+			break;
 	default:
 			echo "Hola default";
 		break;
@@ -84,7 +91,8 @@ function getListPay($idf,$Conn)
 					when 5 then frp.descripcion||' Nro '||fp.nrodocumento||' - '||ef.descripcion
 				   end as forma_pago,
 			       fp.monto,
-			       fp.observacion
+			       fp.observacion,
+			       fp.monto_tr
 			FROM   facturacion_pagos as fp inner join forma_pago as frp on
 			       frp.idforma_pago = fp.idforma_pago
 			       inner join pdt.entidadfinanciera as ef on ef.identidad_financiera = fp.identidad_financiera
@@ -95,6 +103,7 @@ function getListPay($idf,$Conn)
 	$html = "";
 	$c = 0;
 	$s = 0;
+	$str = 0;
  	while($r = $Conn->FetchArray($q))
  	{
  		$c += 1;
@@ -103,18 +112,18 @@ function getListPay($idf,$Conn)
  					<td align='center'>".$Conn->DecFecha($r['fecha_pago'])."</td>
  					<td>".$r['forma_pago']."</td>
  					<td align='right'>".number_format($r['monto'],2)."</td>
+ 					<td align='right'>".number_format($r['monto_tr'],2)."</td>
  					<td align='left'><span style='font-size:9px;'>".$r['observacion']."</span></td>
  					<td align='center'><a href='#'>Anular</a></td>
  				  </tr>";
  		$s += $r['monto'];
+ 		$str += $r['monto_tr'];
  	}
- 	
- 	$html .= "<tr><td colspan='4' align='right'><b>S/. TOTAL PAGADO: </b></td>";
+ 	$html .= "<tr><td colspan='3' align='right'>S/. SUB TOTAL: </td>";
  	$html .= "<td align='right'><b>".number_format($s,2)."</b></td>";
- 	$html .= "<td>&nbsp;</td></tr>";
-
-
-
+ 	$html .= "<td align='right'><b>".number_format($str,2)."</b></td>";
+ 	$html .= "<td align='right' colspan='2'><b>TOTAL: &nbsp;&nbsp;".number_format($str+$s,2)."</b></td>";
+ 	
  	return $html;
 }
 ?>

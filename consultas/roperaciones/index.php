@@ -10,7 +10,7 @@
 <link href="<?php echo $urlDir;?>css/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?php echo $urlDir;?>js/jquery-ui-1.8.16.custom.min.js"></script>
 <script>
-  function popup(url,width,height){cuteLittleWindow = window.open(url,"littleWindow","location=no,width="+width+",height="+height+",top=80,left=300,scrollbars=yes"); }
+function popup(url,width,height){cuteLittleWindow = window.open(url,"littleWindow","location=no,width="+width+",height="+height+",top=80,left=300,scrollbars=yes"); }
   $(document).ready(function(){
     var h = $("#div-rows").height();
     //
@@ -29,7 +29,11 @@
         var str = $("#frm-ro").serialize();
         popup('excel.php?'+str,500,500);
     });
-  })
+  });
+function bloqueo_seguridad()
+{
+    
+}
 </script>
 <div>
   <h2 class="ui-widget-header ui-corner-all" style="padding:5px 0; text-align:center">Registro de Operaciones</h2>

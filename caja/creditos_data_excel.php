@@ -1,6 +1,13 @@
 <?php 
-include('../config.php');
-include('../config_seguridad.php');
+
+   header("Content-type: application/vnd.ms-excel; name='excel'");  
+   header("Content-Disposition: filename=REPORTE_".date('Y-m-d-h-m-i-s').".xls");  
+   header("Pragma: no-cache");  
+   header("Expires: 0");
+
+   include('../config.php');
+   include('../config_seguridad.php');
+
 function ud($anho,$mes)
 { 
    if (((fmod($anho,4)==0) and (fmod($anho,100)!=0)) or (fmod($anho,400)==0)) { 
@@ -26,8 +33,8 @@ function ud($anho,$mes)
    } 
 }
 $sql = "SELECT idusuario,login as nombres 
-    FROM usuario 
-    where estado = 1";
+        FROM usuario 
+        where estado = 1";
 $qs = $ConnS->Query($sql);
 $usuarios = array();
 while($rows = $ConnS->FetchArray($qs))
@@ -147,6 +154,33 @@ where f.idforma_pago = 10 and f.estado <> 2 and Extract(year from f.facturacion_
  //echo $sql;
  $Consulta = $Conn->Query($sql);
 
+ ?>
+ <div class="contain">
+   <table id="tabla" class="ui-widget-content" width="100%">
+    <thead class="ui-widget-header">
+        <tr class="ui-widget-header">
+          <th rowspan="2" scope="col" >&nbsp;</th>          
+          <th rowspan="2" style="width:70px" scope="col"><p class="title-head">FECHA EMISION</p></th>
+          <th rowspan="2" style="width:70px" scope="col"><p class="title-head">FECHA CANCELACION</p></th>
+          <th rowspan="2" style="width:100px"><p class="title-head">N&deg; FACTURA LECO</p></th>          
+          <th rowspan="2"  ><p class="title-head">RUC CLIENTE</p></th>
+          <th rowspan="2" style=""><p class="title-head">RAZON SOCIAL (CLIENTE)</p></th>                    
+          <th rowspan="2" style=""><p class="title-head">SERVICIO</p></th>                    
+          <th rowspan="2" style="width:70px"><p class="title-head">PRECIO S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">TOTAL FACT. S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PAGADO S/.</p></th>                
+          <th rowspan="2" style="width:50px"><p class="title-head">DR S/.</p></th>   
+          <th rowspan="2" style="width:70px"><p class="title-head">TOTAL PAGADO. S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PENDIE. S/.</p></th>             
+          <th rowspan="2" style="width:50px"><p class="title-head">ESTADO</p></th>
+          <th rowspan="2" style="width:20px" ><p class="title-head">&nbsp;</p></th>                
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="50"></td></tr>
+      
+ <?php
+
  $cont = 0;
  $bg = "#FFFFFF";
  $last_id = "";
@@ -188,15 +222,13 @@ where f.idforma_pago = 10 and f.estado <> 2 and Extract(year from f.facturacion_
     <td align="left"><?php echo $row['servicio']; ?></td>    
     <td align="right"><?php echo "".number_format($row['importe_to_d'],2); ?></td>    
     <?php if($cont==0) { ?>
-    <td align="right"  rowspan="<?php echo $row['n'] ?>" ><?php echo "".number_format($row['importe_to'],2); ?></td>    
-    <td align="right"  rowspan="<?php echo $row['n'] ?>"><?php echo number_format($row['importe_pa'],2); ?></td>    
-    <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:normal"><?php echo number_format($row['importe_pa_tr'],2); ?></span></td>        
-    <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pa_tr']+$row['importe_pa'],2); ?></span></td>        
-    <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pe'],2); ?></span></td>        
-    
-    <td align="center" rowspan="<?php echo $row['n'] ?>" ><span style="font-size:9px"><?php echo $row['estado'] ?></span></td>    
-    <td align="center" rowspan="<?php echo $row['n'] ?>" ><?php if($row['estado']=="PENDIENTE") echo priority($row['dt']) ?></td>    
-    <td align="center" rowspan="<?php echo $row['n'] ?>" bgcolor="#FFFFFF"><a href="#" class="myButton btn-pay" id="<?php echo $row['idfacturacion']; ?>">P&aacute;gos</a></td>  
+      <td align="right"  rowspan="<?php echo $row['n'] ?>" ><?php echo "".number_format($row['importe_to'],2); ?></td>    
+      <td align="right"  rowspan="<?php echo $row['n'] ?>"><?php echo number_format($row['importe_pa'],2); ?></td>    
+      <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:normal"><?php echo number_format($row['importe_pa_tr'],2); ?></span></td>        
+      <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pa_tr']+$row['importe_pa'],2); ?></span></td>        
+      <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pe'],2); ?></span></td>
+      <td align="center" rowspan="<?php echo $row['n'] ?>" ><span style="font-size:9px"><?php echo $row['estado'] ?></span></td>    
+      <td align="center" rowspan="<?php echo $row['n'] ?>" ><?php if($row['estado']=="PENDIENTE") echo priority($row['dt']) ?></td>        
     <?php } ?>
   </tr>
   <?php
@@ -205,7 +237,11 @@ where f.idforma_pago = 10 and f.estado <> 2 and Extract(year from f.facturacion_
 <tr>
   <td colspan="20"><?php //echo $sql; ?></td>
 </tr>
+</tbody>
+    </table>
+</div>
 <?php 
+
   function priority($d)
   {
       $color = "";
@@ -218,8 +254,8 @@ where f.idforma_pago = 10 and f.estado <> 2 and Extract(year from f.facturacion_
       {
         if($d>10&&$d<=15)
         {
-            //organge
-            $color = "#FB7E4D";
+          //organge
+          $color = "#FB7E4D";
         }
         else
         {

@@ -1,0 +1,109 @@
+{\rtf1\ansi\deff3\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset0 Liberation Serif{\*\falt Times New Roman};}{\f4\froman\fprq0\fcharset1 Courier New;}{\f5\fswiss\fprq0\fcharset1 Courier New;}{\f6\froman\fprq0\fcharset1 Arial;}{\f7\froman\fprq2\fcharset0 Times New Roman;}{\f8\froman\fprq2\fcharset1 Courier New;}{\f9\fswiss\fprq0\fcharset1 Arial;}{\f10\fnil\fprq2\fcharset0 DejaVu Sans;}{\f11\fnil\fprq0\fcharset1 Arial;}{\f12\fnil\fprq2\fcharset0 Courier New;}{\f13\fnil\fprq2\fcharset1 Lohit Hindi;}{\f14\fnil\fprq0\fcharset1 Lohit Hindi;}{\f15\fnil\fprq0\fcharset1 Times New Roman;}{\f16\fnil\fprq0\fcharset1 Courier New;}{\f17\fnil\fprq2\fcharset1 Times New Roman;}}
+{\colortbl;\red0\green0\blue0;\red255\green255\blue255;\red192\green192\blue192;\red128\green128\blue128;}
+{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af13\afs24\alang1081\loch\f3\fs24\lang10250 Estilo predeterminado;}
+{\s2\sbasedon21\snext22\ilvl1\outlinelevel1\qj\widctlpar\tqc\tx4419\tqr\tx8838\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\i\b\dbch\af10\langfe3082\dbch\af15\afs20\alang1025\ai\ab\loch\f9\fs24\lang3082 Encabezado 2;}
+{\*\cs15\snext15 Default Paragraph Font;}
+{\*\cs16\sbasedon15\snext16\dbch\af15 footnote reference;}
+{\*\cs17\sbasedon15\snext17\langfe10250\dbch\af15\afs24\loch\f4\fs24\lang1033 Encabezado Car;}
+{\*\cs18\sbasedon15\snext18\langfe10250\dbch\af15\afs24\loch\f4\fs24\lang1033 Pie de p\u225\'e1gina Car;}
+{\*\cs19\sbasedon15\snext19\langfe10250\dbch\af15\afs24\loch\f4\fs24\lang1033 Texto independiente Car;}
+{\*\cs20\sbasedon15\snext20\dbch\af15 apple-converted-space;}
+{\s21\sbasedon0\snext22\ql\nowidctlpar\tqc\tx4419\tqr\tx8838\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\dbch\af10\langfe3082\dbch\af15\afs24\alang1025\loch\f5\fs20\lang1033 Encabezado;}
+{\s22\sbasedon27\snext22\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af11\langfe3082\dbch\af15\afs24\alang1025\loch\f6\fs20\lang3082 Cuerpo de texto;}
+{\s23\sbasedon22\snext23\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af11\langfe3082\dbch\af14\afs24\alang1025\loch\f6\fs20\lang3082 Lista;}
+{\s24\sbasedon0\snext24\sb120\sa120\noline\i\dbch\af14\afs24\ai\fs24 Etiqueta;}
+{\s25\sbasedon0\snext25\noline\dbch\af14 \u205\'cdndice;}
+{\s26\sbasedon0\snext26\ql\nowidctlpar\tqc\tx4419\tqr\tx8838\faauto\li0\ri0\lin0\rin0\fi0\noline\langfe3082\dbch\af15\afs24\alang1025\loch\f4\fs20\lang1033 Pie de p\u225\'e1gina;}
+{\s27\snext27\ql\nowidctlpar\faauto\li0\ri0\lin0\rin0\fi0\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af12\langfe2052\dbch\af15\afs24\alang1081\loch\f7\fs24\lang3082 Predeterminado;}
+{\s28\sbasedon0\snext28\noline Contenido de la tabla;}
+{\s29\sbasedon28\snext29\qc\noline\b\ab Encabezado de la tabla;}
+}{\*\listtable{\list\listtemplateid1
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-432\li432}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-576\li576}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-720\li720}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-864\li864}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1008\li1008}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1152\li1152}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1296\li1296}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1440\li1440}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1584\li1584}\listid1}
+{\list\listtemplateid2
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li720}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1080}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1440}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1800}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2160}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2520}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2880}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li3240}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li3600}\listid2}
+}{\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}{\info{\title SE\u209\'d1OR NOTARIO:  SIRVASE EXTENDER EN SU REGISTRO DE ESCRITURAS PUBLICAS UNA DE COMPRAVENTA, QUE CELEBRAN:==================== D}{\author Usuario}{\creatim\yr2013\mo10\dy26\hr2\min5}{\revtim\yr2013\mo10\dy27\hr23\min30}{\printim\yr2012\mo4\dy23\hr16\min55}{\comment LibreOffice}{\vern4000}}\deftab1361\deftab1361
+\viewscale100
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse451\pgwsxn11906\pghsxn16838\marglsxn2608\margrsxn567\margtsxn1701\margbsxn964\pgdscnxt0 Estilo predeterminado;}
+{\pgdsc1\pgdscuse455\pgndec\pgwsxn11906\pghsxn16838\marglsxn2608\margrsxn567\margtsxn1701\margbsxn964\pgdscnxt0 Primera p\u225\'e1gina;}}
+\formshade{\*\pgdscno0}\paperh16838\paperw11906\margl2608\margr567\margt1701\margb964\sectd\sbknone\sectunlocked1\pgndec\pgwsxn11906\pghsxn16838\marglsxn2608\margrsxn567\margtsxn1701\margbsxn964\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s2\ilvl1\outlinelevel1\qj\widctlpar\tqc\tx4419\tqr\tx8838\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\i\b\dbch\af10\langfe3082\dbch\af15\afs20\alang1025\ai\ab\loch\f9\fs24\lang3082{\listtext\pard\plain }\ilvl1\ls2 \li1106\ri0\lin1106\rin0\fi-360\sl459\slmult0\li26\ri0\lin26\rin0\fi0\sb240\sa120{\ul\ulc1\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+NUMERO: }{\ul\ulc1\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+<<Campo-sin-valor>>}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af13\afs24\alang1081\loch\f3\fs24\lang10250\sl-480\slmult0\qc{\ul\ulc1\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+COMPRA VENTA E HIPOTECA}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af13\afs24\alang1081\loch\f3\fs24\lang10250\sl-480\slmult0\qj{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+QUE OTORGA COMO \u8220\'1cVENDEDOR\u8221\'1d }{\b0\dbch\af16\afs22\ab0\rtlch \ltrch\loch\fs22\loch\f4
+DOÑA {\qj\b\fs22 JAVIER FRANCISCO BERAUN ORTEGA}.}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ Y DE OTRA PARTE COMO \u8220\'1cCOMPRADORES\u8221\'1d }{\b0\dbch\af16\afs22\ab0\rtlch \ltrch\loch\fs22\loch\f4
+DOÑA {\qj\b\fs22 CRAWFORD PERÚ S.A.} }{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+. &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& EN LA }{\b0\dbch\af16\afs22\ab0\rtlch \ltrch\loch\fs22\loch\f4
+CIUDAD}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DE CHICLAYO, DISTRITO Y PROVINCIA DEL MISMO NOMBRE, DEPARTAMENTO DE LAMBAYEQUE, A LOS }{\b\dbch\af16\rtlch \ltrch\loch\fs22\lang3082\loch\f4
+DIECISEIS}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DIAS DEL MES DE }{\b\dbch\af16\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+ENERO}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DEL A\u209\'d1O }{\b\dbch\af16\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+DOS MIL CATORCE}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+, ANTE MI HENRY MACEDO VILLANUEVA, ABOGADO NOTARIO P\u218\'daBLICO DE ESTA PROVINCIA, INSCRITO EN EL REGISTRO DEL COLEGIO DE NOTARIOS DE LAMBAYEQUE CON EL N\u176\'b0 23, CON DNI. N\u176\'b0 16727958, SUFRAGANTE Y CON RUC N\u186\'ba 10167279584. COMPARECEN: }{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+DOÑA {\qj\b\fs22 JAVIER FRANCISCO BERAUN ORTEGA, }IDENTIFICADO CON DOCUMENTO NACIONAL DE IDENTIDAD  N° {\b 22411273}, QUIEN MANIFIESTA SER DE NACIONALIDAD {\b PERUANA, }OCUPACIÓN {\b NO DECLARA }, ESTADO CIVIL SOLTERO(A) , CON DOMICILIO EN <<Campo-sin-valor>>, DISTRITO DE Distrito, PROVINCIA DE Provincia, DEPARTAMENTO DE DepartamentoDE OTRA PARTE DOÑA {\qj\b\fs22 CRAWFORD PERÚ S.A., }IDENTIFICADO CON RUC  N° {\b 20101949380}, CON DOMICILIO EN <<Campo-sin-valor>>, DISTRITO DE Distrito, PROVINCIA DE Provincia, DEPARTAMENTO DE Departamento, }{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ }{\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+LOS COMPARECIENTES, }{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+SON PERUANOS,  MAYORES DE EDAD, ENTENDIDOS EN EL IDIOMA CASTELLANO, A QUIENES IDENTIFIQU\u201\'c9  Y JUZGO QUE PROCEDEN CON LIBERTAD, CAPACIDAD Y CONOCIMIENTO SUFICIENTE PARA TRATAR Y CONTRATAR, DE CONFORMIDAD CON EL EXAMEN QUE LES HE EFECTUADO,  DE  LO  QUE  DOY  FE;  AS\u205\'cd  COMO  DE HABER CUMPLIDO CON LO DISPUESTO EN LA LEY DEL NOTARIADO N\u176\'b0 1049  Y,  ME  ENTREGAN UNA MINUTA, DEBIDAMENTE FIRMADA Y AUTORIZADA PARA QUE SU CONTENIDO SEA ELEVADA A ESCRITURA P\u218\'daBLICA, LA MISMA QUE QUEDA ARCHIVADA EN SU LEGAJO CORRESPONDIENTE, CUYO TENOR LITERAL ES EL SIGUIENTE: ============}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+=}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af13\afs24\alang1081\loch\f3\fs24\lang10250\sl-480\slmult0\qj{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+MINUTA: }{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+#MINUTA#}
+\par \pard\plain \s22\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af11\langfe3082\dbch\af15\afs24\alang1025\loch\f6\fs20\lang3082\sl459\slmult0\qj{\ul\ulc1\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+FIRMADO}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+: POR MUNICIPALIDAD DISTRITAL DE CIUDAD ETEN SU ALCALDE JOSE ALEJANDRO \u209\'d1IQUEN SANDOVAL.- JAIME ORTIZ URIARTE Y MARIA MARGARITA MILLONES CHANCAFE.- AUTORIZADO: PERCY R. GORDILLO CUMPA ABOGADO CON REGISTRO ICAL N\u186\'ba 2277 \u8211\'13 UN SELLO. }{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+=}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+=================== }{\ul\ulc1\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+CERTIFICACION}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+: DOY FE DE HABER TENIDO A LA VISTA LA DECLARACION JURADA DE AUTOAVALUO Y EL COMPROBANTE DE PAGO DE IMPUESTO PREDIAL A\u209\'d1O 2013 A NOMBRE DE MARIA MARGARITA MILLONES CHANCAFE EXPEDIDO POR LA MUNICIPALIDAD DISTRITAL DE CIUDAD ETEN. }{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+=}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+================== }{\ul\ulc1\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+OTRA: CERTIFICACION}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+. DE CONFORMIDAD A LO ESTABLECIDO EN LA LEY N\u176\'b0 28194 QUE DEROGA AL DECRETO LEGISLATIVO N\u186\'ba 939, SE DEJA CONSTANCIA QUE A LA CELEBRACI\u211\'d3N DEL PRESENTE INSTRUMENTO P\u218\'daBLICO LAS PARTES CONTRATANTES NO HAN EXHIBIDO NING\u218\'daN MEDIO DE PAGO, DE LO QUE DOY FE. =============================================================}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+=}
+\par \pard\plain \s22\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af11\langfe3082\dbch\af15\afs24\alang1025\loch\f6\fs20\lang3082\sl459\slmult0\qj{\ul\ulc1\b\chcbpat2\dbch\af16\afs22\ab\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+CONSTANCIA}{\b\chcbpat2\dbch\af16\afs22\ab\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+:}{\cs20\dbch\af15\b\chcbpat2\dbch\af16\afs22\ab\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+\~\u8220\'1c}{\chcbpat2\dbch\af16\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+DE CONFORMIDAD AL ART\u205\'cdCULO 55 DEL DECRETO LEGISLATIVO 1049, MODIFICADO POR EL DECRETO LEGISLATIVO 1106, DEJO CONSTANCIA DE HABER TOMADO LA ACCI\u211\'d3N DE CONTROL Y DEBIDA DILIGENCIA EN MATERIA DE PREVENCION DE LAVADO DE ACTIVOS, PREGUNTANDO A TODOS LOS INTERVINIENTES EN RELACI\u211\'d3N AL ORIGEN DE LOS FONDOS, BIENES Y ACTIVOS INVOLUCRADOS EN LA PRESENTE TRANSACCI\u211\'d3N, AL QUE RESPONDEN QUE TODO FUE L\u205\'cdCITAMENTE ADQUIRIDO; TAMBI\u201\'c9N SE LES EXIGI\u211\'d3 LA UTILIZACI\u211\'d3N DE LOS MEDIOS DE PAGO DISPUESTO POR EL ART\u205\'cdCULO QUINTO DE LA LEY N\u218\'daMERO 28194.\u8221\'1d }{\chcbpat2\dbch\af16\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+=========================================}
+\par \pard\plain \s22\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af11\langfe3082\dbch\af15\afs24\alang1025\loch\f6\fs20\lang3082\sl459\slmult0\qj{\ul\ulc1\b\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+CONCLUSION}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+.- FORMALIZADO EL INSTRUMENTO INSTRU\u205\'cd A LOS OTORGANTES DEL OBJETO Y FINES DE LA PRESENTE, LA MISMA QUE LES FUE LE\u205\'cdDA \u205\'cdNTEGRAMENTE POR MI A SU SOLICITUD, SE AFIRMARON Y RATIFICARON EN LOS T\u201\'c9RMINOS DE LA MISMA SIN MODIFICACI\u211\'d3N ALGUNA, LA MISMA QUE SE INICIA A FOJAS }{\b\dbch\af16\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DE LA SERIE A N\u186\'ba }{\b\dbch\af16\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ Y TERMINA A FOJAS }{\b\dbch\af16\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ VUELTA DE LA SERIE A N\u186\'ba }{\b\dbch\af16\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ EN LA QUE SUSCRIBEN LOS COMPARECIENTES Y EL NOTARIO QUE AUTORIZA.}
+\par \pard\plain \s22\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af11\langfe3082\dbch\af15\afs24\alang1025\loch\f6\fs20\lang3082\sl459\slmult0\qj{\dbch\af16\afs22\rtlch \ltrch\loch\fs22\loch\f4
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&}
+\par \pard\plain \s22\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af11\langfe3082\dbch\af15\afs24\alang1025\loch\f6\fs20\lang3082\sl459\slmult0\qj\rtlch \ltrch\loch
+
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af13\afs24\alang1081\loch\f3\fs24\lang10250\sl-300\slmult0\qj\nowidctlpar\faauto\li0\ri0\lin0\rin0\fi0{\ulnone\ulc0\b0\langfe3082\dbch\af16\afs22\alang1025\ab0\rtlch \ltrch\loch\fs22\lang1033\loch\f4
+{\qj\fs22 } \par \par {\qj\b\fs22 JAVIER FRANCISCO BERAUN ORTEGA     CRAWFORD PERÃš S.A.     }}
+\par \par \page \par}

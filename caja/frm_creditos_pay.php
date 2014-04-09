@@ -37,6 +37,7 @@ $r = $Conn->FetchArray($Consulta);
 	<label><b><?php echo $Conn->DecFecha($r['facturacion_fecha']); ?></b></label>
 	<label class="labels" style="width:80px;">Importe T.: </label>
 	<label><b>S/. <?php echo number_format($r['total'],2); ?></b></label>
+	<a id="btn-dr" href="#" style="margin-left:20px; color:green">Agregar DR</a>
 	<div style="padding:3px 0 0 3px; margin-top:5px; border-top:1px dotted #CCCCCC;">
 		<table width="100%">
 			<tr style="border-bottom:1px solid #CCC;">
@@ -71,6 +72,25 @@ $r = $Conn->FetchArray($Consulta);
 				</tr>
 				<?php
 			}
+
+			$s = "SELECT *
+				  FROM facturacion_dr 
+				  WHERE idfacturacion = ".$_GET['idfacturacion'];
+			$q = $Conn->Query($s);
+			while($rd = $Conn->FetchArray($q))
+			{
+				?>
+				<tr>
+					<td align="center">&nbsp;</td>
+					<td align="left"><?php echo $rd['descripcion']; ?></td>
+					<td align="center">&nbsp;</td>
+					<td align="center"><?php echo $rd['cantidad']; ?></td>
+					<td align="center"><?php echo number_format($rd['monto'],2); ?></td>
+					<td align="center"><?php echo number_format($rd['monto']*$rd['cantidad'],2) ?></td>
+					<td>&nbsp;</td>
+				</tr>
+				<?php
+			}
 		?>
 		</table>
 	</div>
@@ -97,6 +117,10 @@ $r = $Conn->FetchArray($Consulta);
 	<input type="text" name="fecha_pago" id="fecha_pago" value="<?php echo date('d/m/Y') ?>" class="ui-widget-content ui-corner-all text" style="width:75px;text-align:center" />	
 	<label class="labels" style="width:50px;">Monto: </label>
 	S/. <input type="text" name="monto" id="monto" value="<?php echo number_format($r['totalp'],2) ?>" class="ui-widget-content ui-corner-all text" style="width:80px;text-align:right" />
+	<br/>
+	<label class="labels" style="width:100px;">Monto D.R.: </label>
+	<input type="text" name="monto_tr" id="monto_tr" value="0.00" class="ui-widget-content ui-corner-all text" style="width:80px;text-align:right" />
+	S/. &nbsp;&nbsp; <span style="font-size:10px;">Monto por Derechos Registrales.</span>
 	<br/>
 	<div id="box-datos1" style="display:none">
 		<label class="labels" id="label-doc" style="width:100px;">Nro Cheque: </label>
@@ -136,9 +160,10 @@ $r = $Conn->FetchArray($Consulta);
         		<tr class="ui-widget-header">
           			<th style="width:30px">Item</th>
           			<th>Fecha</th>
-          			<th>Forma Pago</th>
-          			<th>Monto</th>
-          			<td>Obsv.</td>
+          			<th>Forma Pago</th>          			
+          			<th style="width:60px;">Monto</th>
+          			<th style="width:60px;">Monto DR</th>
+          			<td align="center">Obsv.</td>
           			<th style="width:50px">Anular</th>
         		</tr>
     		</thead>

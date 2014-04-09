@@ -79,6 +79,15 @@ if(!session_id()){ session_start(); }
     <label style="margin-left:10px">al: </label> 
     <input type="text" name="fechaf" id="fechaf" value="<?php echo date('d/m/Y') ?>" class="ui-widget-content ui-corner-all " style="width:80px; text-align:center" />
   </span>
+</fieldset>
+<fieldset class="ui-widget-content" style="display:inline-block; width:auto">
+  <legend>Estado Credito</legend>
+  <select name="estado" id="estado">
+    <option value="">TODOS</option>
+    <option value="1">CANCELADOS</option>
+    <option value="0">PENDIENTES</option>
+  </select>
+</fieldset>
 <input type="button" name="search" id="search"  value="Buscar" class="" />
 <input type="button" name="export" id="export"  value="a Excel" class="" />
 </form>
@@ -88,18 +97,19 @@ if(!session_id()){ session_start(); }
    <table id="tabla" class="ui-widget-content" width="100%">
     <thead class="ui-widget-header">
         <tr class="ui-widget-header">
-          <th rowspan="2" scope="col" >&nbsp;</th>
-          <th rowspan="2" style="width:70px"><p class="title-head">N&deg; DE TICKET</p></th>
+          <th rowspan="2" scope="col" >&nbsp;</th>          
           <th rowspan="2" style="width:70px" scope="col"><p class="title-head">FECHA EMISION</p></th>
           <th rowspan="2" style="width:70px" scope="col"><p class="title-head">FECHA CANCELACION</p></th>
           <th rowspan="2" style="width:100px"><p class="title-head">N&deg; FACTURA LECO</p></th>          
           <th rowspan="2"  ><p class="title-head">RUC CLIENTE</p></th>
           <th rowspan="2" style=""><p class="title-head">RAZON SOCIAL (CLIENTE)</p></th>                    
           <th rowspan="2" style=""><p class="title-head">SERVICIO</p></th>                    
-          <th rowspan="2" style="width:70px"><p class="title-head">MONTO S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">PRECIO S/.</p></th>      
           <th rowspan="2" style="width:70px"><p class="title-head">TOTAL FACT. S/.</p></th>      
-          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PAGADO S/.</p></th>      
-          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PENDIE. S/.</p></th>
+          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PAGADO S/.</p></th>                
+          <th rowspan="2" style="width:50px"><p class="title-head">DR S/.</p></th>   
+          <th rowspan="2" style="width:70px"><p class="title-head">TOTAL PAGADO. S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PENDIE. S/.</p></th>             
           <th rowspan="2" style="width:50px"><p class="title-head">ESTADO</p></th>
           <th rowspan="2" style="width:20px" ><p class="title-head">&nbsp;</p></th>      
           <th rowspan="2" style="width:30px" scope="col" >&nbsp;</th>
@@ -110,6 +120,14 @@ if(!session_id()){ session_start(); }
     </table>
 </div>
 <div id="box-frm-pay"></div>
+<div id="box-frm-dr">
+  <form name="frm-dr" id="frm-dr">
+    <p style="align:center">Tramites por Derechos Registrales</p>
+    <label class="labels" style="width:80px;">Cantidad: </label><input type="text" name="cant_dr" id="cant_dr" value="1" class="text" size="10" style="text-align:center" /> <br/>
+    <label class="labels" style="width:80px;">Monto: </label><input type="text" name="monto_dr" id="monto_dr" value="0.00" class="text" size="10" style="text-align:right" /> S/.
+  </form>
+</div>
+
 <?php
 CuerpoInferior();
 ?>
