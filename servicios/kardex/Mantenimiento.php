@@ -137,14 +137,15 @@ $(function() {
                 },
                 'swf'      : 'uploadify.swf',
                 'uploader' : 'uploadify.php',
-                'buttonText': 'Escritura',                
+                'buttonText': 'Escritura',
+                'height'   : 21,
                 onUploadSuccess : function(file, data, response) {
                         if(response)
                         {
                             r = data.split("###");
                             if(r[0]==1)
                             {
-                                alert('El archivo fue subido correctamente');
+                                //alert('El archivo fue subido correctamente');
                                 $("#archivo").val(r[1]);
                                 $("#VerImagennn").attr("href","archivos/<?php echo $_SESSION['notaria']; ?>/"+r[1]);
                                 $("#VerImagennn_label").css("display","none");
@@ -175,14 +176,15 @@ $(function() {
                 },
                 'swf'      : 'uploadify.swf',
                 'uploader' : 'uploadifym.php',
-                'buttonText': 'Minuta',                
+                'buttonText': 'Minuta',     
+                'height'   : 21,
                 onUploadSuccess : function(file, data, response) {
                         if(response)
                         {
                             r = data.split("###");
                             if(r[0]==1)
                             {
-                                alert('El archivo fue subido correctamente');
+                                //alert('El archivo fue subido correctamente');
                                 $("#archivom").val(r[1]);
                                 $("#VerImagennnm").attr("href","minutas/<?php echo $_SESSION['notaria']; ?>/"+r[1]);
                                 $("#VerImagennnm_label").css("display","none");
@@ -932,6 +934,7 @@ $(function() {
                     <style type="text/css">
                         .tr-head td { background: #333; color: #FFF; text-align: center; font-weight: bold; text-shadow: 1px 2px 1px #000;}
                         .tr-body td { background: #FAFAFA; color: #333; text-shadow: .5px 1px .5px #fafafa;}
+                        
                     </style>
                         <fieldset class="ui-widget-content ui-corner-all">
                             <legend class="ui-widget-header ui-corner-all">Listado de Bienes Asociados a la Operacion</legend>
@@ -1078,8 +1081,66 @@ $(function() {
         <style type="text/css">
             div.box-item { width:187px; float:left; margin-left:10px; height:80px; }
             div.box-item div { margin-top:30px; text-align:center}
+
+            .myButton {
+                -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+                -webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+                box-shadow:inset 0px 1px 3px 0px #91b8b3;
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #4a5757));
+                background:-moz-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:-webkit-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:-o-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:-ms-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:linear-gradient(to bottom, #768d87 5%, #4a5757 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#4a5757',GradientType=0);
+                background-color:#768d87;
+                -moz-border-radius:18px;
+                -webkit-border-radius:18px;
+                border-radius:18px;
+                border:2px solid #566963;
+                display:inline-block;
+                cursor:pointer;
+                color:#ffffff !important;
+                font-family:arial;
+                font-size:13px;
+                font-weight:bold;
+                padding:2px 28px;
+                text-decoration:none;
+                text-shadow:0px -1px 0px #2b665e;
+            }
+            .myButton:hover {
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #4a5757), color-stop(1, #768d87));
+                background:-moz-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:-webkit-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:-o-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:-ms-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:linear-gradient(to bottom, #4a5757 5%, #768d87 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4a5757', endColorstr='#768d87',GradientType=0);
+                background-color:#4a5757;
+            }
+            .myButton:active {
+                position:relative;
+                top:1px;
+            }
+
         </style>
         <div id="tabs-gd">
+            <div style="padding:5px 8px 2px 10px; width:235px;float:left;margin-left:7px;" class="ui-widget-content ui-corner-all">
+                <div id="queue" style="display:inline-block;"></div>
+                <input id="file_uploadm" name="file_uploadm" type="file" multiple="true">
+                <input type="hidden" name="0form1_archivom" id="archivom" value="<?php echo $row['archivom'] ?>" />            
+                <div style="clear:both"></div>
+            </div> 
+
+            <div style="padding:5px 8px 12px 10px; width:235px;float:left;margin-left:7px;" class="ui-widget-content ui-corner-all">
+                <a href="#" class="myButton">Generar</a>
+            </div> 
+            
+            <div style="padding:5px 8px 2px 10px; width:235px;float:left;margin-left:7px;" class="ui-widget-content ui-corner-all">
+                <div id="queue" style="width:1px"></div>
+                <input id="file_upload" name="file_upload" type="file" multiple="true">
+                <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />        
+            </div> 
            <div style="padding:5px">
                 <div class="ui-corner-all box-item" style="background: #63B5D1; border:1px solid #559CB3">
                     <div>
@@ -1183,17 +1244,9 @@ $(function() {
 <div id="box-form-minuta">
     <p style="text-align : justify;">Si se tiene el documento de la minuta hecha, usted puede cargarla desde esta ventana. 
                                     Al generar la escritura esta será incluida en la misma. El formato debe ser en <b>.RTF</b></p>        
-    <div style="padding:5px 0 0 80px;">
-        <div id="queue" style="display:inline-block"></div>
-        <input id="file_uploadm" name="file_uploadm" type="file" multiple="true">
-        <input type="hidden" name="0form1_archivom" id="archivom" value="<?php echo $row['archivom'] ?>" />            
-    </div>        
+           
 </div>
 <div id="box-form-escritura">
     <p style="text-align : justify;">El formato del archivo puede ser: <b>DOC, DOCXs, PDF, RTF</b></p>        
-    <div style="padding:5px 0 0 80px;">                            
-        <div id="queue" style="display:inline-block"></div>
-        <input id="file_upload" name="file_upload" type="file" multiple="true">
-        <input type="hidden" name="0form1_archivo" id="archivo" value="<?php echo $row['archivo'] ?>" />        
-    </div> 
+   
 </div>
