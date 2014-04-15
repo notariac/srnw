@@ -20,7 +20,7 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
     $FormatoGrilla[7] = 900;                                   //Ancho de la Tabla
     $FormatoGrilla[8] = " ORDER BY atencion.correlativo DESC ";         //Orden de la Consulta
     $FormatoGrilla[9] = array('Id'=>'1',                             //Botones de Acciones
-                                'NB'=>'5',                   //Número de Botones a agregar
+                                'NB'=>'3',                   //Número de Botones a agregar
                                 'BtnId1'=>'BtnModificar',            //Nombre del Botón
                                 'BtnI1'=>'modificar.png',            //Imagen a mostrar
                                 'Btn1'=>'Editar', 				//Titulo del Botón
@@ -318,6 +318,59 @@ function ValidarEnter(evt, Op)
     Pie();
     CuerpoInferior();
 ?>
+<style type="text/css">
+            div.box-item { width:187px; float:left; margin-left:10px; height:80px; }
+            div.box-item div { margin-top:30px; text-align:center}
+            .myButton {
+                -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+                -webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+                box-shadow:inset 0px 1px 3px 0px #91b8b3;
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #4a5757));
+                background:-moz-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:-webkit-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:-o-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:-ms-linear-gradient(top, #768d87 5%, #4a5757 100%);
+                background:linear-gradient(to bottom, #768d87 5%, #4a5757 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#4a5757',GradientType=0);
+                background-color:#768d87;
+                -moz-border-radius:18px;
+                -webkit-border-radius:18px;
+                border-radius:18px;
+                border:2px solid #566963;
+                display:inline-block;
+                cursor:pointer;
+                color:#ffffff !important;
+                font-family:arial;
+                font-size:13px;
+                font-weight:bold;
+                padding:2px 28px;
+                text-decoration:none;
+                text-shadow:0px -1px 0px #2b665e;
+            }
+            .myButton:hover {
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #4a5757), color-stop(1, #768d87));
+                background:-moz-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:-webkit-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:-o-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:-ms-linear-gradient(top, #4a5757 5%, #768d87 100%);
+                background:linear-gradient(to bottom, #4a5757 5%, #768d87 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4a5757', endColorstr='#768d87',GradientType=0);
+                background-color:#4a5757;
+            }
+            .myButton:active {
+                position:relative;
+                top:1px;
+            }
+            .box-gen-doc, .box-gen-docs {  padding:5px 8px 2px 10px; 
+                            width:244px; 
+                            height:90px;
+                            float:left;
+                            margin-left:7px;                             
+                        }
+            .box-gen-docs { height: auto; padding: 1px 10px 2px 10px; background: #1B953F;
+                            margin-top: 3px; height: 15px;}
+            .box-gen-docs a {color: #FFFFFF !important;cursor:pointer; font-size: 11px;}
+        </style>
 <div id="NuevoParticipante" title="Mantenimiento" style="display:none;">
     <table width="100%">
         <tr>

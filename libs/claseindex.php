@@ -346,7 +346,4 @@ function GuardarP(Op){
 }else{
     header("Location:http://".$_SERVER['HTTP_HOST']."/seguridad/login.php?sesion=1");
 }
-
-
-
 ?>

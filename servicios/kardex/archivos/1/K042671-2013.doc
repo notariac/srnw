@@ -1,0 +1,291 @@
+{\rtf1\ansi\deff3\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset0 Liberation Serif{\*\falt Times New Roman};}{\f4\froman\fprq0\fcharset1 Courier New;}{\f5\fswiss\fprq0\fcharset1 Arial;}{\f6\froman\fprq0\fcharset1 Liberation Serif{\*\falt Times New Roman};}{\f7\froman\fprq0\fcharset1 Arial;}{\f8\fswiss\fprq0\fcharset1 Liberation Sans{\*\falt Arial};}{\f9\fnil\fprq2\fcharset0 DejaVu Sans;}{\f10\fnil\fprq2\fcharset0 Arial;}{\f11\fnil\fprq0\fcharset1 DejaVu Sans;}{\f12\fnil\fprq0\fcharset1 Lohit Hindi;}{\f13\fnil\fprq0\fcharset1 Times New Roman;}{\f14\fnil\fprq0\fcharset1 Courier New;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue0;\red255\green255\blue255;\red128\green128\blue128;}
+{\stylesheet{\s0\snext0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\loch\f6\fs24\lang10250 Estilo predeterminado;}
+{\s1\sbasedon20\snext21\ilvl0\outlinelevel0\qj\widctlpar\tx2268\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\ltrpar\cf0\ul\ulc1\b\kerning1\dbch\af9\langfe3082\dbch\af13\afs20\alang1025\ab\loch\f5\fs24\lang3082 Encabezado 1;}
+{\s2\sbasedon20\snext21\ilvl1\outlinelevel1\qj\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\ltrpar\cf0\i\b\kerning1\dbch\af9\langfe3082\dbch\af13\afs20\alang1025\ai\ab\loch\f5\fs24\lang3082 Encabezado 2;}
+{\s3\sbasedon20\snext21\ilvl2\outlinelevel2\qc\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\ltrpar\cf0\b\kerning1\dbch\af9\langfe3082\dbch\af13\afs20\alang1025\ab\loch\f5\fs24\lang3082 Encabezado 3;}
+{\s4\sbasedon20\snext21\ilvl3\outlinelevel3\qc\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\ltrpar\cf0\i\ul\ulc1\b\kerning1\dbch\af9\langfe3082\dbch\af13\afs20\alang1025\ai\ab\loch\f5\fs24\lang3082 Encabezado 4;}
+{\s5\sbasedon20\snext21\ilvl4\outlinelevel4\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\ltrpar\cf0\ul\ulc1\b\kerning1\dbch\af9\langfe3082\dbch\af13\afs20\alang1025\ab\loch\f5\fs24\lang3082 Encabezado 5;}
+{\*\cs15\snext15 Default Paragraph Font;}
+{\*\cs16\sbasedon15\snext16\dbch\af13\fs16 annotation reference;}
+{\*\cs17\sbasedon15\snext17\langfe10250\dbch\af13\loch\f7\fs24\lang3082 Texto independiente Car;}
+{\*\cs18\sbasedon15\snext18\dbch\af13 apple-converted-space;}
+{\*\cs19\snext19\loch\f6 ListLabel 1;}
+{\s20\sbasedon0\snext21\ql\nowidctlpar\sb240\sa120\keepn\ltrpar\cf0\kerning1\dbch\af9\langfe2052\dbch\af12\afs28\alang1081\loch\f8\fs28\lang10250 Encabezado;}
+{\s21\sbasedon0\snext21\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af13\afs20\alang1025\loch\f7\fs24\lang3082 Cuerpo de texto;}
+{\s22\sbasedon21\snext22\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af12\afs20\alang1025\loch\f7\fs24\lang3082 Lista;}
+{\s23\sbasedon0\snext23\ql\nowidctlpar\sb120\sa120\noline\ltrpar\cf0\i\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\ai\loch\f6\fs24\lang10250 Etiqueta;}
+{\s24\sbasedon0\snext24\ql\nowidctlpar\noline\ltrpar\cf0\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\loch\f6\fs24\lang10250 \u205\'cdndice;}
+{\s25\snext25\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe3082\dbch\af11\afs20\alang1025\loch\f6\fs20\lang3082 annotation text;}
+{\s26\snext26\qc\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\ul\ulc1\kerning1\dbch\af10\langfe3082\dbch\af11\afs20\alang1025\loch\f7\fs24\lang3082 Body Text 2;}
+{\s27\snext27\qc\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe3082\dbch\af11\afs20\alang1025\loch\f7\fs24\lang3082 Body Text 3;}
+{\s28\sbasedon21\snext28\ql\widctlpar\faauto\li283\ri0\lin283\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af13\afs20\alang1025\loch\f7\fs20\lang3082 Cuerpo de texto con sangr\u237\'eda;}
+}{\*\listtable{\list\listtemplateid1
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-432\li432}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-576\li576}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-720\li720}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-864\li864}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1008\li1008}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1152\li1152}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1296\li1296}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1440\li1440}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1584\li1584}\listid1}
+{\list\listtemplateid2
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li720}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1080}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1440}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1800}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2160}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2520}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2880}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li3240}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li3600}\listid2}
+}{\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}{\info{\title NUMERO : CIENTO NOVENTA/}{\author EDWIN VALENCIA H.}{\creatim\yr2013\mo11\dy5\hr4\min45}{\revtim\yr2013\mo11\dy5\hr4\min49}{\printim\yr2013\mo4\dy23\hr17\min33}{\comment LibreOffice}{\vern4000}}\deftab708\deftab708\deftab708\deftab708
+\viewscale100
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse451\pgwsxn11906\pghsxn16838\marglsxn2608\margrsxn567\margtsxn1701\margbsxn964\pgdscnxt0 Estilo predeterminado;}
+{\pgdsc1\pgdscuse451\pgndec\pgwsxn11906\pghsxn16838\marglsxn2608\margrsxn567\margtsxn1701\margbsxn964\pgdscnxt0 Primera p\u225\'e1gina;}}
+\formshade{\*\pgdscno1}\paperh16838\paperw11906\margl2608\margr567\margt1701\margb964\sectd\sbknone\sectunlocked1\pgndec\pgwsxn11906\pghsxn16838\marglsxn2608\margrsxn567\margtsxn1701\margbsxn964\titlepg\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s2\ilvl1\outlinelevel1\qj\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb240\sa120\keepn\ltrpar\cf0\i\b\kerning1\dbch\af9\langfe3082\dbch\af13\afs20\alang1025\ai\ab\loch\f5\fs24\lang3082{\listtext\pard\plain }\ilvl1\ls2 \li1106\ri0\lin1106\rin0\fi-360\sl459\slmult0\li26\ri0\lin26\rin0\fi0\sb240\sa120{\ul\ulc1\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+NUMERO: }{\ul\ulc1\dbch\af14\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+<<Campo-sin-valor>>}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\loch\f6\fs24\lang10250\sl-480\slmult0\qc{\ul\ulc1\b\dbch\af14\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+COMPRA - VENTA}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\loch\f6\fs24\lang10250\sl-480\slmult0\qj{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+QUE OTORGA COMO \u8220\'1cVENDEDOR\u8221\'1d }{\b0\dbch\af14\afs22\ab0\rtlch \ltrch\loch\fs22\loch\f4
+.}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ Y DE OTRA PARTE COMO \u8220\'1cCOMPRADORES\u8221\'1d }{\b0\dbch\af14\afs22\ab0\rtlch \ltrch\loch\fs22\loch\f4
+ }{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+. &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& EN LA }{\b0\dbch\af14\afs22\ab0\rtlch \ltrch\loch\fs22\loch\f4
+CIUDAD}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DE CHICLAYO, DISTRITO Y PROVINCIA DEL MISMO NOMBRE, DEPARTAMENTO DE LAMBAYEQUE, A LOS }{\b\dbch\af14\rtlch \ltrch\loch\fs22\lang3082\loch\f4
+TRES}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DIAS DEL MES DE }{\b\dbch\af14\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+DICIEMBRE}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DEL A\u209\'d1O }{\b\dbch\af14\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+DOS MIL TRECE}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+, ANTE MI HENRY MACEDO VILLANUEVA, ABOGADO NOTARIO P\u218\'daBLICO DE ESTA PROVINCIA, INSCRITO EN EL REGISTRO DEL COLEGIO DE NOTARIOS DE LAMBAYEQUE CON EL N\u176\'b0 23, CON DNI. N\u176\'b0 16727958, SUFRAGANTE Y CON RUC N\u186\'ba 10167279584. COMPARECEN: }{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ }{\b\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+LOS COMPARECIENTES, }{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+SON PERUANOS,  MAYORES DE EDAD, ENTENDIDOS EN EL IDIOMA CASTELLANO, A QUIENES IDENTIFIQU\u201\'c9  Y JUZGO QUE PROCEDEN CON LIBERTAD, CAPACIDAD Y CONOCIMIENTO SUFICIENTE PARA TRATAR Y CONTRATAR, DE CONFORMIDAD CON EL EXAMEN QUE LES HE EFECTUADO,  DE  LO  QUE  DOY  FE;  AS\u205\'cd  COMO  DE HABER CUMPLIDO CON LO DISPUESTO EN LA LEY DEL NOTARIADO N\u176\'b0 1049  Y,  ME  ENTREGAN UNA MINUTA, DEBIDAMENTE FIRMADA Y AUTORIZADA PARA QUE SU CONTENIDO SEA ELEVADA A ESCRITURA P\u218\'daBLICA, LA MISMA QUE QUEDA ARCHIVADA EN SU LEGAJO CORRESPONDIENTE, CUYO TENOR LITERAL ES EL SIGUIENTE: =============}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\loch\f6\fs24\lang10250\sl-480\slmult0\qj{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+===}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+===================MINUTA }{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+<<Campo-sin-valor>>}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+======================}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+===}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\loch\f6\fs24\lang10250\sl-480\slmult0\qj{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\sbknone\sectunlocked1\pgndec\pgwsxn11906\pghsxn16838\marglsxn2381\margrsxn850\margtsxn3118\margbsxn567\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s127\qj\nowidctlpar\sb120\sa120\ltrpar\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs20\lang3082\sl200\slmult0\tx4650\sb120\sa120{\ul\ulc1\b\dbch\af22\afs24\rtlch \ltrch\loch\fs24\loch\f12
+MINUTA N\u186\'ba 41}{\dbch\af22\afs24\rtlch \ltrch\loch\fs24\loch\f12
+:}{\dbch\af22\afs19\rtlch \ltrch\loch\fs19\loch\f12
+ }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SE\u209\'d1ORA NOTARIA PUBLICA: S\u205\'cdRVASE USTED EXTENDER EN SU REGISTRO DE ESCRITURAS PUBLICAS UN }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+CONTRATO DE COMPRA VENTA DE DERECHOS Y ACCIONES DE PREDIO URBANO}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, QUE EN LA FECHA CELEBRA DE UNA PARTE A QUIEN EN LO SUCESIVO SE LE DENOMINARA }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+: }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+DON}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ }{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+GUIDO SEGUNDO RAMIREZ FLORES}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, PERUANO, NATURAL DEL DISTRITO DE TARAPOTO, PROVINCIA Y REGION SAN MARTIN, }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+64}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ A\u209\'d1OS DE EDAD, OCUPACION AGRICULTOR, IDENTIFICADO CON DNI. N\u176\'b0 }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+00873866}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, SUFRAGANTE, ESTADO CIVIL SOLTERO, DOMICILIADO EN EL JR. ALAMEDA OLMEDO CARDENAS INFANTE N\u176\'b0 }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+258}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+,}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ DISTRITO Y PROVINCIA DE BELLAVISTA, REGION SAN MARTIN}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.=====================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+Y DE LA OTRA PARTE A QUIEN EN LO SUCESIVO SE LE DENOMINARA }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+\u8220\'1cLA COMPRADORA}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+\u8221\'1d: }{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+DO\u209\'d1A }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+MARIA BELEN FASANANDO DELGADO,}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ PERUANA, NATURAL DEL DISTRITO Y PROVINCIA DE BELLAVISTA, REGION SAN MARTIN, }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+49}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ A\u209\'d1OS DE EDAD, OCUPACION COMERCIANTE, IDENTIFICADA CON DNI. N\u176\'b0 }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+00875099}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, SUFRAGANTE, ESTADO CIVIL SOLTERA, DOMICILIADA EN EL JR. ALAMEDA OLMEDO CARDENAS INFANTE N\u176\'b0 }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+258}{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, DISTRITO Y PROVINCIA DE BELLAVISTA, REGION SAN MARTIN,}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+EN LOS TERMINOS Y CONDICIONES SIGUIENTES:========}
+\par \pard\plain \s127\qj\nowidctlpar\sb120\sa120\ltrpar\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs20\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+PRIMERA}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ ES COPROPIETARIO DE UN PREDIO URBANO, UBICADO FRENTE AL JR. }{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ALAMEDA OLMEDO CARDENAS INFANTE N\u176\'b0 }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+258}{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+,}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ DISTRITO Y PROVINCIA DE BELLAVISTA, REGION SAN MART\u205\'cdN, CON UN AREA TOTAL DE }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+138.17 M2. (CIENTO TREINTA Y OCHO }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+METROS CUADRADOS CON DIECISIETE CENTIMETROS CUADRADOS)}{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ENCERRADO DENTRO DE UN PERIMETRO DE }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+58.18 M.L. (CINCUENTA Y OCHO METROS LINEALES CON DIECIOCHO CENTIMETROS LINEALES)}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ CUYAS MEDIDAS PERIM\u201\'c9TRICAS Y LINDEROS, SON LAS SIGUIENTES: }
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082{\listtext\pard\plain  ?\tab}\ilvl0\ls3 \li1117\ri0\lin1117\rin0\fi-360\sl200\slmult0\tx4357\tx4717\tx23419\tx30790\tx30932\li397\ri0\lin397\rin0\fi-397{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+POR EL FRENTE}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+: }{\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+COLINDA CON EL JR. ALAMEDA OLMEDO CARDENAS INFANTE Y MIDE }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+6.10 ML. }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+(SEIS }{\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+METROS LINEALES CON DIEZ CENTIMETROS LINEALES)}{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+. }{\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+=============}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082{\listtext\pard\plain  ?\tab}\ilvl0\ls3 \li720\ri0\lin720\rin0\fi-360\sl200\slmult0\tx3960\tx4320\tx23022\tx30393\tx30535\li0\ri0\lin0\rin0\fi-15{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+POR EL COSTADO DERECHO, ENTRANDO}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+: COLINDA CON PROPIEDAD DEL SE\u209\'d1OR ELIAS \tab MOISES MALON CALDAS Y MIDE }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\loch\f12
+23.10 ML. }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\loch\f12
+(VEINTITRES METROS LINEALES CON \tab DIEZ CENTIMETROS LINEALES)}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+.=================================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082{\listtext\pard\plain  ?\tab}\ilvl0\ls3 \li720\ri0\lin720\rin0\fi-360\sl200\slmult0\tx15\tx23022\tx30393\tx30535\li0\ri0\lin0\rin0\fi0{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+POR  EL  COSTADO  IZQUIERDO,  ENTRANDO}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+: }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+COLINDA  CON  PROPIEDAD  DEL  SE\u209\'d1OR\tab \tab JORGE PINEDO VILLACORTA Y MIDE }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+23.10 ML. }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+(VEINTITRES METROS LINEALES CON   \tab \tab DIEZ CENTIMETROS LINEALES).=================================================}
+\par \pard\plain \s127\qj\nowidctlpar\sb120\sa120\ltrpar\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs20\lang3082{\listtext\pard\plain  ?\tab}\ilvl0\ls3 \li1117\ri0\lin1117\rin0\fi-360\sl200\slmult0\li397\ri0\lin397\rin0\fi-397{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+POR EL FONDO: }{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+COLINDA CON EL JR. MALECON HUALLAGA Y MIDE}{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ 5.88 ML. }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+(CINCO }{\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+METROS LINEALES CON OCHENTA Y OCHO CENTIMETROS LINEALES). ==================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\b\dbch\af22\afs18\ab0\rtlch \ltrch\fs18\lang3082\loch\f12
+\u8220\'1c}{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+EL VENDEDOR\u8221\'1d }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+Y }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cLA COMPRADORA\u8221\'1d}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ HAN ADQUIRIDO EL INMUEBLE EN COPROPIEDAD  DE SU ANTERIOR PROPIETARIO LA MUNICIPALIDAD PROVINCIAL DE BELLAVISTA DEBIDAMENTE REPRESENTADO POR SU ALCALDE EL SE\u209\'d1OR SALVADOR CAMPOS RODRIGO, MEDIANTE ESCRITURA PUBLICA DE CONFIRMACION DE COMPRA VENTA DE PREDIO URBANO, DE FECHA SIETE DE FEBRERO DEL A\u209\'d1O DOS MIL TRECE }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+(07/02/2013)}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.=====================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SEGUNDA}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+.- POR EL PRESENTE DOCUMENTO }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+, DA EN VENTA REAL Y ENAJENACI\u211\'d3N PERPETUA A FAVOR DE }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+\u8220\'1cLA COMPRADORA\u8221\'1d}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+, TODOS LOS DERECHOS Y ACCIONES QUE POSEE SOBRE EL INMUEBLE DESCRITO EN LA CL\u193\'c1USULA PRIMERA.====================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+TERCERA}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+.-LA PRESENTE TRANSFERENCIA ES ABSOLUTA Y SIN LIMITACI\u211\'d3N ALGUNA, COMPRENDE TODO CUANTO DE HECHO Y POR DERECHO LE CORRESPONDA AL INMUEBLE TRANSFERIDO; CON LOS PORCENTAJES IDEALES EN EL PREDIO, AREA CONSTRUIDA, LAS ZONAS Y LOS SERVICIOS COMUNES, LAS EDIFICACIONES EXISTENTES, LOS USOS, COSTUMBRES, AIRES, VUELOS, SERVIDUMBRES, ENTRADAS, SALIDAS Y TODO CUANTO DE HECHO Y POR DERECHO LE CORRESPONDE, SIN RESERVA NI LIMITACI\u211\'d3N ALGUNA. LA VENTA SE EFECTUA AD-CORPUS. ========================================================== }
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+CUARTA}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- POR EL PRESENTE ACTO JURIDICO }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, DA EN VENTA REAL Y ENAJENACION PERPETUA EL PREDIO URBANO DESCRITO EN LA CLAUSULA PRIMERA POR EL PRECIO DE VENTA PACTADO DE COM\u218\'daN ACUERDO POR EL IMPORTE DE }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+S/.3,000.00 (TRES MIL Y 00/100 NUEVOS SOLES), }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SUMA}{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+QUE}{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ \u8220\'1cLA COMPRADORA\u8221\'1d}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ DECLARA QUE HA PAGADO INTEGRAMENTE Y EN MONEDA NACIONAL A }{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+;}{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SIN MAS CONSTANCIA QUE LAS FIRMAS PUESTAS DE AMBAS PARTES CONTRATANTES AL FINAL DE DICHO DOCUMENTO EN SE\u209\'d1AL DE ENTREGA Y RECEPCION, EN CONSECUENCIA }{\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+DA POR CANCELADO EL \u205\'cdNTEGRO DEL PRECIO DE VENTA. ===================================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+QUINTA}{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+DECLARA QUE SOBRE EL INMUEBLE MATERIA DE ESTE CONTRATO, NO PESA HIPOTECA, CARGA, GRAVAMEN, NI MEDIDA JUDICIAL O EXTRAJUDICIAL ALGUNA, QUE PRIVE, LIMITE O RESTRINJA EL DERECHO DE PROPIEDAD, POSESI\u211\'d3N O USO DEL BIEN DE }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+\u8220\'1cLA COMPRADORA\u8221\'1d, }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+NO OBSTANTE LO CUAL }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d, }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+ASUME LA OBLIGACI\u211\'d3N DE SANEAMIENTO POR EVICCI\u211\'d3N CONFORME A LEY}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+. =======================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SEXTA}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ Y }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cLA COMPRADORA\u8221\'1d}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ DECLARAN QUE ENTRE EL PRECIO PAGADO Y EL VALOR REAL DEL INMUEBLE EXISTE LA MAS JUSTA Y PERFECTA EQUIVALENCIA, QUE SI ALGUNA DIFERENCIA HUBIERA QUE POR EL MOMENTO NO LA ADVIERTEN SE HACEN DE ELLA MUTUA GRACIA Y RECIPROCA DONACION, RENUNCIANDO A TODA ACCION O EXCEPCION QUE LES FAVOREZCA Y TIENDA A INVALIDAR EL PRESENTE CONTRATO. ===========================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SEPTIMA}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- }{\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+LOS CONTRATANTES SE SOLIDARIZAN FRENTE AL FISCO Y MUNICIPALIDAD POR EL PAGO DE LOS IMPUESTOS AL VALOR DEL PATRIMONIO PREDIAL Y CUALQUIER OTRO IMPUESTO, SEA FISCAL O MUNICIPAL, QUE ESTUVIERA PENDIENTE DE PAGO RESPECTO AL INMUEBLE MATERIA DEL PRESENTE CONTRATO. =================================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+OCTAVA}{\ulnone\ulc1\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- LOS GASTOS QUE GENERE LA ELEVACION DEL PRESENTE ACTO JURIDICO, INCLUSIVE LOS REGISTRALES, ES DE EXCLUSIVA RESPONSABILIDAD DE }{\ulnone\ulc1\b\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cLA COMPRADORA\u8221\'1d}{\ulnone\ulc1\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+. =}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+AGREGUE UD. SE\u209\'d1ORA NOTARIA LAS CLAUSULAS DE LEY. BELLAVISTA, 16 DE ABRIL DEL A\u209\'d1O 2013.- }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+FIRMAS ILEGIBLES: }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+GUIDO SEGUNDO RAMIREZ FLORES}{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+; }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cEL VENDEDOR\u8221\'1d; }{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+MARIA BELEN FASANANDO DELGADO}{\i0\b0\dbch\af22\afs18\ai0\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+;}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+\u8220\'1cLA COMPRADORA\u8221\'1d; }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang10250\loch\f12
+AUTORIZA: LA MINUTA: ALFREDO HIDALGO RIOS, }{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang10250\loch\f12
+ABOGADO}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang10250\loch\f12
+ REG. }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+CASM N\u186\'ba}{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+ 084}{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\loch\f12
+, DOY FE. ========================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0{\ul\ulc1\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ANOTACION DE LA MINUTA}{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- }{\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+POR RECIBIDO EN LA FECHA, CON EL PAGO DEL IMPUESTO PREDIAL DEL A\u209\'d1O}{\b\dbch\af22\afs18\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ 2013, }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+INAFECTO AL PAGO DEL IMPUESTO DE ALCABALA}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+, MINUTA AFECTO AL PAGO DEL IMPUESTO A LA RENTA DE 2DA. CATEGORIA- }{\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SUNAT}{\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+,EL\u201\'c9VESE A ESCRITURA PUBLICA. BELLAVISTA, 16 DE ABRIL DEL A\u209\'d1O 2,013.- FDO. SEGUNDA LILI VELA ESCUDERO, ABOGADA NOTARIA.- DOS SELLOS REGISTRO NOTARIAL. ======================}
+\par \pard\plain \s3\ilvl2\outlinelevel2\qc\nowidctlpar\sb0\sa0\keepn\ltrpar\cf0\expnd20\expndtw100\ul\ulc1\b\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\ab\loch\f5\fs24\lang3082{\listtext\pard\plain }\ilvl2\ls2 \li5700\ri0\lin5700\rin0\fi-360\sl200\slmult0\qj\tx-7532\li4260\ri0\lin4260\rin0\fi-720{\dbch\af22\afs22\rtlch \ltrch\loch\fs22\lang3082\loch\f12
+INSERTO}
+\par \pard\plain \s3\ilvl2\outlinelevel2\qc\nowidctlpar\sb0\sa0\keepn\ltrpar\cf0\expnd20\expndtw100\ul\ulc1\b\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\ab\loch\f5\fs24\lang3082{\listtext\pard\plain }\ilvl2\ls2 \li1455\ri0\lin1455\rin0\fi-360\sl200\slmult0\qj\li15\ri0\lin15\rin0\fi-15{\expnd0\expndtw0\ulnone\ulc0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+1.-}{\expnd0\expndtw0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+CL\u193\'c1USULA ADICIONAL.}{\expnd0\expndtw0\ulnone\ulc0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+-}{\expnd0\expndtw0\ulnone\ulc0\b0\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ DE CONFORMIDAD CON LO DISPUESTO POR LA RESOLUCION DE SUPERINTENDENCIA N\u186\'ba 86-2006/SUNAT Y EL DECRETO SUPREMO 047-2004-EF, SE DEJA CONSTANCIA QUE EL PAGO FUE EN EFECTIVO, EN MONEDA NACIONAL, NO SE UTILIZO MEDIO DE PAGO, (CODIGO: 0009).=======================================================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0\tx1236\li-17\ri0\lin-17\rin0\fi17{\expnd0\expndtw0\ulnone\ulc1\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+2.-}{\expnd0\expndtw0\i0\ulnone\ulc1\b\dbch\af22\afs18\ai0\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+TRIBUTO RENTA 2DA. CATEGORIA.-BBVA BANCO CONTINENTAL:}{\expnd0\expndtw0\i0\ulnone\ulc1\b0\dbch\af22\afs18\ai0\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+ BOLETA DE PAGO SUNAT- ESSALUD- ONP FORM 1662.- BELLAVISTA, 15-04-2013.- NUMERO DE ORDEN: 215997043.- RUC: 10008738667.- APELL-NOMB/R.SOCIAL: }{\expnd0\expndtw0\i0\ulnone\ulc1\b0\dbch\af22\afs18\ai0\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+RAMIREZ FLORES GUIDO SEGUNDO}{\expnd0\expndtw0\i0\ulnone\ulc1\b0\dbch\af22\afs18\ai0\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.- TRIBUTO: 3021; RENTA- 2DA. CATEGOR\u205\'cdA; CTA. PROPIA.- PERIODO: 04/2013.- IMP. PAGADO: S/. 150.00.- FECHA DE PAGO: 15/04/2013.- NUMERO OPERACI\u211\'d3N: 14450808.- FORMA DE PAGO: EFECTIVO.- CLAVE: RE42/8B13/P063384/000000000/14:45:08, DOY FE. ================}
+\par \pard\plain \s0\qj\nowidctlpar\sb120\sa120\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe255\dbch\af16\afs20\alang1025\loch\f5\fs24\lang3082\sl200\slmult0\tx1712\li17\ri0\lin17\rin0\fi-17\sb120\sa120{\expnd0\expndtw0\ulnone\ulc1\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+3.-}{\expnd0\expndtw0\ul\ulc1\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+CL\u193\'c1USULA ADICIONAL}{\expnd0\expndtw0\ulnone\ulc1\b\dbch\af22\afs18\ab\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+.-}{\expnd0\expndtw0\ulnone\ulc1\b0\dbch\af22\afs18\ab0\rtlch \ltrch\loch\fs18\lang3082\loch\f12
+SE DEJA CONSTANCIA QUE SE HA CUMPLIDO CON TOMAR LA DECLARACION JURADA DE CONOCIMIENTO DEL CLIENTE, EN CUMPLIMIENTO DEL ART. 8\u186\'ba Y 22\u186\'ba (ANEXO N\u186\'ba 5), RESOLUCION SBS N\u186\'ba 5709 \u8211\'13 2012 \u8211\'13 NORMAS ESPECIALES PARA LA PREVENCION DEL LAVADO DE ACTIVOS Y DEL FINANCIAMIENTO DE TERRORISMO APLICABLE A LOS NOTARIOS.==================================================================}
+\par }
+\par \pard\plain \s21\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af13\afs20\alang1025\loch\f7\fs24\lang3082\sl459\slmult0\qj{\ul\ulc1\b\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+CERTIFICACION}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+: DOY FE DE HABER TENIDO A LA VISTA LA DECLARACION JURADA DE AUTOAVALUO Y EL COMPROBANTE DE PAGO DE IMPUESTO PREDIAL A\u209\'d1O 2013 A NOMBRE DE MARIA MARGARITA MILLONES CHANCAFE EXPEDIDO POR LA MUNICIPALIDAD DISTRITAL DE CIUDAD ETEN. =================== }{\ul\ulc1\b\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+OTRA: CERTIFICACION}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+. DE CONFORMIDAD A LO ESTABLECIDO EN LA LEY N\u176\'b0 28194 QUE DEROGA AL DECRETO LEGISLATIVO N\u186\'ba 939, SE DEJA CONSTANCIA QUE A LA CELEBRACI\u211\'d3N DEL PRESENTE INSTRUMENTO P\u218\'daBLICO LAS PARTES CONTRATANTES NO HAN EXHIBIDO NING\u218\'daN MEDIO DE PAGO, DE LO QUE DOY FE. ==============================================================}
+\par \pard\plain \s21\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af13\afs20\alang1025\loch\f7\fs24\lang3082\sl459\slmult0\qj{\ul\ulc1\b\chcbpat3\dbch\af14\afs22\ab\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+CONSTANCIA}{\b\chcbpat3\dbch\af14\afs22\ab\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+:}{\cs18\dbch\af13\b\chcbpat3\dbch\af14\afs22\ab\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+\~\u8220\'1c}{\chcbpat3\dbch\af14\afs22\rtlch \ltrch\loch\fs22\lang2058\loch\f4
+DE CONFORMIDAD AL ART\u205\'cdCULO 55 DEL DECRETO LEGISLATIVO 1049, MODIFICADO POR EL DECRETO LEGISLATIVO 1106, DEJO CONSTANCIA DE HABER TOMADO LA ACCI\u211\'d3N DE CONTROL Y DEBIDA DILIGENCIA EN MATERIA DE PREVENCION DE LAVADO DE ACTIVOS, PREGUNTANDO A TODOS LOS INTERVINIENTES EN RELACI\u211\'d3N AL ORIGEN DE LOS FONDOS, BIENES Y ACTIVOS INVOLUCRADOS EN LA PRESENTE TRANSACCI\u211\'d3N, AL QUE RESPONDEN QUE TODO FUE L\u205\'cdCITAMENTE ADQUIRIDO; TAMBI\u201\'c9N SE LES EXIGI\u211\'d3 LA UTILIZACI\u211\'d3N DE LOS MEDIOS DE PAGO DISPUESTO POR EL ART\u205\'cdCULO QUINTO DE LA LEY N\u218\'daMERO 28194.\u8221\'1d =========================================}
+\par \pard\plain \s21\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af13\afs20\alang1025\loch\f7\fs24\lang3082\sl459\slmult0\qj{\ul\ulc1\b\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+CONCLUSION}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+.- FORMALIZADO EL INSTRUMENTO INSTRU\u205\'cd A LOS OTORGANTES DEL OBJETO Y FINES DE LA PRESENTE, LA MISMA QUE LES FUE LE\u205\'cdDA \u205\'cdNTEGRAMENTE POR MI A SU SOLICITUD, SE AFIRMARON Y RATIFICARON EN LOS T\u201\'c9RMINOS DE LA MISMA SIN MODIFICACI\u211\'d3N ALGUNA, LA MISMA QUE SE INICIA A FOJAS }{\b\dbch\af14\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ DE LA SERIE A N\u186\'ba }{\b\dbch\af14\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ Y TERMINA A FOJAS }{\b\dbch\af14\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ VUELTA DE LA SERIE A N\u186\'ba }{\b\dbch\af14\afs22\ab\rtlch \ltrch\loch\fs22\loch\f4
+0}{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+ EN LA QUE SUSCRIBEN LOS COMPARECIENTES Y EL NOTARIO QUE AUTORIZA.}
+\par \pard\plain \s21\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af13\afs20\alang1025\loch\f7\fs24\lang3082\sl459\slmult0\qj{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\loch\f4
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&}
+\par \pard\plain \s21\ql\widctlpar\faauto\li0\ri0\lin0\rin0\fi0\sb0\sa120\ltrpar\cf0\kerning1\dbch\af10\langfe3082\dbch\af13\afs20\alang1025\loch\f7\fs24\lang3082\sl459\slmult0\qj\rtlch \ltrch\loch
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af10\langfe2052\dbch\af12\afs24\alang1081\loch\f6\fs24\lang10250\sl-300\slmult0\qj{\dbch\af14\afs22\rtlch \ltrch\loch\fs22\lang1033\loch\f4
+{\qj\fs22 }}
+\par \par \page \par}

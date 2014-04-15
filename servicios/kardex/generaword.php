@@ -4,7 +4,7 @@ include('func.php');
 include("num2letraK.php");    
 //include('../../libs/num2letra.php');
 $IdKardex = $_POST["IdKardex"];
-echo "<meta http-equiv='content-type' content='text/html; charset=iso-8859-1' />";	
+//echo "<meta http-equiv='content-type' content='text/html; charset=iso-8859-1' />";	
 function leef($fichero)
 {
     $texto = file($fichero);
@@ -69,7 +69,8 @@ function Generartf($IdKardex)
         $EscrituraFecha = $Conn->DecFecha($row[8]);
         $DiaL           = CantidadEnLetra((int)substr($row[8], 8, 2));
         $MesL           = $mes[substr($row[8], 5, 2)];
-        $AnioL          = CantidadEnLetra((int)substr($row[8], 0, 4));			
+        $AnioL          = CantidadEnLetra((int)substr($row[8], 0, 4));		
+        $anioe = (int)substr($row[8], 0, 4);
         $Minuta		      = CantidadEnLetra($row[2]);
         $MinutaFecha    = $Conn->DecFecha($row[9]);
         $DiaM           = CantidadEnLetra((int)substr($row[9], 8, 2));
@@ -277,7 +278,9 @@ function Generartf($IdKardex)
         $rowUN 		= $Conn->FetchArray($ConsultaUN);
         $DepartamentoN	= $rowUN[0];
 
-        $Destino = "archivos/".$_SESSION['notaria']."/".$Kardex.".doc";		
+        $documento = $Kardex."-".$anioe.".doc";
+        $Destino = "archivos/".$_SESSION['notaria']."/".$documento;		
+        
         $Plantilla 	= "plantillas/".$_SESSION['notaria']."/plantilla-".$IdServicio.".rtf";
 
         if(!file_exists($Plantilla))
@@ -391,27 +394,26 @@ function Generartf($IdKardex)
         fputs($punt, "}");
         chmod($Destino, 0777);     
         fclose($punt);		
-        return $Destino;
+        return array($Destino,$documento);
 }
+
+$salida = Generartf($IdKardex);
+$destino = $salida[0] ;
+$documento = $salida[1];
+
+$html = '<table width="250" border="0" cellspacing="0">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" style="font-family:arial; font-size:12px; color:#090">La Plantilla fue Generada Correctamente</td>
+          </tr>
+          <tr>
+            <td>  
+            <input type="hidden" name="RutaArchivo" id="RutaArchivo" value="'.$destino.'"/></td>
+          </tr>
+        </table>';
+
+print_r(json_encode(array('html'=>$html,'ruta'=>$destino,'doc'=>$documento)));
+
 ?>
-<table width="250" border="0" cellspacing="0">
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td align="center" style="font-family:arial; font-size:18px; color:#090">¡Felicitaciones!</td>
-  </tr>
-  <tr>
-    <td style="font-family:arial; font-size:18px; color:#090">&nbsp;</td>
-  </tr>
-  <tr>
-    <td align="center" style="font-family:arial; font-size:12px; color:#090">La Plantilla fue Generada Correctamente</td>
-  </tr>
-  <tr>
-    <td>
-  <?php
-    $salida = Generartf($IdKardex);    
-  ?>
-    <input type="hidden" name="RutaArchivo" id="RutaArchivo" value="<?php echo $salida;?>"/></td>
-  </tr>
-</table>

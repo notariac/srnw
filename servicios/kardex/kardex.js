@@ -60,7 +60,7 @@
                             }
                             html += '<tr style="background:'+bg+'">';
                             html += '<td align="center">'+this.text_tipo(this.tipo[ii])+'</td>';
-                            if(this.documento[ii]=="DOCUMENTO NACIONAL DE INDENTIDAD")
+                            if(this.documento[ii]=="DOCUMENTO NACIONAL DE IDENTIDAD")
                               this.documento[ii] = "DNI";
                             html += '<td align="center">'+this.documento[ii]+'</td>';
                             html += '<td align="center">'+this.nrodocumento[ii]+'</td>';
@@ -292,7 +292,56 @@ function loadParticipacion(t)
         $("#TipoParticipacion").empty().append(data);
    })
 }
-$(document).ready(function(){
+function genDocumento()
+{
+   var idk = $("#iddkardex").val();
+   $("#box-msg-gen").empty();
+   $("#box-loader").css("display","block");
+   $.post('generaword.php','IdKardex='+idk,function(data)
+   {
+      $("#box-loader").css("display","none");
+      $("#box-msg-gen").empty().append(data.html); 
+      $("#archivo").val(data.doc);
+      $("#VerImagennn").attr("href",data.ruta);
+      $("#VerImagennn_label").css("display","none");
+      $("#VerImagennn").css("display","inline");     
+   },'json')
+}
+$(document).ready(function()
+{
+
+  $("#genDocumento").click(function(){
+    genDocumento();
+  });
+
+  $("#upload_minuta").click(function(){      
+      $("#box-form-minuta").dialog('open');
+  });
+  $("#gen_escritura").click(function(){
+    
+  });
+  $("#upload_escritura").click(function(){
+    $("#box-form-escritura").dialog('open');
+  });
+  $("#open_escritura").click(function(){
+
+  });
+
+  $("#box-form-minuta").dialog({
+        autoOpen: false,        
+        resizable:false,
+        title: "Subir Minuta",
+        width: 300
+  });
+
+  $("#box-form-escritura").dialog({
+      autoOpen: false,
+      resizable: false,
+      title: "Subir la Escritura",
+      width: 300
+  });
+
+
   $('.quit').live('click',function(){
     $(this).parent().parent().remove();
     nDestx = nDestx - 1;
@@ -463,8 +512,7 @@ $(document).ready(function(){
 
           $( "#DocParticipante" ).autocomplete({
                 minLength: 0,
-                source: '../../libs/autocompletar/clienteD.php',
-                
+                source: '../../libs/autocompletar/clienteD.php',                
                 select: function( event, ui ) 
                 {
                      $("#Participante").val(ui.item.nombres);
