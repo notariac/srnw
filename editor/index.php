@@ -267,7 +267,6 @@
 <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.8.21.custom.min.js"></script>
 <link href="../css/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../js/tinymce/jquery.tinymce.min.js"></script>
 <script type="text/javascript" src="../js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
 <link href="stylos.css" rel="stylesheet" type="text/css" />
@@ -327,9 +326,7 @@ $(document).ready(function(){
  
 });
 function saveKardex()
-{
-    //var ht = $("#content_ifr").contents().find("#tinymce").html();
-    //alert(ht)
+{    
     //$("#tinymce",self.content_ifr.document).html()
     var idkardex = $("#idkardex").val(),
             cont = $("#content_ifr").contents().find("#tinymce").html(),
@@ -365,10 +362,10 @@ tinymce.init({
         "advlist autolink lists link image charmap hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
         "insertdatetime media nonbreaking save autosave table contextmenu directionality",
-        "emoticons template paste moxiemanager print"
+        "emoticons template paste moxiemanager print tabfocus"
     ],
-    menubar: "file tools table format view insert edit",    
-    toolbar1: "save | undo redo | fontselect | fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | forecolor backcolor | print |",    
+    menubar: "file tools table format view insert edit",
+    toolbar1: "save | undo redo | fontselect | fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | forecolor backcolor | print |",
     toolbar2: "",    
     templates: [
         {title: 'Test template 1', content: 'Test 1'},
