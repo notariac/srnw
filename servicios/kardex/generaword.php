@@ -1,28 +1,8 @@
 <?php 
 session_start();
 include('func.php');
-include("num2letraK.php");    
-//include('../../libs/num2letra.php');
 $IdKardex = $_POST["IdKardex"];
 //echo "<meta http-equiv='content-type' content='text/html; charset=iso-8859-1' />";	
-function leef($fichero)
-{
-    $texto = file($fichero);
-    $tamleef = sizeof($texto);
-    for($n=0; $n<$tamleef; $n++){
-            $todo = $todo.$texto[$n];
-    }
-    return $todo;
-}	
-function Completar($Str, $Agr)
-{
-    $tamanio = strlen($Str) +  $Agr;
-    for ($i=1; $i<80 - $tamanio; $i++)
-    {
-            $Str = $Str.".";
-    }
-    return $Str;
-}
 function Generartf($IdKardex)
 {
         include("../../config.php");        
@@ -59,23 +39,37 @@ function Generartf($IdKardex)
                                     kardex.fecha_salida,
                                     kardex.fecha_retorno,
                                     kardex.motivo,
-                                    coalesce(kardex.monto,0) as monto
+                                    coalesce(kaj.monto,0) as monto,
+                                    m.descripcion as moneda,
+                                    dn.descripcion as documento_notarial,
+                                    servicio.descripcion as servicio,
+                                    kardex.anio
                             FROM servicio INNER JOIN kardex ON (servicio.idservicio = kardex.idservicio) 
+                                  left outer JOIN kardex_aj as kaj on kaj.idkardex = kardex.idkardex 
+                                  left outer join moneda as m on m.idmoneda = kaj.idmoneda                                            
+                                  left outer join asigna_pdt as apdt on apdt.idservicio = servicio.idservicio
+                                  left outer join pdt.documento_notarial as dn on dn.iddocumento_notarial = apdt.iddocumento_notarial
                             WHERE kardex.idkardex = ".$IdKardex;        
-        $Consulta 	= $Conn->Query($SQL);
-        $row 		= $Conn->FetchArray($Consulta);		
-        $Kardex		= $row[0];
-        $Escritura	= CantidadEnLetra($row[1]);
+        $Consulta 	    = $Conn->Query($SQL);
+        $row 		        = $Conn->FetchArray($Consulta);
+
+        $documento_notarial = $row['documento_notarial'];
+        $servicio = $row['servicio'];
+
+        $Kardex		      = $row[0];
+        $Escritura	    = $row[1];//CantidadEnLetra($row[1]);
         $EscrituraFecha = $Conn->DecFecha($row[8]);
+        $fecha_escritura = $row[8];
         $DiaL           = CantidadEnLetra((int)substr($row[8], 8, 2));
         $MesL           = $mes[substr($row[8], 5, 2)];
         $AnioL          = CantidadEnLetra((int)substr($row[8], 0, 4));		
         $anioe = (int)substr($row[8], 0, 4);
-        $Minuta		      = CantidadEnLetra($row[2]);
+        $Minuta		      = $row[2];//CantidadEnLetra($row[2]);
         $MinutaFecha    = $Conn->DecFecha($row[9]);
         $DiaM           = CantidadEnLetra((int)substr($row[9], 8, 2));
         $MesM           = $mes[substr($row[9], 5, 2)];
         $AnioM          = CantidadEnLetra((int)substr($row[9], 0, 4));			
+        $anio = $row['anio'];
         $IdServicio	= $row[10];
         $Servicio	= $row[3];
         $FojaI		= $row[4];
@@ -83,20 +77,38 @@ function Generartf($IdKardex)
         $FojaF		= $row[6];
         $SerieF		= $row[7];
         $idservicio = $row['idservicio'];
+        $motivo = $row['motivo'];
         $monto    = $row['monto'];
         $descripcion = $row['descripcion'];
         $minuta = trim($row['archivom']);
         $via = $row['via'];
         $fecha_salida = $Conn->DecFecha($row['fecha_salida']);
         $fecha_retorno = $Conn->DecFecha($row['fecha_retorno']);
-        $ruta = $row['ruta'];
-        
-        $cuerpoVehiculo = cuerpoVehiculo(array($row['clasev'], $row['marcav'], $row['aniofabv'], $row['modelov'], $row['colorv'], $row['motorv'], $row['cilindrosv'], $row['seriev'], $row['ruedasv'], $row['combustiblev'], $row['fechaincripcionv'], $row['carroceriav'], $row['placa']));
-        
+        $ruta = $row['ruta'];        
+        $cuerpoVehiculo = cuerpoVehiculo(array($row['clasev'], $row['marcav'], $row['aniofabv'], $row['modelov'], $row['colorv'], $row['motorv'], $row['cilindrosv'], $row['seriev'], $row['ruedasv'], $row['combustiblev'], $row['fechaincripcionv'], $row['carroceriav'], $row['placa']));        
         $PrecioProtestos = CantidadEnLetraP(str_replace(',', '', $row[11]));
         $SolicitanteProtestos = strtoupper($row[12]);	
 
-
+        //Registro de los pagos
+        $monto_total = $row['monto'];
+        $moneda = $row['moneda'];
+        ////Obtenemos si exibieron medio de pago
+        $query = "SELECT fp.descripcion,
+                    ef.descripcion,
+                    m.descripcion,
+                    dfp.montopagado,
+                    dfp.fechapago,
+                    dfp.nromediopago
+                  FROM detalle_forma_pago as dfp inner join forma_pago as fp on fp.idforma_pago = dfp.idforma_pago
+                    inner join moneda as m on m.idmoneda = dfp.idmoneda
+                    inner join pdt.entidadfinanciera as ef on ef.identidad_financiera = dfp.identidad_financiera
+                  WHERE dfp.idkardex = ".$IdKardex;
+        $stmt       = $Conn->Query($query);
+        $data_pay = array();
+        while($reg = $Conn->FetchArray($stmt))
+        {
+           $data_pay[] = array($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5]);
+        }
 
         $s = "SELECT 
                 kardex_participantes.idkardex, 
@@ -227,7 +239,7 @@ function Generartf($IdKardex)
                 $data[] = array('idparticipante'=>$r['idcliente'],
                     'participante'=>$r['nombres'],
                     'documento'=>$r['documento'],
-                    'nrodocumento'=>$p['dni_ruc'],
+                    'nrodocumento'=>$r['dni_ruc'],
                     'idparticipacion'=>$p['idparticipacion'],
                     'participacion'=>$p['participacion'],
                     'tipo'=> $p['tipo'],
@@ -256,8 +268,6 @@ function Generartf($IdKardex)
         }
 
     }
-
-    //print_r($data);
 
         //Datos Notaria Notaria
         $SQL            = "SELECT notario, idubigeo FROM notaria";
@@ -308,7 +318,8 @@ function Generartf($IdKardex)
         fputs($punt, $cabecera);
         $Mes1           = substr($row[11], 5, 7);
         $Mes2           = $mes[substr($Mes1, 0, 2)];
-        $Fecha          = substr($row[11], 8, 10)." de ".$Mes2." del ".substr($row[11], 0, 4); 		
+        $Fecha          = substr($row[11], 8, 10)." de ".$Mes2." del ".substr($row[11], 0, 4);
+
         $despues = $cuerpo;
         
         $despues = str_replace("#KARDEX#", validValur($Kardex), $despues);
@@ -316,7 +327,7 @@ function Generartf($IdKardex)
         $despues = str_replace("#FECHAESCRITURA#", validValur($EscrituraFecha), $despues);
         $despues = str_replace("#NROMINUTA#", validValur($Minuta), $despues);
         $despues = str_replace("#FECHAMINUTA#", validValur($MinutaFecha), $despues);
-        $despues = str_replace("#SERVICIO#", validValur($Servicio), $despues);
+        $despues = str_replace("#SERVICIO#", validValur($servicio), $despues);
         $despues = str_replace("#DIAL#", validValur(trim($DiaL)), $despues);
         $despues = str_replace("#MESL#", validValur(trim($MesL)), $despues);
         $despues = str_replace("#ANIOL#", validValur(trim($AnioL)), $despues);
@@ -334,14 +345,24 @@ function Generartf($IdKardex)
         $despues = str_replace("#SERIEI#", validValur($SerieI), $despues);
         $despues = str_replace("#SERIEF#", validValur($SerieF), $despues);		
         $despues = str_replace("#DESC_BIEN#", validValur($descripcion), $despues);
-        $monto_letra = CantidadEnLetraP($monto);
-        $despues = str_replace("#MONTO_LETRA#", $monto_letra, $despues);
-        $despues = str_replace("#MONTO#", number_format($monto,2), $despues);
+
+        $Fecha_a = setFechaActual('');
+        $despues = str_replace("#FECHA_ACTUAL#", validValur($descripcion), $despues);        
+
+        $monto_letra = CantidadEnLetraP($monto_total);
+        $despues = str_replace("#MONTO_LETRA#", validValur($monto_letra), $despues);
+        $despues = str_replace("#MONTO#", number_format($monto_total,2), $despues);        
+        $despues = str_replace("#MONEDA#", validValur($moneda), $despues);
 
         $despues = str_replace("#VIA#", validValur($via), $despues);
         $despues = str_replace("#FECHA_SALIDA#", validValur($fecha_salida), $despues);
         $despues = str_replace("#FECHA_RETORNO#", validValur($fecha_retorno), $despues);
         $despues = str_replace("#RUTA#", validValur($ruta), $despues);
+
+        $lines = fill_lines($motivo);
+        $despues = str_replace("#MOTIVO#", validValur($motivo).$lines, $despues);
+        $despues = str_replace("#ANIO#", validValur($anio), $despues);
+        
         
         $part = participantes($data,$IdServicio);
         $despues = str_replace("#PARTICIPANTES#", $part, $despues);       
@@ -355,24 +376,27 @@ function Generartf($IdKardex)
         $part_firma = participantes_firma($data);
         $despues = str_replace("#PARTICIPANTES_FIRMA#", $part_firma, $despues);
 
+        $pago = constancia_pago($data,$data_pay,$monto_total,$moneda,$fecha_escritura,$servicio,$documento_notarial);
+        $despues = str_replace("#CONSTANCIA_PAGO#", $pago, $despues);
+
+        $pago = conformidad($data,$data_pay,$monto_total,$moneda,$fecha_escritura,$servicio,$documento_notarial);
+        $despues = str_replace("#CONFORMIDAD_PAGO#", $pago, $despues);
+                
         //********************
         //**Casos especiales**
         //********************
         //Para plantillas vehiculares
-          $despues = str_replace("#CUERPOVEHI#", $cuerpoVehiculo, $despues);          
-
+          $despues = str_replace("#CUERPOVEHI#", $cuerpoVehiculo, $despues);
         //Participantes para autorizaciones de viajes 
           $txt = participantes_v($data,$IdServicio);
-          $despues = str_replace("#PARTICIPANTES_V#", $txt, $despues);   
-
+          $despues = str_replace("#PARTICIPANTES_V#", $txt, $despues);
         //Datos del menor, para autorizaciones de viajes
           $txt = datos_menor($data);
           $despues = str_replace("#DATOS_MENOR#", $txt, $despues); 
 
         //
         $part_firma = participantes_firma_v($data);
-        $despues = str_replace("#PARTICIPANTES_FIRMA_V#", $part_firma, $despues);                           
-
+        $despues = str_replace("#PARTICIPANTES_FIRMA_V#", $part_firma, $despues);
         foreach ($par as $key => $value) 
         {   
             $participacion = $value['participacion'];            
@@ -388,12 +412,16 @@ function Generartf($IdKardex)
             $despues = str_replace("#estado_civil".$participacion."#", strtoupper($value['estado_civil'.$value['participacion']]), $despues);
         }
 
+        //$despues = completa_lineas($despues);
+
         fputs($punt, $despues);
-        $saltopag="\par \page \par";
+        $saltopag="\par ";
         fputs($punt, $saltopag);		
         fputs($punt, "}");
         chmod($Destino, 0777);     
         fclose($punt);		
+        $sql = "UPDATE kardex set archivo = '".$documento."' where idkardex = ".$IdKardex;
+        $Consulta = $Conn->Query($sql);
         return array($Destino,$documento);
 }
 

@@ -15,7 +15,7 @@
     if(isset($_GET['template'])&&$_GET['template']!="")
     {
         $sql = "SELECT digital as plantilla from kardex              
-                 where correlativo = '".$_GET['template']."'";
+                 where correlativo = '".$_GET['template']."' and anio = '".$_GET['anio']."'";
         
         $q = $Conn->Query($sql);
         $r = $Conn->FetchArray($q);
@@ -288,24 +288,26 @@ $(document).ready(function(){
           select: function( event, ui ) 
           {
               $("#templat").val(ui.item.correlativo);
+              $("#templat_anio").val(ui.item.anio);
               return false;
           }
       }).data( "autocomplete" )._renderItem = function( ul, item ) 
       {
           return $( "<li></li>" )
               .data( "item.autocomplete", item )
-              .append( "<a>"+ item.correlativo + "</a>" )
+              .append( "<a>"+ item.correlativo + " ("+item.anio+")</a>" )
               .appendTo( ul );
       };
     $("#reload").click(function()
     {
-       var t = $("#templat").val();
+       var t = $("#templat").val(),
+          a = $("#templat_anio").val();
        if(t!="")
        {
           if(confirm('Realmente deseas cargar la plantilla?'))
           {
               var idk = $("#idkardex").val();              
-              window.location = "index.php?idkardex="+idk+"&template="+t;
+              window.location = "index.php?idkardex="+idk+"&template="+t+"&anio="+a;
           }
        }
     });
@@ -326,13 +328,17 @@ $(document).ready(function(){
 });
 function saveKardex()
 {
+    //var ht = $("#content_ifr").contents().find("#tinymce").html();
+    //alert(ht)
+    //$("#tinymce",self.content_ifr.document).html()
     var idkardex = $("#idkardex").val(),
-            cont = $("#tinymce",self.content_ifr.document).html(),
+            cont = $("#content_ifr").contents().find("#tinymce").html(),
             params = { 
                         'idkardex':idkardex,
                         'cont':cont
                      },
             str = jQuery.param(params);
+
         $("#msg").css("display","inline");
         $.post('save_index.php',str,function(data){            
             $("#msg").css("display","none");
@@ -374,23 +380,22 @@ tinymce.init({
 <form method="post" action="index.php" name="frm" id="frm">
     <div style="width:100%; padding:5px 0; background:green">
         <div style="padding:0 6px;">
-        <span style="width:300px; color:#FFFFFF; font-size:12px; margin: 0px 10px 0 0; ">ESCRITURA: <b><?php echo $r['correlativo']; ?></b>  <?php if($_GET['template']!=""){ echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Usando el Modelo de ".$_GET['template']."]"; } ?></span>
+        <span style="width:300px; color:#FFFFFF; font-size:12px; margin: 0px 10px 0 0; ">ESCRITURA: <b><?php echo $r['correlativo']; ?></b>  <?php if($_GET['template']!=""){ echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Usando el Modelo de ".$_GET['template']." del a&ntilde;o ".$_GET['anio']."]"; } ?></span>
         <span id="msg" style="font-size:11px; color:#fff; display:none">Guardando cambios...</span>        
         <a class="btn close" href="javascript:window.close();" style="float:right;">CERRAR</a>
         <a class="btn config" href="javascript:" id="config-page" style="float:right;">CONFIGURAR</a>  
         <span style="float:right; padding:0 20px">
           <label style="color:#FFF">CARGAR PLANTILLA: </label>
           <input type="text" name="templat" id="templat" value="<?php echo $_GET['template'] ?>" style="width:80px" class="ui-widget-content ui-corner-all text" maxlength="7" />
+          <input type="hidden" name="templat_anio" id="templat_anio" value="<?php echo $_GET['anio'] ?>" class="ui-widget-content ui-corner-all text"  />
           <input type="button" name="reload" id="reload" value="Cargar" />
         </span>        
         <input type="hidden" name="idkardex" id="idkardex" value="<?php echo $Id; ?>" />
         </div>
         <div style="clear:both"></div>
     </div>
-
     <textarea name="content" style="width:100%; background:#dadada;">
-        <?php     
-
+    <?php   
         if($plantilla_template=="")      
         {
          if($flag)

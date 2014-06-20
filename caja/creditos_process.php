@@ -76,6 +76,10 @@ switch ($oper)
 					VALUES (".$_POST['idf'].",'DERECHOS REGISTRALES','".$fecha."',".$_POST['cant_dr'].",".$_POST['monto_dr'].")";
 			$Conn->Query($sql);					
 			break;
+	case 4:
+			$sql = "DELETE FROM facturacion_dr where iddr = ".$_POST['iddr'];
+			$Conn->Query($sql);					
+			break;
 	default:
 			echo "Hola default";
 		break;

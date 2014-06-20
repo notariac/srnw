@@ -1,0 +1,178 @@
+<definitions xmlns:tns="http://pe/gob/reniec/wsauth/WSAuthentication.wsdl" xmlns:ns1="http://pe.gob.reniec.wsauth/IWSAuthentication.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soa="http://soa.com/uri/products/wsdlext/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsmex="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://pe/gob/reniec/wsauth/WSAuthentication.wsdl">
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://pe.gob.reniec.wsauth/IWSAuthentication.xsd"/>
+</types>
+<message name="registerUser2Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="getDTD0Request"></message>
+<message name="registerUser2Request">
+<part name="nombre" type="xsd:string"></part>
+<part name="paterno" type="xsd:string"></part>
+<part name="materno" type="xsd:string"></part>
+<part name="fechanac" type="xsd:string"></part>
+<part name="dni" type="xsd:string"></part>
+<part name="email" type="xsd:string"></part>
+</message>
+<message name="loginValidation3Request">
+<part name="userID" type="xsd:string"></part>
+<part name="encriptCode" type="xsd:string"></part>
+<part name="key" type="xsd:string"></part>
+</message>
+<message name="getSecureCode1Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="loginValidation3Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="changePin4Request">
+<part name="userID" type="xsd:string"></part>
+<part name="encriptCode" type="xsd:string"></part>
+<part name="key" type="xsd:string"></part>
+</message>
+<message name="changePin4Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="getDTD0Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="getTicket5Request">
+<part name="user" type="xsd:string"></part>
+<part name="password" type="xsd:string"></part>
+</message>
+<message name="getTicket5Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="getSecureCode1Request"></message>
+<portType name="WSAuthenticationPortType">
+<operation name="getDTD">
+<input name="getDTD0Request" message="tns:getDTD0Request"></input>
+<output name="getDTD0Response" message="tns:getDTD0Response"></output>
+<soa:id>2410</soa:id>
+<soa:key>dfdc3c8b-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-29T03:18:47.000-05:00</soa:lastUpdated>
+</operation>
+<operation name="getSecureCode">
+<input name="getSecureCode1Request" message="tns:getSecureCode1Request"></input>
+<output name="getSecureCode1Response" message="tns:getSecureCode1Response"></output>
+<soa:id>2411</soa:id>
+<soa:key>dfddea3e-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-29T03:18:47.000-05:00</soa:lastUpdated>
+</operation>
+<operation name="registerUser">
+<input name="registerUser2Request" message="tns:registerUser2Request"></input>
+<output name="registerUser2Response" message="tns:registerUser2Response"></output>
+<soa:id>2412</soa:id>
+<soa:key>dfdfbf01-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-29T03:18:47.000-05:00</soa:lastUpdated>
+</operation>
+<operation name="loginValidation">
+<input name="loginValidation3Request" message="tns:loginValidation3Request"></input>
+<output name="loginValidation3Response" message="tns:loginValidation3Response"></output>
+<soa:id>2413</soa:id>
+<soa:key>dfe16cb4-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-29T03:18:47.000-05:00</soa:lastUpdated>
+</operation>
+<operation name="changePin">
+<input name="changePin4Request" message="tns:changePin4Request"></input>
+<output name="changePin4Response" message="tns:changePin4Response"></output>
+<soa:id>2414</soa:id>
+<soa:key>dfe31a67-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-29T03:18:47.000-05:00</soa:lastUpdated>
+</operation>
+<operation name="getTicket">
+<input name="getTicket5Request" message="tns:getTicket5Request"></input>
+<output name="getTicket5Response" message="tns:getTicket5Response"></output>
+<soa:id>2415</soa:id>
+<soa:key>dfe4ef2a-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-29T03:18:47.000-05:00</soa:lastUpdated>
+</operation>
+<soa:id>2285</soa:id>
+<soa:key>uddi:1fe24ca4-2fd8-5193-198b-0e968d2264ff</soa:key>
+<soa:lastUpdated>2011-05-10T02:54:47.000Z</soa:lastUpdated>
+</portType>
+<binding name="WSAuthenticationBinding" type="tns:WSAuthenticationPortType">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<soa:id>2292</soa:id>
+<soa:key>uddi:0e078192-f4be-5200-f9c8-81068e118187</soa:key>
+<soa:lastUpdated>2011-05-10T02:54:47.000Z</soa:lastUpdated>
+<operation name="getDTD">
+<soap:operation soapAction="" style="rpc"/>
+<input name="getDTD0Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</input>
+<output name="getDTD0Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</output>
+</operation>
+<operation name="getSecureCode">
+<soap:operation soapAction="" style="rpc"/>
+<input name="getSecureCode1Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</input>
+<output name="getSecureCode1Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</output>
+</operation>
+<operation name="registerUser">
+<soap:operation soapAction="" style="rpc"/>
+<input name="registerUser2Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</input>
+<output name="registerUser2Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</output>
+</operation>
+<operation name="loginValidation">
+<soap:operation soapAction="" style="rpc"/>
+<input name="loginValidation3Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</input>
+<output name="loginValidation3Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</output>
+</operation>
+<operation name="changePin">
+<soap:operation soapAction="" style="rpc"/>
+<input name="changePin4Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</input>
+<output name="changePin4Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</output>
+</operation>
+<operation name="getTicket">
+<soap:operation soapAction="" style="rpc"/>
+<input name="getTicket5Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</input>
+<output name="getTicket5Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSAuthentication"/>
+</output>
+</operation>
+</binding>
+<service name="WSAuthentication_vs0">
+<port name="WSAuthenticationBindingHTTP_Entrante2ad1e0c77-db37-4245-b5d6-98b7fc99" binding="tns:WSAuthenticationBinding">
+<soap:address location="http://ws.pide.gob.pe/reniec/WSAuthenticationBinding"/>
+<soa:id>2652</soa:id>
+<soa:key>uddi:37ceca08-1395-11e2-b0c0-8d96fcc73083</soa:key>
+<soa:lastUpdated>2012-10-11T11:17:18.000Z</soa:lastUpdated>
+</port>
+<port name="WSAuthenticationBinding" binding="tns:WSAuthenticationBinding">
+<soap:address location="http://vpide-esb1:9951/reniec/WSAuthenticationBinding"/>
+<soa:id>2303</soa:id>
+<soa:key>uddi:efd4e623-7b42-11e0-9e53-e4835ecac9d1</soa:key>
+<soa:lastUpdated>2013-10-08T17:46:32.000Z</soa:lastUpdated>
+</port>
+<port name="WSAuthenticationBindingHTTP_Entrante9cd2c672-2e98-45e5-b9ba-a6bce1d5" binding="tns:WSAuthenticationBinding">
+<soap:address location="http://ws.pide.gob.pe/reniec/WSAuthenticationBinding"/>
+<soa:id>2313</soa:id>
+<soa:key>uddi:c3711518-7b46-11e0-9e53-e4835ecac9d1</soa:key>
+<soa:lastUpdated>2011-05-10T20:47:47.000Z</soa:lastUpdated>
+</port>
+<soa:id>20076</soa:id>
+<soa:key>uddi:91d04a95-f24b-11df-a9ae-9727963e716b</soa:key>
+<soa:lastUpdated>2013-10-08T17:46:33.000Z</soa:lastUpdated>
+<soa:parentKey>uddi:3378f684-d876-11df-b03f-e74fe7d183d3</soa:parentKey>
+</service>
+</definitions>

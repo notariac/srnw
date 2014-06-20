@@ -27,14 +27,7 @@
         $Consulta   = $Conn->Query($Select);
         $row        = $Conn->FetchArray($Consulta);  
 
-        // $Nombres    =  
-        // $Nombres    =  explode("!", $row[4]);
-        // $nnom = count($Nombres);
-
-        // if($nnom>1) { $Nombre = $Nombres[0]; $ap_paterno = $Nombres[1];  }
-            //else {
-             $Nombre = $row['nombres'];  $ap_paterno = $row['ape_paterno']; $ap_materno = $row['ap_materno']; 
-             //}
+        $Nombre = $row['nombres'];  $ap_paterno = $row['ape_paterno']; $ap_materno = $row['ap_materno']; 
 
         $Estado     = $row[16];
         $Guardar    = "$Guardar&Id2=$Id";
@@ -49,8 +42,44 @@
 $(function() 
     {       
         loadBasic();
+        $("#reniec").click(function(){
+            var dni = $("#DniRuc").val();
+            if(dni!="")
+            {
+                $("#loader_reniec").fadeIn();
+                $("#RazonNombre2").val("");
+                $("#ap_paterno").val("");
+                $("#ap_materno").val("");
+                $("#Sexo").val("");
+                $("#fechanac").val("");
+                $.post("http://localhost/srnw/parametros/cliente/getDatospersona.php",'dni='+dni,function(r){
+                    $.each(r,function(i,j)
+                    {
+                        $("#loader_reniec").fadeOut();
+                        if(j.NOMBRES!="0")
+                        {                            
+                            $("#RazonNombre2").val(j.NOMBRES);
+                            $("#ap_paterno").val(j.APPAT);
+                            $("#ap_materno").val(j.APMAT);
+                            $("#Sexo").val(j.SEXO);
+                            var f = j.FENAC;
+                            $("#fechanac").val(f.substring(6,8)+'/'+f.substring(4,6)+'/'+f.substring(0,4));
+                        }                        
+                        else
+                        {
+                            if(j.APPAT=="SOAP Fault: Could not connect to host")
+                                alert("No se pudo consultar el DNI. \nError: No existe conexion a internet");
+                            else
+                                alert("No se pudo consultar el DNI. \nError: "+j.APPAT);
+                        }
+                    });                
+                },'json');
+            }
+        });
+
+        /*
         $("#DniRuc").live('change',function()
-        {                
+        {
             var ndoc = $(this).val();
             if(ndoc!="")    
             {
@@ -60,7 +89,8 @@ $(function()
                     $("#DniRuc").focus(); }                        
                 });
             }
-        });        
+        });      
+        */  
         $('.text').focus(function(){
             $(this).addClass('ui-state-highlight');                
         });
@@ -254,16 +284,7 @@ $(function()
     
     function changeTipoCli() 
     {
-        if($("#idcliente_tipo").val()==1)
-        {
-            //Per. Natural
-            $("#nombre_cliente").html("Nombre:");
-            $("#apellidos,#divProfesion,#divCargo,#divSexCivil,#fprofesion").css("display","block");
-            $("#divpa").css("display","none");
-            changeDoc(1);
-            $("#divRepre").fadeOut();
-        }
-        else 
+        if($("#idcliente_tipo").val()==2)
         {
             //Per. Juridica
             $("#nombre_cliente").html("Razon Social:");
@@ -273,16 +294,38 @@ $(function()
             $("#idprofesion").val(998);
             $("#idcargo").val(998);
             changeDoc(8);
+            
+        }
+        else 
+        {
+            //Per. Natural
+            $("#nombre_cliente").html("Nombre:");
+            $("#apellidos,#divProfesion,#divCargo,#divSexCivil,#fprofesion").css("display","block");
+            $("#divpa").css("display","none");
+            changeDoc(1);
+            $("#divRepre").fadeOut();
+            $("#idcliente_tipo").val(1)
         }
     }
     function changeDoc(id)
     {        
         $("#iddocumento").val(id);
-        if (id==1){ $('#DniRuc').attr('maxlength','8'); }
+        $("#reniec").css("display","none");
+        habilitar(0);
+        if (id==1){ $('#DniRuc').attr('maxlength','8'); $("#reniec").css("display","inline-block"); habilitar(1);}
         if (id==5){ $('#DniRuc').attr('maxlength','15'); }
         if (id==2||id==3||id==4||id==6||id==7){$('#DniRuc').attr('maxlength','11');}
         if (id==8){$('#DniRuc').attr('maxlength','11');}
         $("#DniRuc").focus();
+    }
+    function habilitar(t)
+    {
+        /*
+        if(t==1)        
+          $("#RazonNombre2,#ap_paterno,#ap_materno").attr("readonly","readonly");            
+        else
+          $("#RazonNombre2,#ap_paterno,#ap_materno").removeAttr("readonly");                    
+      */
     }
     function loadBasic()
     {
@@ -329,7 +372,31 @@ $(function()
     }   
 </script>
 <style>fieldset { margin-bottom: 10px; border: 1px solid #dadada !important; }
-        legend { color:#666;} </style>
+        legend { color:#666;} 
+        
+.myButton {
+  background-color:#44c767;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  border:1px solid #18ab29;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff !important;
+  font-family:arial;
+  font-size:11px;
+  padding:2px 9px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+  background-color:#5cbf2a;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+</style>
 <div>
 <form id="formP" name="formP" method="post" action="guardar.php?<?php echo $Guardar;?>">
     <fieldset class="ui-widget-content ui-corner-all"  >
@@ -342,6 +409,8 @@ $(function()
     <?php
             $SelectCT   = "SELECT * FROM cliente_tipo WHERE estado = 1";
             $ConsultaCT = $Conn->Query($SelectCT);
+            if($row[1]=="")
+                $row[1]=1;
             while($rowCT=$Conn->FetchArray($ConsultaCT))
             {
                 $Select = '';
@@ -374,10 +443,11 @@ $(function()
     ?>
     </select>    
     <label class="labels" style="width:60px">N&deg; Doc:</label>
-    <input type="text" class="ui-widget-content ui-corner-all text" style="width:110px;" name="dni_ruc" id="DniRuc" value="<?php echo isset($row[3])?$row[3]:'';?>" <?php echo $Enabled;?>  title="Ingrese el numero del documento"  />
+    <input type="text" class="ui-widget-content ui-corner-all text" style="width:100px;" name="dni_ruc" id="DniRuc" value="<?php echo isset($row[3])?$row[3]:'';?>" <?php echo $Enabled;?>  title="Ingrese el numero del documento" onkeypress="return permite(event,'num')" />
+    <a href="#" id="reniec" class="myButton">RENIEC</a>
     <br/>
     </fieldset>
-
+    <div id="loader_reniec" style="text-align:center; padding:1px 0 4px; display:none">Consultando a RENIEC, espere porfavor ...</div>
     <fieldset class="ui-widget-content ui-corner-all " >
     <legend>Datos Personales</legend>    
     <label class="labels" id="nombre_cliente">Nombre:</label>

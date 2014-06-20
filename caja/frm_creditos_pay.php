@@ -87,7 +87,7 @@ $r = $Conn->FetchArray($Consulta);
 					<td align="center"><?php echo $rd['cantidad']; ?></td>
 					<td align="center"><?php echo number_format($rd['monto'],2); ?></td>
 					<td align="center"><?php echo number_format($rd['monto']*$rd['cantidad'],2) ?></td>
-					<td>&nbsp;</td>
+					<td><a href="#" title="Eliminar Item" class="delete_dr" id="<?php echo $rd['iddr'] ?>">[X]</a></td>
 				</tr>
 				<?php
 			}

@@ -300,18 +300,29 @@ function genDocumento()
    $.post('generaword.php','IdKardex='+idk,function(data)
    {
       $("#box-loader").css("display","none");
-      $("#box-msg-gen").empty().append(data.html); 
+      $("#box-msg-gen").empty().append(data.html);
       $("#archivo").val(data.doc);
       $("#VerImagennn").attr("href",data.ruta);
       $("#VerImagennn_label").css("display","none");
-      $("#VerImagennn").css("display","inline");     
+      $("#VerImagennn").css("display","inline");
    },'json')
 }
+
 $(document).ready(function()
 {
-
   $("#genDocumento").click(function(){
-    genDocumento();
+    var idk = $("#iddkardex").val();
+    $.post('verificar_file.php','idk='+idk,function(r)
+    {
+        var gen = 1;
+       if(r==1)
+       {
+         if(!confirm('Ya existe un documento generado, desea volver a generar?'))
+           gen = 0;
+       }
+       if(gen==1)
+        genDocumento();
+    });
   });
 
   $("#upload_minuta").click(function(){      

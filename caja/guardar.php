@@ -19,34 +19,32 @@ if(!session_id()){session_start();}
         $rowv = $Conn->FetchArray($verr);
         $verif= $Conn->NroRegistros($verr);
         if($verif<=0)   
-       {
-
-        $SqlC = "INSERT INTO cliente(idcliente_tipo, iddocumento, dni_ruc, nombres, direccion, estado,idprofesion, idusuario, fechareg)
-                 VALUES('1', '".$_POST['0form1_iddocumento']."', '".$_POST['0form1_dni_ruc']."', '".$_POST['0form1_nombres']."', '".$_POST['0form1_direccion']."', '1', '998','".$_POST['0form1_idusuario']."', '".$Conn->CodFecha($_POST['3form1_fechareg'])."');";
-       
-        $resultC = $Conn->Query($SqlC);		
-        $ConsultaS = $Conn->Query("SELECT NEXTVAL('cliente_idcliente_seq')");
-        $rowS = $Conn->FetchArray($ConsultaS);
-        $IdCliente = $rowS[0]-1;		
-        $FormN = "form1";
-        foreach($_POST as $ind=>$val)
         {
-            if(stripos($ind, $FormN.'_')!==false)
+            $SqlC = "INSERT INTO cliente(idcliente_tipo, iddocumento, dni_ruc, nombres, direccion, estado,idprofesion, idusuario, fechareg)
+                     VALUES('1', '".$_POST['0form1_iddocumento']."', '".$_POST['0form1_dni_ruc']."', '".$_POST['0form1_nombres']."', '".$_POST['0form1_direccion']."', '1', '998','".$_POST['0form1_idusuario']."', '".$Conn->CodFecha($_POST['3form1_fechareg'])."');";
+           
+            $resultC = $Conn->Query($SqlC);		
+            $ConsultaS = $Conn->Query("SELECT NEXTVAL('cliente_idcliente_seq')");
+            $rowS = $Conn->FetchArray($ConsultaS);
+            $IdCliente = $rowS[0]-1;		
+            $FormN = "form1";
+            foreach($_POST as $ind=>$val)
             {
-                $nPost[$ind] = $val;
-                if ($ind=='0form1'.'_idcliente')
+                if(stripos($ind, $FormN.'_')!==false)
                 {
-                    $nPost[$ind] = $IdCliente;
+                    $nPost[$ind] = $val;
+                    if ($ind=='0form1'.'_idcliente')
+                    {
+                        $nPost[$ind] = $IdCliente;
+                    }
                 }
             }
-        }
 
-       }//fin if nroregistros
+        }//fin if nroregistros
        else
        {
-
-        $SQLV = "UPDATE cliente 
-                 SET nombres='".$_POST['0form1_nombres']."',direccion='".$_POST['0form1_direccion']."'
+         $SQLV = "UPDATE cliente 
+                 SET direccion='".$_POST['0form1_direccion']."'
 
                  WHERE dni_ruc='".$_POST['0form1_dni_ruc']."'";
         $resultv = $Conn->Query($SQLV);
@@ -57,7 +55,7 @@ if(!session_id()){session_start();}
     else{
 
         $SQLV = "UPDATE cliente 
-                 SET nombres='".$_POST['0form1_nombres']."',direccion='".$_POST['0form1_direccion']."'
+                 SET direccion='".$_POST['0form1_direccion']."'
 
                  WHERE dni_ruc='".$_POST['0form1_dni_ruc']."'";
         $resultv = $Conn->Query($SQLV);

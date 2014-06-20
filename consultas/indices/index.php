@@ -117,8 +117,9 @@ function toogleTime(v)
   <option value="correlativo">Kardex</option>
   <option value="servicio">Contrato</option>
   <option value="participantes">Participantes</option>
+  <option value="digital">Documento Digital</option>
+  <option value="razonsocial">Razon Social</option>
 </select>
-
 <div id="box" style="display:inline">
 <span id="box-escritura">
   <label style="margin-left:20px">El numero de escritura: </label>
@@ -135,6 +136,14 @@ function toogleTime(v)
 <span id="box-participantes" style="display:none">
   <label style="margin-left:20px">Ingrese los participantes: </label>
   <input type="text" name="participantes" id="participantes" value="" class="ui-widget-content ui-corner-all" style="width:350px; text-align:center"  />
+</span>
+<span id="box-digital" style="display:none">
+  <label style="margin-left:20px">Ingrese un Texto: </label>
+  <input type="text" name="digital" id="digital" value="" class="ui-widget-content ui-corner-all" style="width:350px; text-align:center"  />
+</span>
+<span id="box-razonsocial" style="display:none">
+  <label style="margin-left:20px">Ingrese la Razon social: </label>
+  <input type="text" name="razonsocial" id="razonsocial" value="" class="ui-widget-content ui-corner-all" style="width:350px; text-align:center"  />
 </span>
 </div>
 </fieldset>
@@ -211,6 +220,7 @@ function toogleTime(v)
           <th rowspan="2"><p class="title-head">DIG.</p></th>
           <th rowspan="2" style="width:70px"><p class="title-head">FECHA ESCRITURA</p></th>
           <th rowspan="2"><p class="title-head">CONTRATO</p></th>          
+          <th rowspan="2"><p class="title-head">RAZON SOCIAL</p></th>          
           <th rowspan="2"><p class="title-head">PARTICIPANTES</p></th>          
           <th colspan="4" style="border-left:2px solid #999;" class="ui-widget-content"><p class="title-head">INSCRIPCION</p></th>
         </tr>

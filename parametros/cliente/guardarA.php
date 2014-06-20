@@ -48,10 +48,13 @@ if(!session_id()){session_start();}
 	//Verificamos si el dni o ruc ya esta en el sistema (Solo si es nuevo)
 	if($_POST['idcliente']=="")
 	{
-		$sql = "SELECT count(*) FROM cliente where dni_ruc = '".trim($dni_ruc)."'";
-	    $q = $Conn->Query($sql);
-	    $r = $Conn->FetchArray($q);
-	    //if($r[0]>0){print_r(json_encode(array('0','DniRuc','El numero de documento ya existe en el sistema '))); die;}    	
+		if(trim($dni_ruc)!="")
+		{			
+			$sql = "SELECT count(*) FROM cliente where dni_ruc = '".trim($dni_ruc)."'";		
+		    $q = $Conn->Query($sql);
+		    $r = $Conn->FetchArray($q);
+		    if($r[0]>0){print_r(json_encode(array('0','DniRuc','El numero de documento ya existe en el sistema '))); die;}    	
+		}
 	}
 	$bval = $Conn->vParam($_POST['RazonNombre2'],"TEXT");
 	$RazonNombre2 = $bval[0];

@@ -1,0 +1,106 @@
+<definitions xmlns:tns="http://pe/gob/reniec/wsauth/WSDataVerification.wsdl" xmlns:ns1="http://pe.gob.reniec.wsauth/IWSDataVerification.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soa="http://soa.com/uri/products/wsdlext/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsmex="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://pe/gob/reniec/wsauth/WSDataVerification.wsdl">
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://pe.gob.reniec.wsauth/IWSDataVerification.xsd"/>
+</types>
+<message name="getDatavalidate1Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="dataVerification0Request">
+<part name="xmlDocumento" type="xsd:string"></part>
+</message>
+<message name="dataVerification0Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="getDatapersonal2Response">
+<part name="return" type="xsd:string"></part>
+</message>
+<message name="getDatavalidate1Request">
+<part name="xmlDocumento" type="xsd:string"></part>
+</message>
+<message name="getDatapersonal2Request">
+<part name="xmlDocumento" type="xsd:string"></part>
+</message>
+<portType name="WSDataVerificationPortType">
+<operation name="dataVerification">
+<input name="dataVerification0Request" message="tns:dataVerification0Request"></input>
+<output name="dataVerification0Response" message="tns:dataVerification0Response"></output>
+<soa:id>2423</soa:id>
+<soa:key>e121661a-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-09T22:26:32.000-05:00</soa:lastUpdated>
+</operation>
+<operation name="getDatavalidate">
+<input name="getDatavalidate1Request" message="tns:getDatavalidate1Request"></input>
+<output name="getDatavalidate1Response" message="tns:getDatavalidate1Response"></output>
+<soa:id>2424</soa:id>
+<soa:key>e12361ed-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-09T22:26:32.000-05:00</soa:lastUpdated>
+</operation>
+<operation name="getDatapersonal">
+<input name="getDatapersonal2Request" message="tns:getDatapersonal2Request"></input>
+<output name="getDatapersonal2Response" message="tns:getDatapersonal2Response"></output>
+<soa:id>2425</soa:id>
+<soa:key>e1250fa0-7ab0-11e0-870e-edd920863a09</soa:key>
+<soa:lastUpdated>2011-05-09T22:26:32.000-05:00</soa:lastUpdated>
+</operation>
+<soa:id>2287</soa:id>
+<soa:key>uddi:0720c945-f95b-1c72-4567-f79d54028c41</soa:key>
+<soa:lastUpdated>2011-05-10T02:54:47.000Z</soa:lastUpdated>
+</portType>
+<binding name="WSDataVerificationBinding" type="tns:WSDataVerificationPortType">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<soa:id>2293</soa:id>
+<soa:key>uddi:c34d5f00-d404-b9e9-c89a-2593edde25d3</soa:key>
+<soa:lastUpdated>2011-05-10T02:54:47.000Z</soa:lastUpdated>
+<operation name="dataVerification">
+<soap:operation soapAction="" style="rpc"/>
+<input name="dataVerification0Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSDataVerification"/>
+</input>
+<output name="dataVerification0Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSDataVerification"/>
+</output>
+</operation>
+<operation name="getDatavalidate">
+<soap:operation soapAction="" style="rpc"/>
+<input name="getDatavalidate1Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSDataVerification"/>
+</input>
+<output name="getDatavalidate1Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSDataVerification"/>
+</output>
+</operation>
+<operation name="getDatapersonal">
+<soap:operation soapAction="" style="rpc"/>
+<input name="getDatapersonal2Request">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSDataVerification"/>
+</input>
+<output name="getDatapersonal2Response">
+<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="WSDataVerification"/>
+</output>
+</operation>
+</binding>
+<service name="WSDataVerification_vs0">
+<port name="WSDataVerificationBinding" binding="tns:WSDataVerificationBinding">
+<soap:address location="http://vpide-esb1:9951/reniec/WSDataVerificationBinding"/>
+<soa:id>2305</soa:id>
+<soa:key>uddi:42d252f5-7b43-11e0-9e53-e4835ecac9d1</soa:key>
+<soa:lastUpdated>2013-10-08T17:46:32.000Z</soa:lastUpdated>
+</port>
+<port name="WSDataVerificationBindingHTTP_Entrante9cd2c672-2e98-45e5-b9ba-a6bce1d5" binding="tns:WSDataVerificationBinding">
+<soap:address location="http://ws.pide.gob.pe/reniec/WSDataVerificationBinding"/>
+<soa:id>2315</soa:id>
+<soa:key>uddi:c39ae43a-7b46-11e0-9e53-e4835ecac9d1</soa:key>
+<soa:lastUpdated>2011-05-10T20:47:48.000Z</soa:lastUpdated>
+</port>
+<port name="WSDataVerificationBindingHTTP_Entrante2ad1e0c77-db37-4245-b5d6-98b7fc99" binding="tns:WSDataVerificationBinding">
+<soap:address location="http://ws.pide.gob.pe/reniec/WSAuthenticationBinding"/>
+<soa:id>2653</soa:id>
+<soa:key>uddi:766d0fea-1395-11e2-b0c0-8d96fcc73083</soa:key>
+<soa:lastUpdated>2012-10-11T11:19:03.000Z</soa:lastUpdated>
+</port>
+<soa:id>20079</soa:id>
+<soa:key>uddi:db806db4-f24b-11df-a9ae-9727963e716b</soa:key>
+<soa:lastUpdated>2013-10-08T17:46:33.000Z</soa:lastUpdated>
+<soa:parentKey>uddi:3378f684-d876-11df-b03f-e74fe7d183d3</soa:parentKey>
+</service>
+</definitions>

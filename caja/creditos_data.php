@@ -52,7 +52,8 @@ $sql = "SELECT  f.idfacturacion,
                 f.observaciones,
                 DATE_PART('day', now() - f.facturacion_fecha) as dt,
                 fd.item,
-                t2.n
+                t2.n,
+                t4.total_dr
               from facturacion as f 
                 inner join facturacion_detalle as fd on fd.idfacturacion = f.idfacturacion
                 inner join servicio as s on s.idservicio = fd.idservicio
@@ -63,17 +64,23 @@ $sql = "SELECT  f.idfacturacion,
                           from facturacion_pagos
                          group by idfacturacion ) as t1 on t1.idfacturacion = f.idfacturacion 
                 left outer join 
-      (SELECT sum(monto_tr) as total_p_tr,
-        idfacturacion
-       from facturacion_pagos
-       group by idfacturacion ) as t3 on t3.idfacturacion = f.idfacturacion
+                (SELECT sum(monto_tr) as total_p_tr,
+                  idfacturacion
+                 from facturacion_pagos
+                 group by idfacturacion ) as t3 on t3.idfacturacion = f.idfacturacion
+                left outer join 
+                (
+                  select sum(cantidad*monto) as total_dr, idfacturacion
+                  from facturacion_dr 
+                  group by idfacturacion
+                ) as t4 on t4.idfacturacion = f.idfacturacion
                          
 where f.idforma_pago = 10 and f.estado <> 2 and Extract(year from f.facturacion_fecha)>2010";
  
  //$where .= "  and k.anio = '".$_GET['anio']."' and kds.idsituacion = 2";
 
 
- if(isset($_GET['q']))    
+if(isset($_GET['q']))    
  {
     $campo = "";
     switch ($_GET['criterio']) {
@@ -188,11 +195,12 @@ where f.idforma_pago = 10 and f.estado <> 2 and Extract(year from f.facturacion_
     <td align="left"><?php echo $row['servicio']; ?></td>    
     <td align="right"><?php echo "".number_format($row['importe_to_d'],2); ?></td>    
     <?php if($cont==0) { ?>
-    <td align="right"  rowspan="<?php echo $row['n'] ?>" ><?php echo "".number_format($row['importe_to'],2); ?></td>    
+    <td align="right"  rowspan="<?php echo $row['n'] ?>" style="color:#D74141;font-weight:bold"><?php echo "".number_format($row['importe_to'],2); ?></td>    
+    <td align="right"  rowspan="<?php echo $row['n'] ?>" style="color:#D74141;font-weight:bold" ><?php echo "".number_format($row['total_dr'],2); ?></td>    
     <td align="right"  rowspan="<?php echo $row['n'] ?>"><?php echo number_format($row['importe_pa'],2); ?></td>    
     <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:normal"><?php echo number_format($row['importe_pa_tr'],2); ?></span></td>        
     <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pa_tr']+$row['importe_pa'],2); ?></span></td>        
-    <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pe'],2); ?></span></td>        
+    <td align="right"  rowspan="<?php echo $row['n'] ?>"><span style="color:#BA1818;font-weight:bold"><?php echo number_format($row['importe_pe']+$row['total_dr'],2); ?></span></td>        
     
     <td align="center" rowspan="<?php echo $row['n'] ?>" ><span style="font-size:9px"><?php echo $row['estado'] ?></span></td>    
     <td align="center" rowspan="<?php echo $row['n'] ?>" ><?php if($row['estado']=="PENDIENTE") echo priority($row['dt']) ?></td>    

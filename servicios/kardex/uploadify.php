@@ -1,5 +1,5 @@
 <?php
-
+include('../../config.php');
 session_start();
 if (!empty($_FILES)) 
 {
@@ -23,6 +23,8 @@ if (!empty($_FILES))
         $name = $_POST['correlativo'].".".$ext;
         if( move_uploaded_file($tempFile,$targetFile))
         {	
+            $sql = "update kardex set archivo = '".$name."' where idkardex = ".$_POST['idkardex'];
+            $Consulta = $Conn->Query($sql);
             echo "1###".$name;
             chmod($targetFile, 0777);
         }
@@ -37,6 +39,4 @@ if (!empty($_FILES))
     }    
          
 }
- 
-
 ?>   

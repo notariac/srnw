@@ -105,11 +105,12 @@ if(!session_id()){ session_start(); }
           <th rowspan="2" style=""><p class="title-head">RAZON SOCIAL (CLIENTE)</p></th>                    
           <th rowspan="2" style=""><p class="title-head">SERVICIO</p></th>                    
           <th rowspan="2" style="width:70px"><p class="title-head">PRECIO S/.</p></th>      
-          <th rowspan="2" style="width:70px"><p class="title-head">TOTAL FACT. S/.</p></th>      
-          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PAGADO S/.</p></th>                
-          <th rowspan="2" style="width:50px"><p class="title-head">DR S/.</p></th>   
-          <th rowspan="2" style="width:70px"><p class="title-head">TOTAL PAGADO. S/.</p></th>      
-          <th rowspan="2" style="width:70px"><p class="title-head">MONTO PENDIE. S/.</p></th>             
+          <th rowspan="2" style="width:70px"><p class="title-head">T. FACT. S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">T. DR. S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">MONT PAG. S/.</p></th>                
+          <th rowspan="2" style="width:50px"><p class="title-head">DR PAG. S/.</p></th>   
+          <th rowspan="2" style="width:70px"><p class="title-head">T. PAG. S/.</p></th>      
+          <th rowspan="2" style="width:70px"><p class="title-head">MONT PENDIE. S/.</p></th>             
           <th rowspan="2" style="width:50px"><p class="title-head">ESTADO</p></th>
           <th rowspan="2" style="width:20px" ><p class="title-head">&nbsp;</p></th>      
           <th rowspan="2" style="width:30px" scope="col" >&nbsp;</th>

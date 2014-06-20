@@ -36,13 +36,15 @@ $.unblockUI = function(opts) { remove(window, opts); };
 // convenience method for quick growl-like notifications  (http://www.google.com/search?q=growl)
 $.growlUI = function(title, op, message, timeout, onClose) {
 	if (op==1){
-                var backgroundColor="#FFEAA8";
-                var colorLetra="#000";
-		var $m = $('<div class="growlUI" align="center"></div>');}
+                var backgroundColor="#25B94A";
+                var colorLetra="#FFFFFF";
+                var backgroundColorFin="#189236";
+				var $m = $('<div class="growlUI" align="center"></div>');}
 	else{
                 var backgroundColor="#91140F";
                 var colorLetra="white";
-		var $m = $('<div class="growlUI2" align="center" ></div>');
+                var backgroundColorFin="#A42924";
+				var $m = $('<div class="growlUI2" align="center" ></div>');
         }
 	if (title) $m.append('<h1>'+title+'</h1>');
 	if (message) $m.append('<h2>'+message+'</h2>');
@@ -59,13 +61,14 @@ $.growlUI = function(title, op, message, timeout, onClose) {
 			top:		'10%',
 			left:		'25%',
 			textAlign:	'center',
+			zIndex:  	'9999',
 			color:		colorLetra,
-			border:		'3px solid #aaa',
-			background: '-webkit-linear-gradient('+backgroundColor+', white)',
+			border:		'1px solid #aaa',
+			background: '-webkit-linear-gradient('+backgroundColor+', '+backgroundColorFin+')',
 //                        background: '-moz-linear-gradient('+backgroundColor+', pink)',
 //                        background: '-o-linear-gradient('+backgroundColor+', pink)',
 			cursor:		'text',
-                        'text-shadow':'1px 1px #ccc'
+                        'text-shadow':'1px 1px #333'
 		}
 	});
 };

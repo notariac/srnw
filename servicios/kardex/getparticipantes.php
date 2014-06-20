@@ -61,7 +61,7 @@ while($row = $Conn->FetchArray($Consulta2))
         	$data[] = array('idparticipante'=>$r['idcliente'],
 							'participante'=>$r['nombres'],
 							'documento'=>$r['documento'],
-							'nrodocumento'=>$row['dni_ruc'],
+							'nrodocumento'=>$r['dni_ruc'],
 							'idparticipacion'=>$row['idparticipacion'],
 							'participacion'=>$row['participacion'],
 							'tipo'=> $row['tipo'],

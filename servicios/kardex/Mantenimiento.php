@@ -133,7 +133,8 @@ $(function() {
                 'formData' : {
                         'timestamp' : '<?php echo $timestamp;?>',
                         'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
-                        'correlativo': '<?php echo $row["correlativo"] ?>'
+                        'correlativo': '<?php echo $row["correlativo"]; ?>',
+                        'idkardex'  : '<?php echo $row["idkardex"]; ?>'
                 },
                 'swf'      : 'uploadify.swf',
                 'uploader' : 'uploadify.php',
@@ -172,7 +173,8 @@ $(function() {
                 'formData' : {
                         'timestamp' : '<?php echo $timestamp;?>',
                         'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
-                        'correlativo': '<?php echo $row["correlativo"] ?>'
+                        'correlativo': '<?php echo $row["correlativo"] ?>',
+                        'idkardex'  : '<?php echo $row["idkardex"]; ?>'
                 },
                 'swf'      : 'uploadify.swf',
                 'uploader' : 'uploadifym.php',
@@ -591,7 +593,9 @@ $(function() {
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="150" class="TituloMant">Motivo :</td>
-                    <td><input type="text"  align="left" class="inputtext" style="font-size:12px; width:350px; text-transform:uppercase;" name="0form1_motivo" id="Motivo" value="<?php echo $row[24];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'MinutaFecha');"/></td>
+                    <td>
+                        <textarea cols="60" rows="4" name="0form1_motivo" id="Motivo" ><?php echo $row[24];?></textarea>                        
+                    </td>
                   </tr>
                   <tr>
                     <td class="TituloMant">&nbsp;</td>
@@ -1101,7 +1105,7 @@ $(function() {
                 ?>
                 <a target="_blank" href="minutas/<?php echo $_SESSION['notaria'] ?>/<?php echo $archivom;?>" style="display:<?php echo $d; ?>;" id="VerImagennnm"><img src="../../imagenes/iconos/word2.png" width="12" />Abrir Minuta</a>
             </div>
-            <div class="box-gen-docs ui-corner-bottom" style="width:514px">  
+            <div class="box-gen-docs ui-corner-bottom" style="width:508px">  
                 <?php 
                     if($archivo!="")
                         $d = "inline";

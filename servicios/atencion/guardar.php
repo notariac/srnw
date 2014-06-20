@@ -159,7 +159,7 @@ for ($i=1; $i<=$Cont; $i+= 1){
                                     $numero = $mantem->generaCode($rowCoX[0]-1, "", 6);
                                     $actualK = $Pref.$numero;
                                     $SqlK = "INSERT INTO kardex(idatencion, fecha, correlativo, idservicio, idusuario, fechareg, anio, idnotaria) 
-						VALUES ('$IdAtencion', '".$_POST['3form1_fecha']."', '".$p.$numero."', '".$_POST['0formD'.$i.'_idservicio']."', '".$_POST['0form1_idusuario']."', '".date('Y-m-d')."', '".$_POST['0formD'.$i.'_anio']."', '".$_SESSION["notaria"]."')";
+						              VALUES ('$IdAtencion', '".$_POST['3form1_fecha']."', '".$p.$numero."', '".$_POST['0formD'.$i.'_idservicio']."', '".$_POST['0form1_idusuario']."', '".date('Y-m-d')."', '".$_POST['0formD'.$i.'_anio']."', '".$_SESSION["notaria"]."')";
                                     $ConsultaK = $Conn->Query($SqlK);
 					}
                                 }

@@ -66,7 +66,7 @@ $(document).ready(function(){
 function saveKardex()
 {
     var idkardex = $("#idkardex").val(),
-            cont = $("#tinymce",self.content_ifr.document).html(),
+            cont = $("#content_ifr").contents().find("#tinymce").html(),
             params = { 
                         'idkardex':idkardex,
                         'cont':cont

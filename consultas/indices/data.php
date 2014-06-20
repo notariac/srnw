@@ -52,7 +52,8 @@ $sql = "SELECT 	k.idkardex,
 				cast(kds.fecha as varchar) as fecha_kds,
 				k.idusuario,
 				K.anio,
-				'' as usuario
+				'' as usuario,
+				k.razonsocial
 		from kardex as k inner join servicio as s on s.idservicio = k.idservicio
 			left outer join kardex_derivacion_situacion as kds on kds.idkardex = k.idkardex and kds.idsituacion=2
 			left outer join kardex_participantes as kp on kp.idkardex = k.idkardex 
@@ -77,6 +78,15 @@ $sql = "SELECT 	k.idkardex,
  {
  	$where = " where s.descripcion ilike  '%".$_GET['servicio']."%'";
  }
+ if(isset($_GET['digital']))		
+ {
+ 	$where = " where k.digital ilike  '%".$_GET['digital']."%'";
+ }
+ if(isset($_GET['razonsocial']))		
+ {
+ 	$where = " where k.razonsocial ilike  '%".utf8_encode($_GET['razonsocial'])."%'";
+ }
+
  
  switch ($_GET['tt']) {
  	case 1:
@@ -131,65 +141,70 @@ $sql = "SELECT 	k.idkardex,
  }
 
  $sql = $sql.$where;
+
  //Agregamos los kardex antiguos
- $sql .= " UNION ALL ";
- //
- $sql .= " SELECT  idkardexm as idkardex,
-				correlativo,
-				escritura,
-				minuta,
-				fojas as fojainicio,
-				'' as serieinicio,
-				cfojas as fojafin,
-				'' as seriefin,
-				fechae as escritura_fecha,
-				contrato as servicio,
-				participantes as participante,
-				asiento as asiento_numero,
-				partida as partida_numero,
-				anotaciones as observacion,
-				fechaa as fecha_kds,
-				0 as idusuario,	
-				cast(Extract(year from fechae) as varchar) as anio,
-				digitador as usuario
-			from kardex_migrado";
+
+ if(!isset($_GET['digital'])&&!isset($_GET['razonsocial']))		
+ {
+
+	 $sql .= " UNION ALL "; 
+	 $sql .= " SELECT  idkardexm as idkardex,
+					correlativo,
+					escritura,
+					minuta,
+					fojas as fojainicio,
+					'' as serieinicio,
+					cfojas as fojafin,
+					'' as seriefin,
+					fechae as escritura_fecha,
+					contrato as servicio,
+					participantes as participante,
+					asiento as asiento_numero,
+					partida as partida_numero,
+					anotaciones as observacion,
+					fechaa as fecha_kds,
+					0 as idusuario,	
+					cast(Extract(year from fechae) as varchar) as anio,
+					digitador as usuario,
+					''
+				from kardex_migrado";
 
 
- if(isset($_GET['escritura']))		
- {
- 	$where = " where escritura ilike '%".$_GET['escritura']."%'";
- }
- if(isset($_GET['correlativo']))		
- {
- 	$where = " where correlativo ilike '%".$_GET['correlativo']."%'";
- }
- if(isset($_GET['participantes']))		
- {
- 	$where = " where participantes ilike  '%".$_GET['participantes']."%'";
- }
- if(isset($_GET['servicio']))		
- {
- 	$where = " where contrato ilike  '%".$_GET['servicio']."%'";
- }
+	 if(isset($_GET['escritura']))		
+	 {
+	 	$where = " where escritura ilike '%".$_GET['escritura']."%'";
+	 }
+	 if(isset($_GET['correlativo']))		
+	 {
+	 	$where = " where correlativo ilike '%".$_GET['correlativo']."%'";
+	 }
+	 if(isset($_GET['participantes']))		
+	 {
+	 	$where = " where participantes ilike  '%".$_GET['participantes']."%'";
+	 }
+	 if(isset($_GET['servicio']))		
+	 {
+	 	$where = " where contrato ilike  '%".$_GET['servicio']."%'";
+	 }
+	 
+	 switch ($_GET['tt']) {
+	 	case 1:
+	 		if($_GET['anio']!="") $where .= "  and Extract(year from fechae)  = ".$_GET['anio']." "; 
+	 		break;
+	 	case 2:
+	 		$where .= " and fechae between '".$fi."' and  '".$ff."'";
+	 		break;
+	 	case 3: 
+	 			$where .= " and fechae between '".$Conn->CodFecha($_GET['fechai'])."' and  '".$Conn->CodFecha($_GET['fechaf'])."'";
+	 			break;
+	 	default:
+	 		# code...
+	 		break;
+	 }
+	 $sql .= $where;
+}
  
- switch ($_GET['tt']) {
- 	case 1:
- 		if($_GET['anio']!="") $where .= "  and Extract(year from fechae)  = ".$_GET['anio']." "; 
- 		break;
- 	case 2:
- 		$where .= " and fechae between '".$fi."' and  '".$ff."'";
- 		break;
- 	case 3: 
- 			$where .= " and fechae between '".$Conn->CodFecha($_GET['fechai'])."' and  '".$Conn->CodFecha($_GET['fechaf'])."'";
- 			break;
- 	default:
- 		# code...
- 		break;
- }
-
- $sql .= $where;
  $sql .= " order by idkardex desc limit 200 ";
- 
  $Consulta = $Conn->Query($sql);
  $c = 0;
  $flag = false;
@@ -245,6 +260,7 @@ $sql = "SELECT 	k.idkardex,
  		<td><p style="font-size:8px"><?php if($row['idusuario']!="") echo $usuarios[$row['idusuario']]; else echo $row['usuario'] ?></p></td>
  		<td align="center"><?php echo $Conn->DecFecha($row['escritura_fecha']) ?></td>
  		<td align="left"><?php echo $row['servicio'] ?></td>
+ 		<td align="left"><?php echo $row['razonsocial'] ?></td>
  		<td align="left"><?php echo $row['participante'] ?></td>
  	
  			<td align="center" style="border-left:2px solid #999;">

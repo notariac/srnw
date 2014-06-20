@@ -128,13 +128,13 @@
 \par }\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
 \pgndec\pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch\lang3082
 N\u250\'famero de Registro\tab :\tab }{\b\ab\rtlch \ltrch\loch\lang3082
-#KARDEX#}
+V006343}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch\lang3082
 N\u250\'famero de Instrumento\tab :\tab }{\b\rtlch \ltrch\loch\lang3082
-#NROESCRITURA#}
+0}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch\lang3082
 Fojas\tab \tab \tab \tab : \tab }{\b\ab\rtlch \ltrch\loch\lang3082
-#FOJAI#}
+0}
 \par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs20\alang1025\loch\f5\fs28\lang3082\rtlch \ltrch\loch
 
 \par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs20\alang1025\loch\f5\fs28\lang3082\rtlch \ltrch\loch
@@ -156,7 +156,7 @@ Compra Venta de Veh\u237\'edculo Usado.}
 
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\cbpat2{\rtlch \ltrch\loch\lang3082
 Otorgado por\tab \tab :\tab }{\b\ab\rtlch \ltrch\loch\lang3082
-#OTORGANTES#}
+{\qj\b Lloselith Hidalgo Diaz}.}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\cbpat2\b\ab\rtlch \ltrch\loch\lang10250
 
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\cbpat2\rtlch \ltrch\loch\lang3082
@@ -165,7 +165,7 @@ Otorgado por\tab \tab :\tab }{\b\ab\rtlch \ltrch\loch\lang3082
 
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\cbpat2{\rtlch \ltrch\loch\lang3082
 A favor de\tab \tab \tab :\tab }{\b\rtlch \ltrch\loch\lang10250
-#FAVORECIDOS#}
+{\qj\b Loidith Diaz Flores}}
 \par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs20\alang1025\loch\f5\fs28\lang3082\rtlch \ltrch\loch\lang10250
 
 \par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs20\alang1025\loch\f5\fs28\lang3082\rtlch \ltrch\loch\lang10250
@@ -177,23 +177,23 @@ Introducci\u243\'f3n:}{\rtlch \ltrch\loch\lang3082
  ===========================================}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\tqr\tx8647{\strike0\b0\ab0\rtlch \ltrch\loch\lang3082
 En la ciudad de Tarapoto, a los }{\strike0\b\ab\rtlch \ltrch\loch\lang3082
-#DIAL#}{{\*\bkmkstart FECHA_ACTA}\strike0\b0\ab0\rtlch \ltrch\loch\lang3082
+Veintitres}{{\*\bkmkstart FECHA_ACTA}\strike0\b0\ab0\rtlch \ltrch\loch\lang3082
   d\u237\'edas del mes de }{\strike0\b\ab\rtlch \ltrch\loch\lang3082
-#MESL#}{\strike0\b0\ab0\rtlch \ltrch\loch\lang3082
+Diciembre}{\strike0\b0\ab0\rtlch \ltrch\loch\lang3082
  del a\u241\'f1o }{{\*\bkmkend FECHA_ACTA}\strike0\b\ab\rtlch \ltrch\loch\lang3082
-#ANIOL#}{\strike0\b0\ab0\rtlch \ltrch\loch\lang3082
+Dos Mil Trece}{\strike0\b0\ab0\rtlch \ltrch\loch\lang3082
 , yo: Lu\u237\'eds Enrique Cisneros Olano, Notario de esta ciudad, extiendo la presente Acta Notarial, en la que,  }{\striked1\b0\ab0\rtlch \ltrch\loch\lang3082
 \tab }
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\tqr\tx8647{\b\rtlch \ltrch\loch\lang3082
 Comparecen:}{\b0\ab0\rtlch \ltrch\loch\lang3082
  ===========================================}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\tqr\tx8647{\b0\ab0\rtlch \ltrch\loch\lang3082
-#PARTICIPANTES#}
+{\qj\b Lloselith Hidalgo Diaz, }identificado con Documento Nacional De Identidad  N° {\b 41504465}, quien manifiesta ser de nacionalidad {\b peruana, }ocupación {\b Ama De Casa}, estado civil Soltero(a) , con domicilio en Jr. 28 De Julio N° 255, distrito de CuÑumbuqui, provincia de Lamas, departamento de San Martin.\par{\b A quien se denominara "La Vendedora".}=====================\par {\qj\b Loidith Diaz Flores, }identificado con Documento Nacional De Identidad  N° {\b 00955634}, quien manifiesta ser de nacionalidad {\b peruana, }ocupación {\b Ama De Casa}, estado civil Soltero(a) , con domicilio en Jiron 28 De Julio Sin Numero, distrito de CuÑumbuqui, provincia de Lamas, departamento de San Martin.\par{\b A quien se denominara "La Compradora".}====================\par }
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\tqr\tx8647{\b\rtlch \ltrch\loch\lang3082
 Los comparecientes }{\rtlch \ltrch\loch\lang3082
 son mayores de edad a quienes e identificado, con el documento de Identidad que exhibieron, proceden con capacidad legal, libertad y conocimiento bastante para contratar; y, solicitan que extienda, en mi Registro Notarial el Acta de Compra Venta del siguiente veh\u237\'edculo: ====}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\tqr\tx8647{\rtlch \ltrch\loch\lang3082
-#CUERPOVEHI#}
+{\qj Placa de Rodaje N°: \b S70691.}==============================\par{\qj Clase: \b Veh. Aut. Men..}===================================\par{\qj Año: \b 2012.}===============================================\par{\qj Marca: \b Honda. }============================================\par{\qj Serie N°: \b LWBPCJ1F1C1012399.}=============================\par{\qj Motor N°: \b WH156FMI211M73341.}=============================\par{\qj Modelo: \b Cgl125.}==========================================\par{\qj Carroceria: \b Motocicleta.}=================================\par{\qj Color: \b Plata.}============================================\par{\qj N° Ruedas: \b 2. }============================================\par}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\tqr\tx8647{\rtlch \ltrch\loch\lang3082
 *************************************************************}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\tqr\tx8647{\rtlch \ltrch\loch\lang3082
@@ -207,9 +207,9 @@ da  en venta el veh\u237\'edculo referido en el p\u225\'e1rrafo anterior a favor
 El precio pactado por la compra venta del veh\u237\'edculo a que se refiere la cl\u225\'e1usula anterior es de: }{{\*\bkmkstart MONTO_NUMERO}\b\rtlch \ltrch\loch\lang3082
 S/}{\b\ab\rtlch \ltrch\loch
 .}{{\*\bkmkend MONTO_NUMERO}\b\ab\rtlch \ltrch\loch
- #MONTO#}{\rtlch \ltrch\loch\lang3082
+ 3,600.00}{\rtlch \ltrch\loch\lang3082
  }{\b\ab\rtlch \ltrch\loch\lang3082
-(#MONTO_LETRA#}{\b\rtlch \ltrch\loch\lang3082
+(Tres Mil Seiscientos Con 00/100 Nuevos Soles}{\b\rtlch \ltrch\loch\lang3082
 ), }{\rtlch \ltrch\loch\lang3082
 suma}{\b\rtlch \ltrch\loch\lang3082
  }{\rtlch \ltrch\loch\lang3082
@@ -293,26 +293,26 @@ Se deja constancia  que, se han efectuado las m\u237\'ednimas acciones de contro
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch
 Dejo Constancia de haber advertido a los comparecientes de los efectos legales de este instrumento. ==================================}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch
-#CONFORMIDAD_PAGO#}
+{************************************************************}\par{De conformidad con los dispuesto por la ley 28194 y el Decreto Supremo 047-2004-EF, dejo constancia de lo siguiente: ======================}\par{{\b\ul Primero.-} Que no tuve a la vista ningún medio de pago. ==================}\par{{\b\ul Segundo.-} Que el contrato que se formaliza por esta Acta Notarial de Transferencia Vehicular contiene la siguiente información relativa al Medio de Pago utilizado: =====}\par{A):}=======================================================\par{A.1) Monto total de la operación: {\b S/.3,600.00}.}===========\par{A.2) Valor total pagado con Medio de Pago: {\b S/.3,600.00}.}==\par{A.3) Moneda en que se realizó: {\b Nuevo Sol}.}================\par{B):}=======================================================\par{B.1) Tipo Medio de Pago: {\b Efectivo}.}=======================\par{B.2) Código Medio de Pago: {\b 008}.}==========================\par{C):}=======================================================\par{C.1) Numero de Documento que acredita el uso de Medio de Pago: {\b No Aplicable}.}=========================================\par{D): Empresa del Sistema Financiero que emite el documento: {\b No Aplicable}.}=============================================\par{E): Fecha de emisión del documento: {\b No Aplicable}.}========\par}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch\lang3082
 ======================================================}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch\lang3082
 *************************************************************}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch\lang3082
 El presente instrumento se inicia en la foja }{\rtlch \ltrch\loch\lang3082
-#FOJAI#}{\rtlch \ltrch\loch\lang3082
+0}{\rtlch \ltrch\loch\lang3082
  con n\u250\'famero de serie F N\u186\'ba  }{\rtlch \ltrch\loch\lang3082
-#SERIEI#}{\rtlch \ltrch\loch\lang3082
+0}{\rtlch \ltrch\loch\lang3082
  y termina en la foja }{\rtlch \ltrch\loch\lang3082
-#FOJAF#}{\rtlch \ltrch\loch\lang3082
+0}{\rtlch \ltrch\loch\lang3082
  con n\u250\'famero de serie F N\u186\'ba }{\rtlch \ltrch\loch\lang3082
-#SERIEF#}{\rtlch \ltrch\loch\lang3082
+0}{\rtlch \ltrch\loch\lang3082
 , habiendo concluido el proceso de firmas, por ante m\u237\'ed el Notario, con fecha: A los }{\rtlch \ltrch\loch\lang3082
-#DIAL#}{\rtlch \ltrch\loch\lang3082
+Veintitres}{\rtlch \ltrch\loch\lang3082
  d\u237\'edas del mes de }{\rtlch \ltrch\loch\lang3082
-#MESL#}{\rtlch \ltrch\loch\lang3082
+Diciembre}{\rtlch \ltrch\loch\lang3082
  del a\u241\'f1o }{\rtlch \ltrch\loch\lang3082
-#ANIOL#}{\rtlch \ltrch\loch\lang3082
+Dos Mil Trece}{\rtlch \ltrch\loch\lang3082
 .}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070{\rtlch \ltrch\loch\lang3082
 *************************************************************}
@@ -321,7 +321,7 @@ El presente instrumento se inicia en la foja }{\rtlch \ltrch\loch\lang3082
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\qc\b\rtlch \ltrch\loch
 
 \par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs20\alang1025\loch\f5\fs28\lang3082\ql{\b0\afs28\ab0\rtlch \ltrch\loch\fs28\lang3082
-#PARTICIPANTES_FIRMA#}
+{\qj } \par \par \par \par {\qj\b Lloselith Hidalgo Diaz     Loidith Diaz Flores     }}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\qc\tx0\tx1695\b\afs26\rtlch \ltrch\loch\fs26\lang3082
 
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\ql\tx0\tx1695\b\afs26\rtlch \ltrch\loch\fs26\lang3082
@@ -334,4 +334,4 @@ ________________________}
 Luis Enrique Cisneros Olano}
 \par \pard\plain \s92\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af15\langfe2052\dbch\af19\afs28\alang1025\loch\f5\fs28\lang2070\qc\tx0\tx1695{\b\ab\rtlch \ltrch\loch\lang3082
 Notario de la Provincia de San Mart\u237\'edn}
-\par }
+\par \par }

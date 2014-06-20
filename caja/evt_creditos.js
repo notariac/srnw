@@ -35,7 +35,10 @@ $(document).ready(function()
       }
     }
   });
-
+  $(".delete_dr").live('click',function(){
+     iddr = $(this).attr("id");
+     deleteDR(iddr);
+  })
   $('.btn-pay').live('click',function(){
     var param = $(this).attr("Id");  
       param = param.split("-")  ;
@@ -248,8 +251,26 @@ function saveDR()
 {
     var str = $("#frm-dr").serialize();
     var idf = $("#idfacturacion").val();
-
     $.post('creditos_process.php',str+'&idf='+idf+'&oper=3',function(data){
+         $.get('frm_creditos_pay.php','idfacturacion='+idf,function(data){
+              $("#box-frm-pay").empty().append(data);
+              $("#box-frm-pay").dialog('open');
+              getListPay();
+              $("#fecha_pago").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+              });
+           });
+         $("#box-frm-dr").dialog('close');
+    })
+}
+
+function deleteDR(iddr)
+{
+
+    var idf = $("#idfacturacion").val();
+    $.post('creditos_process.php','&iddr='+iddr+'&oper=4',function(data){
          $.get('frm_creditos_pay.php','idfacturacion='+idf,function(data){
               $("#box-frm-pay").empty().append(data);
               $("#box-frm-pay").dialog('open');

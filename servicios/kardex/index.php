@@ -80,6 +80,7 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
         tipp = '';
     $(document).ready(function()
     {
+        
         $("#Modificar").dialog({
                 autoOpen: false,                
                 resizable:false,
@@ -93,7 +94,7 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
                             $("#ConfirmaGuardar").dialog("open");
                         }
                     },
-                    Cancelar: function() {
+                    Cerrar: function() {
                         $("#DivModificar").html('');
                         $(this).dialog("close");
                     }
@@ -193,7 +194,22 @@ function Validar()
                 return false;
             }
         }
+
+        //Validamos participantes
+        vp = validaParticipantes();
+        if(vp==false)
+        {
+            alert("Registre por lo menos un participante.");
+            return false;
+        }
+
         return true;
+}
+function validaParticipantes()
+{
+    var flag = false;
+    $("#ListaMenu2 tbody tr").each(function(i,j){flag = true;});    
+    return flag;
 }
 function Guardar(Op){
     if (Validar())
@@ -208,11 +224,11 @@ function Guardar(Op){
             success:function(data){
                 $("#Mensajes").html(data);					
                 $("#DivNuevo").html('');
-                $("#DivModificar").html('');
+                //$("#DivModificar").html('');
                 $("#DivEliminacion").html('');
                 $("#DivRestaurar").html('');
-//                if($("#Nuevo").dialog("isOpen")){$("#Nuevo").dialog("close");}
-                if($("#Modificar").dialog("isOpen")){$("#Modificar").dialog("close");}
+                //if($("#Nuevo").dialog("isOpen")){$("#Nuevo").dialog("close");}
+                //if($("#Modificar").dialog("isOpen")){$("#Modificar").dialog("close");}
                 if($("#ConfirmaEliminacion").dialog("isOpen")){$("#ConfirmaEliminacion").dialog("close");}
                 if($("#ConfirmaRestauracion").dialog("isOpen"))$("#ConfirmaRestauracion").dialog("close");
                 Buscar(Op);
@@ -259,7 +275,8 @@ function saveCliente()
     }
     
 }
-function ImprimirP(Id){
+function ImprimirP(Id)
+{
     $("#Imprimir").dialog("open");
     $("#DivImprimir").html("<center><img src='../../imagenes/avance.gif' width='20' /></center>");
     $.ajax({
@@ -362,7 +379,7 @@ function ValidarEnter(evt, Op)
                 top:1px;
             }
             .box-gen-doc, .box-gen-docs {  padding:5px 8px 2px 10px; 
-                            width:244px; 
+                            width:240px; 
                             height:90px;
                             float:left;
                             margin-left:7px;                             

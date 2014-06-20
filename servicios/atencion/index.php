@@ -74,8 +74,7 @@ $(document).ready(function()
             width: 750,
             height: 500,            
             buttons: {
-                "Agregar": function() {
-                    alert("OK");
+                "Agregar": function() {                    
                     Op = 0;
                     if(confirm("Desea confirmar la operacion?"))
                     {

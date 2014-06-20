@@ -6,8 +6,7 @@ if (!empty($_FILES))
     $tempFile = $_FILES['Filedata']['tmp_name'];            
     $fileparts = pathinfo($_FILES['Filedata']['name']);
     $ext = $fileparts['extension'];
-    $anio = $_SESSION['Anio'];
-    //$targetPath = 'doc/';  
+    $anio = $_SESSION['Anio'];    
     $targetPath = 'minutas/'.$_SESSION['notaria'].'/';
     $filetypes = array("rtf");
     $flag = false;
@@ -24,7 +23,7 @@ if (!empty($_FILES))
         $name = "Minuta-".$_POST['correlativo']."-".$anio.".rtf";
         if( move_uploaded_file($tempFile,$targetFile))
         {	
-            $sql = "update kardex set archivom = '".$name."' where correlativo = '".$_POST['correlativo']."' and anio = '".$anio."'";
+            $sql = "update kardex set archivom = '".$name."' where idkardex = ".$_POST['idkardex'];
             $Consulta = $Conn->Query($sql);
 
             echo "1###".$name;            
