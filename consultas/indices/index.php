@@ -58,7 +58,7 @@ $(document).ready(function(){
     }
     str = str+str_t+"&tt="+tt;
     $("#load").show('fade');
-    window.open('test.html');
+    window.open('print.php?'+str);
     // $.get('data.php',str,function(data)
     // {
     //   $("#load").hide('fade');

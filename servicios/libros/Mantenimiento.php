@@ -156,10 +156,11 @@ $ArrayP = array(NULL);
     <td width="222"><input type="text" class="inputtext" style="text-align:center; font-size:12px; width:50px" name="0form1_correlativo" id="Id" maxlength="2" value="<?php echo $row[3];?>" <?php echo $Enabled2;?> onkeypress="CambiarFoco(this, 'Cliente');"/>
       <input type="hidden" name="1form1_idlibro" value="<?php echo $row[0];?>" /></td>
     <td width="160" align="right">
-            <table width="160" border="0" cellspacing="0" cellpadding="0">
-      		<tr>
-                    <td>&nbsp;</td>
-                    <td align="right"><?php echo $Estado;?></td>
+        <table width="160" border="0" cellspacing="0" cellpadding="0">
+    		<tr>
+          <td>&nbsp;</td>
+          <td align="right"><?php echo $Estado;?>
+        </td>
 		</tr>
 	    </table>	
     </td>
@@ -208,11 +209,16 @@ $Select = '';
 <?php
 }
 ?>
-    </select></td>
-  </tr>
+  </select></td>
+</tr>
+  <?php
+    $s = "select ";
+   ?>
   <tr>
     <td class="TituloMant">Tomo : </td>
-    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:70px; text-transform:uppercase;" name="0form1_numero" id="Numero"  maxlength="8" value="<?php echo $row[9];?>" <?php echo $Enabled;?> /></td>
+    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:70px; text-transform:uppercase;" name="0form1_numero" id="Numero"  maxlength="8" value="<?php echo $row[9];?>" <?php echo $Enabled;?> />
+      <span style="background:green;color:white;font-size:9; padding:4px 10px">ULTIMO TOMO GENERADO: </span>
+    </td>
   </tr>
   <tr>
     <td class="TituloMant">Folios : </td>

@@ -247,7 +247,7 @@
 	 //echo "k.fecha between '".$Conn->CodFecha($_GET['fechai'])."' and '".$Conn->CodFecha($_GET['fechaf'])."'";
 	 $Consulta = $Conn->Query($sql);
 	 $n = $Conn->NroRegistros($Consulta);
-	 //echo $n."S";
+	 
 	 ?>
 	 <div class="contain">
 	 <table class="ui-widget-content">

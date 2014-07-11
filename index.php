@@ -9,8 +9,8 @@ if( !session_id() ){ session_start(); }
     $_SESSION["Ubigeo"] = $row[1];
     if ($row[0]==0)	
     {
-            echo "<script>window.location='http://".$_SERVER['HTTP_HOST']."/srnw/parametros/opciones/index.php?Activo=0';</script>";
+        echo "<script>window.location='http://".$_SERVER['HTTP_HOST']."/srnw/parametros/opciones/index.php?Activo=0';</script>";
     }		    
     CuerpoSuperior("Sistema Informático de Registro Notarial");
-    CuerpoInferior(); 
+    CuerpoInferior();
 ?>

@@ -145,7 +145,7 @@
   }
 
  function saveDocumento()
-  {
+ {
     var name = $("#name_archivo").val(),
         idfolder = $("#idfolder").val();
     if(name!="")
@@ -154,7 +154,7 @@
        {
             alert(data);
             window.location = 'index.php?folder='+idfolder;
-       }) 
+       });
     }
   }
 </script>
