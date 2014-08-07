@@ -7,17 +7,17 @@ function values($v)
   }
   return $v;
 }
-	function addSlash($str)
-    {
-       $str = str_replace("'",'\"',$str);
-       return $str;
-    }
+function addSlash($str)
+{
+   $str = str_replace("'",'\"',$str);
+   return $str;
+}
 
-    function stripSlash($str)
-    {
-       $str = str_replace('\"',"'",$str);
-       return $str;
-    }
+function stripSlash($str)
+{
+   $str = str_replace('\"',"'",$str);
+   return $str;
+}
     function fupper($text)
     {
        //$text = utf8_decode($text);
@@ -49,6 +49,7 @@ function values($v)
              }
       	else { return "";}
     }
+    
     $meses = array
              (
                   'Enero',
@@ -131,18 +132,18 @@ function participantes($participantes,$idservicio)
                   $html .= "con ".getConyuge($participantes,$v['conyuge']);
 
                 $html .= ", con domicilio en ".validValur($v['dir']).", ";
-                $html .= "distrito de ".validValur($v['distrito']).", ";
-                $html .= "provincia de ".validValur($v['provincia']).", ";
-                $html .= "departamento de ".validValur($v['departamento'])."; ";
+                $html .= "Distrito de ".validValur($v['distrito']).", ";
+                $html .= "Provincia de ".validValur($v['provincia']).", ";
+                $html .= "Departamento de ".validValur($v['departamento'])."; ";
 
             }
             else
             {
               //Si es juridica
               $html .= ", con domicilio en ".validValur($v['dir']).", ";
-              $html .= "distrito de ".validValur($v['distrito']).", ";
-              $html .= "provincia de ".validValur($v['provincia']).", ";
-              $html .= "departamento de ".validValur($v['departamento']).", ";
+              $html .= "Distrito de ".validValur($v['distrito']).", ";
+              $html .= "Provincia de ".validValur($v['provincia']).", ";
+              $html .= "Departamento de ".validValur($v['departamento']).", ";
               $repre = getRepresentante($v['idparticipante'],$participantes);
               $html .= $repre."; ";
             }
@@ -172,11 +173,8 @@ function participantes($participantes,$idservicio)
                       $denominacion = 'a quienes se les '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
                    }
                 }
-
                 if(($c+1)==$numero_participantes)
                     $html .= $denominacion;
-            
-
             $c += 1;
           }
         }
@@ -233,7 +231,7 @@ function participantes_v($participantes,$ids)
          $c +=1;
          $html .= "<b>".validValur($v['participante'])."</b>"; 
          $html .= " de nacionalidad ";
-         $html .= "<b> peruana, </b>";
+         $html .= "<b> Peruana, </b>";
          $html .= "identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
          if($ids==97)
          {
@@ -245,17 +243,17 @@ function participantes_v($participantes,$ids)
             else
             {
               $html .= ", con domicilio en el inmueble ubicado en ".utf8_decode(validValur($v['dir'])).", ";
-              $html .= "distrito de ".utf8_decode(validValur($v['distrito'])).", ";
-              $html .= "provincia de ".utf8_decode(validValur($v['provincia'])).", ";
-              $html .= "departamento de ".utf8_decode(validValur($v['departamento']))."";
+              $html .= "Distrito de <b>".utf8_decode(validValur($v['distrito']))."</b>, ";
+              $html .= "Provincia de <b>".utf8_decode(validValur($v['provincia']))."</b>, ";
+              $html .= "Departamento de <b>".utf8_decode(validValur($v['departamento']))."</b>";
             }
          }
          else
          {
              $html .= ", con domicilio en el inmueble ubicado en ".utf8_decode(validValur($v['dir'])).", ";
-              $html .= "distrito de ".utf8_decode(validValur($v['distrito'])).", ";
-              $html .= "provincia de ".utf8_decode(validValur($v['provincia'])).", ";
-              $html .= "departamento de ".utf8_decode(validValur($v['departamento']))."";
+              $html .= "Distrito de ".utf8_decode(validValur($v['distrito'])).", ";
+              $html .= "Provincia de ".utf8_decode(validValur($v['provincia'])).", ";
+              $html .= "Departamento de ".utf8_decode(validValur($v['departamento']))."";
          }
          $html .= $repre;
        }
@@ -263,9 +261,9 @@ function participantes_v($participantes,$ids)
      if($ids==97&&$flag==true)
      {
         $html .= ", ambos con domicilio en ".utf8_decode(validValur($v['dir'])).", ";
-        $html .= "distrito de ".utf8_decode(validValur($v['distrito'])).", ";
-        $html .= "provincia de ".utf8_decode(validValur($v['provincia'])).", ";
-        $html .= "departamento de ".utf8_decode(validValur($v['departamento']))."<br/>";
+        $html .= "Distrito de ".utf8_decode(validValur($v['distrito'])).", ";
+        $html .= "Provincia de ".utf8_decode(validValur($v['provincia'])).", ";
+        $html .= "Departamento de ".utf8_decode(validValur($v['departamento']))."<br/>";
      }
      $html .= '.';
      return $html;

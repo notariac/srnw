@@ -1,28 +1,32 @@
 <?php
-class dbMantimiento{
-    private $conn;	
+class dbMantimiento
+{
+    private $conn;
     var $mivar = array();
     var $sql = "";
     var $cri = array();
     function __construct($connection_or_string){
-        if (is_string($connection_or_string)) 
-	  $this->conn = pg_connect($connection_or_string);
+        if (is_string($connection_or_string))
+      $this->conn = pg_connect($connection_or_string);
         else 
-	  $this->conn = $connection_or_string;
+      $this->conn = $connection_or_string;
     }
     function __destruct() {}
-    function CodFecha($Fec){
-	$mifecha = explode("/", $Fec);
-    	$Fecha = $mifecha[2]."-".$mifecha[1]."-".$mifecha[0];
-	return $Fecha;
+    function CodFecha($Fec)
+    {
+        $mifecha = explode("/", $Fec);
+        	$Fecha = $mifecha[2]."-".$mifecha[1]."-".$mifecha[0];
+        return $Fecha;
+    }
+    function _ObtenerArgumentos($fname)
+    {
+        $Consulta = pg_query($this->conn, "SELECT proargnames FROM pg_proc WHERE proname ='$fname'");
+        $row = pg_fetch_array($Consulta);
+        $Argg = explode(",", substr(substr($row[0], 1), 0, strlen(substr($row[0], 1))-1));
+        return $Argg;
     }	
-    function _ObtenerArgumentos($fname){
-	$Consulta = pg_query($this->conn, "SELECT proargnames FROM pg_proc WHERE proname ='$fname'");
-	$row = pg_fetch_array($Consulta);
-	$Argg = explode(",", substr(substr($row[0], 1), 0, strlen(substr($row[0], 1))-1));
-	return $Argg;
-    }	
-    function _PrepararArgumentos($fname, $post, $prefix){
+    function _PrepararArgumentos($fname, $post, $prefix)
+    {
             $Argumentos = array();		
             $Argg = $this->_ObtenerArgumentos($fname);
             for ($i = 0; $i < count($Argg); $i++){

@@ -19,7 +19,8 @@ if(!session_id()){ session_start(); }
         $Enabled = "readonly";
     }
     $Enabled2 = "readonly";
-    if($Id!=''){
+    if($Id!='')
+    {
             $Select 	= "SELECT libro.*, 
                                 c.nombres||' '||coalesce(c.ape_paterno,'')||' '||coalesce(c.ap_materno,'') as nombre,
                                 c.dni_ruc,
@@ -54,8 +55,32 @@ if(!session_id()){ session_start(); }
 $ArrayP = array(NULL);
 ?>
 <script>
+  function gettomos()
+  {
+    var idtl = $("#LibroTipo").val(),
+    ruc = $("#Ruc").val();
+    $.get('../../libs/autocompletar/last_libro.php','idtl='+idtl+'&ruc='+ruc,function(data){
+        if(parseInt(data)!=0)
+        {
+          $("#last_book").empty().append("ULTIMO TOMO GENERADO: "+data);
+          $("#last_book").css("display","inline-block");
+        }
+        else
+        {
+          $("#last_book").empty().append("NO SE ENCONTRÓ HISTORIAL PARA ESTA EMPRESA");
+          $("#last_book").css("display","inline-block");
+        }
+        
+    });  
+  }
 	var CantidadSgt = 'Precio';
-	$(document).ready(function(){
+	$(document).ready(function()
+  {
+            gettomos();
+            $("#LibroTipo").change(function()
+            {
+               gettomos();
+            });
             $( "#RazonSocial" ).autocomplete({
                 minLength: 0,
                 source: '../../libs/autocompletar/empresas.php',
@@ -66,14 +91,12 @@ $ArrayP = array(NULL);
                 },
                 select: function( event, ui ) 
                 {
-
                      $("#RazonSocial").val(ui.item.nombres);                     
                      $("#Direccion").val(ui.item.direccion);
                      $("#Ruc").val(ui.item.dni_ruc);                     
                      $("#Telefono").val(ui.item.telefonos); 
-                     $("#Direccion").focus();
-                             
-                    return false;
+                     $("#Direccion").focus();                             
+                       return false;
                 }
             }).data( "autocomplete" )._renderItem = function( ul, item ) {
                 
@@ -100,8 +123,7 @@ $ArrayP = array(NULL);
                      $("#Direccion").focus();
                     return false;
                 }
-            }).data( "autocomplete" )._renderItem = function( ul, item ) {
-                
+            }).data( "autocomplete" )._renderItem = function( ul, item ) {                
                 return $( "<li></li>" )
                     .data( "item.autocomplete", item )
                     .append( "<a>"+ item.dni_ruc +" - " + item.nombres + "</a>" )
@@ -112,7 +134,7 @@ $ArrayP = array(NULL);
                 minLength: 0,
                 source: '../../libs/autocompletar/solicitante.php',
                 focus: function( event, ui ) 
-                {                         
+                {
                     $("#Dni").val(ui.item.dni_ruc);            
                     return false;
                 },
@@ -120,9 +142,8 @@ $ArrayP = array(NULL);
                 {
 
                      $("#Dni").val(ui.item.dni_ruc);
-                     $("#Solicitante").val(ui.item.nombre)
-                     $("#Dni").focus();
-                             
+                     $("#Solicitante").val(ui.item.nombre);
+                     $("#Dni").focus();                             
                     return false;
                 }
             }).data( "autocomplete" )._renderItem = function( ul, item ) {
@@ -195,7 +216,7 @@ $ArrayP = array(NULL);
   </tr>
   <tr>
     <td class="TituloMant">Tipo de Libro : </td>
-    <td colspan="2"><select name="0form1_idlibro_tipo" id="LibroTipo" class="select" style="font-size:12px" onchange="Tab('FolioInicial');" >
+    <td colspan="2"><select name="0form1_idlibro_tipo" id="LibroTipo" class="select" style="font-size:12px" onchange="" >
 <?php
 $SelectLT = "SELECT * FROM libro_tipo WHERE estado = 1";
 $ConsultaLT = $Conn->Query($SelectLT);
@@ -217,7 +238,7 @@ $Select = '';
   <tr>
     <td class="TituloMant">Tomo : </td>
     <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:70px; text-transform:uppercase;" name="0form1_numero" id="Numero"  maxlength="8" value="<?php echo $row[9];?>" <?php echo $Enabled;?> />
-      <span style="background:green;color:white;font-size:9; padding:4px 10px">ULTIMO TOMO GENERADO: </span>
+      <span id="last_book" style="display:none;background:green;color:white;font-size:9; padding:4px 10px">ULTIMO TOMO GENERADO: </span>
     </td>
   </tr>
   <tr>

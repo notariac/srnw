@@ -206,6 +206,7 @@ $sql = "SELECT 	k.idkardex,
  
  $sql .= " order by idkardex desc limit 200 ";
  $Consulta = $Conn->Query($sql);
+ 
  $c = 0;
  $flag = false;
  $last = "";

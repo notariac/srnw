@@ -1,21 +1,20 @@
 <?php
 include("num2letraK.php");
 $meses = array
-         (
-              'Enero',
-              'Febrero',
-              'Marzo',
-              'Abril',
-              'Mayo',
-              'Junio',
-              'Julio',
-              'Agosto',
-              'Septiembre',
-              'Octubre',
-              'Noviembre',
-              'Diciembre'
-         );
-
+(
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre'
+);
 function verifLev($idservicio)
 {
    $flag = false;
@@ -28,7 +27,6 @@ function verifLev($idservicio)
    }
    return $flag;
 }
-
 function setFechaActual($text)
 {
     global $meses;
@@ -38,7 +36,6 @@ function setFechaActual($text)
     $html = "{ ".$text." ".str_pad($dia,2,'0',0)." de ".$meses[$mes-1]." del ".$anio." }";
     return $html;
 }
-
 /*
   Funcion: participantes
   Parametros: @p1
@@ -58,7 +55,7 @@ function participantes($participantes,$idservicio)
           $temp = "";
           $f = true;
           if($v['tipo']==2 && verifLev($idservicio)==true)          
-          {        
+          {
             $f = false;
           }
           if($f)
@@ -69,7 +66,7 @@ function participantes($participantes,$idservicio)
               $c = 0;
             }
             if($v['tipo']==2 && $c==0)
-            {                
+            {
                 if($idservicio==100)
                 {
                     //poder fuera de registro
@@ -122,8 +119,6 @@ function participantes($participantes,$idservicio)
               $repre = getRepresentante($v['idparticipante'],$participantes);
               $html .= $repre."\\par";
             }
-
-
             if($idservicio==96)
             {
                 if($v['tipo']==1)
@@ -168,7 +163,6 @@ function participantes($participantes,$idservicio)
     }
     return $html;
 }
-
 //Genera el parrafo correspondiente a la constancia de pago
 function constancia_pago($participantes,$datos,$monto,$moneda,$fecha,$servicio,$documento_notarial)
 {
@@ -487,7 +481,6 @@ function participantes_firma_v($participantes)
     $html .= '}';
     return $html;
 }
-
 /*
 	Funcion: verRepresentante
 	Parametros: @p1, @p2 
