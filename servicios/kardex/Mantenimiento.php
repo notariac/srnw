@@ -32,18 +32,19 @@ if(!session_id()){ session_start(); }
                 INNER JOIN kardex_tipo ON (servicio.idkardex_tipo = kardex_tipo.idkardex_tipo) 
                 LEFT OUTER JOIN asigna_pdt ON (asigna_pdt.idservicio = servicio.idservicio) 
                 WHERE kardex.idkardex='$Id' AND kardex.idnotaria = '".$_SESSION['notaria']."'";        
-        $Consulta       = $Conn->Query($Select);
+        
+        $Consulta = $Conn->Query($Select);
         $row = $Conn->FetchArray($Consulta);    
         $archivom = $row['archivom'];
         $archivo = $row['archivo'];
         $s = "SELECT idkardex from kardex where correlativo = '".$row['correlativo']."' AND idnotaria = '".$_SESSION['notaria']."'
                  ORDER by idkardex asc limit 1";
-       
+        
         $q = $Conn->Query($s);
         $r = $Conn->FetchArray($q);
         if($r[0]!=$row['idkardex'])
         {
-            $Select         = "SELECT kardex.*, kardex_tipo.abreviatura, asigna_pdt.idacto_juridico 
+            $Select = "SELECT kardex.*, kardex_tipo.abreviatura, asigna_pdt.idacto_juridico 
                             FROM servicio INNER JOIN kardex ON (servicio.idservicio = kardex.idservicio)
                             INNER JOIN kardex_tipo ON (servicio.idkardex_tipo = kardex_tipo.idkardex_tipo) 
                             LEFT OUTER JOIN asigna_pdt ON (asigna_pdt.idservicio = servicio.idservicio) 
@@ -52,6 +53,9 @@ if(!session_id()){ session_start(); }
             $row  = $Conn->FetchArray($Consulta);             
         }
         $descripcion = $row['descripcion'];
+	    $razonsocial = $row['razonsocial'];
+        $monto_capital = $row['monto_capital'];
+
         $Usuario        = $_SESSION["Usuario"];
         $Fecha      = $Conn->DecFecha($row[2]);     
         $NumEscritura   = $row[5];
@@ -319,6 +323,14 @@ $(function() {
                 if(in_array($row['idacto_juridico'],$array_verify))
                 echo '<li><a href="#tabs-4">PDT Notario</a></li>';
             }
+	    if(substr($row[3], 0, 1)=='K')
+	      {
+		       $array_service=array(3,4,39,49,169,185,186);
+                if(in_array($row['idservicio'],$array_service))
+                 {
+                    echo '<li><a href="#tabs-i5">Datos Empresa</a></li>';
+                 }
+	      }
             ?>
             <li><a href="#tabs-5">Descripcion del Bien</a></li>
             <li><a href="#tabs-gd" style="">Generar Escritura</a></li>
@@ -349,10 +361,6 @@ $(function() {
                 <input type="checkbox" name="Firmado2" id="Firmado2" <?php if ($Firmado==1) echo "checked='checked'"; ?> onclick="CambiaFirmado();" /><input type="hidden" name="0form1_firmado" id="Firmado" value="<?php echo $Firmado;?>" /> Firmado
                 <br/>
                 </div>
-
-
-
-
             </div>
             <div id="tabs-2">                
                 <div id="tabs-participantes">
@@ -373,10 +381,7 @@ $(function() {
                             <label class="TituloMant" for="conyuge">Conyuge</label>
                             <input type="checkbox" name="conyuge" id="conyuge" value="1" title="Participa el conyuge"/>
                         </span>
-                        <span id="box-porcentage" style="<?php echo $stylo; ?>">
-                            <label class="TituloMant">%: </label>
-                            <input type="text" class="inputtext" style="width:40px; text-transform:uppercase; font-size:12px" name="Porcentage" id="Porcentage" value="<?php echo $value_p; ?>" onkeypress=""/>
-                        </span>
+                        
                         <select name="TipoParticipacion" id="TipoParticipacion" class="select" style="width:100px" >
                         <?php
                             $SelectLT   = "SELECT DISTINCT servicio_participacion.idparticipacion, 
@@ -394,14 +399,18 @@ $(function() {
                                 echo '<option value="'.$rowLT[0].'" '.$Select.'>'.$rowLT[1].'</option>';
                                }
                         ?>
-                        </select>                        
+                        </select>  
+                        <span id="box-porcentage" style="<?php echo $stylo; ?>">                            
+                            <input type="text" class="inputtext" style="width:40px; text-transform:uppercase; font-size:12px" name="Porcentage" id="Porcentage" value="<?php echo $value_p; ?>" onkeypress=""/>
+                            <label class="">%</label>
+                        </span>                      
                         <div id="box-conyuge" style="display:none">
                             <label class="TituloMant">&nbsp;&nbsp;Conyuge: </label>      
                             <input type="hidden" id="IdParticipante_c" name="IdParticipante_c" value="" /> 
                             <input type="hidden" id="Documento_c" name="Documento_c" value="" />
                             <input type="text" class="inputtext" name="DocParticipante_c" id="DocParticipante_c" value="" style="width:100px; text-transform:uppercase; font-size:12px" />                            
                             <input type="text" class="inputtext" name="Participante_c" id="Participante_c" value=""  style="width:280px; text-transform:uppercase; font-size:12px" />&nbsp;
-                            <img src="../../imagenes/adduser.png" width="20" style="cursor:pointer;" onclick="NuevoParticipante('_c');" title="Agregar nuevo cliente"/>                                                
+                            <img src="../../imagenes/adduser.png" width="20" style="cursor:pointer;" onclick="NuevoParticipante('_c');" title="Agregar nuevo cliente"/>
                         </div>
                         <button id="addParticipante" style="float:right">Agregar</button>
                         <div style="clear:both"></div>
@@ -1070,7 +1079,21 @@ $(function() {
             <p>Ingrese la descripcion del bien materia de la operacion.</p>
             <textarea rows="5" cols="114" name="0form1_descripcion" id="descripcion_bien"><?php echo $descripcion; ?></textarea>
         </div>
-        
+        <?php 
+        if(substr($row[3], 0, 1)=='K')
+        {
+           $array_service=array(3,4,39,49,169,185,186);
+            if(in_array($row['idservicio'],$array_service))
+             {
+        ?>
+        <div id="tabs-i5">
+            <p>Ingrese la Denominación o Razón Social.</p>
+            <input name="0form1_razonsocial" id="razonsocial" style="width:100%" value="<?php echo $razonsocial; ?>" placeholder="xxxxxxxxxx . (SA,SAC,EIRL,SRL,etc)" />                
+        </div>
+        <?php 
+            }
+          }
+        ?>
         <div id="tabs-gd">
             <div class="box-gen-doc ui-widget-content ui-corner-top">
                 <div id="queue" style="display:inline-block;"></div>

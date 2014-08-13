@@ -527,7 +527,7 @@ function CalcTotalLibros(evt)
     <td width="98" class="TituloMant">Nº Atenci&oacute;n :</td>
     <td width="242">
         <input type="hidden" class="inputtext" name="1form1_idatencion" id="Id" value="<?php echo $row[0];?>"/>
-        <input type="text" class="inputtext" style="text-align:center; font-size:12px; width:50px" name="Idx" id="Idx" maxlength="2" value="<?php if($Id!=''){ echo $row[0]; }else{ echo ($rowCantidad[0]+1); }?>" <?php echo $Enabled2;?> onkeypress="CambiarFoco(this, 'Cliente');"/>
+        <input type="text" class="inputtext" style="text-align:center; font-size:12px; width:100px" name="Idx" id="Idx" maxlength="2" value="<?php if($Id!=''){ echo $row[0]; }else{ echo ($rowCantidad[0]+1); }?>" <?php echo $Enabled2;?> onkeypress="CambiarFoco(this, 'Cliente');"/>
     </td>
     <td width="160" align="right">
         <table width="160" border="0" cellspacing="0" cellpadding="0">

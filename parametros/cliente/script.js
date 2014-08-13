@@ -1,20 +1,22 @@
 $(function() 
-    {       
+{
         loadBasic();
-        $("#DniRuc").live('change',function()
-        {                
-            var ndoc = $(this).val();
-            if(ndoc!="")    
-            {
-                $.get('../../libs/nrodoc.php','ndoc='+ndoc,function(n)
+        /*
+            $("#DniRuc").live('change',function()
+            {                
+                var ndoc = $(this).val();
+                if(ndoc!="")    
                 {
-                    if(n=="1"){ alert("Este numero de documento ya se registro en el sistema."); 
-                    $("#DniRuc").focus(); }                        
-                });
-            }
-        });        
+                    $.get('../../libs/nrodoc.php','ndoc='+ndoc,function(n)
+                    {
+                        if(n=="1"){ alert("Este numero de documento ya se registro en el sistema."); 
+                        $("#DniRuc").focus(); }                        
+                    });
+                }
+            });        
+        */
         $('.text').focus(function(){
-            $(this).addClass('ui-state-highlight');                
+            $(this).addClass('ui-state-highlight');
         });
         $('.text').blur(function(){
             $(this).removeClass('ui-state-highlight');
@@ -50,55 +52,7 @@ $(function()
                 else { $("#pais").val(""); $("#pais").focus(); }
         });
         //DocRepresentante
-        $( "#DocRepresentante" ).autocomplete({
-                minLength: 0,
-                source: '../../libs/autocompletar/clienteD.php',
-                focus: function( event, ui ) 
-                {
-                    $( "#DocRepresentante" ).val( ui.item.dni_ruc );                              
-                    return false;
-                },
-                select: function( event, ui ) 
-                {
-                     $("#Representante").val(ui.item.nombres);
-                     $("#IdRepresentante").val(ui.item.idcliente);
-                     $("#DocRepresentante").val(ui.item.dni_ruc);
-                     $("#Documento").val(ui.item.documento);
-                     $("#Cargo").focus();
-                    return false;
-                }
-            }).data( "autocomplete" )._renderItem = function( ul, item ) {
-                
-                return $( "<li></li>" )
-                    .data( "item.autocomplete", item )
-                    .append( "<a>"+ item.dni_ruc +" - " + item.nombres + "</a>" )
-                    .appendTo( ul );
-            };
-        $( "#Representante" ).autocomplete({
-                minLength: 0,
-                source: '../../libs/autocompletar/cliente.php',
-                focus: function( event, ui ) 
-                {
-                    //$( "#DocRepresentante" ).val( ui.item.dni_ruc );      
-                    $("#Representante").val(ui.item.nombres);            
-                    return false;
-                },
-                select: function( event, ui ) 
-                {
-                     $("#Representante").val(ui.item.nombres);
-                     $("#IdRepresentante").val(ui.item.idcliente);
-                     $("#DocRepresentante").val(ui.item.dni_ruc);
-                     $("#Documento").val(ui.item.documento);
-                     $("#cargo").focus();
-                    return false;
-                }
-            }).data( "autocomplete" )._renderItem = function( ul, item ) {
-                
-                return $( "<li></li>" )
-                    .data( "item.autocomplete", item )
-                    .append( "<a>"+ item.nombres + "</a>" )
-                    .appendTo( ul );
-            };   
+         
 
             $( "#desprof" ).autocomplete({
                 minLength: 0,
@@ -179,6 +133,7 @@ $(function()
                 $("#divOCargo").css("display","none");
             } 
     }
+    /*
     function countRepresentante()
     {
         var cont = 0;
@@ -203,7 +158,7 @@ $(function()
         $('#DocRepresentante').focus();
         return 0;
     }
-    
+    */
     function changeTipoCli() 
     {
         if($("#idcliente_tipo").val()==1)
@@ -239,7 +194,7 @@ $(function()
     function loadBasic()
     {
         changeTipoCli();
-        var iu = $("#idubigeo").val();
+        var iu = $("#idubigeo").val();        
         TraerDepartamento(iu);        
         if($("#idprofesion").val()!=999){$("#divOProfesion").css("display","none");}
         if($("#idcargo").val()!=999){$("#divOCargo").css("display","none");}

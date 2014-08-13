@@ -41,11 +41,13 @@ $KTipo = $rowCo[1];
 $SqlCo2 = "SELECT escritura FROM kardex WHERE idkardex='".$_POST['1form1_idkardex']."' AND idnotaria='".$_SESSION['notaria']."' ";
 $ConsultaCo2 = $Conn->Query($SqlCo2);
 $rowCo2 = $Conn->FetchArray($ConsultaCo2);	
-if ($rowCo2[0]==''){
-    if ($Actual<(int)$_POST['0form1_escritura']){
+if ($rowCo2[0]=='')
+{
+    if ($Actual<(int)$_POST['0form1_escritura'])
+    {
         $ConsultaKT = $Conn->Query($SqlKT);
     }
-}	
+}
 $Consulta = $Conn->Query($Sql);
 if (!$Consulta)
     {	

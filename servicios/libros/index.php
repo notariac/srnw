@@ -69,7 +69,7 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
                     autoOpen: false,                    
                     resizable:false,
                     title: "Modificar Registro",
-                    width: 600,
+                    width: 650,
                     height: 470,
                     buttons: {
                         "Actualizar": function() {
@@ -92,8 +92,8 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
 			autoOpen: false,			
 			resizable:false,
 			title: "Ver Registro",
-			width: 600,
-			height: 470,
+			width: 650,
+			height: 500,
 			buttons: {
                             Salir: function() {
                                 $("#DivVer").html('');
@@ -225,11 +225,68 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
             });
             $('#Valor').focus();
 	}
-	function ValidarEnter(evt, Op){
-            Buscar(Op);
+	function ValidarEnter(evt, Op)
+    {
+        Buscar(Op);
  	}
-</script>
-<script>
+
+    function saveCliente()
+    {
+    
+        var bval = true,
+            tc = $("#idcliente_tipo").val(),
+        idd = $("#iddocumento").val(),
+        dni_ruc = $("#DniRuc").val(),
+        t = dni_ruc.length;
+
+        if($("#iddocumento").val()==1)
+        {
+            if(t!=8)
+            {
+                bval = false;
+                alert('Por favor, ingrese numero de DNI valido.');
+                $("#DniRuc").focus();
+            }
+        }
+        
+        if($("#iddocumento").val()==8)
+        {        
+            if(t==11)
+            {            
+                if(!esrucok(dni_ruc))
+                {
+                    bval = false;
+                    alert('Por favor, ingrese numero de RUC valido.');
+                    $("#DniRuc").focus();
+                }
+            }
+        }
+
+    bval = bval && $("#RazonNombre2").required();
+    if($("#IdDistrito").val()=="000101"&&bval==true){ alert("Complete los datos del ubigeo"); $("#IdDistrito").focus(); return 0; }
+    if(bval)
+    {
+        var str = $("#formP").serialize();
+        $.post('../../parametros/cliente/guardarA.php',str,function(r){   
+            if(r[0]==0)
+            {
+                alert(r[2]);
+                $("#"+r[1]).focus();
+            }
+            else
+            {
+                $("#dnewCliente").dialog("close");
+                alert("Se ha registrado correctamente al cliente");
+                $("#Ruc").val(r[3]);
+                $("#RazonSocial").val(r[4]);
+                $("#idcliente").val(r[6]);
+                $("#Direccion").val(r[5]);
+                $("#Telefono").focus();
+            }
+        },'json');
+    }
+}
+
     Buscar(<?php echo $Op;?>);
     $('#Valor').focus();
     $('#BtnNuevo').css("display", "none");

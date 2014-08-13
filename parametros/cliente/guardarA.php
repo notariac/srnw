@@ -32,17 +32,25 @@ if(!session_id()){session_start();}
 
 	if($iddocumento==1)
 	{ 
-		if(!$Conn->isDNI($dni_ruc))
+		$t = strlen($dni_ruc);
+		if($t==8)
 		{
-			print_r(json_encode(array('0','DniRuc','DNI: Formato incorrecto'))); die;
-		}
+			if(!$Conn->isDNI($dni_ruc))
+			{
+				print_r(json_encode(array('0','DniRuc','DNI: Formato incorrecto'))); die;
+			}
+		}		
 	}
 	elseif($iddocumento==8) 
 	{
-		if(!$Conn->isRUC($dni_ruc))
+		$t = strlen($dni_ruc);
+		if($t==11)
 		{
-			print_r(json_encode(array('0','DniRuc','RUC: Formato incorrecto'))); die;
-		}
+			if(!$Conn->isRUC($dni_ruc))
+			{
+				print_r(json_encode(array('0','DniRuc','RUC: Formato incorrecto'))); die;
+			}
+		}		
 	}
 
 	//Verificamos si el dni o ruc ya esta en el sistema (Solo si es nuevo)

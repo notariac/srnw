@@ -1,0 +1,267 @@
+{\rtf1\ansi\deff3\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset0 Liberation Serif{\*\falt Times New Roman};}{\f4\froman\fprq0\fcharset1 Times New Roman;}{\f5\fswiss\fprq0\fcharset1 Times New Roman;}{\f6\fnil\fprq2\fcharset0 DejaVu Sans;}{\f7\fnil\fprq2\fcharset0 Arial;}{\f8\fnil\fprq0\fcharset1 Lohit Hindi;}{\f9\fnil\fprq0\fcharset1 Times New Roman;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue0;\red255\green255\blue255;\red128\green128\blue128;}
+{\stylesheet{\s0\snext0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082 Estilo predeterminado;}
+{\s1\sbasedon0\snext81\ilvl0\outlinelevel0\qc\widctlpar\keepn\ltrpar\cf0\b\kerning1\dbch\af7\langfe2052\dbch\af9\afs28\alang1025\ab\loch\f4\fs28\lang3082 Encabezado 1;}
+{\s2\sbasedon0\snext81\ilvl1\outlinelevel1\qj\widctlpar\keepn\ltrpar\cf0\i\b\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\ai\ab\loch\f4\fs28\lang3082 Encabezado 2;}
+{\s5\sbasedon0\snext81\ilvl4\outlinelevel4\qj\widctlpar\li2268\ri0\lin2268\rin0\fi0\keepn\ltrpar\cf0\b\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\ab\loch\f4\fs28\lang3082 Encabezado 5;}
+{\*\cs15\snext15 WW8Num1z0;}
+{\*\cs16\snext16 WW8Num1z1;}
+{\*\cs17\snext17 WW8Num1z2;}
+{\*\cs18\snext18 WW8Num1z3;}
+{\*\cs19\snext19 WW8Num1z4;}
+{\*\cs20\snext20 WW8Num1z5;}
+{\*\cs21\snext21 WW8Num1z6;}
+{\*\cs22\snext22 WW8Num1z7;}
+{\*\cs23\snext23 WW8Num1z8;}
+{\*\cs24\snext24 Absatz-Standardschriftart;}
+{\*\cs25\snext25 WW-Absatz-Standardschriftart;}
+{\*\cs26\snext26 WW-Absatz-Standardschriftart1;}
+{\*\cs27\snext27 WW-Absatz-Standardschriftart11;}
+{\*\cs28\snext28 WW-Absatz-Standardschriftart111;}
+{\*\cs29\snext29 WW-Absatz-Standardschriftart1111;}
+{\*\cs30\snext30 WW-Absatz-Standardschriftart11111;}
+{\*\cs31\snext31 WW-Absatz-Standardschriftart111111;}
+{\*\cs32\snext32 WW-Absatz-Standardschriftart1111111;}
+{\*\cs33\snext33 WW-Absatz-Standardschriftart11111111;}
+{\*\cs34\snext34 WW-Absatz-Standardschriftart111111111;}
+{\*\cs35\snext35 WW-Absatz-Standardschriftart1111111111;}
+{\*\cs36\snext36 WW-Absatz-Standardschriftart11111111111;}
+{\*\cs37\snext37 WW-Absatz-Standardschriftart111111111111;}
+{\*\cs38\snext38 WW-Absatz-Standardschriftart1111111111111;}
+{\*\cs39\snext39 WW-Absatz-Standardschriftart11111111111111;}
+{\*\cs40\snext40 WW-Absatz-Standardschriftart111111111111111;}
+{\*\cs41\snext41 WW-Absatz-Standardschriftart1111111111111111;}
+{\*\cs42\snext42 WW-Absatz-Standardschriftart11111111111111111;}
+{\*\cs43\snext43 WW-Absatz-Standardschriftart111111111111111111;}
+{\*\cs44\snext44 WW-Absatz-Standardschriftart1111111111111111111;}
+{\*\cs45\snext45 WW-Absatz-Standardschriftart11111111111111111111;}
+{\*\cs46\snext46 WW-Absatz-Standardschriftart111111111111111111111;}
+{\*\cs47\snext47 WW-Absatz-Standardschriftart1111111111111111111111;}
+{\*\cs48\snext48 WW-Absatz-Standardschriftart11111111111111111111111;}
+{\*\cs49\snext49 WW-Absatz-Standardschriftart111111111111111111111111;}
+{\*\cs50\snext50 WW-Absatz-Standardschriftart1111111111111111111111111;}
+{\*\cs51\snext51 WW-Absatz-Standardschriftart11111111111111111111111111;}
+{\*\cs52\snext52 WW-Absatz-Standardschriftart111111111111111111111111111;}
+{\*\cs53\snext53 WW-Absatz-Standardschriftart1111111111111111111111111111;}
+{\*\cs54\snext54 WW-Absatz-Standardschriftart11111111111111111111111111111;}
+{\*\cs55\snext55 WW-Absatz-Standardschriftart111111111111111111111111111111;}
+{\*\cs56\snext56 WW-Absatz-Standardschriftart1111111111111111111111111111111;}
+{\*\cs57\snext57 WW-Absatz-Standardschriftart11111111111111111111111111111111;}
+{\*\cs58\snext58 WW-Absatz-Standardschriftart111111111111111111111111111111111;}
+{\*\cs59\snext59 WW-Absatz-Standardschriftart1111111111111111111111111111111111;}
+{\*\cs60\snext60 WW-Absatz-Standardschriftart11111111111111111111111111111111111;}
+{\*\cs61\snext61 WW-Absatz-Standardschriftart111111111111111111111111111111111111;}
+{\*\cs62\snext62 WW-Absatz-Standardschriftart1111111111111111111111111111111111111;}
+{\*\cs63\snext63 WW-Absatz-Standardschriftart11111111111111111111111111111111111111;}
+{\*\cs64\snext64 WW-Absatz-Standardschriftart111111111111111111111111111111111111111;}
+{\*\cs65\snext65 WW-Absatz-Standardschriftart1111111111111111111111111111111111111111;}
+{\*\cs66\snext66 WW-Absatz-Standardschriftart11111111111111111111111111111111111111111;}
+{\*\cs67\snext67 WW-Absatz-Standardschriftart111111111111111111111111111111111111111111;}
+{\*\cs68\snext68 WW-Absatz-Standardschriftart1111111111111111111111111111111111111111111;}
+{\*\cs69\snext69 WW-Absatz-Standardschriftart11111111111111111111111111111111111111111111;}
+{\*\cs70\snext70 WW-Absatz-Standardschriftart111111111111111111111111111111111111111111111;}
+{\*\cs71\snext71 WW-Absatz-Standardschriftart1111111111111111111111111111111111111111111111;}
+{\*\cs72\snext72 WW-Absatz-Standardschriftart11111111111111111111111111111111111111111111111;}
+{\*\cs73\snext73 WW-Absatz-Standardschriftart111111111111111111111111111111111111111111111111;}
+{\*\cs74\snext74 WW-Absatz-Standardschriftart1111111111111111111111111111111111111111111111111;}
+{\*\cs75\snext75 WW-Absatz-Standardschriftart11111111111111111111111111111111111111111111111111;}
+{\*\cs76\snext76 WW-Absatz-Standardschriftart111111111111111111111111111111111111111111111111111;}
+{\*\cs77\snext77 WW-Absatz-Standardschriftart1111111111111111111111111111111111111111111111111111;}
+{\*\cs78\snext78 Fuente de p\u225\'e1rrafo predeter.;}
+{\*\cs79\sbasedon78\snext79 N\u250\'famero de p\u225\'e1gina;}
+{\s80\sbasedon0\snext81\ql\widctlpar\tqc\tx4819\tqr\tx9638\sb240\sa120\keepn\ltrpar\cf0\b\kerning1\dbch\af6\langfe2052\dbch\af9\afs24\alang1025\ab\loch\f5\fs24\lang3082 Encabezado;}
+{\s81\sbasedon0\snext81\qj\widctlpar\sb0\sa120\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082 Cuerpo de texto;}
+{\s82\sbasedon81\snext82\qj\widctlpar\sb0\sa120\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af8\afs20\alang1025\loch\f4\fs28\lang3082 Lista;}
+{\s83\sbasedon0\snext83\ql\widctlpar\sb120\sa120\noline\ltrpar\cf0\i\kerning1\dbch\af7\langfe2052\dbch\af8\afs24\alang1025\ai\loch\f4\fs24\lang3082 Etiqueta;}
+{\s84\sbasedon0\snext84\ql\widctlpar\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af8\afs24\alang1025\loch\f4\fs24\lang3082 \u205\'cdndice;}
+{\s85\sbasedon0\snext85\ql\widctlpar\sb120\sa120\ltrpar\cf0\i\kerning1\dbch\af7\langfe2052\dbch\af8\afs24\alang1025\ai\loch\f4\fs24\lang3082 Pie;}
+{\s86\sbasedon0\snext86\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082 WW-Texto independiente 2;}
+{\s87\sbasedon0\snext87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082 Pie de p\u225\'e1gina;}
+{\s88\sbasedon0\snext88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082 Marcador1;}
+{\s89\sbasedon81\snext89\qj\widctlpar\sb0\sa120\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082 Contenido del marco;}
+}{\*\listtable{\list\listtemplateid1
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-432\li432}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-576\li576}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-720\li720}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-864\li864}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1008\li1008}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1152\li1152}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1296\li1296}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1440\li1440}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-1584\li1584}\listid1}
+{\list\listtemplateid2
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li720}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1080}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1440}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li1800}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2160}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2520}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li2880}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li3240}
+{\listlevel\levelnfc255\leveljc0\levelstartat1\levelfollow2{\leveltext \'00;}{\levelnumbers;}\fi-360\li3600}\listid2}
+}{\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}{\info{\upr{\title K\'e1rdex }{\*\ud{\title K\u225\'e1rdex }}}{\author Notaria Cisneros}{\creatim\yr2007\mo11\dy6\hr8\min18}{\revtim\yr2007\mo11\dy6\hr8\min18}{\printim\yr2014\mo3\dy13\hr17\min19}{\comment LibreOffice}{\vern4000}}\deftab708
+\viewscale100
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse451\pgwsxn12240\pghsxn17291\marglsxn2835\margrsxn680\margtsxn2948\margbsxn1391\footery1{\footer\pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par }\pgdscnxt0 Estilo predeterminado;}}
+\formshade{\*\pgdscno0}\paperh17291\paperw12240\margl2835\margr680\margt2948\margb1\sectd\sbknone\sectunlocked1\pgndec\pgwsxn12240\pghsxn17291\marglsxn2835\margrsxn680\margtsxn2948\margbsxn1391\footery1{\footer\pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par \pard\plain \s87\ql\widctlpar\tqc\tx4252\tqr\tx8504\noline\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs20\lang3082\ql\widctlpar\tqc\tx4252\tqr\tx8504\li0\ri360\lin0\rin360\fi0\cf1\kerning1\langfe2052\dbch\af9\afs20\alang1025\rtlch \ltrch\loch\fs20\lang3082
+
+\par }\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082{\rtlch \ltrch\loch
+K\u225\'e1rdex \tab \tab  \tab : \tab }{\b\ab\rtlch \ltrch\loch
+K043980}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082{\rtlch \ltrch\loch
+N\u250\'famero de Escritura\tab : \tab }{\b\ab\rtlch \ltrch\loch
+0}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082{\rtlch \ltrch\loch
+N\u250\'famero de Minuta\tab : \tab }{\b\ab\rtlch \ltrch\loch
+0}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\rtlch \ltrch\loch
+
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\rtlch \ltrch\loch
+
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082{\rtlch \ltrch\loch
+Contrato de\tab \tab \tab :\tab }{\b\ab\rtlch \ltrch\loch
+Constitucion De  S.r.l.}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\rtlch \ltrch\loch
+
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\rtlch \ltrch\loch
+
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082{\rtlch \ltrch\loch
+Otorgado por\tab \tab :   \tab }{\b\ab\rtlch \ltrch\loch
+{\qj\b Andres Garcia Macedo} Y }\par {\qj\b					{\qj\b Franco Ushiñahua Reátegui}.}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\rtlch \ltrch\loch
+
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\rtlch \ltrch\loch
+
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082{\b0\ab0\rtlch \ltrch\loch
+A favor de\tab \tab \tab :}{\b\ab\rtlch \ltrch\loch
+\tab }
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\rtlch \ltrch\loch
+
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082{\b\ab\rtlch \ltrch\loch
+\tab \tab \tab }
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\b\afs24\ab\rtlch \ltrch\loch\fs24
+************************************************************************}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\li0\ri0\lin0\rin0\fi0\sb0\sa0{\strike0\b\chcbpat3\afs28\ab\rtlch \ltrch\loch\fs28
+Introducci\u243\'f3n:}{\strike0\chcbpat3\afs28\rtlch \ltrch\loch\fs28
+============================================}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\tqr\tx8647\li0\ri0\lin0\rin0\fi0\sb0\sa0{\strike0\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28
+En la ciudad de Tarapoto, a los }{\strike0\b\chcbpat3\afs28\ab\rtlch \ltrch\loch\fs28
+Once}{\strike0\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28
+ d\u237\'edas del mes de }{\strike0\b\chcbpat3\afs28\ab\rtlch \ltrch\loch\fs28
+Agosto}{\strike0\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28
+ del a\u241\'f1o }{\strike0\b\chcbpat3\afs28\ab\rtlch \ltrch\loch\fs28
+Dos Mil Catorce}{\strike0\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28
+, yo: Lu\u237\'eds Enrique Cisneros Olano, Notario de esta ciudad, extiendo la presente Escritura P\u250\'fablica}{\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28\lang10250
+, en la que, ===================}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\b\rtlch \ltrch\loch
+Comparecen}{\rtlch \ltrch\loch
+: ============================================}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\tqr\tx8647\li0\ri0\lin0\rin0\fi0\sb0\sa0{{\*\bkmkstart Bookmark}{\*\bkmkstart Bookmark1}{\*\bkmkend Bookmark}{\*\bkmkend Bookmark1}\b0\ab0\rtlch \ltrch\loch
+{\qj\b Andres Garcia Macedo, }identificado con Documento Nacional De Identidad  N° {\b 44538236}, quien manifiesta ser de nacionalidad {\b peruano, }ocupación {\b No Declara}, estado civil Soltero(a) , con domicilio en Jr. Union Nro 147, distrito de Tarapoto, provincia de San Martin, departamento de San Martin.\par{\qj\b Franco Ushiñahua Reátegui, }identificado con Documento Nacional De Identidad  N° {\b 44111072}, quien manifiesta ser de nacionalidad {\b peruano, }ocupación {\b No Declara}, estado civil Soltero(a) , con domicilio en Jr:los Pinos 341, distrito de Tarapoto, provincia de San Martin, departamento de San Martin.\par}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\b\rtlch \ltrch\loch
+Los comparecientes }{\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28\lang10250
+son mayores de edad a quienes he identificado, con el documento de Identidad que exhibieron, proceden con capacidad legal, libertad y conocimiento bastante para contratar; y, me entregan para que eleve a Escritura P\u250\'fablica la siguiente minuta que archivo con el n\u250\'famero de orden correspondiente, cuyo tenor literal es como sigue:}{\rtlch \ltrch\loch
+===============}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\li0\ri0\lin0\rin0\fi0\sb0\sa0{\b\rtlch \ltrch\loch\fs28
+Minuta}{\rtlch \ltrch\loch
+.-}{\rtlch \ltrch\loch\fs28
+ ================================================}
+\par \pard\plain \s5\ilvl4\outlinelevel4\qj\widctlpar\li2268\ri0\lin2268\rin0\fi0\keepn\ltrpar\cf0\b\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\ab\loch\f4\fs28\lang3082{\listtext\pard\plain }\ilvl4\ls2 \li2160\ri0\lin2160\rin0\fi-360\li0\ri0\lin0\rin0\fi0\sb0\sa0{{\*\bkmkstart Bookmark2}{\*\bkmkend Bookmark2}\b0\afs28\ab0\rtlch \ltrch\loch\fs28\lang10250
+}
+\par \pard\plain \s81\qj\widctlpar\sb0\sa120\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\lang10250
+************************************************************************}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\li0\ri0\lin0\rin0\fi0\sb0\sa0{\b\rtlch \ltrch\loch\fs28
+Inserto: Luis Enrique Cisneros Olano, Notario de la Provincia de San Mart\u237\'edn}{\b\ab\rtlch \ltrch\loch\fs28
+.================================================ }
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\strike0\ulnone\ulc1\b\rtlch \ltrch\loch\fs28\lang10250
+Certifico: }{\strike0\ulnone\ulc1\b0\ab0\rtlch \ltrch\loch\fs28\lang10250
+Que he tenido a la vista el original del cheque de gerencia cuyo tenor literal es como sigue:====================================}
+\par \pard\plain \s86\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\b\afs28\rtlch \ltrch\loch\fs28\lang10250
+**************************************************************}
+\par \pard\plain \s86\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\b\afs28\rtlch \ltrch\loch\fs28\lang10250
+Conclusi\u243\'f3n}{\afs28\rtlch \ltrch\loch\fs28\lang10250
+.- ============================================}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\li0\ri0\lin0\rin0\fi0\sb0\sa0{\afs28\rtlch \ltrch\loch\fs28\lang10250
+Formalizado el instrumento se instruy\u243\'f3 a los otorgantes de su objeto por la lectura que de todo hicieron declarando conocer los antecedentes que originan la  compra y venta  del presente instrumento, ratific\u225\'e1ndose en el contenido del mismo y reconociendo como suyas las firmas de la  compra y venta que lo origina, Doy fe. ==================================}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\rtlch \ltrch\loch\lang10250
+=======================================================}
+\par \pard\plain \s81\qj\widctlpar\sb0\sa120\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\sl200\slmult0\tqr\tx8638\li0\ri0\lin0\rin0\fi0{\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28\lang10250
+**************************************************************}{\b\chcbpat3\afs28\ab\rtlch \ltrch\loch\fs28\lang10250
+Constancia de cumplimiento del Art\u237\'edculo 55, del Decreto Legislativo N\u186\'ba 1049 Ley del Notariado, Modificado por el Decreto Legislativo N\u186\'ba 1106: }{\b0\chcbpat3\afs28\ab0\rtlch \ltrch\loch\fs28\lang10250
+Se }{\b0\chcbpat3\afs28\rtlch \ltrch\loch\fs28\lang10250
+deja expresa constancia que, se ha efectuado las m\u237\'ednimas acciones de control y debida diligencia en materia de prevenci\u243\'f3n del lavado de activos vinculados a la miner\u237\'eda ilegal y otras formas de crimen organizado, indagando sobre el origen de los fondos, bienes y activos involucrados en la presente transacci\u243\'f3n, declarando bajo juramento en este acto cada una de las partes intervinientes en el presente instrumento, que sus respectivos activos, bienes y medios de pago utilizados, tienen procedencia legal, producto de sus actividades leg\u237\'edtimas y que no est\u225\'e1n involucrados con el lavado de activos, miner\u237\'eda ilegal, ni otras modalidades de crimen organizado. =============}
+\par \pard\plain \s81\qj\widctlpar\sb0\sa120\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\sl200\slmult0\tqr\tx8638\li0\ri0\lin0\rin0\fi0{\b0\chcbpat3\afs28\rtlch \ltrch\loch\fs28\lang10250
+**************************************************************}
+\par \pard\plain \s81\qj\widctlpar\sb0\sa120\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\sl200\slmult0\tqr\tx8638\li0\ri0\lin0\rin0\fi0{{\*\bkmkstart Bookmark3}{\*\bkmkend Bookmark3}\b0\chcbpat3\afs28\rtlch \ltrch\loch\fs28\lang10250
+{\qj En este acto dejo constancia que {\b Andres Garcia Macedo} y {\b Franco Ushiñahua Reátegui} entrega, en mi presencia, a ,  con fecha 11 de Agosto del año 2014, el monto en efectivo por la suma de {\b S/. 50,000.00 (Cincuenta  Mil Con 00/100 Nuevos Soles).}}\par{, declara que con  Efectivo recibido el día de hoy, y cuyos datos arriban en el inserto, dan por cancelado el íntegro del precio de venta no teniendo nada que reclamar y renunciando a cualquier hipoteca legal. }\par{************************************************************}\par{De conformidad con los dispuesto por la ley 28194 y el Decreto Supremo 047-2004-EF, dejo constancia de lo siguiente: ======================}\par{{\b\ul Primero.-} Que no tuve a la vista ningún medio de pago. ==================}\par{{\b\ul Segundo.-} Que el contrato que se formaliza por esta Escritura de Constitucion De  S.r.l. contiene la siguiente información relativa al Medio de Pago utilizado: =====}\par{A):}======================================================\par{A.1) Monto total de la operación: {\b S/.50,000.00}.}=========\par{A.2) Valor total pagado con Medio de Pago: {\b S/.50,000.00}.}\par{A.3) Moneda en que se realizó: {\b Nuevo Sol}.}===============\par{B):}======================================================\par{B.1) Tipo Medio de Pago: {\b Efectivo}.}======================\par{B.2) Código Medio de Pago: {\b 008}.}=========================\par{C):}======================================================\par{C.1) Numero de Documento que acredita el uso de Medio de Pago: {\b No Aplicable}.}=======================================\par{D): Empresa del Sistema Financiero que emite el documento: {\b No Aplicable}.}===========================================\par{E): Fecha de emisión del documento: {\b No Aplicable}.}=======\par}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\sl200\slmult0\qj\li0\ri0\lin0\rin0\fi0\sb0\sa0{\rtlch \ltrch\loch\fs28
+**************************************************************}
+\par \pard\plain \s88\qj\widctlpar\ltrpar\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs20\alang1025\loch\f4\fs28\lang3082\li0\ri0\lin0\rin0\fi0\sb0\sa0{\rtlch \ltrch\loch
+**************************************************************La presente escritura se inicia en la foja }{\b\ab\rtlch \ltrch\loch
+0}{\rtlch \ltrch\loch
+ con n\u250\'famero de serie F-N\u186\'ba }{\b\ab\rtlch \ltrch\loch
+0}{\rtlch \ltrch\loch
+ y termina en la foja }{\b\ab\rtlch \ltrch\loch
+0}{\rtlch \ltrch\loch
+ con n\u250\'famero de serie F-N\u186\'ba }{\b\ab\rtlch \ltrch\loch
+0}{\rtlch \ltrch\loch
+, habiendo concluido el proceso de firmas, por ante m\u237\'ed el Notario, con fecha: }
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\li0\ri0\lin0\rin0\fi0\sb0\sa0{\afs28\rtlch \ltrch\loch\fs28
+**************************************************************}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\rtlch \ltrch\loch
+
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\rtlch \ltrch\loch
+
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj{\afs28\rtlch \ltrch\loch\fs28
+{\qj } \par \par \par \par {\qj\b Andres Garcia Macedo     Franco Ushiñahua Reátegui     }}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\rtlch \ltrch\loch
+
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qc\li0\ri-13\lin0\rin-13\fi0\b\ab\rtlch \ltrch\loch\lang10250
+
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\li0\ri-13\lin0\rin-13\fi0\b\ab\rtlch \ltrch\loch\lang10250
+
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qc{\b\afs28\rtlch \ltrch\loch\fs28
+_________________________}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qc\li0\ri-13\lin0\rin-13\fi0{\b\afs28\ab\rtlch \ltrch\loch\fs28\lang10250
+Luis Enrique Cisneros Olano}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qc\tqr\tx8614\li0\ri-26\lin0\rin-26\fi0{\b\afs28\ab\rtlch \ltrch\loch\fs28\lang10250
+Notario de la Provincia de San Mart\u237\'edn}
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qc\b\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\ql\widctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\dbch\af7\langfe2052\dbch\af9\afs24\alang1025\loch\f4\fs24\lang3082\qj{\*\bkmkstart Bookmark3}{\*\bkmkend Bookmark3}{\*\bkmkstart Bookmark3}{\*\bkmkend Bookmark3}\rtlch \ltrch\loch
+
+\par \par }

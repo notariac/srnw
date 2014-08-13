@@ -43,7 +43,6 @@ date_default_timezone_set("America/Lima");
 <link href="<?php echo $UrlDir;?>css/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?php echo $UrlDir;?>js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo $UrlDir;?>js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="<?php echo $UrlDir;?>js/jquery-1.8.21.min.js"></script>
 <script type="text/javascript" src="<?php echo $UrlDir;?>js/jquery-ui-1.8.21.custom.min.js"></script>
 <script type="text/javascript" src="<?php echo $UrlDir;?>js/JSCookMenu.js"></script>
 <script type="text/javascript" src="<?php echo $UrlDir;?>js/jquery.blockUI.js"></script>

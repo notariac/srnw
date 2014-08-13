@@ -77,20 +77,6 @@ $(function()
             }
         });
 
-        /*
-        $("#DniRuc").live('change',function()
-        {
-            var ndoc = $(this).val();
-            if(ndoc!="")    
-            {
-                $.get('../../libs/nrodoc.php','ndoc='+ndoc,function(n)
-                {
-                    if(n=="1"){ alert("Este numero de documento ya se registro en el sistema."); 
-                    $("#DniRuc").focus(); }                        
-                });
-            }
-        });      
-        */  
         $('.text').focus(function(){
             $(this).addClass('ui-state-highlight');                
         });
@@ -128,55 +114,7 @@ $(function()
                 else { $("#pais").val(""); $("#pais").focus(); }
         });
         //DocRepresentante
-        $( "#DocRepresentante" ).autocomplete({
-                minLength: 0,
-                source: '../../libs/autocompletar/clienteD.php',
-                focus: function( event, ui ) 
-                {
-                    $( "#DocRepresentante" ).val( ui.item.dni_ruc );                              
-                    return false;
-                },
-                select: function( event, ui ) 
-                {
-                     $("#Representante").val(ui.item.nombres);
-                     $("#IdRepresentante").val(ui.item.idcliente);
-                     $("#DocRepresentante").val(ui.item.dni_ruc);
-                     $("#Documento").val(ui.item.documento);
-                     $("#Cargo").focus();
-                    return false;
-                }
-            }).data( "autocomplete" )._renderItem = function( ul, item ) {
-                
-                return $( "<li></li>" )
-                    .data( "item.autocomplete", item )
-                    .append( "<a>"+ item.dni_ruc +" - " + item.nombres + "</a>" )
-                    .appendTo( ul );
-            };
-        $( "#Representante" ).autocomplete({
-                minLength: 0,
-                source: '../../libs/autocompletar/cliente.php',
-                focus: function( event, ui ) 
-                {
-                    //$( "#DocRepresentante" ).val( ui.item.dni_ruc );      
-                    $("#Representante").val(ui.item.nombres);            
-                    return false;
-                },
-                select: function( event, ui ) 
-                {
-                     $("#Representante").val(ui.item.nombres);
-                     $("#IdRepresentante").val(ui.item.idcliente);
-                     $("#DocRepresentante").val(ui.item.dni_ruc);
-                     $("#Documento").val(ui.item.documento);
-                     $("#cargo").focus();
-                    return false;
-                }
-            }).data( "autocomplete" )._renderItem = function( ul, item ) {
-                
-                return $( "<li></li>" )
-                    .data( "item.autocomplete", item )
-                    .append( "<a>"+ item.nombres + "</a>" )
-                    .appendTo( ul );
-            };   
+    
 
             $( "#desprof" ).autocomplete({
                 minLength: 0,
@@ -599,71 +537,9 @@ $(function()
     
     <!-- Representantes. -->
     <div id="divRepre" style="width:710px; margin:10px auto;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="AgregarElemento" <?php if ($Op==2 || $Op==3 || $Op==4){ echo 'style="display:none"';}?>>
-          <tr>
-            <td width="150" class="TituloMant">Representante :</td>
-            <td colspan="2">
-              <input type="text" class="ui-widget-content ui-corner-all text" style="width:110px; text-transform:uppercase; font-size:12px" name="DocRepresentante" id="DocRepresentante" value="" />
-              <input type="text" class="ui-widget-content ui-corner-all text" style="width:350px; text-transform:uppercase; font-size:12px" name="Representante" id="Representante" value="" />
-              <input type="hidden" name="IdRepresentante" id="IdRepresentante" />              
-          </td>
-          </tr>
-          <tr>
-            <td class="TituloMant">Cargo :</td>
-            <td width="368"><input type="text" class="ui-widget-content ui-corner-all text" style="width:320px; text-transform:uppercase; font-size:12px" name="Cargo" id="Cargo" value="" /></td>
-            <td width="182" style="padding-left:10px; color:#003366">
-              <input type="button" name="addParticipante" id="addParticipante" onclick="addRepresentante()" value="Agregar Participante" />              
-            </td>
-          </tr>
-        </table>
-        <table width="710" border="1" cellspacing="1" bordercolor="#000000" bgcolor="#ECECEC" id="ListaMenu3" style="margin-top:5px;">
-          <thead>
-              <tr>
-                <th width="80" height="20" title="Cabecera">D.N.I.</th>
-                <th title="Cabecera">Representante</th>
-                <th title="Cabecera" width="150">Cargo</th>
-                <th title="Cabecera" width="20">&nbsp;</th>
-              </tr>
-          </thead>
-          <tbody>
-            <?php
-                $NumRegs = 0;
-                $SQL2 = "SELECT cliente_representante.ruc_cliente, cliente_representante.dni_representante, cliente.nombres, cliente_representante.cargo, cliente_representante.idcliente, cliente_representante.idrepresentante FROM cliente INNER JOIN cliente_representante ON (cliente.idcliente = cliente_representante.idrepresentante) WHERE cliente_representante.idcliente = '$Id'";
-                $Consulta2 = $Conn->Query($SQL2);           
-                while($row2 = $Conn->FetchArray($Consulta2)){
-                    $NumRegs = $NumRegs + 1;
-                    $EnabledF = $Enabled;
-                    if(strpos($row2[2], "!")){
-                        $Nombres=explode("!",$row2[2]);
-                        $row2[2]=$Nombres[1]." ".$Nombres[0];
-                    }
-                    if ($row2[9]==0)
-                    {
-                        $EnabledF = 'readonly';
-                    }
-                    $EnabledC = $Enabled;
-                    if ($row2[8]!=''){
-                            $EnabledC = 'readonly';
-                    }               
-                    ?>
-                    <tr>
-                      <td style="padding-left:5px">
-                        <input type="hidden" name="0formD<?php echo $NumRegs;?>_ruc_cliente" id="IdClienteD<?php echo $NumRegs;?>" value="<?php echo $row2[0];?>" />
-                        <input type="hidden" name="0formD<?php echo $NumRegs;?>_dni_representante" id="IdRepresentanteD<?php echo $NumRegs;?>" value="<?php echo $row2[1];?>" />
-                        <input type="hidden" name="0formD<?php echo $NumRegs;?>_idcliente" id="IdCliente2D<?php echo $NumRegs;?>" value="<?php echo $row2[4];?>" />
-                        <input type="hidden" name="0formD<?php echo $NumRegs;?>_idrepresentante" id="IdRepresentante2D<?php echo $NumRegs;?>" value="<?php echo $row2[5];?>" /><?php echo $row2[1];?>
-                      </td>
-                      <td style="padding-right:5px"><input type="hidden" name="NombreD<?php echo $NumRegs;?>" id="NombreD<?php echo $NumRegs;?>" value="<?php echo $row2[2];?>" /><?php echo $row2[2];?></td>
-                      <td align="center"><input type="hidden" name="0formD<?php echo $NumRegs;?>_cargo" id="CargoD<?php echo $NumRegs;?>" value="<?php echo $row2[3];?>" /><?php echo $row2[3];?></td>
-                      <td align="center"><img src="../../imagenes/iconos/eliminar.png" alt="" width="16" height="16" style="cursor:pointer; <?php if ($Op==2 || $Op==3 || $Op==4){ echo "display:none";}?>" title="Quitar Representante" onclick="QuitaRepresentante(this);" /></td>
-                    </tr>
-                <?php
-                }                    
-            ?>
-          </tbody>
-        </table>
-        <br/>
+       
     </div>
+
     <label class="labels">Estado:</label>
     <label style="cursor: pointer;"><input type="checkbox" name="Estado2" id="Estado2" <?php if ($Estado==1) echo "checked='checked'";?> />
     <input type="hidden" name="estado" id="estado" value="<?php echo $Estado;?>" /> Activo</label>

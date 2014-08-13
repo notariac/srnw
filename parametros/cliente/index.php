@@ -11,13 +11,13 @@ if(!session_id()){ session_start(); }
     $Sql = "SELECT cliente.idcliente, cliente_tipo.descripcion, cliente.dni_ruc, unir(cliente.nombres,cliente.ape_paterno,cliente.ap_materno), cliente.direccion, cliente.estado FROM cliente INNER JOIN cliente_tipo ON (cliente.idcliente_tipo = cliente_tipo.idcliente_tipo)";
     $FormatoGrilla[0] = $Sql;    
     $FormatoGrilla[1] = array('1'=>'cliente.idcliente', '2'=>'cliente_tipo.descripcion','3'=>'cliente.dni_ruc', '4'=>'unir(cliente.nombres,cliente.ape_paterno,cliente.ap_materno)');  //Campos por los cuales se har� la b�squeda
-    $FormatoGrilla[2] = $Op; 	   //Operacion
+    $FormatoGrilla[2] = $Op;
     $FormatoGrilla[3] = array('T1'=>'C&oacute;digo', 'T2'=>'Tipo', 'T3'=>'Nº Documento', 'T4'=>'Nombres / Raz&oacute;n Social', 'T5'=>'Direcci&oacute;n', 'T6'=>'Estado');   			//T�tulos de la Cabecera
     $FormatoGrilla[4] = array('A1'=>'center', 'A2'=>'center', 'A3'=>'center', 'A6'=>'center');                        //Alineaci�n por Columna
     $FormatoGrilla[5] = array('W1'=>'50', 'W2'=>'70', 'W3'=>'80');     //Ancho de las Columnas
     $FormatoGrilla[6] = array('TP'=>$TAMANO_PAGINA);                  //Registro por Páginas
     $FormatoGrilla[7] = 850;                                         //Ancho de la Tabla
-    $FormatoGrilla[8] = " ORDER BY cliente.idcliente ASC ";           //Orden de la Consulta
+    $FormatoGrilla[8] = " ORDER BY cliente.idcliente DESC ";        //Orden de la Consulta
     $FormatoGrilla[9] = array('Id'=>'1', 			               //Botones de Acciones
                               'NB'=>'3',	                      //Número de Botones a agregar
                               'BtnId1'=>'BtnModificar', 	     //Nombre del Botón
@@ -89,27 +89,38 @@ $(document).ready(function(){
  });
 function save()
 {
-      
-    var tc = $("#idcliente_tipo").val();
-    bval = true;
-    var idd = $("#iddocumento").val();
-    if(idd!=9)
+    bval = true;  
+    var tc = $("#idcliente_tipo").val(),
+        idd = $("#iddocumento").val(),
+        dni_ruc = $("#DniRuc").val(),
+        t = dni_ruc.length;
+
+    if($("#iddocumento").val()==1)
     {
-	
-    bval = bval && $( "#DniRuc" ).required();
+        if(t!=8)
+        {
+            bval = false;
+            alert('Por favor, ingrese numero de DNI valido.');
+            $("#DniRuc").focus();
+        }
     }
+    
+    if($("#iddocumento").val()==8)
+    {        
+        if(t==11)
+        {            
+            if(!esrucok(dni_ruc))
+            {
+                bval = false;
+                alert('Por favor, ingrese numero de RUC valido.');
+                $("#DniRuc").focus();
+            }
+        }
+    }
+
     bval = bval && $("#RazonNombre2").required();
-    if(tc==1&&idd!=9)
-    {
-        //bval = bval && $("#ap_paterno").required();
-        //bval = bval && $("#ap_materno").required();    
-    }    
-    if($("#IdDistrito").val()=="000101"&&bval==true){ alert("Complete los datos del ubigeo"); $("#IdDistrito").focus(); return 0; }
-    if(tc==2)
-    {
-        // bval = bval && $("#asiento").required();
-        // bval = bval && $("#partida").required();
-    }
+
+    if($("#IdDistrito").val()=="000101"&&bval==true){ alert("Complete los datos del ubigeo"); $("#IdDistrito").focus(); return 0; }    
     if(bval)
     {
         var str = $("#formP").serialize();
@@ -122,16 +133,18 @@ function save()
             else 
             {
                 if($("#Id").val()!=""){alert("Se ha actualizado correctamente.");$("#Modificar").dialog("close");}
-                    else {alert("Se ha registrado correctamente"); }
+                    else {alert("Se ha registrado correctamente"); $("#Nuevo").dialog('close'); }
             }
         },'json');
     }
 }
-function Guardar(Op){
-    if (Op!=2){
+function Guardar(Op)
+{
+    if (Op!=2)
+    {
         var RaZo2 = $('#RazonNombre2').val();
         var RaZo1 = $('#RazonNombre1').val();
-        var Dir = $('#Direccion').val();			
+        var Dir = $('#Direccion').val();
         $('#RazonNombre2').val(RaZo2.toUpperCase());
         $('#RazonNombre1').val(RaZo1.toUpperCase());
         $('#Direccion').val(Dir.toUpperCase());
@@ -168,4 +181,3 @@ $('#Valor').focus();
     Pie();
     CuerpoInferior();
 ?>
-

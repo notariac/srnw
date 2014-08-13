@@ -21,36 +21,40 @@ if(!session_id()){ session_start(); }
     $Enabled2 = "readonly";
     if($Id!='')
     {
-            $Select 	= "SELECT libro.*, 
-                                c.nombres||' '||coalesce(c.ape_paterno,'')||' '||coalesce(c.ap_materno,'') as nombre,
-                                c.dni_ruc,
-                                c.direccion,
-                                c.telefonos
-                        FROM libro inner join atencion as a on a.idatencion = libro.idatencion 
-                                  inner join cliente as c on a.idcliente = c.idcliente
-                        WHERE libro.idlibro = '$Id'";
+        $Select 	= "SELECT libro.*, 
+                            c.nombres||' '||coalesce(c.ape_paterno,'')||' '||coalesce(c.ap_materno,'') as nombre,
+                            c.dni_ruc,
+                            c.direccion,
+                            c.telefonos,
+                            case libro.idcliente when 0 then c.idcliente else libro.idcliente end as idcliente
+                    FROM libro inner join atencion as a on a.idatencion = libro.idatencion 
+                              inner join cliente as c on a.idcliente = c.idcliente
+                    WHERE libro.idlibro = '$Id'";
 
-            $Consulta 	= $Conn->Query($Select);
+        $Consulta 	= $Conn->Query($Select);
 
-            $row 	= $Conn->FetchArray($Consulta);
-            $Usuario 	= $_SESSION["Usuario"];
-            $Fecha	= $Conn->DecFecha($row[2]);
-            $FolioI	= $row[10];
-            $FolioF	= $row[11];
-            if ($row[15]==1){
-                $Estado = "<label style='color:#003366'>POR IMPRIMIR</label>";
-            }
-            if ($row[15]==2){
-                $Estado = "<label style='color:#003366'>CANCELADO</label>";
-            }
-            if ($row[15]==3){
-                $Estado = "<label style='color:#FF00000'>ANULADO</label>";
-            }
-            $Anio = $row[18];
-            $Sql = "SELECT nombres FROM usuario WHERE idusuario='".$row[16]."'";
-            $ConsultaS = $ConnS->Query($Sql);
-            $rowS = $ConnS->FetchArray($ConsultaS);
-            $Usuario	= $rowS[0];
+        $row 	= $Conn->FetchArray($Consulta);
+        $Usuario 	= $_SESSION["Usuario"];
+        $Fecha	= $Conn->DecFecha($row[2]);
+        $FolioI	= $row[10];
+        $FolioF	= $row[11];
+        if ($row[15]==1)
+        {
+            $Estado = "<label style='color:#003366'>POR IMPRIMIR</label>";
+        }
+        if ($row[15]==2)
+        {
+            $Estado = "<label style='color:#003366'>CANCELADO</label>";
+        }
+        if ($row[15]==3)
+        {
+            $Estado = "<label style='color:#FF00000'>ANULADO</label>";
+        }
+        $Anio = $row[18];
+        $Sql = "SELECT nombres FROM usuario WHERE idusuario='".$row[16]."'";
+        $ConsultaS = $ConnS->Query($Sql);
+        $rowS = $ConnS->FetchArray($ConsultaS);
+        $Usuario	= $rowS[0];
     }
 $ArrayP = array(NULL);
 ?>
@@ -59,7 +63,8 @@ $ArrayP = array(NULL);
   {
     var idtl = $("#LibroTipo").val(),
     ruc = $("#Ruc").val();
-    $.get('../../libs/autocompletar/last_libro.php','idtl='+idtl+'&ruc='+ruc,function(data){
+    $.get('../../libs/autocompletar/last_libro.php','idtl='+idtl+'&ruc='+ruc,function(data)
+    {
         if(parseInt(data)!=0)
         {
           $("#last_book").empty().append("ULTIMO TOMO GENERADO: "+data);
@@ -76,6 +81,17 @@ $ArrayP = array(NULL);
 	var CantidadSgt = 'Precio';
 	$(document).ready(function()
   {
+      $("#newCliente").click(function()
+      {
+          $("#dnewCliente").load('../../parametros/cliente/MantenimientoA.php',function(){            
+              $.getScript("../../parametros/cliente/script.js",function(){
+                  $("#dnewCliente").dialog("open");   
+                  $("#dni_ruc").focus();                
+              });            
+          });
+          
+      });
+
             gettomos();
             $("#LibroTipo").change(function()
             {
@@ -153,6 +169,22 @@ $ArrayP = array(NULL);
                     .append( "<a>"+item.dni_ruc+" - "+ item.nombre + "</a>" )
                     .appendTo( ul );
             };  
+            $("#dnewCliente").dialog({
+              autoOpen: false,                    
+                          resizable:false,
+                          title: "Nuevo Cliente",
+                          height:550,
+                          width: 750,                       
+                          buttons: {
+                              "Grabar": function() {                            
+                                  saveCliente();                           
+                              },
+                              "Cancelar": function() {
+                                  
+                                  $(this).dialog("close");
+                              }
+                          }
+    })
 
 	});	
 	function Cancelar(){
@@ -167,24 +199,33 @@ $ArrayP = array(NULL);
 </script>
 <div align="center">
 <form id="form1" name="form1" method="post" action="guardar.php?<?php echo $Guardar;?>">
+<table width="550" border="0" cellspacing="0" cellpadding="0" style="float:left;">
+<tr>
+    <td width="98" class="TituloMant">&nbsp;&nbsp;&nbsp;Nº Libro :</td>
+    <td width="222" align="left"><input type="text" class="inputtext" style="text-align:center; font-size:12px; width:50px" name="0form1_correlativo" id="Id" maxlength="2" value="<?php echo $row[3];?>" <?php echo $Enabled2;?> onkeypress="CambiarFoco(this, 'Cliente');"/>
+      <input type="hidden" name="1form1_idlibro" value="<?php echo $row[0];?>" />
+      &nbsp;&nbsp;&nbsp;Fecha : <input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="3form1_fecha" id="Fecha" value="<?php echo $Fecha;?>"  onkeypress="CambiarFoco(event, 'Servicio');"/>
+    </td>
+      <td width="160" align="right">
+        <table width="160" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>&nbsp;</td>
+          <td align="right"><?php echo $Estado;?></td>
+        </tr>
+      </table>  
+      </td>
+  </tr>
+</table>
+
+<fieldset class="ui-widget-content ui-corner-all" style="text-align:left">
+  <legend >Datos del Cliente</legend>
 <table width="550" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td>&nbsp;</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td width="100" class="TituloMant">Nº Libro :</td>
-    <td width="222"><input type="text" class="inputtext" style="text-align:center; font-size:12px; width:50px" name="0form1_correlativo" id="Id" maxlength="2" value="<?php echo $row[3];?>" <?php echo $Enabled2;?> onkeypress="CambiarFoco(this, 'Cliente');"/>
-      <input type="hidden" name="1form1_idlibro" value="<?php echo $row[0];?>" /></td>
-    <td width="160" align="right">
-        <table width="160" border="0" cellspacing="0" cellpadding="0">
-    		<tr>
-          <td>&nbsp;</td>
-          <td align="right"><?php echo $Estado;?>
-        </td>
-		</tr>
-	    </table>	
-    </td>
+    <td width="98" class="TituloMant">Cliente  :</td>
+    <td colspan="2">
+      <input type="text" class="inputtext" style="font-size:12px; width:90px;" name="0form1_idcliente" id="idcliente"  maxlength="10" value="<?php echo $row['idcliente'];?>" <?php echo $Enabled;?> readonly="" />      
+      <a href="javascript:" id="newCliente"><img width="20" src="<?php echo '../../'.$urlDir;?>/imagenes/adduser.png"></a>
+    </td>    
   </tr>
   <tr>
     <td width="98" class="TituloMant">Raz&oacute;n Social  :</td>
@@ -200,20 +241,17 @@ $ArrayP = array(NULL);
   </tr>
   <tr>
     <td class="TituloMant">Tel&eacute;fono : </td>
-    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:90px; text-transform:uppercase;" name="0form1_telefono" id="Telefono"  maxlength="100" value="<?php echo $row['telefonos'];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FolioInicial');"/></td>
+    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:90px; text-transform:uppercase;" name="0form1_telefono" id="Telefono"  maxlength="100" value="<?php echo $row['telefonos'];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'FolioInicial');"/>
+      
+    </td>
   </tr>
-  <!-- <tr>
-    <td width="98" class="TituloMant">Año : </td>
-    <td colspan="2"><input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="0form1_anio" id="anio" value="<?php //echo $Anio;?>" <?php //echo $Enabled2;?> onkeypress="CambiarFoco(event, 'Servicio');"/></td>
-  </tr> -->
-  <tr>
-    <td width="98" class="TituloMant">Fecha : </td>
-    <td colspan="2"><input type="text"  align="left" class="inputtext" style="font-size:12px; width:80px; text-transform:uppercase;" name="3form1_fecha" id="Fecha" value="<?php echo $Fecha;?>"  onkeypress="CambiarFoco(event, 'Servicio');"/></td>
-  </tr>
-  <tr>
-    <td class="TituloMant">&nbsp;</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
+   
+</table>
+  </fieldset>
+  <br/>
+  <fieldset class="ui-widget-content ui-corner-all" style="text-align:left">
+  <legend >Datos del Libro</legend>
+  <table width="550" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td class="TituloMant">Tipo de Libro : </td>
     <td colspan="2"><select name="0form1_idlibro_tipo" id="LibroTipo" class="select" style="font-size:12px" onchange="" >
@@ -282,5 +320,7 @@ $Select = '';
     <td colspan="2"><input type="hidden" name="0form1_anio" value="<?php echo $Anio;?>" /></td>
   </tr>
 </table>
+</fieldset>
 </form>
 </div>
+<div id="dnewCliente"></div>

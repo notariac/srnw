@@ -276,35 +276,36 @@ function GuardarC(Op){
 }
 function saveCliente()
 {
-    var tc = $("#idcliente_tipo").val();
-    bval = true;
-    var idd = $("#iddocumento").val();
-    if($("#iddocumento").val()==8)
-    {        
-        var dni_ruc = $("#DniRuc").val();
-        if(!esrucok(dni_ruc))
+    var bval = true,
+        tc = $("#idcliente_tipo").val(),
+        idd = $("#iddocumento").val(),
+        dni_ruc = $("#DniRuc").val(),
+        t = dni_ruc.length;
+
+    if($("#iddocumento").val()==1)
+    {
+        if(t!=8)
         {
             bval = false;
-            alert('Por favor, ingrese numero de RUC valido.');
+            alert('Por favor, ingrese numero de DNI valido.');
             $("#DniRuc").focus();
         }
     }
-    if(idd!=9)
-    {
-	   bval = bval && $( "#DniRuc" ).required();
+    
+    if($("#iddocumento").val()==8)
+    {        
+        if(t==11)
+        {            
+            if(!esrucok(dni_ruc))
+            {
+                bval = false;
+                alert('Por favor, ingrese numero de RUC valido.');
+                $("#DniRuc").focus();
+            }
+        }
     }
-    bval = bval && $("#RazonNombre2").required();
-    if(tc==1&&idd!=9)
-    {
-        //bval = bval && $("#ap_paterno").required();
-        //bval = bval && $("#ap_materno").required();    
-    }    
+    bval = bval && $("#RazonNombre2").required();   
     if($("#IdDistrito").val()=="000101"&&bval==true){ alert("Complete los datos del ubigeo"); $("#IdDistrito").focus(); return 0; }
-    if(tc==2)
-    {
-       // bval = bval && $("#asiento").required();
-       // bval = bval && $("#partida").required();
-    }
     if(bval)
     {
         var str = $("#formP").serialize();
@@ -318,6 +319,7 @@ function saveCliente()
             {
                 $("#dnewCliente").dialog("close");
                 alert("Se ha registrado correctamente al cliente"); 
+                $("#dni_ruc").val(r[3]);
                 $("#Cliente").val(r[4]);
                 $("#idcliente").val(r[6]);
                 $("#Direccion").val(r[5]);                     

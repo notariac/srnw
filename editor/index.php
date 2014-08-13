@@ -140,7 +140,7 @@
     $data = array();
 
     while($p = $Conn->FetchArray($qp))
-    {                
+    {
           $pp = strtolower(trim(str_replace(" ","", $p['participacion'])));
           if($pp==$participacion)
           {
@@ -495,7 +495,7 @@ tinymce.init({
        {
           echo $plantilla_template;
        }
-        ?>
+    ?>
     </textarea>
 </form>
 </div>
@@ -506,8 +506,6 @@ tinymce.init({
     <label for="margen-right" style="width:80px; display:inline-block; text-align:right;font-size:12px">Derecho: </label><input type="text" name="margen-right" id="margen-right" class="ui-widget-content ui-corner-all" value="" size="3" /> cm.
     <label for="margen-buttom" style="width:60px; display:inline-block; text-align:right;font-size:12px">Abajo: </label><input type="text" name="margen-buttom" id="margen-buttom" class="ui-widget-content ui-corner-all" value="" size="3" readonly="" /> cm.
 </div>
-<div id="templates">
-    
-</div>
+<div id="templates"></div>
 </body>
 </html>
