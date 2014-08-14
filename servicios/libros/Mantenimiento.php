@@ -22,14 +22,34 @@ if(!session_id()){ session_start(); }
     if($Id!='')
     {
         $Select 	= "SELECT libro.*, 
-                            c.nombres||' '||coalesce(c.ape_paterno,'')||' '||coalesce(c.ap_materno,'') as nombre,
-                            c.dni_ruc,
-                            c.direccion,
-                            c.telefonos,
-                            case libro.idcliente when 0 then c.idcliente else libro.idcliente end as idcliente
-                    FROM libro inner join atencion as a on a.idatencion = libro.idatencion 
+                            case libro.estado when 0 then
+                              c.nombres||' '||coalesce(c.ape_paterno,'')||' '||coalesce(c.ap_materno,'')
+                              else
+                                libro.razonsocial
+                            end as nombre,
+                            case libro.estado when 0 then
+                              c.dni_ruc
+                            else
+                              libro.ruc
+                            end as dni_ruc,
+                            case libro.estado when 0 then
+                              c.direccion
+                              else 
+                                libro.direccion
+                            end as direccion,
+                            case libro.estado when 0 then
+                              c.telefonos
+                              else 
+                                libro.telefono 
+                            end as telefono,
+                            case libro.estado when 0 then
+                              case libro.idcliente when 0 then c.idcliente else libro.idcliente end
+                                  else
+                              libro.idcliente
+                            end as idcliente2
+                     FROM libro inner join atencion as a on a.idatencion = libro.idatencion 
                               inner join cliente as c on a.idcliente = c.idcliente
-                    WHERE libro.idlibro = '$Id'";
+                     WHERE libro.idlibro = '$Id'";
 
         $Consulta 	= $Conn->Query($Select);
 
@@ -62,8 +82,10 @@ $ArrayP = array(NULL);
   function gettomos()
   {
     var idtl = $("#LibroTipo").val(),
-    ruc = $("#Ruc").val();
-    $.get('../../libs/autocompletar/last_libro.php','idtl='+idtl+'&ruc='+ruc,function(data)
+    ruc = $("#Ruc").val(),
+    idcli = $("#idcliente").val(),
+    rz    = $("#RazonSocial").val();
+    $.get('../../libs/autocompletar/last_libro.php','idtl='+idtl+'&ruc='+ruc+'&idcli='+idcli+'&rz='+rz,function(data)
     {
         if(parseInt(data)!=0)
         {
@@ -81,16 +103,16 @@ $ArrayP = array(NULL);
 	var CantidadSgt = 'Precio';
 	$(document).ready(function()
   {
-      $("#newCliente").click(function()
-      {
-          $("#dnewCliente").load('../../parametros/cliente/MantenimientoA.php',function(){            
-              $.getScript("../../parametros/cliente/script.js",function(){
-                  $("#dnewCliente").dialog("open");   
-                  $("#dni_ruc").focus();                
-              });            
-          });
-          
-      });
+            $("#newCliente").click(function()
+            {
+                $("#dnewCliente").load('../../parametros/cliente/MantenimientoA.php',function(){            
+                    $.getScript("../../parametros/cliente/script.js",function(){
+                        $("#dnewCliente").dialog("open");   
+                        $("#dni_ruc").focus();                
+                    });            
+                });
+                
+            });
 
             gettomos();
             $("#LibroTipo").change(function()
@@ -171,19 +193,19 @@ $ArrayP = array(NULL);
             };  
             $("#dnewCliente").dialog({
               autoOpen: false,                    
-                          resizable:false,
-                          title: "Nuevo Cliente",
-                          height:550,
-                          width: 750,                       
-                          buttons: {
-                              "Grabar": function() {                            
-                                  saveCliente();                           
-                              },
-                              "Cancelar": function() {
-                                  
-                                  $(this).dialog("close");
-                              }
-                          }
+              resizable:false,
+              title: "Nuevo Cliente",
+              height:550,
+              width: 750,                       
+              buttons: {
+                  "Grabar": function() {                            
+                      saveCliente();                           
+                  },
+                  "Cancelar": function() {
+                      
+                      $(this).dialog("close");
+                  }
+              }
     })
 
 	});	
@@ -223,7 +245,7 @@ $ArrayP = array(NULL);
   <tr>
     <td width="98" class="TituloMant">Cliente  :</td>
     <td colspan="2">
-      <input type="text" class="inputtext" style="font-size:12px; width:90px;" name="0form1_idcliente" id="idcliente"  maxlength="10" value="<?php echo $row['idcliente'];?>" <?php echo $Enabled;?> readonly="" />      
+      <input type="text" class="inputtext" style="font-size:12px; width:90px;" name="0form1_idcliente" id="idcliente"  maxlength="10" value="<?php echo $row['idcliente2'];?>" <?php echo $Enabled;?> readonly="" />      
       <a href="javascript:" id="newCliente"><img width="20" src="<?php echo '../../'.$urlDir;?>/imagenes/adduser.png"></a>
     </td>    
   </tr>

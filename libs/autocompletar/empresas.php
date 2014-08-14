@@ -10,9 +10,8 @@
                 cliente.telefonos,
                 cliente.ape_paterno,
                 cliente.ap_materno
-            FROM    cliente INNER JOIN documento ON (cliente.iddocumento = documento.iddocumento)";
-    
-        $Sql = $Sql." WHERE cliente.iddocumento=8 and cliente.dni_ruc<>'' and cliente.estado<>0 and (replace(cliente.nombres,'!','')||' '||coalesce(cliente.ape_paterno,'')||' '||coalesce(cliente.ap_materno,'') ilike '%$Filtro%' ) ORDER BY cliente.idcliente ASC ";
+            FROM    cliente INNER JOIN documento ON (cliente.iddocumento = documento.iddocumento)";    
+        $Sql = $Sql." WHERE cliente.estado<>0 and (replace(cliente.nombres,'!','')||' '||coalesce(cliente.ape_paterno,'')||' '||coalesce(cliente.ap_materno,'') ilike '%$Filtro%' ) ORDER BY cliente.idcliente ASC ";
 
     $Sql .= " limit 10";
     $Consulta = $Conn->Query($Sql);

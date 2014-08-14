@@ -62,6 +62,8 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
     $Previo .= "</table>";		 
     Cabecera($Previo, $FormatoGrilla[7]);
 ?>
+<script type="text/javascript" src="../../js/required.js"></script>
+<script type="text/javascript" src="../../js/Funciones.js"></script>
 <script>
 	var Foco = 'Cliente';
 	$(document).ready(function(){			
@@ -231,8 +233,7 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
  	}
 
     function saveCliente()
-    {
-    
+    {        
         var bval = true,
             tc = $("#idcliente_tipo").val(),
         idd = $("#iddocumento").val(),

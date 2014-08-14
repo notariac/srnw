@@ -12,10 +12,12 @@
         $Campo = $Campo." and libro.anio='$Anio'";
     }
     $Sql    = $Conn->VerificarSQL($Sql.$Campo);
+
     $n = ") ILIKE '%$Valor%' )";
     $pos = strpos($Sql,$n);
-    $Sql = substr_replace($Sql," AND libro.idnotaria='".$_SESSION['notaria']."' ",$pos+strlen($n),0);
-    //echo $Sql;
+    //$Sql = substr_replace($Sql," AND libro.idnotaria='".$_SESSION['notaria']."' ",$pos+strlen($n),0);
+    //echo $pos+strlen($n);
+    //echo $Sql;die();
     $Consulta = $Conn->Query($Sql);
     $num_total_registros = $Conn->NroRegistros($Consulta);
     $TAMANO_PAGINA = $FormatoGrilla[6]['TP'];
