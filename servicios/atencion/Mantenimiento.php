@@ -548,7 +548,7 @@ function CalcTotalLibros(evt)
   </tr>
   <tr>
     <td width="98" class="TituloMant">Direcci&oacute;n :</td>
-    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:350px; text-transform:uppercase;" name="0form1_direccion" id="Direccion"  maxlength="100" value="<?php echo $row[1];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'Servicio');"/></td>
+    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:350px; text-transform:uppercase;" name="0form1_direccion" id="Direccion"  maxlength="100" value="<?php echo $row[1];?>" <?php echo $Enabled;?> onkeypress="return permite(event,'num_car')"/></td>
   </tr>
   <tr>
     <td width="98" class="TituloMant">Fecha : </td>

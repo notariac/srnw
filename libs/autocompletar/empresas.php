@@ -1,6 +1,6 @@
 <?php
     require("../../config.php");
-    $Filtro = $_GET['term'];
+    $Filtro = trim($_GET['term']);
     $IdComprobante = isset($_GET['IdComprobante'])?$_GET['IdComprobante']:'';
     $Sql = "SELECT  replace(cliente.nombres, '!', '') as nombres,
                 cliente.direccion, 
@@ -12,7 +12,6 @@
                 cliente.ap_materno
             FROM    cliente INNER JOIN documento ON (cliente.iddocumento = documento.iddocumento)";    
         $Sql = $Sql." WHERE cliente.estado<>0 and (replace(cliente.nombres,'!','')||' '||coalesce(cliente.ape_paterno,'')||' '||coalesce(cliente.ap_materno,'') ilike '%$Filtro%' ) ORDER BY cliente.idcliente ASC ";
-
     $Sql .= " limit 10";
     $Consulta = $Conn->Query($Sql);
     $data = array();

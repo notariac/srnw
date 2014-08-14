@@ -133,6 +133,7 @@ $ArrayP = array(NULL);
                      $("#Direccion").val(ui.item.direccion);
                      $("#Ruc").val(ui.item.dni_ruc);                     
                      $("#Telefono").val(ui.item.telefonos); 
+                     $("#idcliente").val(ui.item.idcliente); 
                      $("#Direccion").focus();                             
                        return false;
                 }
@@ -158,6 +159,7 @@ $ArrayP = array(NULL);
                      $("#Direccion").val(ui.item.direccion);
                      $("#Ruc").val(ui.item.dni_ruc);                     
                      $("#Telefono").val(ui.item.telefonos); 
+                     $("#idcliente").val(ui.item.idcliente); 
                      $("#Direccion").focus();
                     return false;
                 }
@@ -218,6 +220,10 @@ $ArrayP = array(NULL);
                 Guardar(<?php echo $Op;?>);
             }
 	}
+  function clear_idcliente()
+  {
+    $("#idcliente").val("");
+  }
 </script>
 <div align="center">
 <form id="form1" name="form1" method="post" action="guardar.php?<?php echo $Guardar;?>">
@@ -251,11 +257,11 @@ $ArrayP = array(NULL);
   </tr>
   <tr>
     <td width="98" class="TituloMant">Raz&oacute;n Social  :</td>
-    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:350px;" name="0form1_razonsocial" id="RazonSocial"  maxlength="100" value="<?php echo str_replace("!", "", $row['nombre']);?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'Ruc');"/></td>
+    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:350px;" name="0form1_razonsocial" id="RazonSocial"  maxlength="100" value="<?php echo str_replace("!", "", $row['nombre']);?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'Ruc');" onchange="clear_idcliente()"/></td>
   </tr>
   <tr>
-    <td class="TituloMant">R.U.C. :</td>
-    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:90px; text-transform:uppercase;" name="0form1_ruc" id="Ruc"  maxlength="11" value="<?php echo $row['dni_ruc'];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'Direccion');"/></td>
+    <td class="TituloMant">R.U.C.:</td>
+    <td colspan="2"><input type="text" class="inputtext" style="font-size:12px; width:90px; text-transform:uppercase;" name="0form1_ruc" id="Ruc"  maxlength="11" value="<?php echo $row['dni_ruc'];?>" <?php echo $Enabled;?> onkeypress="CambiarFoco(event, 'Direccion');" onchange="clear_idcliente()" /></td>
   </tr>
   <tr>
     <td width="98" class="TituloMant">Direcci&oacute;n :</td>
@@ -277,15 +283,15 @@ $ArrayP = array(NULL);
   <tr>
     <td class="TituloMant">Tipo de Libro : </td>
     <td colspan="2"><select name="0form1_idlibro_tipo" id="LibroTipo" class="select" style="font-size:12px" onchange="" >
-<?php
-$SelectLT = "SELECT * FROM libro_tipo WHERE estado = 1";
-$ConsultaLT = $Conn->Query($SelectLT);
-while($rowLT=$Conn->FetchArray($ConsultaLT)){
-$Select = '';
-    if ($row[8]==$rowLT[0]){
-        $Select = 'selected="selected"';
-    }
-?>
+    <?php
+    $SelectLT = "SELECT * FROM libro_tipo WHERE estado = 1";
+    $ConsultaLT = $Conn->Query($SelectLT);
+    while($rowLT=$Conn->FetchArray($ConsultaLT)){
+    $Select = '';
+        if ($row[8]==$rowLT[0]){
+            $Select = 'selected="selected"';
+        }
+    ?>
       <option value="<?php echo $rowLT[0];?>" <?php echo $Select;?>><?php echo $rowLT[1];?></option>
 <?php
 }

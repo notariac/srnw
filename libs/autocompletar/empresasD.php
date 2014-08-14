@@ -1,6 +1,6 @@
 <?php
 require("../../config.php");
-$Filtro = $_GET['term'];
+$Filtro = trim($_GET['term']);
 $IdComprobante = isset($_GET['IdComprobante'])?$_GET['IdComprobante']:'';	
 $Sql = "SELECT cliente.nombres, 
                 cliente.direccion, 

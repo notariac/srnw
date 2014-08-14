@@ -97,11 +97,11 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
 			width: 650,
 			height: 500,
 			buttons: {
-                            Salir: function() {
-                                $("#DivVer").html('');
-                                $(this).dialog("close");
-                            }
-			}	   
+                    Salir: function() {
+                        $("#DivVer").html('');
+                        $(this).dialog("close");
+                    }
+			}
 		});
 		$("#Imprimir").dialog({
                     autoOpen: false,                    
@@ -122,6 +122,12 @@ if ( strlen ($_SESSION['id_user'])>0 ) {
 		});
 	});
 	function Validar(){
+            if ($('#idcliente').val()==''){
+                    alert('Ingrese correctamente el cliente, de no existir debe registrarlo!');
+                    $('#idcliente').focus();
+                    return false;
+            }
+
             if ($('#RazonSocial').val()==''){
                     alert('Ingrese la Raz&oacute;n Social!');
                     $('#RazonSocial').focus();
