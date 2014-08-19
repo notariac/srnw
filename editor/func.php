@@ -1,4 +1,16 @@
 <?php 
+
+//Migrador a la nueva version.
+function goNewVersion($html)
+{
+    $html = str_replace("#dadada", "#fafafa", $html);
+    $html = str_replace("14pt", "19px", $html);
+    //$var = '<div class="page" style="margin-bottom: 10px; box-shadow: 10px 10px 8px #888888; width: 548px; min-height: 855px; padding: 6px 45px 6px 196px; background: #FFFFFF; font-size: 14pt; font-family: 'Times New Roman',arial,Times,serif;" contenteditable="true">';
+    //$html = 
+    return $html;
+}
+
+
 function values($v)
 {
   if($v==NULL||$v=="")
@@ -7,6 +19,7 @@ function values($v)
   }
   return $v;
 }
+
 function addSlash($str)
 {
    $str = str_replace("'",'\"',$str);
@@ -34,7 +47,7 @@ function stripSlash($str)
          }
          else 
          {
-          $cad .= strtolower($v)." ";
+           $cad .= strtolower($v)." ";
          }
          
        }
@@ -104,8 +117,7 @@ function participantes($participantes,$idservicio)
             }
 
             if($v['tipo']==2 && $c==0)
-            {                
-
+            {   
                 $html .= "De otra parte ";
             }
               

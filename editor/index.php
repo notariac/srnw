@@ -74,15 +74,21 @@
       if($plantilla=="")
       {
           //Plantilla Limpia
-          $plantilla = '<div id="contenedor" style="background:#dadada;">
+          $plantilla = '<div id="contenedor" style="background: #fafafa;">
                           <div id="box-contenedor" style="width:793px; margin:0 auto; padding:20px 0 50px 0; ">                        
                           <div class="page" style="margin-bottom: 10px;
-                                                   box-shadow: 10px 10px 8px #888888;
+                                                   box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07), 2px 2px 1px #ccc;
                                                    width:548px; 
                                                    min-height: 855px;
                                                    padding:6px 45px 6px 196px; 
+                                                   background-color: rgba(0,0,0,.2);
                                                    background:#FFFFFF;
-                                                   font-size: 14pt;
+                                                   font-size: 19px;  
+                                                   font-weight:normal;
+                                                   font-style:normal;
+                                                   font-variant:normal;
+                                                   text-decoration:none;
+                                                   vertical-align:baseline;                                                 
                                                    font-family:\"Times New Roman\",arial,Times,serif;">
                             <div class="write-page" >
                               <div>&nbsp;</div>
@@ -272,7 +278,56 @@
 <link href="stylos.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 var hhh = $(window).height()-160;
-$(document).ready(function(){  
+$(document).ready(function()
+{ 
+    /*
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 1,
+      max: 2100,
+      values: [ 520, 1960 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "cm" + ui.values[ 0 ] + " - cm" + ui.values[ 1 ] );
+      }
+    });
+
+    $( "#amount" ).val( "cm" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - cm" + $( "#slider-range" ).slider( "values", 1 ) );
+    */
+    tinymce.init({
+    selector: "textarea",     
+    theme: "modern",
+    height : hhh,
+    language : "es",   
+    browser_spellcheck : true,   
+    convert_fonts_to_spans: true, 
+    content_css : "estilos.css",      
+    fontsize_formats: "10=13px 11=15px 12=16px 13=17px 13.5=18px 14=19px",
+    style_formats: [                
+                {title: '16', inline: 'span', styles: {fontSize: '22px'}},                                
+                {title: '20', inline: 'span', styles: {fontSize: '26px'}},
+                {title: '22', inline: 'span', styles: {fontSize: '29px'}},
+                {title: '24', inline: 'span', styles: {fontSize: '32px'}},
+                {title: '26', inline: 'span', styles: {fontSize: '35px'}},
+                {title: '28', inline: 'span', styles: {fontSize: '37px'}},
+                {title: '32', inline: 'span', styles: {fontSize: '42px'}},
+        ],
+    
+    plugins: [
+        "advlist autolink lists link image charmap hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save autosave table contextmenu directionality",
+        "emoticons template paste moxiemanager print tabfocus textcolor colorpicker textpattern "
+    ],
+    menubar: "file tools table format view insert edit",
+    toolbar1: "save | fontselect styleselect fontsizeselect | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | forecolor backcolor | print |",    
+    templates: [
+        {title: 'Test template 1', content: 'Test 1'},
+        {title: 'Test template 2', content: 'Test 2'}
+    ],
+    init_instance_callback : "call_back_function"
+});
+
     $("#print").click(function(){
         myPrint();
     });
@@ -326,8 +381,7 @@ $(document).ready(function(){
  
 });
 function saveKardex()
-{    
-    //$("#tinymce",self.content_ifr.document).html()
+{   
     var idkardex = $("#idkardex").val(),
             cont = $("#content_ifr").contents().find("#tinymce").html(),
             params = { 
@@ -351,36 +405,22 @@ function myPrint()
     window.open('../editor/print.php?idkardex='+kard,'width=600,height=300');
 }
 if(hhh<0) hhh = 500;
-tinymce.init({
-    selector: "textarea",     
-    theme: "modern",
-    height : hhh,
-    language : "es",         
-    content_css : "estilos.css",    
-    browser_spellcheck : true,
-    plugins: [
-        "advlist autolink lists link image charmap hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save autosave table contextmenu directionality",
-        "emoticons template paste moxiemanager print tabfocus"
-    ],
-    menubar: "file tools table format view insert edit",
-    toolbar1: "save | undo redo | fontselect | fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | forecolor backcolor | print |",
-    toolbar2: "",    
-    templates: [
-        {title: 'Test template 1', content: 'Test 1'},
-        {title: 'Test template 2', content: 'Test 2'}
-    ],
-});
+function call_back_function()
+{
+  $("#content_ifr").contents().find("body").attr("contenteditable","false");  
+  $("#content_ifr").contents().find("body").css("margin","0");  
+  $("#content_ifr").contents().find(".page").attr("contenteditable","true");
+}
+
 </script>
-<body style="font-size:65%">
+<body style="font-size:65%;background:#FAFAFA; margin:0; padding:0px">
 <form method="post" action="index.php" name="frm" id="frm">
-    <div style="width:100%; padding:5px 0; background:green">
+    <div style="width:100%; padding:5px 0; background:url('../png/green.png') repeat-x">
         <div style="padding:0 6px;">
         <span style="width:300px; color:#FFFFFF; font-size:12px; margin: 0px 10px 0 0; ">ESCRITURA: <b><?php echo $r['correlativo']; ?></b>  <?php if($_GET['template']!=""){ echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Usando el Modelo de ".$_GET['template']." del a&ntilde;o ".$_GET['anio']."]"; } ?></span>
         <span id="msg" style="font-size:11px; color:#fff; display:none">Guardando cambios...</span>        
         <a class="btn close" href="javascript:window.close();" style="float:right;">CERRAR</a>
-        <a class="btn config" href="javascript:" id="config-page" style="float:right;">CONFIGURAR</a>  
+        <a class="btn config" href="javascript:" id="config-page" style="float:right;">CONFIGURAR PAGINA</a>  
         <span style="float:right; padding:0 20px">
           <label style="color:#FFF">CARGAR PLANTILLA: </label>
           <input type="text" name="templat" id="templat" value="<?php echo $_GET['template'] ?>" style="width:80px" class="ui-widget-content ui-corner-all text" maxlength="7" />
@@ -390,8 +430,30 @@ tinymce.init({
         <input type="hidden" name="idkardex" id="idkardex" value="<?php echo $Id; ?>" />
         </div>
         <div style="clear:both"></div>
-    </div>
-    <textarea name="content" style="width:100%; background:#dadada;">
+        <!--
+        <div>
+          <div id="ok" style="width:780px; margin:0 auto; padding-right:20px;">
+            <div id="slider-range" style="background:#ccc;border-radius:0"></div>
+          </div>          
+        </div>
+        <div >
+          <div style="width:780px; margin:0 auto; padding-right:20px;">
+                <div style="padding:3px 0">
+                  <span style="margin-left:176px">|</span>
+                  <span>|</span>
+                  <span>|</span>
+                </div>
+            </div>
+        </div>
+        -->
+    </div> 
+    <!--
+    <p>
+      <label for="amount">Price range:</label>
+      <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
+    -->    
+    <textarea name="content" style="width:100%;">      
     <?php   
         if($plantilla_template=="")      
         {
@@ -489,12 +551,13 @@ tinymce.init({
                 $plantilla = str_replace("%estado_civil".$participacion."%", fupper($value['estado_civil'.$value['participacion']]), $plantilla);
               }
          }
-         echo $plantilla;
+         //echo $plantilla;
        }
        else 
        {
-          echo $plantilla_template;
+          $plantilla = $plantilla_template;
        }
+       echo goNewVersion($plantilla);
     ?>
     </textarea>
 </form>

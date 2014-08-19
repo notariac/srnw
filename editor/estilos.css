@@ -8,3 +8,30 @@ table tr td {border:1px solid #000 !important;}
 #viaje_externo { position:absolute; padding:180px 0 0 40px !important;}
 #viaje_interno {position:absolute; padding:180px 0 0 43px !important;}
 #idmargen_top { height: 2px !important; }
+
+
+.page {
+   margin-bottom: 10px !important;
+   box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07), 2px 2px 1px #ccc !important;
+   width:548px !important; 
+   min-height: 855px !important;
+   padding:6px 45px 6px 196px !important;  
+   background-color: rgba(0,0,0,.2) !important;
+   background:#FFFFFF !important;
+   font-size: 19px !important;  
+   font-weight:normal !important;
+   font-style:normal !important;
+   font-variant:normal !important;
+   text-decoration:none !important;
+   vertical-align:baseline !important;                                                 
+   font-family:"Times New Roman",arial,Times,serif !important;
+} 
+
+span,p,div 
+{
+	font-weight:normal;
+	font-style:normal;
+	font-variant:normal;
+	text-decoration:none;
+	vertical-align:baseline;
+}

@@ -16,10 +16,11 @@ $(document).ready(function(){
         $("#margin").dialog('open');
     });
 });
+
 function loadMargenes()
 {
-    var ml = $(".page",self.content_ifr.document).css("paddingLeft"),
-        mr = $(".page",self.content_ifr.document).css("paddingRight");
+    var ml = $("#content_ifr").contents().find(".page").css("paddingLeft"),
+        mr = $("#content_ifr").contents().find(".page").css("paddingRight");
         ml = parseFloat(ml);
         ml = toCm(ml);
         mr = parseFloat(mr);
@@ -29,11 +30,12 @@ function loadMargenes()
     $("#margen-left").val(ml.toFixed(1));
     $("#margen-right").val(mr.toFixed(1));
 }
+
 function setMargenes()
 {
     var ml = $("#margen-left").val(),  //En cm.
         mr = $("#margen-right").val(); //En cm.
-    var wpage = $(".page",self.content_ifr.document).css("width");
+    var wpage = $("#content_ifr").contents().find(".page").css("width");
     wpage = parseFloat(wpage);    
     if(ml>currentML)
     {
@@ -58,9 +60,10 @@ function setMargenes()
         wpage = wpage - dif;        
     }
     else 
-    {
-        if(ml<currentMR)
+    {                
+        if(mr<currentMR)
         {
+
             var dif =  currentMR - mr;
             dif = toPixel(dif);
             wpage = wpage + dif;
@@ -71,9 +74,10 @@ function setMargenes()
     ml = toPixel(ml);
     mr = parseFloat(mr);
     mr = toPixel(mr);
-    $(".page",self.content_ifr.document).css("paddingLeft",ml+"px");
-    $(".page",self.content_ifr.document).css("paddingRight",mr+"px");
-    $(".page",self.content_ifr.document).css("width",wpage+"px");
+
+    $("#content_ifr").contents().find(".page").css("paddingLeft",ml+"px");
+    $("#content_ifr").contents().find(".page").css("paddingRight",mr+"px");
+    $("#content_ifr").contents().find(".page").css("width",wpage+"px");    
     return false;
 }
 
