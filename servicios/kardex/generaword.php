@@ -90,7 +90,7 @@ function Generartf($IdKardex)
         //Registro de los pagos
         $monto_total = $row['monto'];
         $moneda = $row['moneda'];
-        ////Obtenemos si exibieron medio de pago
+        //Obtenemos si exibieron medio de pago
         $query = "SELECT fp.descripcion,
                     ef.descripcion,
                     m.descripcion,
@@ -107,6 +107,7 @@ function Generartf($IdKardex)
         {
            $data_pay[] = array($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5]);
         }
+
         $s = "SELECT
                 kardex_participantes.idkardex, 
                 documento.descripcion as documento, 
@@ -160,8 +161,7 @@ function Generartf($IdKardex)
               $cont = $cont+1;            
               $participacion = $pp;
           }
-          $pp = $pp.$cont;      
-
+          $pp = $pp.$cont; 
           $par[] = array(
                           'nombres'=>strtoupper($p['nombres']),   //Nombre 
                           'participacion'=>$pp,                   //Participacion

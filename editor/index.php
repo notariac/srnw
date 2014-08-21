@@ -14,6 +14,7 @@
 
     if(isset($_GET['template'])&&$_GET['template']!="")
     {
+        //En caso que se quiere usar la copia de otra documento ya elaborado
         $sql = "SELECT digital as plantilla from kardex              
                  where correlativo = '".$_GET['template']."' and anio = '".$_GET['anio']."'";
         
@@ -27,32 +28,82 @@
     }
     if($plantilla_template=="")
     {
-      $sql = "SELECT k.*,s.descripcion as servicio,s.digital as plantilla 
-                from kardex as k inner join servicio as s 
-               on k.idservicio = s.idservicio
+      //Si la plantilla_template sigue vacia, se obtiene la plantilla definida en el servicio
+      $sql = "SELECT k.*,
+                     s.descripcion as servicio,
+                     s.digital as plantilla,
+                     coalesce(kaj.monto,0) as monto,
+                     m.descripcion as moneda,
+                     dn.descripcion as documento_notarial
+                from servicio as s INNER JOIN kardex as k ON (s.idservicio = k.idservicio) 
+                                  left outer JOIN kardex_aj as kaj on kaj.idkardex = k.idkardex 
+                                  left outer join moneda as m on m.idmoneda = kaj.idmoneda                                            
+                                  left outer join asigna_pdt as apdt on apdt.idservicio = s.idservicio
+                                  left outer join pdt.documento_notarial as dn on dn.iddocumento_notarial = apdt.iddocumento_notarial
                where k.idkardex = ".$Id;
       $q = $Conn->Query($sql);
       $r = $Conn->FetchArray($q);
 
-      $Escritura  = CantidadEnLetra($r['escritura']);
+      $Escritura      = $r['escritura'];
       $EscrituraFecha = $Conn->DecFecha($r['escritura_fecha']);
-      $DiaL           = CantidadEnLetra((int)substr($r['escritura_fecha'], 8, 2));
-      $MesL           = $meses[(int)substr($r['escritura_fecha'], 5, 2)-1];
-      $AnioL          = CantidadEnLetra((int)substr($r['escritura_fecha'], 0, 4));     
 
-      $DiaM = substr($r['escritura_fecha'], 8, 2);
-      $MesM = substr($r['escritura_fecha'], 5, 2);
-      $AnioM = substr($r['escritura_fecha'], 0, 4);
+      $DiaL           = CantidadEnLetra((int)substr($r['escritura_fecha'], 8, 2)); //Dia en letras
+      $MesL           = $meses[(int)substr($r['escritura_fecha'], 5, 2)-1];        //Mes en letras
+      $AnioL          = CantidadEnLetra((int)substr($r['escritura_fecha'], 0, 4)); //Anio en letras
+
+      $Dia = substr($r['escritura_fecha'], 8, 2);   //Dia en numero
+      $Mes = substr($r['escritura_fecha'], 5, 2);   //Dia en numero
+      $Anio = substr($r['escritura_fecha'], 0, 4);  //Anio en numero
 
       $IdServicio     = $r['idservicio'];
+      $Anio = $r['anio'];
+      $FojaI    = $r['fojainicio'];
+      $SerieI   = $r['serieinicio'];
+      $FojaF    = $r['fojafin'];
+      $SerieF   = $r['seriefin'];      
+      $Monto    = $r['monto'];
+      $Descripcion = $r['descripcion'];
 
+      //Variables exclusivas para autorizaciones de viaje
+      $Motivo   = $r['motivo'];
+      $via = $r['via'];
+      $fecha_salida = $Conn->DecFecha($r['fecha_salida']);
+      $fecha_retorno = $Conn->DecFecha($r['fecha_retorno']);
+      $ruta = $r['ruta'];       
+      //--
+
+      $monto_total = $r['monto'];
+      $moneda = $r['moneda']; 
+
+
+      //Verificamos y obtenemos si exibieron medio de pago
+      $query = "SELECT fp.descripcion,
+                    ef.descripcion,
+                    m.descripcion,
+                    dfp.montopagado,
+                    dfp.fechapago,
+                    dfp.nromediopago
+                  FROM detalle_forma_pago as dfp inner join forma_pago as fp on fp.idforma_pago = dfp.idforma_pago
+                    inner join moneda as m on m.idmoneda = dfp.idmoneda
+                    inner join pdt.entidadfinanciera as ef on ef.identidad_financiera = dfp.identidad_financiera
+                  WHERE dfp.idkardex = ".$Id;
+      $stmt       = $Conn->Query($query);
+      $data_pay = array();
+      while($reg = $Conn->FetchArray($stmt))
+      {
+         $data_pay[] = array($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5]);
+      }
+      //--
 
       $flag = false;
       $finalizado = $r['finalizado'];
+
       $msg = "";
       if($finalizado==1) $msg = "Esta escritura ya no es editable ya que fue marcada como finalizada";
+
       if($r['digital']=="")
       {
+          //Si la escritura aun no tiene nada grabado se obtiene la plantilla del servicio
           $plantilla = stripSlash(html_entity_decode($r['plantilla']));       
           $plantilla = str_replace('"Times New Roman"',"'Times New Roman'",$plantilla);
   	      $plantilla = utf8_decode($plantilla);
@@ -60,46 +111,38 @@
       }
       else
       {
+          //Si existe ya el documento grabado se procesa,
           $r['digital'] = str_replace('“', '"', $r['digital']);
           $r['digital'] = str_replace('”', '"', $r['digital']);
           $r['digital'] = str_replace('–', '-', $r['digital']);
 
-          $r['digital'] = str_replace('?', '"', $r['digital']);
+          //$r['digital'] = str_replace('?', '"', $r['digital']);
           
           $plantilla = stripSlash(html_entity_decode($r['digital']));
           $plantilla = str_replace('"Times New Roman"',"'Times New Roman'",$plantilla);
           $plantilla = str_replace('"times new roman"',"'Times New Roman'",$plantilla);
   	      $plantilla = utf8_decode($plantilla);
       }
+
+      //Si no existe el documento digital en el kardex y tampoco tiene plantilla en su servicio
+      //Se opta por una plantilla por defecto.
       if($plantilla=="")
       {
           //Plantilla Limpia
-          $plantilla = '<div id="contenedor" style="background: #fafafa;">
-                          <div id="box-contenedor" style="width:793px; margin:0 auto; padding:20px 0 50px 0; ">                        
-                          <div class="page" style="margin-bottom: 10px;
-                                                   box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07), 2px 2px 1px #ccc;
-                                                   width:548px; 
-                                                   min-height: 855px;
-                                                   padding:6px 45px 6px 196px; 
-                                                   background-color: rgba(0,0,0,.2);
-                                                   background:#FFFFFF;
-                                                   font-size: 19px;  
-                                                   font-weight:normal;
-                                                   font-style:normal;
-                                                   font-variant:normal;
-                                                   text-decoration:none;
-                                                   vertical-align:baseline;                                                 
-                                                   font-family:\"Times New Roman\",arial,Times,serif;">
+          $plantilla = '<div id="contenedor">
+                          <div id="box-contenedor">                        
+                          <div class="page">
                             <div class="write-page" >
                               <div>&nbsp;</div>
                             </div>
-                          </div>                          
-                        </div>     
+                          </div>
+                        </div>
                       </div>';
           $plantilla = stripSlash($plantilla);
       }
 
-    $s = "SELECT 
+      //Recuperamos los participantes en la escritura
+      $s = "SELECT 
                 kardex_participantes.idkardex, 
                 documento.descripcion as documento, 
                 kardex_participantes.idparticipante, 
@@ -142,9 +185,7 @@
     $participacion = "";
     $cont = 1;    
     $lastp = "";
-
     $data = array();
-
     while($p = $Conn->FetchArray($qp))
     {
           $pp = strtolower(trim(str_replace(" ","", $p['participacion'])));
@@ -225,7 +266,7 @@
                     $data[] = array('idparticipante'=>$rrr['idcliente'],
                         'participante'=>$rrr['nombres'],
                         'documento'=>$rrr['documento'],
-                        'nrodocumento'=>$p['dni_ruc'],
+                        'nrodocumento'=>$rrr['dni_ruc'],
                         'idparticipacion'=>$p['idparticipacion'],
                         'participacion'=>$p['participacion'],
                         'tipo'=> $p['tipo'],
@@ -277,23 +318,9 @@
 <script type="text/javascript" src="scripts.js"></script>
 <link href="stylos.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-var hhh = $(window).height()-160;
+var hhh = $(window).height()-145;
 $(document).ready(function()
 { 
-    /*
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 1,
-      max: 2100,
-      values: [ 520, 1960 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "cm" + ui.values[ 0 ] + " - cm" + ui.values[ 1 ] );
-      }
-    });
-
-    $( "#amount" ).val( "cm" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - cm" + $( "#slider-range" ).slider( "values", 1 ) );
-    */
     tinymce.init({
     selector: "textarea",     
     theme: "modern",
@@ -301,8 +328,8 @@ $(document).ready(function()
     language : "es",   
     browser_spellcheck : true,   
     convert_fonts_to_spans: true, 
-    content_css : "estilos.css",      
-    fontsize_formats: "10=13px 11=15px 12=16px 13=17px 13.5=18px 14=19px",
+    content_css : "estilos.css",  
+    fontsize_formats: "10pt=13px 11pt=15px 12pt=16px 13pt=17px 13.5pt=18px 14pt=19px",
     style_formats: [                
                 {title: '16', inline: 'span', styles: {fontSize: '22px'}},                                
                 {title: '20', inline: 'span', styles: {fontSize: '26px'}},
@@ -317,10 +344,10 @@ $(document).ready(function()
         "advlist autolink lists link image charmap hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
         "insertdatetime media nonbreaking save autosave table contextmenu directionality",
-        "emoticons template paste moxiemanager print tabfocus textcolor colorpicker textpattern "
+        "emoticons template paste moxiemanager print tabfocus textcolor colorpicker textpattern fullpage "
     ],
     menubar: "file tools table format view insert edit",
-    toolbar1: "save | fontselect styleselect fontsizeselect | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | forecolor backcolor | print |",    
+    toolbar1: "save | fontselect styleselect fontsizeselect | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | forecolor backcolor | print | searchreplace |",    
     templates: [
         {title: 'Test template 1', content: 'Test 1'},
         {title: 'Test template 2', content: 'Test 2'}
@@ -404,7 +431,6 @@ function myPrint()
     var kard = $("#idkardex").val();
     window.open('../editor/print.php?idkardex='+kard,'width=600,height=300');
 }
-if(hhh<0) hhh = 500;
 function call_back_function()
 {
   $("#content_ifr").contents().find("body").attr("contenteditable","false");  
@@ -430,29 +456,7 @@ function call_back_function()
         <input type="hidden" name="idkardex" id="idkardex" value="<?php echo $Id; ?>" />
         </div>
         <div style="clear:both"></div>
-        <!--
-        <div>
-          <div id="ok" style="width:780px; margin:0 auto; padding-right:20px;">
-            <div id="slider-range" style="background:#ccc;border-radius:0"></div>
-          </div>          
-        </div>
-        <div >
-          <div style="width:780px; margin:0 auto; padding-right:20px;">
-                <div style="padding:3px 0">
-                  <span style="margin-left:176px">|</span>
-                  <span>|</span>
-                  <span>|</span>
-                </div>
-            </div>
-        </div>
-        -->
-    </div> 
-    <!--
-    <p>
-      <label for="amount">Price range:</label>
-      <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-    </p>
-    -->    
+    </div>   
     <textarea name="content" style="width:100%;">      
     <?php   
         if($plantilla_template=="")      
@@ -462,6 +466,8 @@ function call_back_function()
              $plantilla = str_replace("%kardex%", $r['correlativo'], $plantilla);
              $plantilla = str_replace("%escritura%", $r['escritura'], $plantilla);
              $plantilla = str_replace("%minuta%", $r['minuta'], $plantilla);
+             $plantilla = str_replace("%servicio%", validValur($r['servicio']), $plantilla);
+
              $plantilla = str_replace("%ruta%", validValur($r['ruta']), $plantilla);
              $plantilla = str_replace("%via%", validValur($r['via']), $plantilla);
              $plantilla = str_replace("%motivo%", validValur($r['motivo']), $plantilla);
@@ -469,7 +475,6 @@ function call_back_function()
              $plantilla = str_replace("%name_mes%", $meses[(int)$mes-1], $plantilla);
              $plantilla = str_replace("%mes%", $mes, $plantilla);
              $plantilla = str_replace("%anio%", $anio, $plantilla);
-
              
              $plantilla = str_replace("%dial%", validValur(trim($DiaL)), $plantilla);
              $plantilla = str_replace("%mesl%", validValur(trim($MesL)), $plantilla);
@@ -483,6 +488,7 @@ function call_back_function()
              $plantilla = str_replace("%seriei%", validValur($SerieI), $plantilla);
              $plantilla = str_replace("%serief%", validValur($SerieF), $plantilla);  
              $plantilla = str_replace("%desc_bien%", validValur($descripcion), $plantilla);
+
              $monto_letra = CantidadEnLetraP($monto);
              $plantilla = str_replace("%monto_letra%", $monto_letra, $plantilla);
              $plantilla = str_replace("%monto%", number_format($monto,2), $plantilla);
@@ -497,6 +503,7 @@ function call_back_function()
              $plantilla = str_replace("%intervinientes%", $part,$plantilla);
              $part =  participantes_firma($data);
              $plantilla = str_replace("%participantes_firma%", $part,$plantilla);
+             $cuerpoVehiculo = cuerpoVehiculo(array($r['clasev'], $r['marcav'], $r['aniofabv'], $r['modelov'], $r['colorv'], $r['motorv'], $r['cilindrosv'], $r['seriev'], $r['ruedasv'], $r['combustiblev'], $r['fechaincripcionv'], $r['carroceriav'], $r['placa']));        
 
 
               //********************
@@ -530,6 +537,7 @@ function call_back_function()
 	           $plantilla = str_replace("%fecha_salida%",$fechas,$plantilla);
              $plantilla = str_replace("%fecha_retorno%",$fechar,$plantilla);
             // print_r($par);
+             /*
              foreach ($par as $key => $value) 
              {   
 	              $participacion = $value['participacion'];
@@ -550,6 +558,7 @@ function call_back_function()
                 $plantilla = str_replace("%departamento".$participacion."%", fupper($value['departamento'.$value['participacion']]), $plantilla);
                 $plantilla = str_replace("%estado_civil".$participacion."%", fupper($value['estado_civil'.$value['participacion']]), $plantilla);
               }
+              */
          }
          //echo $plantilla;
        }

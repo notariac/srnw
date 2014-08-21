@@ -27,34 +27,26 @@
         }
     }
     if($plantilla=="")
-            {
+    {
 		if($Id==97)
 		{
 		   $addi = '<div id="viaje_externo"><img src="../imagenes/viaje_externo.png" /></div>';
 		}
 		if($Id==98)
-                {
+        {
                    $addi = '<div id="viaje_interno"><img src="../imagenes/viaje_interno.png" /></div>';
-                }
-                $plantilla = '<div id="contenedor" style="background:#dadada;">
-                        <div id="box-contenedor" style="width:793px; margin:0 auto; padding:20px 0 50px 0; ">                        
-                        <div class="page" style="margin-bottom: 10px;
-                                                 box-shadow: 10px 10px 8px #888888;
-                                                 width:548px; 
-                                                 min-height: 855px;
-                                                 padding:6px 45px 6px 196px; 
-                                                 background:#FFFFFF;
-                                                 font-size: 14pt;
-                                                 font-family:\"Times New Roman\",arial,Times,serif;">
+        }
+        $plantilla = '<div id="contenedor">
+                          <div id="box-contenedor">                        
+                          <div class="page">
                             <div class="write-page" >
-                                 <div>&nbsp;</div>
+                              <div>&nbsp;</div>
                             </div>
-                        </div>                          
-                        </div>     
-                        </div>';
-                 $plantilla = stripSlash($plantilla);
-                 
-            }
+                          </div>
+                        </div>
+                      </div>';
+        $plantilla = stripSlash($plantilla);                 
+    }
     
 ?>
 <html>
@@ -70,7 +62,7 @@
 $(document).ready(function(){       
     $("#grabar").click(function(){
         var idservicio = $("#idservicio").val(),
-            cont = $("#tinymce",self.content_ifr.document).html(),
+            cont = $("#content_ifr").contents().find("#tinymce").html(),
             params = { 
                         'idservicio':idservicio,
                         'cont':cont
@@ -90,8 +82,20 @@ tinymce.init({
     selector: "textarea",     
     theme: "modern",
     height : "460",
-    language : 'es',         
-    content_css : "estilos.css",    
+    language : 'es',    
+    browser_spellcheck : true,   
+    convert_fonts_to_spans: true,      
+    content_css : "estilos.css",  
+    fontsize_formats: "10pt=13px 11pt=15px 12pt=16px 13pt=17px 13.5pt=18px 14pt=19px",    
+    style_formats: [                
+                {title: '16', inline: 'span', styles: {fontSize: '22px'}},                                
+                {title: '20', inline: 'span', styles: {fontSize: '26px'}},
+                {title: '22', inline: 'span', styles: {fontSize: '29px'}},
+                {title: '24', inline: 'span', styles: {fontSize: '32px'}},
+                {title: '26', inline: 'span', styles: {fontSize: '35px'}},
+                {title: '28', inline: 'span', styles: {fontSize: '37px'}},
+                {title: '32', inline: 'span', styles: {fontSize: '42px'}},
+        ],
     plugins: [
         "advlist autolink lists link image charmap hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
@@ -105,7 +109,16 @@ tinymce.init({
         {title: 'Test template 1', content: 'Test 1'},
         {title: 'Test template 2', content: 'Test 2'}
     ],
+    init_instance_callback : "call_back_function"
 });
+function call_back_function()
+{
+  $("#content_ifr").contents().find("body").attr("contenteditable","false");  
+  $("#content_ifr").contents().find("body").css("margin","0");  
+  $("#content_ifr").contents().find(".page").attr("contenteditable","true");
+  //hhh = $(window).height();  
+  //tinymce.init({height:hhh});
+}
 </script>
 
 <body style="font-size:65%">

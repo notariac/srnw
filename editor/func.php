@@ -5,8 +5,8 @@ function goNewVersion($html)
 {
     $html = str_replace("#dadada", "#fafafa", $html);
     $html = str_replace("14pt", "19px", $html);
-    //$var = '<div class="page" style="margin-bottom: 10px; box-shadow: 10px 10px 8px #888888; width: 548px; min-height: 855px; padding: 6px 45px 6px 196px; background: #FFFFFF; font-size: 14pt; font-family: 'Times New Roman',arial,Times,serif;" contenteditable="true">';
-    //$html = 
+    $html = str_replace("13pt", "18px", $html);
+    $html = str_replace("12pt", "16px", $html);
     return $html;
 }
 
@@ -118,14 +118,27 @@ function participantes($participantes,$idservicio)
 
             if($v['tipo']==2 && $c==0)
             {   
-                $html .= "De otra parte ";
+                if($idservicio==100)
+                {
+                    //poder fuera de registro
+                    $tam = strlen($html);
+                    $html = substr($html, 0, ($tam-5));
+
+                    $html .= ", aquien en adelante se denominara el <b>El Poderdante.</b>";
+                    $html .= "<b>El Poderdante</b>, es mayor de edad, ".utf8_decode(hábil)." para contratar, con entera libertad, conocimiento y capacidad, ".utf8_decode(según)." lo dispuesto en el ".utf8_decode(artículo)." ".utf8_decode('55º')." de la Ley de Notariado Decreto Legislativo 1049, de lo que doy fe; ".utf8_decode(examinándosele)." para otorgar ";
+                    $html .= "<b>Poder Fuera de Registro,</b> a favor de:<br>";
+                }
+                else
+                {
+                    $html .= "";
+                }
             }
               
 
             if($v['sexo']=="M")
-               $html .= "Don ";
+               $html .= "";
             else
-              $html .= utf8_decode(Doña)." ";
+              $html .= "";
 
             $html .= "<b>".validValur($v['participante'])."</b>, ";
             $html .= "identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b> ".validValur($v['nrodocumento'])."</b>";
@@ -133,20 +146,22 @@ function participantes($participantes,$idservicio)
             {
               //Si es Natural
                 $html .= ", quien manifiesta ser de nacionalidad ";
-                $html .= "<b> Peruana, </b>";
-                $html .= utf8_decode(ocupación)." <b>".validValur($v['ocupacion'])."</b>, ";
+                $html .= "Peruana, ";                
                 //Obtenemos si tiene algun representante
                 $repre = getRepresentante($v['idparticipante'],$participantes);
                 $html .= $repre;
-                $html .= "estado civil ".validValur($v['estado_civil'])." ";
 
-                if((int)$v['conyuge']>0)
-                  $html .= "con ".getConyuge($participantes,$v['conyuge']);
-
-                $html .= ", con domicilio en ".validValur($v['dir']).", ";
-                $html .= "Distrito de ".validValur($v['distrito']).", ";
-                $html .= "Provincia de ".validValur($v['provincia']).", ";
-                $html .= "Departamento de ".validValur($v['departamento'])."; ";
+                if(trim($repre)=="")
+                {
+                    $html .= utf8_decode(ocupación)." <b>".validValur($v['ocupacion'])."</b>, ";
+                    $html .= "estado civil ".validValur($v['estado_civil'])."";
+                    if((int)$v['conyuge']>0)
+                      {$html .= "con ".getConyuge($participantes,$v['conyuge']);}
+                    $html .= ", con domicilio en ".validValur($v['dir']).", ";
+                    $html .= "Distrito de <b>".validValur($v['distrito'])."</b>, ";
+                    $html .= "Provincia de <b>".validValur($v['provincia'])."</b>, ";
+                    $html .= "Departamento de <b>".validValur($v['departamento'])."</b>; ";
+                }
 
             }
             else
@@ -194,7 +209,6 @@ function participantes($participantes,$idservicio)
     return $html;
 }
 
-
 /*
   Funcion: datos_menor
   Parametros: @p1
@@ -217,7 +231,6 @@ function datos_menor($participantes)
      }
      return $html.".";
 }
-
 /*
   Funcion: participantes_v
   Parametros: @p1, @p2        
@@ -280,9 +293,6 @@ function participantes_v($participantes,$ids)
      $html .= '.';
      return $html;
 }
-
-
-
 /*
   Funcion: participantes_firma
   Parametros: @p1        
@@ -431,9 +441,9 @@ function verOtorgantes($participantes)
         {
           if($c>0) $html .= " y ";
           if($v['sexo']=="M")                   
-             $html .= "Don ";
+             $html .= "";
           else
-            $html .= utf8_decode(Doña)." ";            
+            $html .= "";            
           $c +=1;
           $html .= "<b>".validValur($v['participante'])."</b>"; 
           $repre = verRepresentante($v['idparticipante'],$participantes);
@@ -462,9 +472,9 @@ function verFavorecidos($participantes)
         {
           if($c>0) $html .= " y ";
                 if($v['sexo']=="M")                   
-                   $html .= "Don ";
+                   $html .= "";
                 else
-                  $html .= utf8_decode(Doña)." ";
+                  $html .= "";
                $c +=1;      
            $html .= "<b>".validValur($v['participante'])."</b>";   
            $repre = verRepresentante($v['idparticipante'],$participantes);
@@ -495,14 +505,79 @@ function verIntervinientes($participantes)
       else 
         $html .= "con intervencion de ";
             if($v['sexo']=="M")                   
-               $html .= "Don ";
+               $html .= "";
             else
-              $html .= utf8_decode(Doña)." ";
+              $html .= "";
             $html .= "<b>".validValur($v['participante'])."</b>";
            $c +=1;    
         }        
       }      
       return $html.'';
+}
+
+
+function cuerpoVehiculo($v)
+{
+    /*    $v (Array)
+          [0] -> Clase Vehiculo
+          [1] -> Marca Vehiculo
+          [2] -> Año Fabricacion
+          [3] -> Modelo Vehiculo
+          [4] -> Color Vehiculo
+          [5] -> Motor
+          [6] -> Nro de Cilindros
+          [7] -> Serie
+          [8] -> Nro de ruedas
+          [9] -> Combustible
+          [10]-> Fecha de Inscripcion
+          [11]-> Carroceria
+          [12]-> Nro Placa
+
+          $html = "";    
+          $html .= "{\\qj PLACA DE RODAJE ".utf8_decode(N°).": \b ".$v[12].".} \\par";
+          $html .= "{\\qj CLASE: \b ".$v[0].".} \\par";
+          $html .= "{\\qj ".utf8_decode(AÑO).": \b ".$v[2].".} \\par ";
+          $html .= "{\\qj MARCA: \b ".$v[1].". } \\par";
+          $html .= "{\\qj SERIE ".utf8_decode(N°).": \b ".$v[7].".} \\par";
+          $html .= "{\\qj MOTOR ".utf8_decode(N°).": \b ".$v[5].".} \\par";
+          $html .= "{\\qj MODELO: \b ".$v[3].".} \\par ";
+          $html .= "{\\qj CARROCERIA: \b ".$v[11].".} \\par";
+          $html .= "{\\qj COLOR: \b ".$v[4].".} \\par ";
+          $html .= "{\\qj ".utf8_decode(N°)." RUEDAS: \b ".$v[8].". } \\par"; 
+
+    */
+    $html = "";    
+    $text  = "Placa de Rodaje ".utf8_decode(N°).": <b>".$v[12]."</b>.";
+    $html .= $text.fill_lines($text)."<br>";
+    
+    $text  = "Clase: <b>".validValur($v[0])."</b>.";
+    $html .= $text.fill_lines($text)."<br>";
+
+    $text  = utf8_decode(Año).": <b> ".validValur($v[2])."</b>.";
+    $html .= $text.fill_lines($text)."<br>";
+
+    $text  = "Marca: <b>".validValur($v[1]).".</b>";
+    $html .= $text.fill_lines($text)."<br>";
+
+    $text  = "Serie ".utf8_decode(N°).": <b>".$v[7]."</b>.";
+    $html .= $text.fill_lines($text)."<br>";
+
+    $text  = "Motor ".utf8_decode(N°).": <b> ".$v[5]."</b>.";
+    $html .= $text.fill_lines($text)."<br>";    
+
+    $text  = "Modelo: <b>".$v[3]."</b>.";
+    $html .= $text.fill_lines($text)."<br>";    
+
+    $text  = "Carroceria: <b> ".validValur($v[11])."</b>.";
+    $html .= $text.fill_lines($text)."<br>";
+
+    $text  = "Color: <b>".validValur($v[4])."</b>.";
+    $html .= $text.fill_lines($text)."<br>";
+
+    $text  = utf8_decode(N°)." Ruedas: <b>".$v[8]."</b>.";    
+    $html .= $text.fill_lines($text)."<br>";
+
+    return $html;    
 }
 
 function genero($palabra,$sexo)
@@ -548,9 +623,15 @@ function nAfavor($p)
 function validValur($v)
 {
     if(trim($v)=="")
-     return "[Campo-sin-valor]";
+     {return "<b>[Campo-vacio]</b>";}
     else
-     return trim(fupper(utf8_decode($v)));
+    {
+      if($v=="Distrito"||$v=="Provincia"||$v=="Departamento")
+      {
+         $v = "<b>[Campo-vacio]</b>";
+      }
+     return ucname(trim(utf8_decode($v)));
+   }
 }
 
 function denominacion($participacion,$num,$g)
@@ -565,4 +646,39 @@ function denominacion($participacion,$num,$g)
 
     }
 }
+function ucname($string) 
+{
+    //Convierte el primer caracter de cada palabra a mayuscula
+    $string =ucwords(strtolower($string));
+
+    foreach (array('-', '\'') as $delimiter) {
+      if (strpos($string, $delimiter)!==false) 
+      {
+        $string =implode($delimiter, array_map('ucfirst', explode($delimiter, $string)));
+      }
+    }
+    return $string;
+}
+
+function fill_lines($text)
+{    
+    //$text = clear_tags($text);
+    $t = strlen($text);
+    $str="";
+    $w = 58;
+    if($t>0)
+    {
+        $c = floor($t/$w);
+        $n = $w*$c+$w-$t;
+        $n = $n-1;
+        $str = "";
+        for($i=0;$i<=$n;$i++)
+        {
+          $str .= "=";
+        }
+    }    
+    return $str;
+}
+
+
 ?>
