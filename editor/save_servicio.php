@@ -11,7 +11,13 @@
        return $str;
     }
     $Id = $_POST['idservicio'];
-    $sql = "UPDATE servicio set digital = '".addSlash($_POST['cont'])."' WHERE idservicio = ".$Id;            
+
+    $c = ($_POST['cont']);
+
+    $c = str_replace('“', '"', $c);
+    $c = str_replace('”', '"', $c);
+  
+    $sql = "UPDATE servicio set digital = '".addSlash($c)."' WHERE idservicio = ".$Id;            
     $q = $Conn->Query($sql);
     if($q){ echo "1";}      
 	else {echo "Error: ".pg_last_error();}

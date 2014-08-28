@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include('../config.php');
     include('func.php');
     include("num2letraK.php");  
@@ -46,7 +47,9 @@
 
       $Escritura      = $r['escritura'];
       $EscrituraFecha = $Conn->DecFecha($r['escritura_fecha']);
-
+      $fecha_escritura = $r['escritura_fecha'];
+      $documento_notarial = $r['documento_notarial'];
+      $servicio = $r['servicio'];
       $DiaL           = CantidadEnLetra((int)substr($r['escritura_fecha'], 8, 2)); //Dia en letras
       $MesL           = $meses[(int)substr($r['escritura_fecha'], 5, 2)-1];        //Mes en letras
       $AnioL          = CantidadEnLetra((int)substr($r['escritura_fecha'], 0, 4)); //Anio en letras
@@ -126,9 +129,10 @@
 
       //Si no existe el documento digital en el kardex y tampoco tiene plantilla en su servicio
       //Se opta por una plantilla por defecto.
-      if($plantilla=="")
+      if($plantilla!="")
       {
           //Plantilla Limpia
+    
           $plantilla = '<div id="contenedor">
                           <div id="box-contenedor">                        
                           <div class="page">
@@ -407,6 +411,7 @@ $(document).ready(function()
     });
  
 });
+if(hhh<0) hhh = 500
 function saveKardex()
 {   
     var idkardex = $("#idkardex").val(),
@@ -436,6 +441,7 @@ function call_back_function()
   $("#content_ifr").contents().find("body").attr("contenteditable","false");  
   $("#content_ifr").contents().find("body").css("margin","0");  
   $("#content_ifr").contents().find(".page").attr("contenteditable","true");
+  $("#content_ifr").contents().find(".page").select();
 }
 
 </script>
@@ -505,6 +511,8 @@ function call_back_function()
              $plantilla = str_replace("%participantes_firma%", $part,$plantilla);
              $cuerpoVehiculo = cuerpoVehiculo(array($r['clasev'], $r['marcav'], $r['aniofabv'], $r['modelov'], $r['colorv'], $r['motorv'], $r['cilindrosv'], $r['seriev'], $r['ruedasv'], $r['combustiblev'], $r['fechaincripcionv'], $r['carroceriav'], $r['placa']));        
 
+             $pago = constancia_pago($data,$data_pay,$monto_total,$moneda,$fecha_escritura,$servicio,$documento_notarial);             
+             $plantilla = str_replace("%medio_pago%", $pago,$plantilla);
 
               //********************
               //**Casos especiales**
@@ -522,7 +530,11 @@ function call_back_function()
 
               //
               $part_firma = participantes_firma_v($data);
-              $plantilla = str_replace("%participantes_firma_v%", $part_firma, $plantilla);  
+              $plantilla = str_replace("%participantes_firma_v%", $part_firma, $plantilla);
+
+              //Variables autogeneradas
+              $plantilla = str_replace("%denominacion_1%", $_SESSION['denominacion_1'], $plantilla); 
+              $plantilla = str_replace("%denominacion_2%", $_SESSION['denominacion_2'], $plantilla); 
 
 
 

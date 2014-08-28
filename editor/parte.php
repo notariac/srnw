@@ -21,7 +21,6 @@
             $r['digital'] = str_replace('“', '"', $r['digital']);
             $r['digital'] = str_replace('”', '"', $r['digital']);
             $r['digital'] = str_replace('–', '-', $r['digital']);
-
             $r['digital'] = str_replace('?', '"', $r['digital']);
 
             $plantilla = stripSlash(html_entity_decode($r['digital']));       
@@ -122,7 +121,7 @@ tinymce.init({
     </div> 
     <textarea name="content" style="width:100%; background:#dadada;">
         <?php 
-        echo $plantilla; 
+             echo $plantilla; 
         ?>
     </textarea>
 </form>
@@ -136,4 +135,3 @@ tinymce.init({
 </div>
 </body>
 </html>
-

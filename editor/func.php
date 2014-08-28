@@ -10,7 +10,6 @@ function goNewVersion($html)
     return $html;
 }
 
-
 function values($v)
 {
   if($v==NULL||$v=="")
@@ -146,7 +145,7 @@ function participantes($participantes,$idservicio)
             {
               //Si es Natural
                 $html .= ", quien manifiesta ser de nacionalidad ";
-                $html .= "Peruana, ";                
+                $html .= "peruana, ";                
                 //Obtenemos si tiene algun representante
                 $repre = getRepresentante($v['idparticipante'],$participantes);
                 $html .= $repre;
@@ -174,34 +173,76 @@ function participantes($participantes,$idservicio)
               $repre = getRepresentante($v['idparticipante'],$participantes);
               $html .= $repre."; ";
             }
-        
-                if($v['tipo']==1)
-                {
-                   $numero_participantes = nOtorgantes($participantes);
-                   $denominacion = denominacion($v['participacion'],$numero_participantes,$v['sexo']);
-                   if($numero_participantes==1)
-                    {
-                       $denominacion = 'a quien se le '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
-                    }
-                   else
-                    {
-                       $denominacion = 'a quienes se les '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
-                    }
-                }
-                if($v['tipo']==2)
-                {
-                   $numero_participantes = nAfavor($participantes);
-                   if($numero_participantes==1)
-                   { 
-                      $denominacion = 'a quien se le '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
-                   }
-                   else
-                   {
-                      $denominacion = 'a quienes se les '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
-                   }
-                }
-                if(($c+1)==$numero_participantes)
-                    $html .= $denominacion;
+            
+            if($idservicio==96)
+            {
+              if($v['tipo']==1)
+              {
+                $numero_participantes = nOtorgantes($participantes);
+                 if($v['sexo']=="M")
+                 {
+                    $d = '"El Vendedor"';
+                 }
+                 else
+                 {
+                    $d = '"La Vendedora"';  
+                 }
+                  
+              } 
+              else
+              {
+                $numero_participantes = nAfavor($participantes);
+                if($v['sexo']=="M")
+                 {
+                    $d = '"El Comprador"';
+                 }
+                 else
+                 {
+                    $d = '"La Compradora"';
+                 }
+                 
+              }     
+              $denominacion = '<br/>A quien se le '.utf8_decode(denominará).' '.'<b>'.$d.'</b>'.'.==================<br>';                                              
+              $_SESSION['denominacion_'.$v['tipo']] = $d;            
+                
+            }
+            else
+            {
+                  if($v['tipo']==1)
+                  {
+                     $numero_participantes = nOtorgantes($participantes);
+                     //$denominacion = denominacion($v['participacion'],$numero_participantes,$v['sexo']);
+                     if($numero_participantes==1)
+                      {
+                         $denominacion = 'a quien se le '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';                                              
+                      }
+                     else
+                      {
+                         $denominacion = 'a quienes se les '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
+                      }
+                      $_SESSION['denominacion_'.$v['tipo']] = validValur($v['participacion']);
+
+                  }
+                  if($v['tipo']==2)
+                  {
+                     $numero_participantes = nAfavor($participantes);
+                     if($numero_participantes==1)
+                     { 
+                        $denominacion = 'a quien se le '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
+                     }
+                     else
+                     {
+                        $denominacion = 'a quienes se les '.utf8_decode(denominará).' '.'<b>"'.validValur($v['participacion']).'"</b>'.'.=============<br>';
+                     }
+                     
+                  }
+                  $_SESSION['denominacion_'.$v['tipo']] = validValur($v['participacion']);
+            }
+                
+            if(($c+1)==$numero_participantes)
+                $html .= $denominacion;
+
+
             $c += 1;
           }
         }
@@ -217,7 +258,8 @@ function participantes($participantes,$idservicio)
 */
 function datos_menor($participantes)
 {
-     $html = genero("hijo",$v['sexo']);     
+     $html = genero("hijo",$v['sexo']);   
+     $iden = genero("identificado",$v['sexo']);
      foreach($participantes as $k => $v)
      {
        if($v['tipo']==2)
@@ -226,7 +268,7 @@ function datos_menor($participantes)
          $c +=1;
          $html .= " <b>".validValur(trim($v['participante']))."</b>";         
          $html .= " con <b>".calcular_edad($v['fecha_nac'])." (".validValur(CantidadEnLetra(calcular_edad($v['fecha_nac']))).") ".utf8_decode(años)."</b> de edad, ";         
-         $html .= " identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
+         $html .= $ideb." con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
        }
      }
      return $html.".";
@@ -244,20 +286,21 @@ function participantes_v($participantes,$ids)
      $html = 'Por el presente documento, yo ';
      $c = 0;
      $flag = false;
+     $iden = genero("identificado",$v['sexo']);
      foreach($participantes as $k => $v)
      {
        if($v['tipo']==1&&$v['es_conyuge']==0)
        {
          if($c>0) $html .= " y ";
          if($v['sexo']=="M")                   
-            $html .= "Don ";
+            $html .= "don ";
          else
-            $html .= utf8_decode(Doña)." ";            
+            $html .= utf8_decode(doña)." ";            
          $c +=1;
          $html .= "<b>".validValur($v['participante'])."</b>"; 
          $html .= " de nacionalidad ";
-         $html .= "<b> Peruana, </b>";
-         $html .= "identificado con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
+         $html .= "<b> peruana, </b>";
+         $html .= $iden." con ".validValur($v['documento'])."  ".utf8_decode(número)." <b>".validValur($v['nrodocumento'])."</b>";
          if($ids==97)
          {
             if((int)$v['conyuge']>0)
@@ -311,13 +354,18 @@ function participantes_firma($participantes)
         {
           if($c%2==0)
           {
-              $html .= '} <br/></br>  ';
+              $html .= '<br/></br>  ';
           }
-          $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.validValur($v['participante']).'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';        
+          $html .= ''.validValur($v['participante']).'&nbsp;&nbsp;&nbsp;&nbsp;';        
           $c +=1;      
         }        
     }
+
     $html .= '</b>';
+    $html .= "<br><br><br><br>";
+    $html .= "<div style='align:center'>________________________</div>";
+    $html .= "<div style='align:center'><b>Luis Enrique Cisneros Olano </b></div>";
+    $html .= "<div style='align:center'><b>Notario de la provincia de San Martin</b></div>";
     return $html;
 }
 
@@ -680,5 +728,66 @@ function fill_lines($text)
     return $str;
 }
 
+
+function constancia_pago($participantes,$datos,$monto,$moneda,$fecha,$servicio,$documento_notarial)
+{
+    //$datos (Array):
+    //  Exibió Medio de Pago  
+    //  [0] -> Monto Total de la Operacion
+    //  [1] -> Medio de Pago
+    //  [2] -> Entidad Financiera
+    //  [3] -> Moneda
+    //  [4] -> Fecha Pago
+    //  [5] -> Nro Documento
+    global $meses;
+    $f = explode("-", $fecha);
+    $texto = "El precio pactado por la compra venta del ".utf8_decode(vehículo)." a que se refiere la ".utf8_decode(cláusula)." anterior es de S/. <b>".number_format($monto,2)." (".validValur(CantidadEnLetraP($monto)).")</b>";
+    $texto .= ", suma que el <b>".$_SESSION['denominacion_1']."</b> declara haber recibido de el <b>".$_SESSION['denominacion_2']."</b>";
+    //El precio pactado por la compra venta del vehículo a que se refiere la cláusula anterior es de: S/.30,000.00 (Treinta mil   y 00/100 Nuevos Soles), suma que %denominacion_1% declara haber recibido de %denominacion_2% %medio_pago%
+    
+    $n = count($datos);
+    $medios = "";
+    if($n==0)
+    {
+       //No se exibio medio de pago
+     
+      $texto .= " a su entera ".utf8_decode(satisfacción)." en efectivo y al contado.";// con fecha ".$f[2]." de ".validValur($meses[$f[1]-1])." del ".utf8_decode(año)." ".$f[0].", ";
+      //$texto .= "el monto en efectivo por la suma de <b>S/. ".number_format($monto,2)." (".validValur(CantidadEnLetraP($monto)).").</b><br>";
+    }
+    else
+    {
+      $c = 0;
+      foreach ($datos as $d) 
+      {      
+        if($c>0)
+        {
+          $texto .= ", y ";
+          $medios .= " y  el ";
+        }
+        $f = explode("-", $d[4]);     
+        $conector = "";
+        switch (trim($d[0])) {
+             case 'TRANSFERENCIA BANCARIA':
+               $conector = "la";
+               break;
+             case 'TARJETA DE CRÉDITO':
+               $conector = "la";
+             default:
+               $conector = "el";
+               break;
+           }   
+        $texto .= $conector." ".validValur($d[0])." ".utf8_decode(número)." {\\b ".validValur($d[5])."} girado por la entidad financiera ".validValur($d[1]);
+        $texto .= " con fecha ".$f[2]." de ".validValur($meses[$f[1]-1])." del ".utf8_decode(año)." ".$f[0].", ";
+        $texto .= " por la suma de {\\b S/. ".number_format($d[3],2)." (".validValur(CantidadEnLetraP($d[3])).").}";
+        $medios .= $d[0];
+        $c+=1;
+      }
+        $texto .= "<br>";
+    }
+    //$texto .= "{".$favorecidos.", declara que con ".$conector." ".validValur($medios)." recibido el ".utf8_decode(día)." de hoy, y cuyos datos arriban en el inserto, ";
+    //$texto .= "dan por cancelado el ".utf8_decode(íntegro)." del precio de venta no teniendo nada que reclamar y renunciando a cualquier hipoteca legal. }\\par";
+    //$texto .= conformidad($participantes,$datos,$monto,$moneda,$fecha,$servicio,$documento_notarial);
+    return $texto;
+}
 
 ?>

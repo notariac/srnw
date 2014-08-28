@@ -12,7 +12,12 @@
     }
     $Id = $_POST['idkardex'];
 
-    $sql = "UPDATE kardex set digital = '".addSlash($_POST['cont'])."' WHERE idkardex = ".$Id;            
+    $c = ($_POST['cont']);
+
+    $c = str_replace('“', '"', $c);
+    $c = str_replace('”', '"', $c);
+
+    $sql = "UPDATE kardex set digital = '".addSlash($c)."' WHERE idkardex = ".$Id;            
 
     $q = $Conn->Query($sql);
     if($q){ echo "1";}      

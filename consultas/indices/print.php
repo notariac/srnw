@@ -214,7 +214,7 @@ $sql = "SELECT  k.idkardex,
    $sql .= $where;
 }
  
- $sql .= " order by idkardex desc limit 200 ";
+ $sql .= " order by idkardex desc  ";
  $Consulta = $Conn->Query($sql);
  $c = 0;
  $flag = false;
